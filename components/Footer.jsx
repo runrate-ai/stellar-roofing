@@ -20,7 +20,7 @@ export default function Footer() {
               <Mail size={15} /> {config.business.email}
             </a>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3221.444444444444!2d-86.7816!3d36.1627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886466516f351727%3A0x40707477240700!2sStellar%20Roofing%20%26%20Restorations!5e0!3m2!1sen!2sus!4v1711827000000!5m2!1sen!2sus"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d824213.1065563732!2d-86.90376095!3d36.20103555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8b60ff0d0201d7bd%3A0x43175739b4a32d43!2sStellar%20Roofing%20%26%20Restoration!5e0!3m2!1sen!2sus!4v1774886295627!5m2!1sen!2sus"
               width="100%"
               height="200"
               style={{ border: 0 }}
@@ -28,7 +28,7 @@ export default function Footer() {
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Stellar Roofing & Restorations - Google Business Profile"
+              title="Stellar Roofing & Restoration - Google Business Profile"
             />
           </div>
 

@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, Menu, X, ChevronDown } from 'lucide-react';
@@ -9,6 +10,8 @@ const services = config.services;
 const mvpAreas = config.serviceAreas.mvp;
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const isHomepage = pathname === '/';
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [areasOpen, setAreasOpen] = useState(false);
@@ -22,24 +25,26 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isTransparent = isHomepage && !scrolled;
+
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 right-0 z-[100] w-full transition-all duration-500 ease-in-out ${
-        scrolled 
-          ? 'bg-primary/95 backdrop-blur-md shadow-lg py-1' 
-          : 'bg-transparent py-3'
+        isTransparent
+          ? 'bg-transparent py-3'
+          : 'bg-primary shadow-lg py-1'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-[60px] md:h-[70px]">
           {/* Logo */}
           <Link href="/" className="relative z-[110] flex items-center transition-transform duration-300 hover:scale-105">
-            <Image 
-              src="/images/logo.png" 
-              alt="Stellar Roofing Logo" 
-              width={180} 
-              height={60} 
-              className={`w-auto transition-all duration-300 ${scrolled ? 'h-10 md:h-12' : 'h-12 md:h-14'} brightness-0 invert`}
+            <Image
+              src="/images/logo.png"
+              alt="Stellar Roofing Logo"
+              width={180}
+              height={60}
+              className="w-auto h-[60px]"
               priority
             />
           </Link>

@@ -51,7 +51,7 @@ export default function HomePage() {
       <SchemaMarkup schema={faqSchemaData} />
 
       {/* HERO */}
-      <section className="relative min-h-[600px] md:min-h-[700px] flex items-center justify-center">
+      <section className="relative flex items-center justify-center" style={{ minHeight: 'calc(100vh - 44px)' }}>
         <Image
           src="/images/hero.jpg"
           alt="Nashville roofing company - Stellar Roofing & Restorations"
