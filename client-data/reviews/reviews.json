@@ -1,0 +1,52 @@
+[
+  {
+    "name": "James R.",
+    "rating": 5,
+    "text": "Nate and his crew replaced our entire roof after the spring storms. They handled the insurance paperwork and made the whole process stress-free. The new roof looks incredible and they cleaned up everything when they were done. Highly recommend Stellar Roofing.",
+    "date": "2025-10-22",
+    "service": "Storm Damage Repair",
+    "city": "Nashville",
+    "source": "Google",
+    "placeholder": true
+  },
+  {
+    "name": "Amanda K.",
+    "rating": 5,
+    "text": "We got three estimates for our roof replacement and Stellar was the best value by far. Professional crew, quality materials, and they finished in one day. The lifetime warranty sealed the deal for us.",
+    "date": "2025-09-15",
+    "service": "Roof Replacement",
+    "city": "Murfreesboro",
+    "source": "Google",
+    "placeholder": true
+  },
+  {
+    "name": "David M.",
+    "rating": 5,
+    "text": "Had a roof leak during a bad storm and called Stellar for an emergency repair. They were out the next morning and had it patched up before lunch. Fair price, honest assessment, and great communication the entire time.",
+    "date": "2025-08-03",
+    "service": "Roof Repair",
+    "city": "Franklin",
+    "source": "Google",
+    "placeholder": true
+  },
+  {
+    "name": "Lisa H.",
+    "rating": 5,
+    "text": "Stellar did a free inspection on our 18-year-old roof and gave us an honest assessment. No pressure at all. When we were ready to move forward with the replacement, the whole process was smooth and professional.",
+    "date": "2025-11-10",
+    "service": "Roof Inspection",
+    "city": "Brentwood",
+    "source": "Google",
+    "placeholder": true
+  },
+  {
+    "name": "Robert P.",
+    "rating": 5,
+    "text": "We needed a new roof on our commercial building and Stellar handled it perfectly. They worked around our business hours so we didn't lose any downtime. Great team to work with.",
+    "date": "2025-07-28",
+    "service": "Commercial Roofing",
+    "city": "Nashville",
+    "source": "Google",
+    "placeholder": true
+  }
+]
