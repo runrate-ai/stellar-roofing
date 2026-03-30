@@ -5,6 +5,7 @@ import SchemaMarkup from '../components/SchemaMarkup';
 import CTABanner from '../components/CTABanner';
 import FAQ from '../components/FAQ';
 import GHLForm from '../components/GHLForm';
+import ReviewWidget from '../components/ReviewWidget';
 import { localBusinessSchema, faqSchema } from '../lib/schema';
 import config from '../lib/config';
 
@@ -37,12 +38,7 @@ const faqs = [
   { question: "How long does a roof replacement take?", answer: "Most residential roof replacements in Nashville take 1–2 days to complete. The timeline depends on the size and pitch of your roof, the materials being installed, and weather conditions. Our crew works efficiently to minimize disruption to your home." },
   { question: "What are signs I need a new roof?", answer: "Key signs include shingles that are curling, cracked, or missing; granules in your gutters; daylight visible through your attic; water stains on your ceiling; or a roof that's 20+ years old. If you're unsure, schedule a free inspection and we'll give you an honest assessment." },
   { question: "Do you offer financing?", answer: "Yes, we work with financing options to make roof replacement more manageable. Ask us about available plans when you get your free estimate. We want quality roofing to be accessible for every Nashville homeowner." },
-  { question: "What areas do you serve?", answer: "We serve Nashville and the greater Middle Tennessee area, including Murfreesboro, Clarksville, Franklin, Brentwood, Hendersonville, Gallatin, Smyrna, Spring Hill, Mount Juliet, and Lebanon. If you're not sure whether we cover your area, just give us a call." },
-];
-
-const allCities = [
-  ...config.serviceAreas.mvp,
-  ...config.serviceAreas.expansion,
+  { question: "What are areas do you serve?", answer: "We serve Nashville and the greater Middle Tennessee area, including Murfreesboro, Clarksville, Franklin, Brentwood, Hendersonville, Gallatin, Smyrna, Spring Hill, Mount Juliet, and Lebanon. If you're not sure whether we cover your area, just give us a call." },
 ];
 
 export default function HomePage() {
@@ -85,7 +81,7 @@ export default function HomePage() {
       </section>
 
       {/* TRUST BAR */}
-      <section className="bg-primary py-6">
+      <section className="bg-primary py-6 relative z-20">
         <div className="max-w-5xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             {[
@@ -104,24 +100,24 @@ export default function HomePage() {
       </section>
 
       {/* SERVICES OVERVIEW */}
-      <section className="py-16 px-4 bg-white" id="services">
+      <section className="py-20 px-4 bg-white reveal" id="services">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Our Roofing Services</h2>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-primary mb-4">Our Roofing Services</h2>
             <p className="text-text-muted text-lg max-w-2xl mx-auto">From routine repairs to full roof replacements, we handle every roofing need in Nashville and Middle Tennessee.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {config.services.map(service => {
+            {config.services.map((service, i) => {
               const IconComp = iconMap[service.icon] || Home;
               return (
-                <div key={service.slug} className="bg-bg-alt rounded-2xl p-6 hover:shadow-lg transition-shadow group">
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                    <IconComp className="text-primary transition-colors" size={24} />
+                <div key={service.slug} className={`bg-bg-alt rounded-2xl p-8 hover:shadow-xl transition-all duration-300 group reveal reveal-delay-${(i % 3) + 1}`}>
+                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                    <IconComp size={28} />
                   </div>
-                  <h3 className="text-xl font-bold text-primary mb-3">{service.name}</h3>
-                  <p className="text-text-muted text-sm leading-relaxed mb-4">{serviceDescriptions[service.slug]}</p>
-                  <Link href={`/services/${service.slug}`} className="text-primary font-semibold text-sm hover:text-primary-light transition-colors underline underline-offset-2">
-                    Learn More &rarr;
+                  <h3 className="text-2xl font-bold text-primary mb-4">{service.name}</h3>
+                  <p className="text-text-muted text-base leading-relaxed mb-6">{serviceDescriptions[service.slug]}</p>
+                  <Link href={`/services/${service.slug}`} className="text-primary font-bold text-sm hover:text-primary-light transition-colors flex items-center gap-2">
+                    Learn More <span className="text-xl">&rarr;</span>
                   </Link>
                 </div>
               );
@@ -131,20 +127,23 @@ export default function HomePage() {
       </section>
 
       {/* ABOUT US */}
-      <section className="py-16 px-4 bg-bg-alt">
+      <section className="py-20 px-4 bg-bg-alt reveal">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-primary font-semibold uppercase tracking-widest text-sm mb-2">About Us</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">Reliable Roofing</h2>
-              <p className="text-text-muted leading-relaxed text-base">
-                At Stellar Roofing &amp; Restorations, we're committed to providing homeowners in Nashville and throughout Middle Tennessee with roofing services they can truly rely on. The company is led by Nate, who has spent many years working in the roofing industry and understands firsthand the importance of quality craftsmanship, honest communication, and dependable service. Our team focuses on delivering durable roofing solutions—from repairs and storm damage restoration to full roof replacements—using proven materials and professional installation techniques. When you choose Stellar Roofing &amp; Restorations, you're choosing a local roofing company that takes pride in protecting your home and standing behind every job we complete.
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="reveal reveal-delay-1">
+              <p className="text-primary font-bold uppercase tracking-widest text-sm mb-3">About Us</p>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-8">Nashville's Premier Roofing Team</h2>
+              <p className="text-text-muted leading-relaxed text-lg mb-8">
+                At Stellar Roofing &amp; Restorations, we're committed to providing homeowners in Nashville and throughout Middle Tennessee with roofing services they can truly rely on. The company is led by Nate, who has spent many years working in the roofing industry and understands firsthand the importance of quality craftsmanship, honest communication, and dependable service. 
               </p>
-              <Link href="/about" className="mt-6 inline-block bg-primary hover:bg-primary-light text-white font-semibold px-6 py-3 rounded-lg transition-colors">
-                Learn About Us
+              <p className="text-text-muted leading-relaxed text-lg mb-10">
+                Our team focuses on delivering durable roofing solutions—from repairs and storm damage restoration to full roof replacements—using proven materials and professional installation techniques. When you choose Stellar Roofing &amp; Restorations, you're choosing a local roofing company that takes pride in protecting your home and standing behind every job we complete.
+              </p>
+              <Link href="/about" className="inline-block bg-primary hover:bg-primary-light text-white font-bold px-10 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                Meet The Team
               </Link>
             </div>
-            <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl">
+            <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl reveal reveal-delay-2">
               <Image
                 src="/images/crew-working.jpg"
                 alt="Stellar Roofing crew working on a Nashville home"
@@ -157,133 +156,55 @@ export default function HomePage() {
       </section>
 
       {/* OUR PROCESS */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-20 px-4 bg-white reveal">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="text-primary font-semibold uppercase tracking-widest text-sm mb-2">The Process</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-primary">Our Simple 3 Step Process</h2>
+          <div className="text-center mb-16">
+            <p className="text-primary font-bold uppercase tracking-widest text-sm mb-3">The Process</p>
+            <h2 className="text-3xl md:text-5xl font-bold text-primary">Simple & Transparent</h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-12">
             {[
-              { step: "01", title: "Contact Us", desc: "Start by completing the 'Get a Free Quote' form on our website to share your Roofing needs with us so we can take care of you." },
-              { step: "02", title: "Schedule Your Estimate", desc: "Next, we'll arrange a property visit at a time that works for you to provide an in-person estimate for your Roofing needs." },
-              { step: "03", title: "Get The Job Done", desc: "After you approve our estimate, we'll schedule a date to complete the job. Our team will work hard to exceed your expectations!" },
-            ].map(({ step, title, desc }) => (
-              <div key={step} className="text-center">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-primary/20">
-                  <span className="text-white font-bold text-xl">{step}</span>
+              { step: "01", title: "Free Inspection", desc: "We start with a thorough, no-pressure assessment of your roof's condition to identify any issues." },
+              { step: "02", title: "Expert Estimate", desc: "You'll receive a detailed, honest estimate tailored to your home's specific needs and your budget." },
+              { step: "03", title: "Quality Install", desc: "Our professional crew completes your roofing project with precision, leaving your property spotless." },
+            ].map(({ step, title, desc }, i) => (
+              <div key={step} className={`text-center reveal reveal-delay-${i + 1}`}>
+                <div className="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-black shadow-xl">
+                  {step}
                 </div>
-                <h3 className="text-xl font-bold text-primary mb-3">{title}</h3>
-                <p className="text-text-muted leading-relaxed">{desc}</p>
+                <h3 className="text-2xl font-bold text-primary mb-4">{title}</h3>
+                <p className="text-text-muted leading-relaxed text-lg">{desc}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* WHY CHOOSE US */}
-      <section className="py-16 px-4 bg-bg-alt">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Why Nashville Homeowners Choose Stellar</h2>
-            <p className="text-text-muted text-lg">We're not just another roofing company — we're your neighbor, and we stand behind our work.</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                Icon: Shield,
-                title: "Lifetime Warranty",
-                desc: "Every roof we install comes with a lifetime warranty. We use premium materials and professional installation techniques because we want your roof to outlast our competition's work."
-              },
-              {
-                Icon: FileCheck,
-                title: "Insurance Claims Help",
-                desc: "Storm damage? We know the insurance claims process inside and out. Our team works directly with your insurance adjuster to make sure you get the coverage you're entitled to."
-              },
-              {
-                Icon: MapPin,
-                title: "Local & Trusted",
-                desc: "We're a Nashville-based company, not a national franchise. Nate and the team are your neighbors — we care about this community and our reputation depends on making you happy."
-              }
-            ].map(({ Icon, title, desc }) => (
-              <div key={title} className="bg-white rounded-2xl p-8 shadow-sm">
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
-                  <Icon className="text-primary" size={24} />
-                </div>
-                <h3 className="text-xl font-bold text-primary mb-3">{title}</h3>
-                <p className="text-text-muted leading-relaxed">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICE AREAS */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Proudly Serving Nashville &amp; Middle Tennessee</h2>
-            <p className="text-text-muted text-lg">We provide expert roofing services throughout the greater Nashville metro area.</p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
-                {config.serviceAreas.mvp.map(a => (
-                  <Link key={a.slug} href={`/service-areas/${a.slug}`} className="flex items-center gap-2 bg-bg-alt hover:bg-primary hover:text-white rounded-lg px-4 py-3 text-sm font-medium text-primary transition-colors">
-                    <MapPin size={14} />
-                    {a.city}
-                  </Link>
-                ))}
-                {config.serviceAreas.expansion.map(a => (
-                  <div key={a.slug} className="flex items-center gap-2 bg-bg-alt rounded-lg px-4 py-3 text-sm text-text-muted">
-                    <MapPin size={14} />
-                    {a.city}
-                  </div>
-                ))}
-              </div>
-              <p className="text-text-muted text-sm">Don't see your city? Call us — we may still be able to help. <a href={`tel:${config.business.phoneRaw}`} className="text-primary font-semibold hover:text-primary-light underline">{config.business.phone}</a></p>
-            </div>
-            <div className="flex items-center justify-center py-4">
-              <Image
-                src="/images/logo-mascot-thumbsup.png"
-                alt="Stellar Roofing mascot"
-                width={350}
-                height={350}
-                className="h-[350px] w-auto object-contain"
-              />
-            </div>
           </div>
         </div>
       </section>
 
       {/* REVIEWS */}
-      <section className="py-16 px-4 bg-bg-alt">
+      <section className="py-20 px-4 bg-bg-alt reveal">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">What Our Customers Say</h2>
-            <p className="text-text-muted text-lg">Real reviews from Nashville homeowners and business owners.</p>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-primary mb-4">What Our Customers Say</h2>
+            <p className="text-text-muted text-lg max-w-2xl mx-auto">Real reviews from Nashville homeowners and business owners who trust Stellar Roofing.</p>
           </div>
 
-          {/* GHL-WIDGET: Review Widget */}
-          <div id="ghl-reviews" className="mb-10">
-            {/* REPLACE WITH GHL REVIEW WIDGET EMBED SCRIPT */}
-          </div>
+          <ReviewWidget />
 
           {/* Fallback review cards */}
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-8 mt-16">
             {[
-              { name: "James R.", city: "Nashville", service: "Storm Damage Repair", text: "Nate and his crew replaced our entire roof after the spring storms. They handled the insurance paperwork and made the whole process stress-free. The new roof looks incredible and they cleaned up everything when they were done. Highly recommend Stellar Roofing." },
-              { name: "Amanda K.", city: "Murfreesboro", service: "Roof Replacement", text: "We got three estimates for our roof replacement and Stellar was the best value by far. Professional crew, quality materials, and they finished in one day. The lifetime warranty sealed the deal for us." },
-              { name: "David M.", city: "Franklin", service: "Roof Repair", text: "Had a roof leak during a bad storm and called Stellar for an emergency repair. They were out the next morning and had it patched up before lunch. Fair price, honest assessment, and great communication the entire time." },
-            ].map(({ name, city, service, text }) => (
-              <div key={name} className="bg-white rounded-2xl p-6 shadow-sm">
-                <div className="flex gap-1 mb-3">
-                  {[...Array(5)].map((_, i) => <Star key={i} size={16} className="text-primary fill-primary" />)}
+              { name: "James R.", city: "Nashville", service: "Storm Damage Repair", text: "Nate and his crew replaced our entire roof after the spring storms. They handled the insurance paperwork and made the whole process stress-free. Highly recommend Stellar Roofing." },
+              { name: "Amanda K.", city: "Murfreesboro", service: "Roof Replacement", text: "We got three estimates for our roof replacement and Stellar was the best value by far. Professional crew, quality materials, and they finished in one day." },
+              { name: "David M.", city: "Franklin", service: "Roof Repair", text: "Had a roof leak during a bad storm and called Stellar for an emergency repair. They were out the next morning and had it patched up before lunch." },
+            ].map(({ name, city, service, text }, i) => (
+              <div key={name} className={`bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-shadow reveal reveal-delay-${i + 1}`}>
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => <Star key={i} size={18} className="text-yellow-400 fill-yellow-400" />)}
                 </div>
-                <p className="text-text-muted text-sm leading-relaxed mb-4">"{text}"</p>
+                <p className="text-text-muted text-lg leading-relaxed mb-6 italic">"{text}"</p>
                 <div>
-                  <p className="font-semibold text-text-dark">{name}</p>
-                  <p className="text-text-muted text-xs">{city} &mdash; {service}</p>
+                  <p className="font-bold text-primary text-lg">{name}</p>
+                  <p className="text-text-muted text-sm uppercase tracking-wider">{city} &bull; {service}</p>
                 </div>
               </div>
             ))}

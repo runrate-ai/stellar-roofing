@@ -20,15 +20,15 @@ export default function Footer() {
               <Mail size={15} /> {config.business.email}
             </a>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d206253.45295695498!2d-86.9211868!3d36.1744674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8864ec3213eb903d%3A0x7d3fb9d0a1e9daa0!2sNashville%2C%20TN!5e0!3m2!1sen!1sus"
-              width="250"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3221.444444444444!2d-86.7816!3d36.1627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x886466516f351727%3A0x40707477240700!2sStellar%20Roofing%20%26%20Restorations!5e0!3m2!1sen!2sus!4v1711827000000!5m2!1sen!2sus"
+              width="100%"
               height="200"
-              style={{ border: 0, display: 'block' }}
-              className="rounded-lg"
-              allowFullScreen
+              style={{ border: 0 }}
+              className="rounded-xl shadow-inner mt-4"
+              allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Stellar Roofing service area - Nashville, TN"
+              title="Stellar Roofing & Restorations - Google Business Profile"
             />
           </div>
 
