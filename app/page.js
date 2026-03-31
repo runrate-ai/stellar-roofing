@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Phone, Shield, SearchCheck, BadgeCheck, FileCheck, Home, Wrench, CloudLightning, Search, Building2, AlertTriangle, Star, MapPin } from 'lucide-react';
+import { Phone, Shield, SearchCheck, BadgeCheck, FileCheck, Home, Wrench, CloudLightning, Search, Building2, AlertTriangle } from 'lucide-react';
 import SchemaMarkup from '../components/SchemaMarkup';
 import CTABanner from '../components/CTABanner';
 import FAQ from '../components/FAQ';
@@ -189,26 +189,6 @@ export default function HomePage() {
           </div>
 
           <ReviewWidget />
-
-          {/* Fallback review cards */}
-          <div className="grid md:grid-cols-3 gap-8 mt-16">
-            {[
-              { name: "James R.", city: "Nashville", service: "Storm Damage Repair", text: "Nate and his crew replaced our entire roof after the spring storms. They handled the insurance paperwork and made the whole process stress-free. Highly recommend Stellar Roofing." },
-              { name: "Amanda K.", city: "Murfreesboro", service: "Roof Replacement", text: "We got three estimates for our roof replacement and Stellar was the best value by far. Professional crew, quality materials, and they finished in one day." },
-              { name: "David M.", city: "Franklin", service: "Roof Repair", text: "Had a roof leak during a bad storm and called Stellar for an emergency repair. They were out the next morning and had it patched up before lunch." },
-            ].map(({ name, city, service, text }, i) => (
-              <div key={name} className={`bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-shadow reveal reveal-delay-${i + 1}`}>
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => <Star key={i} size={18} className="text-yellow-400 fill-yellow-400" />)}
-                </div>
-                <p className="text-text-muted text-lg leading-relaxed mb-6 italic">"{text}"</p>
-                <div>
-                  <p className="font-bold text-primary text-lg">{name}</p>
-                  <p className="text-text-muted text-sm uppercase tracking-wider">{city} &bull; {service}</p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 

@@ -1,29 +1,22 @@
 'use client';
 import { useEffect } from 'react';
-import config from '../lib/config';
 
 export default function ReviewWidget() {
-  const widgetId = config.ghl.reviewWidgetId;
-
   useEffect(() => {
-    if (widgetId && widgetId !== 'REPLACE_WITH_GHL_REVIEW_WIDGET_ID') {
-      const script = document.createElement('script');
-      script.src = "https://widgets.msgsndr.com/js/widgets.js";
-      script.async = true;
-      document.body.appendChild(script);
-    }
-  }, [widgetId]);
-
-  if (!widgetId || widgetId === 'REPLACE_WITH_GHL_REVIEW_WIDGET_ID') {
-    return null; // Fallback cards are already in app/page.js
-  }
+    if (document.querySelector('script[src="https://reputationhub.site/reputation/assets/review-widget.js"]')) return;
+    const script = document.createElement('script');
+    script.src = 'https://reputationhub.site/reputation/assets/review-widget.js';
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
 
   return (
-    <div className="w-full min-h-[400px]">
-      <div 
-        className="ghl-reviews-widget" 
-        data-widget-id={widgetId}
-      ></div>
+    <div className="w-full" style={{ minHeight: '400px' }}>
+      <iframe
+        className="lc_reviews_widget"
+        src="https://reputationhub.site/reputation/widgets/review_widget/5Tm0puTu21j1uly45lB0"
+        style={{ minWidth: '100%', width: '100%', minHeight: '400px', border: 'none', overflow: 'hidden' }}
+      />
     </div>
   );
 }
