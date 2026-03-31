@@ -4,7 +4,6 @@ import { Phone, Shield, SearchCheck, BadgeCheck, FileCheck, Home, Wrench, CloudL
 import SchemaMarkup from '../components/SchemaMarkup';
 import CTABanner from '../components/CTABanner';
 import FAQ from '../components/FAQ';
-import GHLForm from '../components/GHLForm';
 import ReviewWidget from '../components/ReviewWidget';
 import { localBusinessSchema, faqSchema } from '../lib/schema';
 import config from '../lib/config';
@@ -58,7 +57,8 @@ export default function HomePage() {
           fill
           className="object-cover"
           priority
-          quality={85}
+          quality={75}
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
