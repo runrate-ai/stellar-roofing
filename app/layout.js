@@ -31,8 +31,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={inter.className}>
       <head>
-        <link rel="preconnect" href="https://appcdn.leadconnectorhq.com" />
-        <link rel="preconnect" href="https://reputationhub.site" />
       </head>
       <body className="bg-white text-text-dark antialiased">
         <Script
