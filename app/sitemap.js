@@ -11,19 +11,30 @@ export default function sitemap() {
     priority: path === '' ? 1 : 0.8,
   }));
 
-  const servicePages = config.services.map(s => ({
-    url: `${base}/services/${s.slug}`,
+  const locationHubs = Object.values(config.locations).map(loc => ({
+    url: `${base}/${loc.slug}`,
     lastModified: now,
     changeFrequency: 'monthly',
-    priority: 0.9,
+    priority: 0.95,
   }));
 
-  const areaPages = config.serviceAreas.mvp.map(a => ({
-    url: `${base}/service-areas/${a.slug}`,
-    lastModified: now,
-    changeFrequency: 'monthly',
-    priority: 0.8,
-  }));
+  const servicePages = Object.values(config.locations).flatMap(loc =>
+    config.services.map(s => ({
+      url: `${base}/${loc.slug}/services/${s.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    }))
+  );
 
-  return [...staticPages, ...servicePages, ...areaPages];
+  const areaPages = Object.values(config.locations).flatMap(loc =>
+    loc.serviceAreas.map(a => ({
+      url: `${base}/${loc.slug}/service-areas/${a.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    }))
+  );
+
+  return [...staticPages, ...locationHubs, ...servicePages, ...areaPages];
 }
