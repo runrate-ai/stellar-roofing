@@ -13,20 +13,20 @@ const loc = config.locations.boise;
 
 export const metadata = {
   title: "Roofing Company Star ID | Ada County | Stellar Roofing",
-  description: "Trusted roofing contractor in Star, ID. Roof replacement, repair, hail damage & storm damage for Ada County homes. Free estimates, lifetime warranty. Call today.",
+  description: "Trusted roofing contractor in Star, ID. Roof replacement, repair, wind damage & storm damage for Ada County homes. Free estimates, lifetime warranty. Call today.",
   alternates: { canonical: 'https://thestellarroofing.com/boise/service-areas/star' },
 };
 
 const faqs = [
-  { question: "Do you serve Star, ID?", answer: "Yes. We serve Star and the surrounding Ada County area as part of our Treasure Valley service area. We handle roof replacements, repairs, hail damage assessments, and insurance claims throughout the Star area." },
-  { question: "Is Star at risk for hail damage?", answer: "Yes. Star is in Ada County and experiences the same hail storm exposure as the greater Treasure Valley. Spring hail events are common throughout the Boise metro area. We recommend a free inspection after any notable storm." },
+  { question: "Do you serve Star, ID?", answer: "Yes. We serve Star and the surrounding Ada County area as part of our Treasure Valley service area. We handle roof replacements, repairs, wind and storm damage assessments, and insurance claims throughout the Star area." },
+  { question: "Is Star at risk for wind damage?", answer: "Yes. Star is in Ada County along the Boise River corridor and experiences the same high-wind events as the greater Treasure Valley. Idaho's mountain-to-valley wind patterns drive powerful gusts through the area that can lift shingles and damage rooflines. We recommend a free inspection after any notable wind or storm event." },
   { question: "How much does a roof replacement cost in Star, ID?", answer: "Roof replacement in the Star area typically ranges from $12,000 to $28,000 depending on roof size, pitch, and materials. We provide free written estimates with no obligation before any work begins." },
 ];
 
 export default function StarPage() {
   const svcSchema = serviceSchema({
     name: "Roofing Services in Star, ID",
-    description: "Professional roofing services in Star, ID including roof replacement, repair, and hail damage restoration.",
+    description: "Professional roofing services in Star, ID including roof replacement, repair, and wind and storm damage restoration.",
     url: "https://thestellarroofing.com/boise/service-areas/star",
     areaServed: "Star, ID",
     phone: loc.phone,
@@ -63,7 +63,7 @@ export default function StarPage() {
             Star is one of Ada County's fastest-growing communities, located northwest of Boise along the Boise River corridor. The city has attracted a significant number of new residential developments over the past decade, with a mix of newer construction and established neighborhoods that are reaching an age where roofing maintenance and replacement become a priority.
           </p>
           <p className="text-text-muted leading-relaxed mb-6">
-            Star shares the same climate challenges as the rest of the Treasure Valley — hailstorms in spring and early summer that can damage shingles across entire subdivisions, intense UV exposure in summer that dries out and cracks asphalt, and winter snow loads and freeze-thaw cycles that test aging roofing systems. Our team understands these conditions and uses materials and methods built for Idaho's climate.
+            Star shares the same climate challenges as the rest of the Treasure Valley — high-wind events in spring and fall that can damage shingles across entire subdivisions, intense UV exposure in summer that dries out and cracks asphalt, and winter snow loads and freeze-thaw cycles that test aging roofing systems. Wind is the primary storm-related concern for Star homeowners, with Treasure Valley gap winds capable of lifting shingles and damaging roof edges and ridges. Our team understands these conditions and uses materials and methods built for Idaho's climate.
           </p>
           <p className="text-text-muted leading-relaxed mb-8">
             Stellar Roofing &amp; Restorations serves Star homeowners with the same professional, honest approach and lifetime workmanship warranty we deliver throughout the Treasure Valley. Free inspections, no-pressure estimates, and quality work you can count on.

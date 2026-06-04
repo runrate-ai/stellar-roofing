@@ -129,7 +129,7 @@ export default function NashvilleHubPage() {
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">How Much Does a New Roof Cost in Nashville, TN?</h2>
           <p className="text-text-muted text-lg mb-6">Roof replacement in Nashville typically ranges from <strong>$15,000 to $30,000</strong> for a standard residential home. Several factors affect your final cost:</p>
           <div className="bg-white rounded-2xl p-6 shadow-sm mb-6">
-            <div className="grid grid-cols-2 gap-4 text-sm">
+            <div className="grid grid-cols-1 text-sm">
               {[
                 { type: "Standard ranch home (1,500–2,000 sq ft)", range: "$15,000 – $20,000" },
                 { type: "Two-story home (2,000–2,800 sq ft)", range: "$18,000 – $25,000" },

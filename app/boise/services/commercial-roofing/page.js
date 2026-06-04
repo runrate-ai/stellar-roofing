@@ -12,14 +12,14 @@ const loc = config.locations.boise;
 
 export const metadata = {
   title: "Commercial Roofing Boise ID | TPO, Metal & Flat Roofs | Stellar Roofing",
-  description: "Commercial roofing contractor in Boise, ID. TPO, EPDM, metal, flat roof replacement & repair. Hail damage claims, after-hours scheduling, free estimates. Call today.",
+  description: "Commercial roofing contractor in Boise, ID. TPO, EPDM, metal, flat roof replacement & repair. Wind & storm damage claims, after-hours scheduling, free estimates. Call today.",
   alternates: { canonical: 'https://thestellarroofing.com/boise/services/commercial-roofing' },
 };
 
 const faqs = [
   { question: "What types of commercial roofing do you install in Boise?", answer: "We install TPO, EPDM rubber roofing, modified bitumen, metal roofing, and built-up roofing (BUR). The best system for your Boise building depends on your roof slope, budget, and building use. We'll recommend the right solution for Idaho's climate." },
   { question: "Can you work around our business hours?", answer: "Yes. We understand that your Boise business can't shut down for a roof. We work with you to schedule roofing work during off-hours, weekends, or in phases to minimize disruption to your operations." },
-  { question: "Do you handle commercial hail damage claims in Idaho?", answer: "Absolutely. Commercial hail damage claims in Idaho are common and often covered by business insurance policies. We document the damage thoroughly and work with your adjuster to ensure your claim is complete." },
+  { question: "Do you handle commercial wind and storm damage claims in Idaho?", answer: "Absolutely. Commercial wind and storm damage claims in Idaho are common and often covered by business insurance policies. Wind uplift is a particular concern for flat and low-slope commercial roofs. We document the damage thoroughly and work with your adjuster to ensure your claim is complete." },
   { question: "What commercial roofing systems work best in Idaho?", answer: "TPO is a popular choice for Boise's commercial buildings — it reflects UV radiation, which is important given Idaho's intense summer sun, and performs well in snow. Metal roofing is excellent for its longevity and ability to shed snow. We'll help you choose the right system for your building and budget." },
 ];
 
@@ -66,7 +66,7 @@ export default function CommercialRoofingBoisePage() {
             {[
               { title: "TPO (Thermoplastic Polyolefin)", desc: "An excellent choice for Boise's commercial roofs. TPO reflects UV radiation (critical in Idaho's high-UV environment), offers energy efficiency, and provides welded seams that handle temperature swings well." },
               { title: "EPDM Rubber Roofing", desc: "Durable and cost-effective for low-slope commercial roofs. EPDM performs well in Idaho's temperature extremes and is resistant to UV and ozone degradation." },
-              { title: "Metal Roofing", desc: "An outstanding choice for Idaho. Metal roofs shed snow effectively, withstand hail better than other systems, last 40+ years, and are highly energy-efficient in both summer and winter." },
+              { title: "Metal Roofing", desc: "An outstanding choice for Idaho. Metal roofs shed snow effectively, withstand high winds better than other systems, last 40+ years, and are highly energy-efficient in both summer and winter." },
               { title: "Modified Bitumen", desc: "A multi-layer waterproofing system for flat and low-slope roofs. Reliable and proven for commercial applications throughout the Mountain West." },
               { title: "Built-Up Roofing (BUR)", desc: "Traditional multi-layer roofing system offering redundant waterproofing — a good choice for high-traffic commercial roofs where durability is the priority." },
               { title: "Roof Coatings & Restoration", desc: "A cost-effective option for structurally sound commercial roofs that need UV protection and waterproofing. Can extend roof life by 10–15 years." },
@@ -91,8 +91,8 @@ export default function CommercialRoofingBoisePage() {
           <ul className="space-y-3 mb-8">
             {[
               "We work around your business hours — evenings, weekends, or phased scheduling available",
-              "Experience with commercial hail damage claims — common in the Treasure Valley",
-              "Materials chosen for Idaho's specific climate challenges (UV, hail, snow loads)",
+              "Experience with commercial wind and storm damage claims — common in the Treasure Valley",
+              "Materials chosen for Idaho's specific climate challenges (UV, wind, snow loads)",
               "Licensed, insured, and experienced with commercial roofing in the Boise area",
               "Transparent pricing with no hidden fees or change orders without your approval",
               "Warranty-backed workmanship on all commercial installations",

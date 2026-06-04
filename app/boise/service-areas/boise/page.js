@@ -12,8 +12,8 @@ import config from '../../../../lib/config';
 const loc = config.locations.boise;
 
 export const metadata = {
-  title: "Roofing Contractor Boise ID | Ada County | Hail Damage Specialists | Stellar Roofing",
-  description: "Local roofing contractor in Boise, ID. Hail damage specialists, roof replacement, repair, free inspections. Serving all Ada County neighborhoods. Call today.",
+  title: "Roofing Contractor Boise ID | Ada County | Wind & Storm Damage Specialists | Stellar Roofing",
+  description: "Local roofing contractor in Boise, ID. Wind & storm damage specialists, roof replacement, repair, free inspections. Serving all Ada County neighborhoods. Call today.",
   alternates: { canonical: 'https://thestellarroofing.com/boise/service-areas/boise' },
 };
 
@@ -52,7 +52,7 @@ export default function BoiseAreaPage() {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Boise's Trusted Roofing Team</h2>
           <p className="text-text-muted leading-relaxed mb-6">Stellar Roofing &amp; Restorations serves Boise and the broader Treasure Valley with the same commitment to quality and honest service we've built our reputation on. Boise has grown dramatically — consistently ranking as one of America's fastest-growing cities — and with that growth comes thousands of homes of all ages requiring professional roofing services.</p>
-          <p className="text-text-muted leading-relaxed mb-6">Idaho's climate presents unique roofing challenges. Boise summers are hot and sunny, with UV levels that accelerate asphalt shingle degradation faster than in many other regions. Spring brings hailstorms that can hit the Treasure Valley hard — leaving significant but sometimes invisible damage across entire neighborhoods. Winters bring snow loads, freeze-thaw cycles, and the risk of ice dam formation on poorly ventilated roofs.</p>
+          <p className="text-text-muted leading-relaxed mb-6">Idaho's climate presents unique roofing challenges. Boise summers are hot and sunny, with UV levels that accelerate asphalt shingle degradation faster than in many other regions. The Treasure Valley is well known for its high-wind events — powerful gap winds that can lift shingles, crack ridgecaps, and expose roof decking across entire neighborhoods. Winters bring snow loads, freeze-thaw cycles, and the risk of ice dam formation on poorly ventilated roofs.</p>
           <p className="text-text-muted leading-relaxed mb-8">Whether you're in a new construction home in the Harris Ranch area, a classic Craftsman in the North End, a ranch home on the Bench, or anything in between — our team has the experience and materials to protect your Boise home.</p>
 
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Roofing Services in Boise, ID</h2>

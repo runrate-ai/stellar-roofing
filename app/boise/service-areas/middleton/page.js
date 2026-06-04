@@ -13,20 +13,20 @@ const loc = config.locations.boise;
 
 export const metadata = {
   title: "Roofing Company Middleton ID | Canyon County | Stellar Roofing",
-  description: "Trusted roofing contractor in Middleton, ID. Roof replacement, repair, hail & storm damage for Canyon County homes. Free estimates, lifetime warranty. Call today.",
+  description: "Trusted roofing contractor in Middleton, ID. Roof replacement, repair, wind & storm damage for Canyon County homes. Free estimates, lifetime warranty. Call today.",
   alternates: { canonical: 'https://thestellarroofing.com/boise/service-areas/middleton' },
 };
 
 const faqs = [
-  { question: "Do you serve Middleton, ID?", answer: "Yes. We serve Middleton and the surrounding Canyon County area as part of our Treasure Valley service area. We handle roof replacements, repairs, hail damage assessments, and insurance claims throughout Middleton." },
-  { question: "Is Middleton at risk for hail damage?", answer: "Yes. Middleton is in Canyon County and shares the same hail storm exposure as Nampa, Caldwell, and the broader Treasure Valley. Spring hail events are common. We recommend a free inspection after any notable storm." },
+  { question: "Do you serve Middleton, ID?", answer: "Yes. We serve Middleton and the surrounding Canyon County area as part of our Treasure Valley service area. We handle roof replacements, repairs, wind and storm damage assessments, and insurance claims throughout Middleton." },
+  { question: "Is Middleton at risk for wind damage?", answer: "Yes. Middleton is in Canyon County along the Boise River and shares the same high-wind exposure as Nampa, Caldwell, and the broader Treasure Valley. Wind uplift is the primary roofing concern in the area. We recommend a free inspection after any notable wind or storm event." },
   { question: "How much does a roof replacement cost in Middleton?", answer: "Roof replacement in Middleton typically ranges from $12,000 to $26,000 depending on roof size, pitch, and materials. We provide free written estimates with no obligation." },
 ];
 
 export default function MiddletonPage() {
   const svcSchema = serviceSchema({
     name: "Roofing Services in Middleton, ID",
-    description: "Professional roofing services in Middleton, ID and Canyon County including roof replacement, repair, and hail damage restoration.",
+    description: "Professional roofing services in Middleton, ID and Canyon County including roof replacement, repair, and wind and storm damage restoration.",
     url: "https://thestellarroofing.com/boise/service-areas/middleton",
     areaServed: "Middleton, ID",
     phone: loc.phone,

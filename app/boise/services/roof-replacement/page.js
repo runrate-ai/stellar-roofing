@@ -11,8 +11,8 @@ import config from '../../../../lib/config';
 const loc = config.locations.boise;
 
 export const metadata = {
-  title: "Roof Replacement Boise ID | Hail Damage & Insurance Claims | Stellar Roofing",
-  description: "Expert roof replacement in Boise, ID. Hail damage specialists, insurance claims help, lifetime warranty, free estimates. Serving the Treasure Valley. Call today.",
+  title: "Roof Replacement Boise ID | Wind & Storm Damage & Insurance Claims | Stellar Roofing",
+  description: "Expert roof replacement in Boise, ID. Wind & storm damage specialists, insurance claims help, lifetime warranty, free estimates. Serving the Treasure Valley. Call today.",
   alternates: { canonical: 'https://thestellarroofing.com/boise/services/roof-replacement' },
 };
 
@@ -20,7 +20,7 @@ const faqs = [
   { question: "How long does a roof replacement take in Boise?", answer: "Most residential roof replacements take 1–2 days. Larger or more complex roofs may take 2–3 days. We work efficiently and clean up completely before we leave." },
   { question: "What roofing materials work best in Boise's climate?", answer: "Architectural (dimensional) shingles are our most popular choice for Boise-area homes — they handle Idaho's temperature extremes well, resist UV degradation from intense summer sun, and perform well in snow. Metal roofing is an excellent premium option for its longevity and snow-shedding ability." },
   { question: "Do I need to worry about snow loads on my Boise roof?", answer: "Yes. The Treasure Valley can receive significant snowfall, and it's important that your roof is properly installed and ventilated to handle snow loads and prevent ice dams. All of our installations account for Idaho's winter conditions." },
-  { question: "Will my insurance pay for a roof replacement in Boise?", answer: "If your roof was damaged by a covered event — hail, wind, or storm — your homeowners insurance should cover most or all of the cost. Idaho sees significant hail activity each year. We help you navigate the claims process from start to finish." },
+  { question: "Will my insurance pay for a roof replacement in Boise?", answer: "If your roof was damaged by a covered event — wind, storm, or other weather event — your homeowners insurance should cover most or all of the cost. Wind damage is a leading cause of insurance claims in the Treasure Valley. We help you navigate the claims process from start to finish." },
   { question: "How much does a roof replacement cost in Boise?", answer: "Most residential roof replacements in Boise range from $12,000 to $28,000. The cost depends on roof size, pitch, materials selected, and complexity. We provide free, detailed estimates so there are no surprises." },
 ];
 
@@ -60,7 +60,7 @@ export default function RoofReplacementBoisePage() {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">When Does Your Boise Roof Need to Be Replaced?</h2>
           <p className="text-text-muted leading-relaxed mb-6">
-            Most roofs in Boise and the Treasure Valley last between 20 and 30 years, but Idaho's climate can accelerate that timeline. Intense UV exposure from summer sun dries out and cracks shingles faster than in many other regions. Annual hailstorms cause hidden damage that shortens shingle lifespan. And freeze-thaw cycles over winter can stress aging roofing systems. Stellar Roofing &amp; Restorations provides professional roof replacement services throughout Boise and the Treasure Valley, using materials and installation methods proven to perform in Idaho's demanding climate.
+            Most roofs in Boise and the Treasure Valley last between 20 and 30 years, but Idaho's climate can accelerate that timeline. Intense UV exposure from summer sun dries out and cracks shingles faster than in many other regions. High-wind events — driven by the Treasure Valley gap effect — cause wind uplift damage that shortens shingle lifespan and compromises the roof's weather barrier. And freeze-thaw cycles over winter can stress aging roofing systems. Stellar Roofing &amp; Restorations provides professional roof replacement services throughout Boise and the Treasure Valley, using materials and installation methods proven to perform in Idaho's demanding climate.
           </p>
           <p className="text-text-muted leading-relaxed mb-8">
             Signs you may need a roof replacement include widespread shingle curling or cracking, excessive granule loss in your gutters, visible sagging, persistent leaks, or a roof that's 20+ years old. During your free inspection, we'll give you an honest assessment and tell you whether a repair or full replacement is the right call.
@@ -80,8 +80,8 @@ export default function RoofReplacementBoisePage() {
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Roofing Materials for Idaho's Climate</h2>
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             {[
-              { title: "Architectural Shingles", desc: "Our most popular choice for Boise homes. Handles UV exposure, temperature swings, and hail well. Excellent curb appeal and value. Available in dozens of colors." },
-              { title: "Impact-Resistant Shingles", desc: "Class 4 impact-rated shingles offer maximum protection against Idaho's hailstorms. Many insurance companies offer premium discounts for impact-resistant shingles." },
+              { title: "Architectural Shingles", desc: "Our most popular choice for Boise homes. Handles UV exposure, temperature swings, and wind events well. Excellent curb appeal and value. Available in dozens of colors." },
+              { title: "Wind-Rated Shingles", desc: "High wind-resistance shingles are an excellent choice for the Treasure Valley's exposed climate. Wind-rated shingles feature enhanced fastening and are designed to resist uplift in high-wind conditions. Many insurance companies offer premium discounts for wind-resistant shingles." },
               { title: "Metal Roofing", desc: "An excellent choice for Boise homes. Long-lasting (40–70 years), sheds snow effectively, handles UV exposure well, and is extremely durable in all weather conditions." },
             ].map(({ title, desc }) => (
               <div key={title} className="bg-bg-alt rounded-xl p-6">
@@ -91,10 +91,10 @@ export default function RoofReplacementBoisePage() {
             ))}
           </div>
 
-          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Insurance Claims for Idaho Hail Damage</h2>
-          <p className="text-text-muted leading-relaxed mb-4">The Treasure Valley sees significant hail activity, particularly in spring and early summer. If your roof has hail damage, your homeowners insurance may cover most or all of the replacement cost. We can:</p>
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Insurance Claims for Idaho Wind & Storm Damage</h2>
+          <p className="text-text-muted leading-relaxed mb-4">Wind and storm damage is a leading cause of insurance claims in the Treasure Valley. If your roof has sustained wind or storm damage, your homeowners insurance may cover most or all of the replacement cost. We can:</p>
           <ul className="space-y-2 mb-8">
-            {["Document all hail damage thoroughly with photos and written reports", "Meet with your insurance adjuster on-site", "Provide a detailed estimate that matches insurance scope of work", "Help you supplement a low initial settlement if damage was missed"].map(item => (
+            {["Document all wind and storm damage thoroughly with photos and written reports", "Meet with your insurance adjuster on-site", "Provide a detailed estimate that matches insurance scope of work", "Help you supplement a low initial settlement if damage was missed"].map(item => (
               <li key={item} className="flex items-start gap-3 text-text-muted">
                 <CheckCircle2 size={18} className="text-primary flex-shrink-0 mt-0.5" />
                 <span>{item}</span>

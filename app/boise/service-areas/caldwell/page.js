@@ -13,18 +13,18 @@ const loc = config.locations.boise;
 
 export const metadata = {
   title: "Roofing Company Caldwell ID | Canyon County | Stellar Roofing",
-  description: "Trusted roofing contractor in Caldwell, ID. Roof replacement, repair, hail & storm damage for Canyon County homes. Free estimates, lifetime warranty. Call today.",
+  description: "Trusted roofing contractor in Caldwell, ID. Roof replacement, repair, wind & storm damage for Canyon County homes. Free estimates, lifetime warranty. Call today.",
   alternates: { canonical: 'https://thestellarroofing.com/boise/service-areas/caldwell' },
 };
 
 const faqs = [
-  { question: "Do you serve Caldwell and Canyon County?", answer: "Yes. We serve Caldwell and Canyon County as part of our Treasure Valley service area. We handle roof replacements, repairs, hail damage assessments, and insurance claims throughout the area." },
-  { question: "What roofing problems are most common in Caldwell?", answer: "Hail damage from spring storms, UV degradation from intense summer sun, and aging asphalt shingles on homes from the 1980s–2000s are the most common roofing issues we see in the Caldwell area." },
-  { question: "How do I know if my Caldwell roof has hail damage?", answer: "Hail damage is often not visible from the ground. A professional inspection is the only reliable way to know — and it's completely free with no obligation. We use photos to show you exactly what we find." },
+  { question: "Do you serve Caldwell and Canyon County?", answer: "Yes. We serve Caldwell and Canyon County as part of our Treasure Valley service area. We handle roof replacements, repairs, wind and storm damage assessments, and insurance claims throughout the area." },
+  { question: "What roofing problems are most common in Caldwell?", answer: "Wind damage from Treasure Valley gap winds, UV degradation from intense summer sun, and aging asphalt shingles on homes from the 1980s–2000s are the most common roofing issues we see in the Caldwell area. Canyon County is particularly exposed to high-wind events that can lift and crack shingles across entire neighborhoods." },
+  { question: "How do I know if my Caldwell roof has wind or storm damage?", answer: "Wind damage signs include missing or lifted shingles, cracked shingles along the edges, damaged flashing, and blown-off ridge caps. Some damage isn't visible from the ground — a professional inspection is the only reliable way to know, and it's completely free with no obligation. We use photos to show you exactly what we find." },
 ];
 
 export default function CaldwellPage() {
-  const svcSchema = serviceSchema({ name: "Roofing Services in Caldwell, ID", description: "Professional roofing services in Caldwell, ID and Canyon County including roof replacement, repair, and hail damage restoration.", url: "https://thestellarroofing.com/boise/service-areas/caldwell", areaServed: "Caldwell, ID", phone: loc.phone });
+  const svcSchema = serviceSchema({ name: "Roofing Services in Caldwell, ID", description: "Professional roofing services in Caldwell, ID and Canyon County including roof replacement, repair, and wind and storm damage restoration.", url: "https://thestellarroofing.com/boise/service-areas/caldwell", areaServed: "Caldwell, ID", phone: loc.phone });
 
   return (
     <>
@@ -50,7 +50,7 @@ export default function CaldwellPage() {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Roofing in Caldwell, ID</h2>
           <p className="text-text-muted leading-relaxed mb-6">Caldwell is Canyon County's county seat and one of the oldest cities in the Treasure Valley. The city has a mix of older established neighborhoods and newer residential developments that are expanding as the greater Boise metro continues to grow. This range of home ages means Caldwell sees roofing needs that span from storm repairs on newer homes to full replacements on homes that are 25–35 years old.</p>
-          <p className="text-text-muted leading-relaxed mb-6">Caldwell shares the Treasure Valley's climate challenges — spring hailstorms that can impact entire neighborhoods, summer UV exposure that accelerates shingle aging, and winter conditions that test older roofing systems. Canyon County is particularly known for its wind events, which can cause shingle blow-offs even on roofs that are otherwise in reasonable condition.</p>
+          <p className="text-text-muted leading-relaxed mb-6">Caldwell shares the Treasure Valley's climate challenges — high-wind events that can impact entire neighborhoods, summer UV exposure that accelerates shingle aging, and winter conditions that test older roofing systems. Canyon County is particularly known for its wind events — powerful gusts driven by the Treasure Valley gap effect that can cause shingle blow-offs and uplift damage even on roofs that are otherwise in reasonable condition.</p>
           <p className="text-text-muted leading-relaxed mb-8">Stellar Roofing &amp; Restorations serves Caldwell homeowners with the same professional, honest approach and lifetime workmanship warranty that defines our work throughout the Treasure Valley.</p>
 
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Roofing Services in Caldwell, ID</h2>

@@ -11,22 +11,22 @@ import config from '../../../../lib/config';
 const loc = config.locations.boise;
 
 export const metadata = {
-  title: "Emergency Roof Repair Boise ID | Active Leaks & Hail Damage | Stellar Roofing",
-  description: "Emergency roof repair in Boise, ID. Active leaks, hail damage, wind damage — we respond fast. Temporary tarping + permanent repairs in the Treasure Valley. Call now.",
+  title: "Emergency Roof Repair Boise ID | Active Leaks & Storm Damage | Stellar Roofing",
+  description: "Emergency roof repair in Boise, ID. Active leaks, wind damage, storm damage — we respond fast. Temporary tarping + permanent repairs in the Treasure Valley. Call now.",
   alternates: { canonical: 'https://thestellarroofing.com/boise/services/emergency-roof-repair' },
 };
 
 const faqs = [
   { question: "What qualifies as a roof emergency in Boise?", answer: "Any situation where water is actively entering your home, a section of your roof has collapsed or is severely damaged, large portions of shingles have blown off, or structural integrity has been compromised qualifies as a roofing emergency. When in doubt, call us and we'll help you assess the situation." },
   { question: "How fast can you respond to an emergency in Boise?", answer: "We prioritize emergency calls and aim to respond the next morning in most cases. For urgent situations — active interior flooding or severe structural damage — call us directly and we'll do our best to get someone out as quickly as possible." },
-  { question: "What should I do if my roof is damaged by hail in Boise?", answer: "First, document what you can see from the ground with photos and video. Don't go on the roof yourself. Then call us for a rapid assessment. If there is active water intrusion, we can apply temporary protective measures while we arrange permanent repairs." },
-  { question: "Will insurance cover emergency roof repair in Idaho?", answer: "If the damage was caused by a covered event like a hailstorm or high winds — both common in the Treasure Valley — your homeowners insurance should cover emergency repairs. Document everything with photos before any temporary repairs are made, and report the claim to your insurance company as soon as possible." },
+  { question: "What should I do if my roof is damaged by a windstorm in Boise?", answer: "First, document what you can see from the ground with photos and video. Don't go on the roof yourself. Then call us for a rapid assessment. If there is active water intrusion, we can apply temporary protective measures while we arrange permanent repairs." },
+  { question: "Will insurance cover emergency roof repair in Idaho?", answer: "If the damage was caused by a covered event like high winds or a storm — both common in the Treasure Valley — your homeowners insurance should cover emergency repairs. Document everything with photos before any temporary repairs are made, and report the claim to your insurance company as soon as possible." },
 ];
 
 export default function EmergencyRoofRepairBoisePage() {
   const svcSchema = serviceSchema({
     name: "Emergency Roof Repair in Boise, ID",
-    description: "Fast emergency roof repair in Boise, ID. We respond quickly to active leaks, hail damage, wind damage, and urgent roofing issues throughout the Treasure Valley.",
+    description: "Fast emergency roof repair in Boise, ID. We respond quickly to active leaks, wind damage, storm damage, and urgent roofing issues throughout the Treasure Valley.",
     url: "https://thestellarroofing.com/boise/services/emergency-roof-repair",
     areaServed: "Boise, ID",
     phone: loc.phone,
@@ -72,7 +72,7 @@ export default function EmergencyRoofRepairBoisePage() {
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <p className="text-lg text-text-muted leading-relaxed mb-8">
-            When a Boise hailstorm, high wind event, or unexpected structural failure leaves your roof compromised, you need a roofing team that responds fast and handles the situation professionally. Stellar Roofing &amp; Restorations provides emergency roof repair services throughout Boise and the Treasure Valley — getting to you quickly, assessing the damage honestly, protecting your home from further harm, and completing proper repairs as fast as possible.
+            When a Boise windstorm, high wind event, or unexpected structural failure leaves your roof compromised, you need a roofing team that responds fast and handles the situation professionally. Stellar Roofing &amp; Restorations provides emergency roof repair services throughout Boise and the Treasure Valley — getting to you quickly, assessing the damage honestly, protecting your home from further harm, and completing proper repairs as fast as possible.
           </p>
 
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">What Qualifies as a Roofing Emergency?</h2>
@@ -80,7 +80,7 @@ export default function EmergencyRoofRepairBoisePage() {
             {[
               "Active water leaking into your home or business",
               "Large sections of shingles blown off by Treasure Valley winds",
-              "Hail damage that has created immediate leak points",
+              "Storm damage that has created immediate leak points",
               "Tree limb or fallen debris that has penetrated the roof",
               "Roof decking exposed to the elements",
               "Visible sagging or partial structural failure",

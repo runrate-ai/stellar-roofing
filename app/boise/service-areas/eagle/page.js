@@ -12,19 +12,19 @@ import config from '../../../../lib/config';
 const loc = config.locations.boise;
 
 export const metadata = {
-  title: "Roofing Company Eagle ID | Premium Roofing & Hail Damage | Stellar Roofing",
-  description: "Premium roofing contractor in Eagle, ID. Hail damage, roof replacement & repair for Ada County's finest homes. Lifetime warranty, free estimates. Call today.",
+  title: "Roofing Company Eagle ID | Premium Roofing & Storm Damage | Stellar Roofing",
+  description: "Premium roofing contractor in Eagle, ID. Wind & storm damage, roof replacement & repair for Ada County's finest homes. Lifetime warranty, free estimates. Call today.",
   alternates: { canonical: 'https://thestellarroofing.com/boise/service-areas/eagle' },
 };
 
 const faqs = [
   { question: "Do you serve Eagle and the surrounding area?", answer: "Yes. Eagle is one of our core Treasure Valley service areas. We serve homeowners throughout Eagle, from established neighborhoods near downtown to newer communities along Eagle Road and Floating Feather." },
   { question: "Do you work with premium homes in Eagle?", answer: "Absolutely. Eagle features many high-value homes with complex roof lines, premium finishes, and high architectural standards. We bring the materials, experience, and attention to detail that Eagle homeowners expect." },
-  { question: "How does storm damage affect Eagle roofs?", answer: "Eagle is within the Treasure Valley's hail corridor. Hail events regularly affect Ada County, and even a moderate hail storm can cause hidden shingle damage that shortens roof life and creates future leak points. A free post-storm inspection is always a smart move." },
+  { question: "How does storm damage affect Eagle roofs?", answer: "Eagle is in the Treasure Valley's high-wind corridor. Wind events regularly affect Ada County — powerful gusts can lift shingles, crack ridge caps, and damage flashing, especially on the more complex rooflines common in Eagle's premium homes. Storm damage can be subtle but still shortens roof life and creates future leak points. A free post-storm inspection is always a smart move." },
 ];
 
 export default function EaglePage() {
-  const svcSchema = serviceSchema({ name: "Roofing Services in Eagle, ID", description: "Professional roofing services in Eagle, ID including roof replacement, repair, and hail damage restoration.", url: "https://thestellarroofing.com/boise/service-areas/eagle", areaServed: "Eagle, ID", phone: loc.phone });
+  const svcSchema = serviceSchema({ name: "Roofing Services in Eagle, ID", description: "Professional roofing services in Eagle, ID including roof replacement, repair, and wind and storm damage restoration.", url: "https://thestellarroofing.com/boise/service-areas/eagle", areaServed: "Eagle, ID", phone: loc.phone });
 
   return (
     <>
@@ -51,7 +51,7 @@ export default function EaglePage() {
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Eagle, ID — Quality Roofing That Matches Your Home</h2>
           <p className="text-text-muted leading-relaxed mb-6">Eagle is one of the most desirable communities in the Treasure Valley — known for its excellent schools, family-friendly neighborhoods, and high quality of life. The city has grown significantly over the past decade, with new master-planned communities alongside established neighborhoods like Floating Feather, Linder Road corridor, and Eagle Road. Homeowners here expect quality, and Stellar Roofing &amp; Restorations delivers it.</p>
           <p className="text-text-muted leading-relaxed mb-6">Many Eagle homes feature premium architectural details, complex roof lines, and high-end finishes that require experienced installers and quality materials. We offer architectural shingles, impact-resistant shingles, and metal roofing options well-suited to Eagle's larger and more sophisticated homes — all backed by a lifetime workmanship warranty.</p>
-          <p className="text-text-muted leading-relaxed mb-8">Eagle is also directly within the Treasure Valley's storm corridor. Regular hail events during spring and early summer can cause significant damage to roofs across the area. We offer free post-storm inspections and complete insurance claims assistance for Eagle homeowners who've experienced hail or wind damage.</p>
+          <p className="text-text-muted leading-relaxed mb-8">Eagle is also directly within the Treasure Valley's storm corridor. High-wind events are the primary roofing threat in the area — the same Treasure Valley gap winds that funnel through Ada County can lift shingles and damage complex rooflines, especially on larger homes with multiple pitches and ridges. We offer free post-storm inspections and complete insurance claims assistance for Eagle homeowners who've experienced wind or storm damage.</p>
 
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Roofing Services in Eagle, ID</h2>
           <ul className="space-y-3 mb-8">

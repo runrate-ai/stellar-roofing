@@ -12,19 +12,19 @@ import config from '../../../../lib/config';
 const loc = config.locations.boise;
 
 export const metadata = {
-  title: "Roofing Company Meridian ID | Hail Damage Experts | Stellar Roofing",
-  description: "Trusted roofing contractor in Meridian, ID. Hail damage assessment, roof replacement, repair, insurance claims. Serving Paramount, Verado & all of Meridian. Call today.",
+  title: "Roofing Company Meridian ID | Wind & Storm Damage Experts | Stellar Roofing",
+  description: "Trusted roofing contractor in Meridian, ID. Wind & storm damage assessment, roof replacement, repair, insurance claims. Serving Paramount, Verado & all of Meridian. Call today.",
   alternates: { canonical: 'https://thestellarroofing.com/boise/service-areas/meridian' },
 };
 
 const faqs = [
-  { question: "Do you serve Meridian and Ada County?", answer: "Yes. Meridian is one of our primary service areas in the Treasure Valley. We handle roof replacements, repairs, hail damage inspections, and insurance claims throughout Ada County." },
-  { question: "Is Meridian at risk for hail damage?", answer: "Yes. Meridian and Ada County are directly in the Treasure Valley's hail storm path. The area sees multiple significant hail events each year, particularly in spring. We recommend inspections after any notable storm." },
-  { question: "My Meridian home is newer — do I still need a roof inspection?", answer: "Yes. Even newer homes can have installation defects, storm damage, or manufacturing issues that only become apparent on inspection. Hail damage in particular can affect shingles of any age and is often not visible without getting on the roof." },
+  { question: "Do you serve Meridian and Ada County?", answer: "Yes. Meridian is one of our primary service areas in the Treasure Valley. We handle roof replacements, repairs, wind and storm damage inspections, and insurance claims throughout Ada County." },
+  { question: "Is Meridian at risk for wind damage?", answer: "Yes. Meridian and Ada County see regular high-wind events driven by the Treasure Valley gap effect. Wind uplift is the primary roofing concern in the area — it can strip shingles, crack ridge caps, and damage flashing even on newer roofs. We recommend inspections after any significant wind or storm event." },
+  { question: "My Meridian home is newer — do I still need a roof inspection?", answer: "Yes. Even newer homes can have installation defects, storm damage, or manufacturing issues that only become apparent on inspection. Wind damage in particular can affect shingles of any age — lifted or cracked shingles aren't always obvious without getting on the roof." },
 ];
 
 export default function MeridianPage() {
-  const svcSchema = serviceSchema({ name: "Roofing Services in Meridian, ID", description: "Professional roofing services in Meridian, ID including roof replacement, repair, hail damage, and storm damage restoration.", url: "https://thestellarroofing.com/boise/service-areas/meridian", areaServed: "Meridian, ID", phone: loc.phone });
+  const svcSchema = serviceSchema({ name: "Roofing Services in Meridian, ID", description: "Professional roofing services in Meridian, ID including roof replacement, repair, wind damage, and storm damage restoration.", url: "https://thestellarroofing.com/boise/service-areas/meridian", areaServed: "Meridian, ID", phone: loc.phone });
 
   return (
     <>
@@ -50,7 +50,7 @@ export default function MeridianPage() {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Roofing in Meridian, ID</h2>
           <p className="text-text-muted leading-relaxed mb-6">Meridian is Idaho's largest city and one of the fastest-growing cities in the entire United States. Its explosive growth over the past two decades — from established neighborhoods near downtown Meridian to massive new master-planned communities like Paramount, Verado, Settlers, and Victory Commons — means the city has a wide range of roofing needs, from brand-new installations to replacements on homes that are now hitting the 20–25 year mark.</p>
-          <p className="text-text-muted leading-relaxed mb-6">Like the rest of the Treasure Valley, Meridian sees regular hailstorms that can cause significant but often hidden damage to shingles across entire subdivisions. A free inspection after any notable storm is the best way to know whether your roof has sustained damage that warrants an insurance claim.</p>
+          <p className="text-text-muted leading-relaxed mb-6">Like the rest of the Treasure Valley, Meridian sees regular high-wind events driven by Idaho's mountain-to-valley air patterns. These winds can cause significant but often subtle damage to shingles across entire subdivisions — lifted edges, cracked shingles, and damaged ridge caps that may not be obvious until water starts coming in. A free inspection after any notable storm or wind event is the best way to know whether your roof has sustained damage that warrants an insurance claim.</p>
           <p className="text-text-muted leading-relaxed mb-8">Stellar Roofing &amp; Restorations brings professional roofing services to Meridian homeowners — using quality materials suited for Idaho's climate, backed by a lifetime workmanship warranty, and delivered with the honest, no-pressure approach that defines our company.</p>
 
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Roofing Services in Meridian, ID</h2>

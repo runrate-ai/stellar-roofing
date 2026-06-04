@@ -13,20 +13,20 @@ const loc = config.locations.boise;
 
 export const metadata = {
   title: "Roofing Company Garden City ID | Ada County | Stellar Roofing",
-  description: "Trusted roofing contractor in Garden City, ID. Roof replacement, repair, hail & storm damage for Ada County homes. Free estimates, lifetime warranty. Call today.",
+  description: "Trusted roofing contractor in Garden City, ID. Roof replacement, repair, wind & storm damage for Ada County homes. Free estimates, lifetime warranty. Call today.",
   alternates: { canonical: 'https://thestellarroofing.com/boise/service-areas/garden-city' },
 };
 
 const faqs = [
-  { question: "Do you serve Garden City, ID?", answer: "Yes. Garden City is adjacent to Boise and is part of our core service area. We handle roof replacements, repairs, hail damage assessments, and insurance claims throughout Garden City." },
-  { question: "Is Garden City at risk for hail damage?", answer: "Yes. Garden City sits within Ada County and shares the same storm exposure as Boise. Spring and early summer hail events can affect the entire area. A free inspection after any storm is the best way to assess your roof's condition." },
+  { question: "Do you serve Garden City, ID?", answer: "Yes. Garden City is adjacent to Boise and is part of our core service area. We handle roof replacements, repairs, wind and storm damage assessments, and insurance claims throughout Garden City." },
+  { question: "Is Garden City at risk for wind damage?", answer: "Yes. Garden City sits within Ada County and shares the same storm exposure as Boise. High-wind events driven by Idaho's mountain-to-valley air patterns are the primary roofing concern — they can lift shingles, damage flashing, and stress older roofing systems. A free inspection after any significant storm or wind event is the best way to assess your roof's condition." },
   { question: "How much does a roof replacement cost in Garden City?", answer: "Roof replacement in Garden City typically ranges from $12,000 to $28,000 depending on roof size, pitch, and materials. We provide free written estimates with no obligation." },
 ];
 
 export default function GardenCityPage() {
   const svcSchema = serviceSchema({
     name: "Roofing Services in Garden City, ID",
-    description: "Professional roofing services in Garden City, ID including roof replacement, repair, and hail damage restoration.",
+    description: "Professional roofing services in Garden City, ID including roof replacement, repair, and wind and storm damage restoration.",
     url: "https://thestellarroofing.com/boise/service-areas/garden-city",
     areaServed: "Garden City, ID",
     phone: loc.phone,

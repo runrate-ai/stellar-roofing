@@ -11,22 +11,22 @@ import config from '../../../../lib/config';
 const loc = config.locations.boise;
 
 export const metadata = {
-  title: "Roof Repair Boise ID | Hail Damage, Leaks & Wind Damage | Stellar Roofing",
-  description: "Fast roof repair in Boise, ID. Hail damage, active leaks, missing shingles, wind damage, flashing issues. Free estimates, no pressure. Call today — same-week service.",
+  title: "Roof Repair Boise ID | Wind Damage, Leaks & Storm Damage | Stellar Roofing",
+  description: "Fast roof repair in Boise, ID. Wind damage, active leaks, missing shingles, storm damage, flashing issues. Free estimates, no pressure. Call today — same-week service.",
   alternates: { canonical: 'https://thestellarroofing.com/boise/services/roof-repair' },
 };
 
 const faqs = [
-  { question: "How much does roof repair cost in Boise?", answer: "Most roof repairs in Boise range from $400 to $2,500 depending on the type and extent of the damage. Minor repairs like fixing a few missing shingles or sealing a small leak are on the lower end. Flashing repairs, larger section repairs, or hail damage repairs will cost more. We provide free estimates so you know the cost upfront." },
-  { question: "Should I repair or replace my Boise roof?", answer: "If your roof is less than 15–20 years old and the damage is isolated, repair is usually the right call. If your roof is older, the damage is widespread (particularly hail damage across a large portion of the roof), or you've had repeated leaks, replacement may be more cost-effective. We'll give you an honest recommendation after the inspection." },
-  { question: "Can hail damage be repaired rather than replaced?", answer: "It depends on the extent of the damage. Minor hail damage affecting a small area can often be repaired. However, widespread hail damage that has compromised shingle integrity across most of the roof typically warrants replacement — and in many cases, insurance will cover it." },
-  { question: "What are common roof problems in Boise?", answer: "Common issues in the Treasure Valley include hail damage (very common in Idaho), UV degradation from intense summer sun, wind damage from Treasure Valley gap winds, ice dam formation in winter, and flashing failures around chimneys and vents." },
+  { question: "How much does roof repair cost in Boise?", answer: "Most roof repairs in Boise range from $400 to $2,500 depending on the type and extent of the damage. Minor repairs like fixing a few missing shingles or sealing a small leak are on the lower end. Flashing repairs, larger section repairs, or wind damage repairs will cost more. We provide free estimates so you know the cost upfront." },
+  { question: "Should I repair or replace my Boise roof?", answer: "If your roof is less than 15–20 years old and the damage is isolated, repair is usually the right call. If your roof is older, the damage is widespread (wind damage across a large portion of the roof, for example), or you've had repeated leaks, replacement may be more cost-effective. We'll give you an honest recommendation after the inspection." },
+  { question: "Can wind damage be repaired rather than requiring a full replacement?", answer: "It depends on the extent of the damage. Minor wind damage affecting a limited area can often be repaired with shingle replacement and re-fastening. However, widespread wind uplift that has compromised shingle integrity across most of the roof typically warrants replacement — and in many cases, insurance will cover it." },
+  { question: "What are common roof problems in Boise?", answer: "Common issues in the Treasure Valley include wind damage from Treasure Valley gap winds (the leading storm-related cause of roof damage in the Boise area), UV degradation from intense summer sun, ice dam formation in winter, and flashing failures around chimneys and vents." },
 ];
 
 export default function RoofRepairBoisePage() {
   const svcSchema = serviceSchema({
     name: "Roof Repair in Boise, ID",
-    description: "Fast, reliable roof repair services in Boise, ID and the Treasure Valley. We fix hail damage, leaks, missing shingles, flashing issues, and more.",
+    description: "Fast, reliable roof repair services in Boise, ID and the Treasure Valley. We fix wind damage, leaks, missing shingles, flashing issues, and more.",
     url: "https://thestellarroofing.com/boise/services/roof-repair",
     areaServed: "Boise, ID",
     phone: loc.phone,
@@ -58,15 +58,15 @@ export default function RoofRepairBoisePage() {
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <p className="text-lg text-text-muted leading-relaxed mb-8">
-            Not every roofing issue requires a full replacement, and Stellar Roofing &amp; Restorations offers reliable roof repair services throughout Boise and the Treasure Valley. Idaho's climate creates unique roofing challenges — from hailstorm damage in spring to UV degradation in summer to ice formation in winter. Our team diagnoses the real source of your roofing problem and delivers honest repairs designed to last.
+            Not every roofing issue requires a full replacement, and Stellar Roofing &amp; Restorations offers reliable roof repair services throughout Boise and the Treasure Valley. Idaho's climate creates unique roofing challenges — from wind and storm damage in spring to UV degradation in summer to ice formation in winter. Our team diagnoses the real source of your roofing problem and delivers honest repairs designed to last.
           </p>
 
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Common Roof Problems in Boise, ID</h2>
           <div className="grid md:grid-cols-2 gap-4 mb-8">
             {[
-              { title: "Hail Damage", desc: "Idaho's spring hailstorms are one of the leading causes of roof damage in the Treasure Valley. Hail bruises and cracks shingles, accelerating wear and creating future leak points." },
+              { title: "Wind Damage", desc: "Treasure Valley gap winds are a leading cause of roof damage in the Boise area. High-wind events lift and crack shingles, loosen fasteners, and damage ridge caps — creating future leak points and shortening roof life." },
               { title: "UV & Heat Damage", desc: "Boise's intense summer sun bakes asphalt shingles, causing them to dry out, curl, and crack faster than in many other climates. Regular inspection catches this early." },
-              { title: "Wind Damage", desc: "The Treasure Valley is known for gap winds that can reach high speeds, lifting and tearing shingles off roofs. We replace damaged shingles to restore your weather barrier." },
+              { title: "Storm Damage", desc: "Severe storms in the Treasure Valley can bring heavy rain, debris, and powerful gusts that expose and damage roofing systems. We assess storm-related damage and restore your roof's weather barrier." },
               { title: "Ice Dam Formation", desc: "Winter freeze-thaw cycles can create ice dams at the roof's edge, causing water to back up under shingles and leak into your home. We repair the damage and improve ventilation." },
               { title: "Flashing Failure", desc: "Flashing around chimneys, skylights, and vents fails over time — especially with Idaho's temperature swings. We reseal or replace flashing to stop water intrusion." },
               { title: "Roof Leaks", desc: "We find the actual source of active leaks — not just patch visible symptoms. We trace water intrusion to its origin and fix it properly the first time." },

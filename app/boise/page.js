@@ -10,34 +10,34 @@ import config from '../../lib/config';
 const loc = config.locations.boise;
 
 export const metadata = {
-  title: "Roofing Company Boise ID | Hail Damage & Free Estimates | Stellar Roofing",
-  description: "Boise's trusted roofing contractor. Hail damage specialists, roof replacement, free inspections, lifetime warranty. Serving Ada & Canyon Counties. Call today.",
+  title: "Roofing Company Boise ID | Wind & Storm Damage | Free Estimates | Stellar Roofing",
+  description: "Boise's trusted roofing contractor. Wind & storm damage specialists, roof replacement, free inspections, lifetime warranty. Serving Ada & Canyon Counties. Call today.",
   alternates: { canonical: 'https://thestellarroofing.com/boise' },
   openGraph: {
     title: "Roofing Company Boise ID | Hail Damage & Free Estimates | Stellar Roofing",
     description: "Boise's trusted roofing contractor. Hail damage specialists, roof replacement, free inspections, lifetime warranty.",
     url: 'https://thestellarroofing.com/boise',
-    images: [{ url: '/images/hero.jpg', width: 1200, height: 630, alt: 'Stellar Roofing Boise Idaho Hail Damage' }],
+    images: [{ url: '/images/hero.jpg', width: 1200, height: 630, alt: 'Stellar Roofing Boise Idaho Wind & Storm Damage' }],
   },
 };
 
 const iconMap = { Home, Wrench, CloudLightning, Search, Building2, AlertTriangle };
 
 const serviceDescriptions = {
-  'roof-replacement': "When your Boise home's roof reaches the end of its lifespan or suffers damage from Idaho's harsh winters or summer hailstorms, we provide professional roof replacement with high-quality materials built for the Treasure Valley climate.",
-  'roof-repair': "From hail hits to wind damage and winter ice issues, our team provides reliable roof repair services throughout Boise and the Treasure Valley. We diagnose the real problem and fix it right the first time.",
-  'storm-damage-repair': "Boise sees its share of spring hailstorms and high-wind events. Our team quickly assesses the damage, documents it thoroughly for your insurance claim, and restores your roof's protection.",
+  'roof-replacement': "When your Boise home's roof reaches the end of its lifespan or suffers damage from Idaho's harsh winters, high winds, or intense UV exposure, we provide professional roof replacement with high-quality materials built for the Treasure Valley climate.",
+  'roof-repair': "From wind damage and UV wear to winter ice issues, our team provides reliable roof repair services throughout Boise and the Treasure Valley. We diagnose the real problem and fix it right the first time.",
+  'storm-damage-repair': "Boise sees powerful wind events and spring storms that can lift, crack, or strip shingles. Our team quickly assesses the damage, documents it thoroughly for your insurance claim, and restores your roof's protection.",
   'roof-inspection': "Get a free, honest roof inspection from our experienced team. We assess your shingles, flashing, gutters, and ventilation — and give you a straight answer with no pressure.",
   'commercial-roofing': "From flat TPO systems to metal roofing, we handle commercial roofing for Boise businesses of all sizes. We work around your schedule to minimize downtime and disruption.",
-  'emergency-roof-repair': "Active leak? Hail damage? Wind damage? Our team responds quickly to roofing emergencies throughout Boise and the Treasure Valley. We'll assess, protect, and repair.",
+  'emergency-roof-repair': "Active leak? Wind damage? Storm damage? Our team responds quickly to roofing emergencies throughout Boise and the Treasure Valley. We'll assess, protect, and repair.",
 };
 
 const faqs = [
-  { question: "How much does a roof replacement cost in Boise, ID?", answer: "A typical roof replacement in Boise ranges from $12,000 to $28,000 for most homes, depending on roof size, pitch, and materials. The Treasure Valley's climate — intense UV, hail, and winter snow — makes material quality especially important. We provide free estimates with no obligation so you know exactly what to expect." },
-  { question: "Does homeowners insurance cover hail damage in Idaho?", answer: "In most cases, yes. Homeowners insurance typically covers hail and storm damage. Idaho — especially the Treasure Valley — sees multiple significant hail events each year, primarily from April through July. Many Boise homeowners don't realize they're entitled to a full roof replacement at little to no out-of-pocket cost. We help you document the damage, meet with your adjuster, and navigate the full claims process." },
-  { question: "How do I know if my Boise roof has hail damage?", answer: "Hail damage is often not visible from the ground. Signs include granule loss in gutters, dents on metal gutters or AC units (hit alongside the roof), or small circular bruising on shingles that requires a trained eye to spot. After any hail event in Ada or Canyon County, we recommend a free professional inspection — it's the only reliable way to assess the damage." },
+  { question: "How much does a roof replacement cost in Boise, ID?", answer: "A typical roof replacement in Boise ranges from $12,000 to $28,000 for most homes, depending on roof size, pitch, and materials. The Treasure Valley's climate — intense UV, high winds, and winter snow — makes material quality especially important. We provide free estimates with no obligation so you know exactly what to expect." },
+  { question: "Does homeowners insurance cover wind damage in Idaho?", answer: "In most cases, yes. Homeowners insurance typically covers wind and storm damage to your roof. If a windstorm has lifted, cracked, or blown off shingles, your policy may cover a full or partial replacement. We help you document the damage, meet with your adjuster, and navigate the full claims process from start to finish." },
+  { question: "How do I know if my Boise roof has wind damage?", answer: "Wind damage can be subtle or dramatic. Common signs include missing or lifted shingles, cracked or creased shingles, exposed underlayment, and granule loss in gutters. High-wind events common in the Treasure Valley can cause damage that isn't visible from the ground. After any significant wind event, we recommend a free professional inspection to assess the full extent of the damage." },
   { question: "Do Boise roofs need to handle snow loads?", answer: "Yes. Boise and the Treasure Valley can receive significant snowfall, and roofs need to be properly installed and ventilated to handle snow loads and prevent ice dam formation. We use materials and installation methods appropriate for Idaho's full climate range — from summer heat to winter freezes." },
-  { question: "What roofing materials work best in Idaho's climate?", answer: "Architectural shingles are the most popular choice for Boise-area homes. Class 4 impact-resistant shingles are an excellent upgrade — they handle hail better and many insurance companies offer premium discounts for them. Metal roofing is the premium option for Boise homes: long-lasting, snow-shedding, and UV-resistant. We'll recommend the right material for your specific home and budget." },
+  { question: "What roofing materials work best in Idaho's climate?", answer: "Architectural shingles are the most popular choice for Boise-area homes. Wind-rated shingles (Class H) are a smart upgrade for Idaho's high-wind conditions, and metal roofing is the premium option — long-lasting, snow-shedding, UV-resistant, and highly wind-resistant. We'll recommend the right material for your specific home and budget." },
   { question: "What Treasure Valley areas do you serve?", answer: "We serve Boise and the greater Treasure Valley, including Meridian, Nampa, Eagle, Caldwell, Kuna, Star, Middleton, and Garden City. We cover both Ada and Canyon Counties. If you're in the Treasure Valley, give us a call." },
 ];
 
@@ -100,7 +100,7 @@ export default function BoiseHubPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-primary mb-4">Roofing Services in Boise, ID</h2>
-            <p className="text-text-muted text-lg max-w-2xl mx-auto">From hail damage repair and insurance claims to full roof replacements, we handle every roofing need in Boise and the Treasure Valley.</p>
+            <p className="text-text-muted text-lg max-w-2xl mx-auto">From wind and storm damage repair and insurance claims to full roof replacements, we handle every roofing need in Boise and the Treasure Valley.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {config.services.map((service, i) => {
@@ -126,9 +126,9 @@ export default function BoiseHubPage() {
       <section className="py-16 px-4 bg-bg-alt reveal">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">How Much Does a New Roof Cost in Boise, ID?</h2>
-          <p className="text-text-muted text-lg mb-6">Roof replacement in Boise typically ranges from <strong>$12,000 to $28,000</strong> for a standard residential home. Idaho's climate (UV, hail, snow) makes material quality especially important. Several factors affect your final cost:</p>
+          <p className="text-text-muted text-lg mb-6">Roof replacement in Boise typically ranges from <strong>$12,000 to $28,000</strong> for a standard residential home. Idaho's climate (UV, wind, snow) makes material quality especially important. Several factors affect your final cost:</p>
           <div className="bg-white rounded-2xl p-6 shadow-sm mb-6">
-            <div className="grid grid-cols-2 gap-4 text-sm">
+            <div className="grid grid-cols-1 text-sm">
               {[
                 { type: "Standard ranch home (1,500–2,000 sq ft)", range: "$12,000 – $18,000" },
                 { type: "Two-story home (2,000–2,800 sq ft)", range: "$16,000 – $22,000" },
@@ -145,7 +145,7 @@ export default function BoiseHubPage() {
             </div>
             <p className="text-text-muted text-xs mt-4">*Ranges are estimates for the Treasure Valley. Your exact cost depends on roof size, pitch, and materials. We provide free written estimates with no obligation.</p>
           </div>
-          <p className="text-text-muted leading-relaxed">Boise sees significant hail activity each year — if your home was damaged, your insurance may cover most or all of the cost. <Link href="/boise/services/storm-damage-repair" className="text-primary font-semibold hover:underline">Learn about our hail damage inspection process →</Link></p>
+          <p className="text-text-muted leading-relaxed">If your roof was damaged by wind or a storm, your homeowners insurance may cover most or all of the cost. <Link href="/boise/services/storm-damage-repair" className="text-primary font-semibold hover:underline">Learn about our storm damage inspection process →</Link></p>
         </div>
       </section>
 
@@ -177,7 +177,7 @@ export default function BoiseHubPage() {
               <p className="text-primary font-bold uppercase tracking-widest text-sm mb-3">Boise, Idaho</p>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-8">Built for Idaho's Climate</h2>
               <p className="text-text-muted leading-relaxed text-lg mb-6">
-                The Treasure Valley has a demanding climate for roofing. Intense summer sun bakes shingles and accelerates UV degradation. Spring hailstorms — a major annual occurrence in Ada and Canyon Counties — can bruise and crack shingles across entire neighborhoods. Winters bring snow loads and freeze-thaw cycles that test aging roofing systems. And Boise's explosive growth means thousands of homes from the 1990s and 2000s are now reaching the age where replacement becomes necessary.
+                The Treasure Valley has a demanding climate for roofing. Intense summer sun bakes shingles and accelerates UV degradation. High-wind events — common throughout Ada and Canyon Counties — can lift, crack, and strip shingles off entire roof sections. Winters bring snow loads and freeze-thaw cycles that test aging roofing systems. And Boise's explosive growth means thousands of homes from the 1990s and 2000s are now reaching the age where replacement becomes necessary.
               </p>
               <p className="text-text-muted leading-relaxed text-base mb-6 text-text-muted/80">
                 <strong className="text-primary">Boise neighborhoods we serve:</strong> North End, The Bench, Southeast Boise, East End, Depot Bench, Harris Ranch, Warm Springs, Ustick Corridor, and all of Ada County.

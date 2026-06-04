@@ -13,20 +13,20 @@ const loc = config.locations.boise;
 
 export const metadata = {
   title: "Roofing Company Kuna ID | Ada County | Stellar Roofing",
-  description: "Trusted roofing contractor in Kuna, ID. Roof replacement, repair, hail damage & storm damage for Ada County homes. Free estimates, lifetime warranty. Call today.",
+  description: "Trusted roofing contractor in Kuna, ID. Roof replacement, repair, wind damage & storm damage for Ada County homes. Free estimates, lifetime warranty. Call today.",
   alternates: { canonical: 'https://thestellarroofing.com/boise/service-areas/kuna' },
 };
 
 const faqs = [
-  { question: "Do you serve Kuna, ID?", answer: "Yes. We serve Kuna and surrounding Ada County communities as part of our Treasure Valley service area. We handle roof replacements, repairs, hail damage assessments, and insurance claims throughout the Kuna area." },
-  { question: "Is Kuna at risk for hail damage?", answer: "Yes. Kuna is within Ada County and shares the same hail storm exposure as Boise and Meridian. Spring hail events regularly affect the area. We recommend a free inspection after any notable storm." },
+  { question: "Do you serve Kuna, ID?", answer: "Yes. We serve Kuna and surrounding Ada County communities as part of our Treasure Valley service area. We handle roof replacements, repairs, wind and storm damage assessments, and insurance claims throughout the Kuna area." },
+  { question: "Is Kuna at risk for wind damage?", answer: "Yes. Kuna is in Ada County and sits on the open Snake River Plain, which makes it particularly susceptible to the high-wind events common throughout the Treasure Valley. Wind uplift is the primary roofing concern — it can loosen shingles, damage flashing, and crack ridge caps. We recommend a free inspection after any notable wind or storm event." },
   { question: "How much does a roof replacement cost in Kuna, ID?", answer: "Roof replacement in the Kuna area typically ranges from $12,000 to $28,000 depending on roof size, pitch, and materials. We provide free written estimates with no obligation before any work begins." },
 ];
 
 export default function KunaPage() {
   const svcSchema = serviceSchema({
     name: "Roofing Services in Kuna, ID",
-    description: "Professional roofing services in Kuna, ID including roof replacement, repair, and hail damage restoration.",
+    description: "Professional roofing services in Kuna, ID including roof replacement, repair, and wind and storm damage restoration.",
     url: "https://thestellarroofing.com/boise/service-areas/kuna",
     areaServed: "Kuna, ID",
     phone: loc.phone,
@@ -63,7 +63,7 @@ export default function KunaPage() {
             Kuna is a growing community in Ada County, sitting southwest of Boise along the Snake River Plain. The city has seen significant residential development in recent years as families look for more space within reach of the Treasure Valley's job market. That growth means a mix of newer homes alongside older properties — and a wide range of roofing needs across the community.
           </p>
           <p className="text-text-muted leading-relaxed mb-6">
-            Like all Treasure Valley communities, Kuna is exposed to Idaho's demanding roofing climate: spring hailstorms that can cause widespread shingle damage, intense summer UV that accelerates shingle aging, and winter snow loads that test older roofing systems. Our team is familiar with these conditions and uses materials and installation techniques designed to perform in Idaho's full climate range.
+            Like all Treasure Valley communities, Kuna is exposed to Idaho's demanding roofing climate: high-wind events that can cause widespread shingle damage and uplift, intense summer UV that accelerates shingle aging, and winter snow loads that test older roofing systems. Kuna's open location on the Snake River Plain offers little protection from Treasure Valley gap winds, making wind damage a consistent concern. Our team is familiar with these conditions and uses materials and installation techniques designed to perform in Idaho's full climate range.
           </p>
           <p className="text-text-muted leading-relaxed mb-8">
             Stellar Roofing &amp; Restorations serves Kuna homeowners with the same professional, no-pressure approach and lifetime workmanship warranty that defines our work throughout the Treasure Valley.
