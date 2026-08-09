@@ -6,7 +6,7 @@ import {
 } from 'lucide-react';
 import FunnelHeader from '../../../components/funnel/FunnelHeader';
 import FunnelFooter from '../../../components/funnel/FunnelFooter';
-import FunnelForm from '../../../components/funnel/FunnelForm';
+import EmbeddedForm from '../../../components/funnel/EmbeddedForm';
 import TrustRow from '../../../components/funnel/TrustRow';
 import ProjectGallery from '../../../components/funnel/ProjectGallery';
 import config from '../../../lib/config';
@@ -41,7 +41,7 @@ export default function NashvilleFunnelPage() {
       {/* ── HERO ────────────────────────────────────────────── */}
       <section className="relative bg-gradient-to-b from-bg-alt to-white">
         <div className="relative max-w-6xl mx-auto px-4 py-10 lg:py-16">
-          <div className="grid lg:grid-cols-[1.05fr_460px] gap-10 lg:gap-14 items-start">
+          <div className="grid lg:grid-cols-[1fr_560px] gap-10 lg:gap-14 items-start">
 
             {/* Copy */}
             <div className="text-center lg:text-left">
@@ -98,10 +98,10 @@ export default function NashvilleFunnelPage() {
               </p>
             </div>
 
-            {/* Form */}
-            {/* top offset tracks FunnelHeader's md height (84px) + breathing room */}
-            <div className="lg:sticky lg:top-[96px]">
-              <FunnelForm id="quote-form" />
+            {/* Form — not sticky: at 900px the frame is taller than most
+                laptop viewports, so pinning it would cut off the bottom. */}
+            <div>
+              <EmbeddedForm id="quote-form" lazy={false} />
             </div>
           </div>
         </div>
@@ -323,7 +323,7 @@ export default function NashvilleFunnelPage() {
 
       {/* ── FINAL CTA ───────────────────────────────────────── */}
       <section className="bg-primary py-14 lg:py-18 px-4">
-        <div className="max-w-5xl mx-auto grid lg:grid-cols-[1fr_440px] gap-10 items-center">
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-[1fr_560px] gap-10 items-center">
           <div className="text-center lg:text-left">
             <h2 className="text-3xl lg:text-4xl font-extrabold text-white mb-4 leading-tight">
               Ready for a Roof That&apos;s Out of This World?
@@ -339,7 +339,7 @@ export default function NashvilleFunnelPage() {
               <Phone size={22} fill="currentColor" /> {nashville.phone}
             </a>
           </div>
-          <FunnelForm id="quote-form-bottom" compact />
+          <EmbeddedForm id="quote-form-bottom" />
         </div>
       </section>
 
