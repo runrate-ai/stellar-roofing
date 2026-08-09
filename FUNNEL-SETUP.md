@@ -107,17 +107,13 @@ produced them.
 Test: load `get.thestellarroofing.com/?gclid=TEST123` and confirm the value
 lands on the submitted contact record.
 
-### ⚠️ The embed host is unverified
+### ⚠️ Confirm the embed URL is permanent
 
-`vibepreview.com` looks like a preview domain and could not be checked from
-here (Cloudflare returns a 403 to automated requests). Two things to confirm:
+Rendering is **confirmed working** (verified in-browser 2026-08-09).
 
-1. **It renders when framed.** Open a funnel page in a browser. If the form
-   area is blank, check the console for an `X-Frame-Options` or
-   `frame-ancestors` error — that host would be refusing to be embedded.
-2. **The URL is permanent.** If it's a temporary preview that gets recycled,
-   the live funnel silently loses its form. Move it to a stable domain before
-   spend starts.
+Still open: `vibepreview.com` looks like a preview domain. If it's temporary or
+gets recycled, the live funnel silently loses its form on every variation.
+Move it to a stable domain before spend starts.
 
 `components/funnel/FunnelForm.jsx` and `app/api/funnel-lead/` are the previous
 in-repo form and its GHL webhook endpoint. Both are unused but retained as a
@@ -147,7 +143,9 @@ down **per ad group** rather than showing only a campaign-level total.
 ## 4. Pre-launch checklist
 
 - [ ] `get.thestellarroofing.com` resolves with a valid certificate
-- [ ] **Form renders inside the iframe** on every variation
+- [x] Form renders inside the iframe — confirmed 2026-08-09
+- [ ] **Auto-tagging is ON** in Google Ads (Settings → Account settings), or
+      `gclid` is never appended to the landing URL in the first place
 - [ ] `gclid` maps to a GHL hidden field — verified on a real test submission
 - [ ] Post-submit redirect points at the matching `/<slug>/thank-you`
 - [ ] `generate_lead` fires (GTM Preview mode)
