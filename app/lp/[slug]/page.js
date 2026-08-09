@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 import {
   Phone, CheckCircle2, Shield, BadgeCheck, FileCheck, SearchCheck,
   Star, ClipboardCheck, HardHat, Home, Wrench, CloudLightning,
@@ -10,6 +11,7 @@ import EmbeddedForm from '../../../components/funnel/EmbeddedForm';
 import TrustRow from '../../../components/funnel/TrustRow';
 import ProjectGallery from '../../../components/funnel/ProjectGallery';
 import config from '../../../lib/config';
+import { funnels, funnelSlugs, getFunnel } from '../../../lib/funnels';
 import allReviews from '../../../client-data/reviews/reviews.json';
 
 const nashville = config.locations.nashville;
@@ -19,21 +21,37 @@ const nashville = config.locations.nashville;
 // invented testimonials can never reach a live paid-traffic page.
 const reviews = allReviews.filter(r => !r.placeholder).slice(0, 3);
 
-const OFFER_FINE_PRINT =
-  'Free gutters offer applies to complete roof replacements only and covers standard 5" seamless aluminum gutters on the replaced roof sections; it cannot be combined with other offers or discounts. Price beat guarantee requires a comparable written estimate from a licensed and insured Tennessee roofing contractor for the same scope of work and materials, presented before your contract is signed; Stellar Roofing & Restorations reserves the right to verify any estimate submitted. Offers subject to change or withdrawal at any time.';
-
-export const metadata = {
-  title: 'Free Gutters With Your New Roof | Nashville Roofing | Stellar Roofing',
-  description:
-    "Get a free estimate on your Nashville roof replacement — plus free gutters and our price beat guarantee. Licensed, insured, lifetime warranty. Call (629) 277-4249.",
-  // Paid-traffic landing page: kept out of the index so it never competes with
-  // the main site's organic Nashville pages. Google Ads does not require indexing.
-  robots: { index: false, follow: false },
+const ICONS = {
+  Home, Wrench, CloudLightning, SearchCheck, Building2, AlertTriangle,
+  Gift, TrendingDown, ClipboardCheck, HardHat, FileCheck, Shield, BadgeCheck,
 };
 
-const ICONS = { Home, Wrench, CloudLightning, SearchCheck, Building2, AlertTriangle };
+export function generateStaticParams() {
+  return funnelSlugs.map(slug => ({ slug }));
+}
 
-export default function NashvilleFunnelPage() {
+// Unknown slugs 404 rather than rendering an empty shell — a broken ad
+// destination should fail visibly, not serve a blank page to paid traffic.
+export const dynamicParams = false;
+
+export function generateMetadata({ params }) {
+  const funnel = getFunnel(params.slug);
+  if (!funnel) return {};
+  return {
+    title: funnel.meta.title,
+    description: funnel.meta.description,
+    // Paid-traffic pages are kept out of the index so they never compete with
+    // the main site's organic Nashville pages. Google Ads doesn't need indexing.
+    robots: { index: false, follow: false },
+  };
+}
+
+export default function FunnelPage({ params }) {
+  const funnel = getFunnel(params.slug);
+  if (!funnel) notFound();
+
+  const { headline, offer, closing, steps, pillars } = funnel;
+
   return (
     <>
       <FunnelHeader />
@@ -45,18 +63,19 @@ export default function NashvilleFunnelPage() {
 
             {/* Copy */}
             <div className="text-center lg:text-left">
-              {/* Navy text on amber, not white — white on #F59E0B is ~2.1:1 and unreadable */}
+              {/* Navy text on amber, not white — white on #F59E0B is ~2.1:1 */}
               <div className="inline-flex items-center gap-2 rounded-full bg-cta px-4 py-1.5 mb-5">
                 <Gift size={15} className="text-primary" />
                 <span className="text-primary font-extrabold text-xs uppercase tracking-wider">
-                  Limited Time — Nashville Homeowners
+                  {funnel.eyebrow}
                 </span>
               </div>
 
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary leading-[1.12] mb-5">
-                Need a New Roof in Nashville?{' '}
-                {/* cta-hover (#D97706), not cta — the lighter amber fails contrast on white */}
-                <span className="text-cta-hover">Get Free Gutters</span> — And We&apos;ll Beat Any Competitor&apos;s Price.
+                {headline.before}
+                {/* cta-hover (#D97706), not cta — the lighter amber fails on white */}
+                <span className="text-cta-hover">{headline.highlight}</span>
+                {headline.after}
               </h1>
 
               {/* Above the fold on mobile — the full trust bar below the hero
@@ -64,27 +83,23 @@ export default function NashvilleFunnelPage() {
               <TrustRow className="mb-6" />
 
               <p className="text-text-muted text-lg lg:text-xl leading-relaxed mb-7 max-w-xl mx-auto lg:mx-0">
-                Free inspection, honest pricing, and a lifetime warranty from the crew
-                Middle Tennessee homeowners actually trust. Bring us a written quote —
-                we&apos;ll beat it.
+                {funnel.subhead}
               </p>
 
               {/* Offer pillars */}
               <div className="grid sm:grid-cols-2 gap-3 mb-8 max-w-xl mx-auto lg:mx-0">
-                <div className="flex items-start gap-3 rounded-xl bg-white ring-1 ring-slate-200 shadow-sm px-4 py-3.5 text-left">
-                  <Gift size={20} className="text-cta-hover flex-shrink-0 mt-0.5" />
-                  <div>
-                    <p className="text-primary font-bold text-sm">Free Gutters</p>
-                    <p className="text-text-muted text-xs leading-snug">With every full roof replacement</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 rounded-xl bg-white ring-1 ring-slate-200 shadow-sm px-4 py-3.5 text-left">
-                  <TrendingDown size={20} className="text-cta-hover flex-shrink-0 mt-0.5" />
-                  <div>
-                    <p className="text-primary font-bold text-sm">Price Beat Guarantee</p>
-                    <p className="text-text-muted text-xs leading-snug">Bring any comparable written quote</p>
-                  </div>
-                </div>
+                {pillars.map(pillar => {
+                  const Icon = ICONS[pillar.icon] || Gift;
+                  return (
+                    <div key={pillar.title} className="flex items-start gap-3 rounded-xl bg-white ring-1 ring-slate-200 shadow-sm px-4 py-3.5 text-left">
+                      <Icon size={20} className="text-cta-hover flex-shrink-0 mt-0.5" />
+                      <div>
+                        <p className="text-primary font-bold text-sm">{pillar.title}</p>
+                        <p className="text-text-muted text-xs leading-snug">{pillar.desc}</p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
 
               <a
@@ -129,59 +144,37 @@ export default function NashvilleFunnelPage() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-3xl lg:text-4xl font-extrabold text-primary mb-3">
-              Two Reasons to Call Us First
+              {offer.heading}
             </h2>
-            <p className="text-text-muted text-lg max-w-2xl mx-auto">
-              Most roofing companies make you choose between a fair price and quality work.
-              We took that decision off the table.
-            </p>
+            <p className="text-text-muted text-lg max-w-2xl mx-auto">{offer.subhead}</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white rounded-2xl p-7 shadow-sm ring-1 ring-black/5">
-              <div className="w-12 h-12 rounded-xl bg-cta/10 flex items-center justify-center mb-4">
-                <Gift size={24} className="text-cta" />
-              </div>
-              <h3 className="text-xl font-bold text-primary mb-2.5">Free Gutters, Fully Installed</h3>
-              <p className="text-text-muted leading-relaxed mb-4">
-                Replace your roof with us and we&apos;ll install brand-new seamless aluminum
-                gutters at no charge. Not a discount, not a rebate — included. New gutters
-                protect the roof you just paid for, so it never made sense to us to sell
-                them separately.
-              </p>
-              <ul className="space-y-2">
-                {['5" seamless aluminum', 'Professionally installed by our crew', 'No hidden add-on fees'].map(item => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-text-dark">
-                    <CheckCircle2 size={16} className="text-cta flex-shrink-0 mt-0.5" /> {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="bg-white rounded-2xl p-7 shadow-sm ring-1 ring-black/5">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                <TrendingDown size={24} className="text-primary" />
-              </div>
-              <h3 className="text-xl font-bold text-primary mb-2.5">We&apos;ll Beat Any Competitor&apos;s Price</h3>
-              <p className="text-text-muted leading-relaxed mb-4">
-                Get your other estimates. Seriously. Then bring us the written quote and
-                we&apos;ll beat it on comparable scope and materials — while still backing
-                the job with our lifetime warranty. You should never have to pay more to
-                work with the better crew.
-              </p>
-              <ul className="space-y-2">
-                {['Bring any written estimate', 'Same scope, same materials, lower price', 'Lifetime warranty still included'].map(item => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-text-dark">
-                    <CheckCircle2 size={16} className="text-primary flex-shrink-0 mt-0.5" /> {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {offer.cards.map(card => {
+              const Icon = ICONS[card.icon] || Gift;
+              const isCta = card.accent === 'cta';
+              return (
+                <div key={card.title} className="bg-white rounded-2xl p-7 shadow-sm ring-1 ring-black/5">
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${isCta ? 'bg-cta/10' : 'bg-primary/10'}`}>
+                    <Icon size={24} className={isCta ? 'text-cta-hover' : 'text-primary'} />
+                  </div>
+                  <h3 className="text-xl font-bold text-primary mb-2.5">{card.title}</h3>
+                  <p className="text-text-muted leading-relaxed mb-4">{card.body}</p>
+                  <ul className="space-y-2">
+                    {card.bullets.map(item => (
+                      <li key={item} className="flex items-start gap-2 text-sm text-text-dark">
+                        <CheckCircle2 size={16} className={`flex-shrink-0 mt-0.5 ${isCta ? 'text-cta-hover' : 'text-primary'}`} /> {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
           </div>
 
           <div className="text-center mt-9">
             <a href="#quote-form" className="inline-block rounded-lg bg-cta hover:bg-cta-hover text-primary font-extrabold text-lg px-9 py-4 shadow-lg transition">
-              Claim My Free Gutters →
+              {funnel.ctaLabel}
             </a>
           </div>
         </div>
@@ -223,24 +216,23 @@ export default function NashvilleFunnelPage() {
           </p>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { n: '1', Icon: ClipboardCheck, title: 'Tell Us About Your Roof', desc: 'Fill out the 30-second form or call us. We\'ll confirm we service your area and book a time that works for you.' },
-              { n: '2', Icon: SearchCheck, title: 'Get Your Free Inspection', desc: 'We physically get on the roof — not a drive-by. You get photos of everything we find and a straight answer about its condition.' },
-              { n: '3', Icon: HardHat, title: 'Get Your Price — And Free Gutters', desc: 'A clear written estimate with no surprise line items. Approve it and we schedule the work, gutters included.' },
-            ].map(({ n, Icon, title, desc }) => (
-              <div key={n} className="text-center">
-                <div className="relative inline-flex mb-5">
-                  <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center">
-                    <Icon size={28} className="text-white" />
+            {steps.map((step, i) => {
+              const Icon = ICONS[step.icon] || ClipboardCheck;
+              return (
+                <div key={step.title} className="text-center">
+                  <div className="relative inline-flex mb-5">
+                    <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center">
+                      <Icon size={28} className="text-white" />
+                    </div>
+                    <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-cta text-primary text-sm font-extrabold flex items-center justify-center ring-4 ring-white">
+                      {i + 1}
+                    </span>
                   </div>
-                  <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-cta text-white text-sm font-extrabold flex items-center justify-center ring-4 ring-white">
-                    {n}
-                  </span>
+                  <h3 className="text-lg font-bold text-primary mb-2">{step.title}</h3>
+                  <p className="text-text-muted leading-relaxed text-sm">{step.desc}</p>
                 </div>
-                <h3 className="text-lg font-bold text-primary mb-2">{title}</h3>
-                <p className="text-text-muted leading-relaxed text-sm">{desc}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -280,8 +272,6 @@ export default function NashvilleFunnelPage() {
       )}
 
       {/* ── SERVICES ────────────────────────────────────────── */}
-      {/* border-t keeps this distinct from How It Works while the reviews
-          section between them is empty (no real reviews yet). */}
       <section className="bg-white border-t border-slate-100 py-14 lg:py-18 px-4">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl lg:text-4xl font-extrabold text-primary text-center mb-11">
@@ -326,12 +316,9 @@ export default function NashvilleFunnelPage() {
         <div className="max-w-5xl mx-auto grid lg:grid-cols-[1fr_560px] gap-10 items-center">
           <div className="text-center lg:text-left">
             <h2 className="text-3xl lg:text-4xl font-extrabold text-white mb-4 leading-tight">
-              Ready for a Roof That&apos;s Out of This World?
+              {closing.heading}
             </h2>
-            <p className="text-white/80 text-lg mb-7">
-              Free inspection, free gutters with your replacement, and a price we
-              guarantee beats your other quotes. Takes 30 seconds to start.
-            </p>
+            <p className="text-white/80 text-lg mb-7">{closing.body}</p>
             <a
               href={`tel:${nashville.phoneRaw}`}
               className="inline-flex items-center gap-2.5 rounded-lg bg-white text-primary font-extrabold text-xl px-8 py-4 hover:bg-white/90 transition shadow-lg"
@@ -343,7 +330,7 @@ export default function NashvilleFunnelPage() {
         </div>
       </section>
 
-      <FunnelFooter offerFinePrint={OFFER_FINE_PRINT} />
+      <FunnelFooter offerFinePrint={funnel.finePrint} />
     </>
   );
 }
