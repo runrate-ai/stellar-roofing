@@ -27,15 +27,28 @@ Ordered so each step unblocks the next. Detail for any step is in
 > live. Check with:
 > `curl -s "https://www.googletagmanager.com/gtm.js?id=GTM-MCP6RQRL" | grep -c 18377143790`
 
+- Auto-tagging confirmed ON in Google Ads
+- GTM Preview test passed
+
+**Conversion tracking is complete.** Nothing further to configure.
+
 ## ⏳ Resume here
 
-- [ ] Confirm **auto-tagging is ON** in Google Ads (Admin → Account settings).
-      Without it Google never appends `gclid` and the whole chain has nothing
-      to capture.
 - [ ] Submit one real test lead, then check Google Ads in a few hours — the
-      "PPC Funnel Lead" action should flip from Inactive to Active
-- [ ] Build the campaign with **per-ad-group final URLs** (see table above) —
-      pointing every ad group at the root URL wastes the variations
+      "PPC Funnel Lead" action should flip from Inactive to Active. This is
+      confirmation, not setup.
+- [ ] Campaign: confirm each ad group's **Final URL** points at its own funnel
+      page (see table above). All pointing at the root wastes the variations.
+- [ ] **Real reviews** — the testimonial section renders empty by design.
+      Biggest impact on the generic/comparison ad group: ~730 searches/mo for
+      "best roofers near me" land on a page with no social proof.
+- [ ] **Negative keywords** — particularly auto hail repair terms on the storm
+      ad group ("car", "auto", "dent", "paintless"), plus "jobs", "salary",
+      "how to", "DIY" across the account.
+- [ ] Trust assets — Owens Corning badge, completed job photos (§5)
+- [ ] Confirm the `vibepreview.com` form host is permanent, not a temporary
+      preview URL
+- [ ] Legal review — price-beat fine print and storm/insurance copy (§7)
 
 ---
 
