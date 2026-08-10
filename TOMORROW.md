@@ -18,23 +18,24 @@ Ordered so each step unblocks the next. Detail for any step is in
   Count = One, 90-day window, account-default goal set
 - GTM: Google Ads conversion tag + AW base tag added (unpublished)
 
-## ⏳ In progress — resume here
+- GTM container **published** — verified live in `gtm.js?id=GTM-MCP6RQRL`:
+  `AW-18377143790`, conversion label `SPekCI_Jst8cEO7r87pE`, and the
+  `generate_lead` trigger are all serving to real traffic
 
-- [ ] **Switch the GTM trigger from Page View to Custom Event.** It's currently
-      "Thank You Page Load" (Page View). A URL match on `/thank-you` also
-      matches the **main site's** thank-you page, which would count organic
-      contact-form submissions as paid conversions.
-      Fix: trigger type → **Custom Event**, event name `generate_lead`,
-      All Custom Events. Rename to `CE - generate_lead`.
-- [ ] Confirm the AW base tag has an **Initialization – All Pages** trigger
-- [ ] Add GA4 Event tag — `generate_lead`, measurement ID `G-XGHJWHETWD`,
-      same trigger (optional, for GA4 reporting)
-- [ ] Preview → submit a test lead → confirm tags fire on the thank-you page
-- [ ] **Submit/publish the container**
-- [ ] Confirm auto-tagging is ON in Google Ads (Admin → Account settings)
+> Verify GTM changes against the **published** container, not Preview mode.
+> Preview runs the draft workspace, so tags can fire there while nothing is
+> live. Check with:
+> `curl -s "https://www.googletagmanager.com/gtm.js?id=GTM-MCP6RQRL" | grep -c 18377143790`
 
-> Conversion Linker is **not** needed — the AW Google tag added to the
-> container already handles gclid cookie linking.
+## ⏳ Resume here
+
+- [ ] Confirm **auto-tagging is ON** in Google Ads (Admin → Account settings).
+      Without it Google never appends `gclid` and the whole chain has nothing
+      to capture.
+- [ ] Submit one real test lead, then check Google Ads in a few hours — the
+      "PPC Funnel Lead" action should flip from Inactive to Active
+- [ ] Build the campaign with **per-ad-group final URLs** (see table above) —
+      pointing every ad group at the root URL wastes the variations
 
 ---
 
