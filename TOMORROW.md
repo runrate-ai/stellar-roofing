@@ -1,7 +1,40 @@
-# Tomorrow's Checklist — PPC Funnel Launch
+# PPC Funnel Launch Checklist
 
 Ordered so each step unblocks the next. Detail for any step is in
 [FUNNEL-SETUP.md](FUNNEL-SETUP.md).
+
+---
+
+## ✅ Done as of 2026-08-10
+
+- Funnel merged to `main` and deployed — live at `get.thestellarroofing.com`
+- Subdomain added in Vercel, CNAME in GoDaddy, SSL valid
+- Site nav / footer / Roofle stripped from all funnel pages
+- GHL post-submit redirect → `https://get.thestellarroofing.com/thank-you`
+- Form header neutralized (no longer offer-specific)
+- **gclid + UTMs verified reaching GHL end to end** (test contact showed
+  `Google Click ID: TEST123`, `utm_source`, `utm_campaign`)
+- Google Ads conversion action created — "PPC Funnel Lead", $1000 value,
+  Count = One, 90-day window, account-default goal set
+- GTM: Google Ads conversion tag + AW base tag added (unpublished)
+
+## ⏳ In progress — resume here
+
+- [ ] **Switch the GTM trigger from Page View to Custom Event.** It's currently
+      "Thank You Page Load" (Page View). A URL match on `/thank-you` also
+      matches the **main site's** thank-you page, which would count organic
+      contact-form submissions as paid conversions.
+      Fix: trigger type → **Custom Event**, event name `generate_lead`,
+      All Custom Events. Rename to `CE - generate_lead`.
+- [ ] Confirm the AW base tag has an **Initialization – All Pages** trigger
+- [ ] Add GA4 Event tag — `generate_lead`, measurement ID `G-XGHJWHETWD`,
+      same trigger (optional, for GA4 reporting)
+- [ ] Preview → submit a test lead → confirm tags fire on the thank-you page
+- [ ] **Submit/publish the container**
+- [ ] Confirm auto-tagging is ON in Google Ads (Admin → Account settings)
+
+> Conversion Linker is **not** needed — the AW Google tag added to the
+> container already handles gclid cookie linking.
 
 ---
 
