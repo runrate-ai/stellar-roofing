@@ -40,9 +40,11 @@ Ordered so each step unblocks the next. Detail for any step is in
 
 ## 3. Conversion tracking — in this order
 
-- [ ] **GHL** — set the form's post-submit redirect to
-      `https://thestellarroofing.com/lp/nashville-roofing/thank-you`
-      (main-domain path survives the subdomain rename)
+- [ ] **GHL** — set the form's post-submit redirect to the funnel's own
+      thank-you page, on the subdomain so the visitor never leaves it:
+      `https://<subdomain>.thestellarroofing.com/thank-you`
+      (no `/lp/` — the middleware strips it. Do this *after* §2 so you
+      only set it once.)
 - [ ] **GHL** — add hidden fields for `gclid` + UTMs, populated from URL params
 - [ ] **Google Ads** — auto-tagging ON (Settings → Account settings)
 - [ ] **Google Ads** — open the "Submit lead form" conversion action:
