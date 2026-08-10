@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { DEFAULT_FUNNEL_SLUG } from './lib/funnels';
+import { FUNNEL_SUBDOMAIN } from './lib/funnel-host';
 
 // Maps the paid-traffic subdomain onto the funnel route tree, one path per
 // Google Ads ad group:
@@ -11,9 +12,8 @@ import { DEFAULT_FUNNEL_SLUG } from './lib/funnels';
 // The visitor's URL bar keeps showing the subdomain — this is a rewrite, not a
 // redirect, so ad destination URLs and gclid query params survive intact.
 //
-// ── To rename the subdomain: change this one string, add the new domain in
-//    Vercel, point the CNAME in GoDaddy, and redeploy.
-const FUNNEL_SUBDOMAIN = 'get.';
+// The subdomain itself is defined in lib/funnel-host.js, shared with
+// SiteChrome so the rewrite and the chrome-stripping can't drift apart.
 const FUNNEL_ROOT = '/lp';
 
 export function middleware(request) {
