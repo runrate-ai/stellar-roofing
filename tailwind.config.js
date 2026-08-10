@@ -12,6 +12,9 @@ module.exports = {
         'primary-light': '#1a2a6b',
         accent: '#FFFFFF',
         'accent-hover': '#F1F5F9',
+        // Funnel CTA — from client-data/client.config.js brand.accent
+        cta: '#F59E0B',
+        'cta-hover': '#D97706',
         'bg-light': '#FFFFFF',
         'bg-alt': '#F8FAFC',
         'bg-dark': '#0B1547',
