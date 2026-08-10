@@ -38,7 +38,9 @@ export function generateMetadata({ params }) {
   const funnel = getFunnel(params.slug);
   if (!funnel) return {};
   return {
-    title: funnel.meta.title,
+    // `absolute` opts out of the root layout's title template, which would
+    // otherwise append the brand name a second time.
+    title: { absolute: funnel.meta.title },
     description: funnel.meta.description,
     // Paid-traffic pages are kept out of the index so they never compete with
     // the main site's organic Nashville pages. Google Ads doesn't need indexing.

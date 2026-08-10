@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { CheckCircle2, Phone, Clock, ClipboardCheck } from 'lucide-react';
+import { CheckCircle2, Phone, Clock, ClipboardCheck, ArrowRight } from 'lucide-react';
 import FunnelHeader from '../../../../components/funnel/FunnelHeader';
 import FunnelFooter from '../../../../components/funnel/FunnelFooter';
 import ConversionEvent from '../../../../components/funnel/ConversionEvent';
@@ -15,7 +15,10 @@ export function generateStaticParams() {
 export const dynamicParams = false;
 
 export const metadata = {
-  title: 'Request Received | Stellar Roofing & Restorations',
+  // `absolute` opts out of the root layout's "%s | Stellar Roofing &
+  // Restorations" template, which would otherwise append the brand a second
+  // time to a title that already carries it.
+  title: { absolute: 'Request Received | Stellar Roofing & Restorations' },
   description: 'Thanks — we received your request and will be in touch within one business day.',
   robots: { index: false, follow: false },
 };
@@ -85,6 +88,20 @@ export default function FunnelThankYouPage({ params }) {
               Bring it to your appointment and we&apos;ll beat it — with the lifetime
               warranty still included.
             </p>
+          </div>
+
+          {/* Safe to link out only here: the lead is already captured, so this
+              is no longer an exit that costs a conversion. */}
+          <div className="mt-10 pt-8 border-t border-slate-100 text-center">
+            <p className="text-text-muted mb-4">
+              While you wait — see more of our work and service areas.
+            </p>
+            <a
+              href={config.business.website}
+              className="inline-flex items-center gap-2 rounded-lg border-2 border-primary text-primary font-bold px-7 py-3.5 hover:bg-primary hover:text-white transition-colors"
+            >
+              Visit Our Website <ArrowRight size={17} />
+            </a>
           </div>
         </div>
       </section>
