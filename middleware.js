@@ -30,10 +30,18 @@ export function middleware(request) {
   }
 
   const url = request.nextUrl.clone();
-  url.pathname =
-    pathname === '/'
-      ? `${FUNNEL_ROOT}/${DEFAULT_FUNNEL_SLUG}`
-      : `${FUNNEL_ROOT}${pathname}`;
+
+  if (pathname === '/') {
+    url.pathname = `${FUNNEL_ROOT}/${DEFAULT_FUNNEL_SLUG}`;
+  } else if (pathname === '/thank-you') {
+    // Bare /thank-you is the natural post-submit URL and the one configured in
+    // GHL. Without this it would rewrite to /lp/thank-you, which doesn't exist
+    // — the thank-you pages live under a slug.
+    url.pathname = `${FUNNEL_ROOT}/${DEFAULT_FUNNEL_SLUG}/thank-you`;
+  } else {
+    url.pathname = `${FUNNEL_ROOT}${pathname}`;
+  }
+
   return NextResponse.rewrite(url);
 }
 
