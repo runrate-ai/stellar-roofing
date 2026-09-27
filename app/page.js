@@ -28,7 +28,7 @@ export default function BrandHomePage() {
       <SchemaMarkup schema={schema} />
 
       {/* HERO */}
-      <section className="relative flex items-center justify-center" style={{ minHeight: 'calc(100vh - 44px)' }}>
+      <section className="relative flex items-center justify-center pt-28 pb-16 md:py-28" style={{ minHeight: 'calc(100vh - 44px)' }}>
         <Image
           src="/images/hero.jpg"
           alt="Stellar Roofing & Restorations"
