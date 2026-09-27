@@ -171,6 +171,25 @@ export default function NashvilleHubPage() {
         </div>
       </section>
 
+      {/* PROJECT MAP */}
+      <section className="py-16 px-4 bg-bg-alt reveal">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Recent Roofing Projects Across Middle Tennessee</h2>
+            <p className="text-text-muted text-lg max-w-2xl mx-auto">See where our crews have been working around Nashville and Middle Tennessee.</p>
+          </div>
+          <div className="rounded-2xl overflow-hidden shadow-sm bg-white">
+            <iframe
+              src={loc.projectMapEmbed}
+              title="Map of recent Stellar Roofing projects in Middle Tennessee"
+              className="w-full h-[480px] md:h-[560px] border-0"
+              allow="fullscreen"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* ABOUT */}
       <section className="py-20 px-4 bg-white reveal">
         <div className="max-w-7xl mx-auto">
