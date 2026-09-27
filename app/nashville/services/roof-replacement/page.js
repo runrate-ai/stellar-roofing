@@ -19,7 +19,7 @@ export const metadata = {
 
 const faqs = [
   { question: "How long does a roof replacement take in Nashville?", answer: "Most residential roof replacements take 1–2 days. Larger or more complex roofs may take 2–3 days. We work efficiently and clean up completely before we leave." },
-  { question: "What type of shingles do you install?", answer: "We install architectural (dimensional) shingles, 3-tab shingles, and premium designer shingles from top manufacturers. Architectural shingles are our most popular choice due to their durability and appearance." },
+  { question: "What type of shingles do you install?", answer: "We install architectural (dimensional) shingles, 3-tab shingles, and premium designer shingles from Owens Corning and GAF. Architectural shingles are our most popular choice due to their durability and appearance." },
   { question: "Do you offer a warranty on roof replacements?", answer: "Yes — we offer a lifetime workmanship warranty on all roof replacements. Combined with manufacturer warranties on materials, you're fully covered." },
   { question: "Will my insurance pay for a roof replacement?", answer: "If your roof was damaged by a covered event like hail, wind, or storm, your homeowners insurance should cover most or all of the cost. We help you navigate the claims process from start to finish." },
   { question: "How much does a roof replacement cost in Nashville?", answer: "Most residential roof replacements in Nashville range from $15,000 to $30,000. The cost depends on roof size, pitch, materials selected, and complexity. We provide free, detailed estimates so there are no surprises." },
@@ -82,7 +82,7 @@ export default function RoofReplacementNashvillePage() {
           </p>
 
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Roofing Materials We Install</h2>
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
+          <div className="grid md:grid-cols-3 gap-6 mb-6">
             {[
               { title: "Architectural Shingles", desc: "Our most popular choice. Dimensional shingles offer excellent durability (25–30 year lifespan), great curb appeal, and good value. Available in dozens of colors." },
               { title: "3-Tab Shingles", desc: "A traditional, budget-friendly option. Best for lower-slope roofs or situations where cost is the primary factor. Typically carries a 20-year warranty." },
@@ -94,6 +94,12 @@ export default function RoofReplacementNashvillePage() {
               </div>
             ))}
           </div>
+          <p className="text-text-muted leading-relaxed mb-2">
+            We install <strong>Owens Corning</strong> and <strong>GAF</strong> shingles, two of the most widely used shingle brands in the country. We&apos;ll walk you through the product options during your free estimate.
+          </p>
+          <p className="text-text-muted text-xs leading-relaxed mb-8">
+            Stellar Roofing &amp; Restorations is an independent contractor and is not an affiliate of Owens Corning Roofing and Asphalt, LLC or its affiliated companies, or of GAF.
+          </p>
 
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Insurance Claims Assistance</h2>
           <p className="text-text-muted leading-relaxed mb-4">If your roof was damaged by a storm, hail, or wind, there's a good chance your homeowners insurance will cover a significant portion of the replacement cost. We can:</p>
