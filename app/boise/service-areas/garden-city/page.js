@@ -14,7 +14,7 @@ const loc = config.locations.boise;
 export const metadata = {
   title: "Roofing Company Garden City ID | Ada County | Stellar Roofing",
   description: "Trusted roofing contractor in Garden City, ID. Roof replacement, repair, wind & storm damage for Ada County homes. Free estimates, lifetime warranty. Call today.",
-  alternates: { canonical: 'https://thestellarroofing.com/boise/service-areas/garden-city' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/boise/service-areas/garden-city' },
 };
 
 const faqs = [
@@ -27,7 +27,7 @@ export default function GardenCityPage() {
   const svcSchema = serviceSchema({
     name: "Roofing Services in Garden City, ID",
     description: "Professional roofing services in Garden City, ID including roof replacement, repair, and wind and storm damage restoration.",
-    url: "https://thestellarroofing.com/boise/service-areas/garden-city",
+    url: "https://www.thestellarroofing.com/boise/service-areas/garden-city",
     areaServed: "Garden City, ID",
     phone: loc.phone,
   });

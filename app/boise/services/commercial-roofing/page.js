@@ -13,7 +13,7 @@ const loc = config.locations.boise;
 export const metadata = {
   title: "Commercial Roofing Boise ID | TPO, Metal & Flat Roofs | Stellar Roofing",
   description: "Commercial roofing contractor in Boise, ID. TPO, EPDM, metal, flat roof replacement & repair. Wind & storm damage claims, after-hours scheduling, free estimates. Call today.",
-  alternates: { canonical: 'https://thestellarroofing.com/boise/services/commercial-roofing' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/boise/services/commercial-roofing' },
 };
 
 const faqs = [
@@ -27,7 +27,7 @@ export default function CommercialRoofingBoisePage() {
   const svcSchema = serviceSchema({
     name: "Commercial Roofing in Boise, ID",
     description: "Commercial roofing installation and repair in Boise, ID and the Treasure Valley. TPO, metal, flat roofs, and more for businesses of all sizes.",
-    url: "https://thestellarroofing.com/boise/services/commercial-roofing",
+    url: "https://www.thestellarroofing.com/boise/services/commercial-roofing",
     areaServed: "Boise, ID",
     phone: loc.phone,
   });

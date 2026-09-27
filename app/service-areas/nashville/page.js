@@ -12,7 +12,7 @@ import config from '../../../lib/config';
 export const metadata = {
   title: "Roofing Company Nashville TN | Stellar Roofing & Restorations",
   description: "Nashville's trusted roofing company. Roof replacement, repair, storm damage, and free inspections. Stellar Roofing & Restorations — call (629) 277-4249.",
-  alternates: { canonical: 'https://thestellarroofing.com/service-areas/nashville' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/service-areas/nashville' },
 };
 
 const faqs = [
@@ -26,7 +26,7 @@ export default function NashvillePage() {
   const svcSchema = serviceSchema({
     name: "Roofing Services in Nashville, TN",
     description: "Professional roof replacement, repair, storm damage repair, and inspections in Nashville, TN.",
-    url: "https://thestellarroofing.com/service-areas/nashville",
+    url: "https://www.thestellarroofing.com/service-areas/nashville",
     areaServed: "Nashville, TN",
   });
   const faqSchemaData = faqSchema(faqs);

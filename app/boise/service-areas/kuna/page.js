@@ -14,7 +14,7 @@ const loc = config.locations.boise;
 export const metadata = {
   title: "Roofing Company Kuna ID | Ada County | Stellar Roofing",
   description: "Trusted roofing contractor in Kuna, ID. Roof replacement, repair, wind damage & storm damage for Ada County homes. Free estimates, lifetime warranty. Call today.",
-  alternates: { canonical: 'https://thestellarroofing.com/boise/service-areas/kuna' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/boise/service-areas/kuna' },
 };
 
 const faqs = [
@@ -27,7 +27,7 @@ export default function KunaPage() {
   const svcSchema = serviceSchema({
     name: "Roofing Services in Kuna, ID",
     description: "Professional roofing services in Kuna, ID including roof replacement, repair, and wind and storm damage restoration.",
-    url: "https://thestellarroofing.com/boise/service-areas/kuna",
+    url: "https://www.thestellarroofing.com/boise/service-areas/kuna",
     areaServed: "Kuna, ID",
     phone: loc.phone,
   });

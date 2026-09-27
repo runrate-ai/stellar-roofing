@@ -14,7 +14,7 @@ const loc = config.locations.boise;
 export const metadata = {
   title: "Roofing Company Caldwell ID | Canyon County | Stellar Roofing",
   description: "Trusted roofing contractor in Caldwell, ID. Roof replacement, repair, wind & storm damage for Canyon County homes. Free estimates, lifetime warranty. Call today.",
-  alternates: { canonical: 'https://thestellarroofing.com/boise/service-areas/caldwell' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/boise/service-areas/caldwell' },
 };
 
 const faqs = [
@@ -24,7 +24,7 @@ const faqs = [
 ];
 
 export default function CaldwellPage() {
-  const svcSchema = serviceSchema({ name: "Roofing Services in Caldwell, ID", description: "Professional roofing services in Caldwell, ID and Canyon County including roof replacement, repair, and wind and storm damage restoration.", url: "https://thestellarroofing.com/boise/service-areas/caldwell", areaServed: "Caldwell, ID", phone: loc.phone });
+  const svcSchema = serviceSchema({ name: "Roofing Services in Caldwell, ID", description: "Professional roofing services in Caldwell, ID and Canyon County including roof replacement, repair, and wind and storm damage restoration.", url: "https://www.thestellarroofing.com/boise/service-areas/caldwell", areaServed: "Caldwell, ID", phone: loc.phone });
 
   return (
     <>

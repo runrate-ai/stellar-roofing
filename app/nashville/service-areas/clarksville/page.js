@@ -14,7 +14,7 @@ const loc = config.locations.nashville;
 export const metadata = {
   title: "Roof Repair & Replacement Clarksville TN | Stellar Roofing",
   description: "Roof repair and replacement in Clarksville, TN. Shingle repair, storm damage, hail damage, insurance claims. Montgomery County's trusted roofer. Call (629) 277-4249.",
-  alternates: { canonical: 'https://thestellarroofing.com/nashville/service-areas/clarksville' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/nashville/service-areas/clarksville' },
 };
 
 const faqs = [
@@ -29,7 +29,7 @@ export default function ClarksvillePage() {
   const svcSchema = serviceSchema({
     name: "Roof Repair & Replacement in Clarksville, TN",
     description: "Professional roof repair and replacement in Clarksville, TN. Shingle repair, storm damage, hail damage, and insurance claims for Montgomery County homeowners.",
-    url: "https://thestellarroofing.com/nashville/service-areas/clarksville",
+    url: "https://www.thestellarroofing.com/nashville/service-areas/clarksville",
     areaServed: "Clarksville, TN",
     phone: loc.phone,
   });

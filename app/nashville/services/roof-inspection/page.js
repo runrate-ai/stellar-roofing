@@ -13,7 +13,7 @@ const loc = config.locations.nashville;
 export const metadata = {
   title: "Free Roof Inspection Nashville TN | No Obligation, No Pressure | Stellar Roofing",
   description: "Free roof inspection in Nashville, TN — no obligation, no sales pressure. We check shingles, flashing, gutters, ventilation & attic. Honest report. Call (629) 277-4249.",
-  alternates: { canonical: 'https://thestellarroofing.com/nashville/services/roof-inspection' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/nashville/services/roof-inspection' },
 };
 
 const faqs = [
@@ -27,7 +27,7 @@ export default function RoofInspectionNashvillePage() {
   const svcSchema = serviceSchema({
     name: "Free Roof Inspection in Nashville, TN",
     description: "Free, no-obligation roof inspections in Nashville, TN. Professional assessment of shingles, flashing, gutters, and ventilation.",
-    url: "https://thestellarroofing.com/nashville/services/roof-inspection",
+    url: "https://www.thestellarroofing.com/nashville/services/roof-inspection",
     areaServed: "Nashville, TN",
     phone: loc.phone,
   });

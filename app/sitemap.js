@@ -1,4 +1,5 @@
 import config from '../lib/config';
+import blogPosts, { BLOG_BASE, postPath } from '../lib/blog-posts';
 
 export default function sitemap() {
   const base = config.business.website;
@@ -36,5 +37,15 @@ export default function sitemap() {
     }))
   );
 
-  return [...staticPages, ...locationHubs, ...servicePages, ...areaPages];
+  const blogPages = [
+    { url: `${base}${BLOG_BASE}`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
+    ...blogPosts.map(p => ({
+      url: `${base}${postPath(p.slug)}`,
+      lastModified: new Date(p.datePublished).toISOString(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    })),
+  ];
+
+  return [...staticPages, ...locationHubs, ...servicePages, ...areaPages, ...blogPages];
 }

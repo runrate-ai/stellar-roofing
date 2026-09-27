@@ -4,7 +4,7 @@ import config from '../../lib/config';
 export const metadata = {
   title: "Privacy Policy | Stellar Roofing & Restorations",
   description: "Privacy policy for Stellar Roofing & Restorations. Learn how we collect, use, and protect your personal information.",
-  alternates: { canonical: 'https://thestellarroofing.com/privacy-policy' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/privacy-policy' },
 };
 
 export default function PrivacyPolicyPage() {

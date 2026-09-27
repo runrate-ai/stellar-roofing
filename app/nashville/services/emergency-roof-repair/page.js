@@ -13,7 +13,7 @@ const loc = config.locations.nashville;
 export const metadata = {
   title: "Emergency Roof Repair Nashville TN | Active Leaks & Storm Damage | Stellar Roofing",
   description: "Emergency roof repair in Nashville, TN. Active leaks, blown-off shingles, storm damage — we respond fast. Temporary tarping + permanent repairs. Call (629) 277-4249 now.",
-  alternates: { canonical: 'https://thestellarroofing.com/nashville/services/emergency-roof-repair' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/nashville/services/emergency-roof-repair' },
 };
 
 const faqs = [
@@ -27,7 +27,7 @@ export default function EmergencyRoofRepairNashvillePage() {
   const svcSchema = serviceSchema({
     name: "Emergency Roof Repair in Nashville, TN",
     description: "Fast emergency roof repair in Nashville, TN. We respond quickly to active leaks, storm damage, and urgent roofing issues.",
-    url: "https://thestellarroofing.com/nashville/services/emergency-roof-repair",
+    url: "https://www.thestellarroofing.com/nashville/services/emergency-roof-repair",
     areaServed: "Nashville, TN",
     phone: loc.phone,
   });

@@ -9,7 +9,7 @@ import config from '../../lib/config';
 export const metadata = {
   title: "Contact Stellar Roofing | Nashville TN & Boise ID | Free Estimates",
   description: "Contact Stellar Roofing & Restorations. Nashville: (629) 277-4249 | Boise: (208) 370-8599. Free roof estimates, no obligation.",
-  alternates: { canonical: 'https://thestellarroofing.com/contact' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/contact' },
 };
 
 const nashville = config.locations.nashville;

@@ -14,7 +14,7 @@ const loc = config.locations.boise;
 export const metadata = {
   title: "Roofing Contractor Boise ID | Ada County | Wind & Storm Damage Specialists | Stellar Roofing",
   description: "Local roofing contractor in Boise, ID. Wind & storm damage specialists, roof replacement, repair, free inspections. Serving all Ada County neighborhoods. Call today.",
-  alternates: { canonical: 'https://thestellarroofing.com/boise/service-areas/boise' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/boise/service-areas/boise' },
 };
 
 const faqs = [
@@ -25,7 +25,7 @@ const faqs = [
 
 export default function BoiseAreaPage() {
   const lbSchema = localBusinessSchema('boise');
-  const svcSchema = serviceSchema({ name: "Roofing Services in Boise, ID", description: "Professional roof replacement, repair, storm damage repair, and inspections in Boise, ID.", url: "https://thestellarroofing.com/boise/service-areas/boise", areaServed: "Boise, ID", phone: loc.phone });
+  const svcSchema = serviceSchema({ name: "Roofing Services in Boise, ID", description: "Professional roof replacement, repair, storm damage repair, and inspections in Boise, ID.", url: "https://www.thestellarroofing.com/boise/service-areas/boise", areaServed: "Boise, ID", phone: loc.phone });
 
   return (
     <>

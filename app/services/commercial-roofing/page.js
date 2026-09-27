@@ -12,7 +12,7 @@ import config from '../../../lib/config';
 export const metadata = {
   title: "Commercial Roofing Nashville TN | Stellar Roofing & Restorations",
   description: "Commercial roofing services in Nashville, TN. Flat roofs, TPO, metal, roof replacement and repair for businesses. Free estimates. Call (629) 277-4249.",
-  alternates: { canonical: 'https://thestellarroofing.com/services/commercial-roofing' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/services/commercial-roofing' },
 };
 
 const faqs = [
@@ -26,7 +26,7 @@ export default function CommercialRoofingPage() {
   const svcSchema = serviceSchema({
     name: "Commercial Roofing",
     description: "Commercial roofing installation and repair in Nashville, TN. Flat roofs, TPO, metal, and more for businesses of all sizes.",
-    url: "https://thestellarroofing.com/services/commercial-roofing",
+    url: "https://www.thestellarroofing.com/services/commercial-roofing",
   });
   const faqSchemaData = faqSchema(faqs);
 

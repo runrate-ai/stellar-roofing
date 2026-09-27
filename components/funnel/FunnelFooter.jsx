@@ -48,10 +48,10 @@ export default function FunnelFooter({ offerFinePrint }) {
             © {year} {config.business.legalName}. All rights reserved.
           </p>
           <div className="flex gap-5">
-            <a href="https://thestellarroofing.com/privacy-policy" className="text-white/50 hover:text-white text-xs transition-colors">
+            <a href="https://www.thestellarroofing.com/privacy-policy" className="text-white/50 hover:text-white text-xs transition-colors">
               Privacy Policy
             </a>
-            <a href="https://thestellarroofing.com/terms-and-conditions" className="text-white/50 hover:text-white text-xs transition-colors">
+            <a href="https://www.thestellarroofing.com/terms-and-conditions" className="text-white/50 hover:text-white text-xs transition-colors">
               Terms &amp; Conditions
             </a>
           </div>

@@ -13,7 +13,7 @@ const boise = config.locations.boise;
 export const metadata = {
   title: "About Stellar Roofing & Restorations | Nashville TN & Boise ID",
   description: "Learn about Stellar Roofing & Restorations — serving Nashville, TN and Boise, ID. Led by owner Nate, we deliver honest service, quality craftsmanship, and lifetime warranties.",
-  alternates: { canonical: 'https://thestellarroofing.com/about' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/about' },
 };
 
 export default function AboutPage() {

@@ -14,7 +14,7 @@ const loc = config.locations.boise;
 export const metadata = {
   title: "Roofing Company Mountain Home ID | Elmore County | Stellar Roofing",
   description: "Trusted roofing contractor in Mountain Home, ID. Roof replacement, repair, wind & storm damage for Elmore County homes. Free estimates, lifetime warranty. Call today.",
-  alternates: { canonical: 'https://thestellarroofing.com/boise/service-areas/mountain-home' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/boise/service-areas/mountain-home' },
 };
 
 const faqs = [
@@ -27,7 +27,7 @@ export default function MountainHomePage() {
   const svcSchema = serviceSchema({
     name: "Roofing Services in Mountain Home, ID",
     description: "Professional roofing services in Mountain Home, ID and Elmore County including roof replacement, repair, and wind and storm damage restoration.",
-    url: "https://thestellarroofing.com/boise/service-areas/mountain-home",
+    url: "https://www.thestellarroofing.com/boise/service-areas/mountain-home",
     areaServed: "Mountain Home, ID",
     phone: loc.phone,
   });

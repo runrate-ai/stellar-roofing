@@ -14,7 +14,7 @@ const loc = config.locations.nashville;
 export const metadata = {
   title: "Roofing Contractor Nashville TN | Davidson County | Stellar Roofing",
   description: "Local roofing contractor serving all of Nashville, TN and Davidson County. Roof replacement, repair, storm & hail damage, free inspections. Call (629) 277-4249.",
-  alternates: { canonical: 'https://thestellarroofing.com/nashville/service-areas/nashville' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/nashville/service-areas/nashville' },
 };
 
 const faqs = [
@@ -25,7 +25,7 @@ const faqs = [
 
 export default function NashvilleAreaPage() {
   const lbSchema = localBusinessSchema('nashville');
-  const svcSchema = serviceSchema({ name: "Roofing Services in Nashville, TN", description: "Professional roof replacement, repair, storm damage repair, and inspections in Nashville, TN.", url: "https://thestellarroofing.com/nashville/service-areas/nashville", areaServed: "Nashville, TN", phone: loc.phone });
+  const svcSchema = serviceSchema({ name: "Roofing Services in Nashville, TN", description: "Professional roof replacement, repair, storm damage repair, and inspections in Nashville, TN.", url: "https://www.thestellarroofing.com/nashville/service-areas/nashville", areaServed: "Nashville, TN", phone: loc.phone });
 
   return (
     <>

@@ -14,7 +14,7 @@ const loc = config.locations.nashville;
 export const metadata = {
   title: "Roofing Company Hendersonville TN | Sumner County | Stellar Roofing",
   description: "Trusted roofing contractor in Hendersonville, TN. Roof replacement, repair, storm & hail damage for Sumner County homes. Free estimates, lifetime warranty. Call (629) 277-4249.",
-  alternates: { canonical: 'https://thestellarroofing.com/nashville/service-areas/hendersonville' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/nashville/service-areas/hendersonville' },
 };
 
 const faqs = [
@@ -27,7 +27,7 @@ export default function HendersonvillePage() {
   const svcSchema = serviceSchema({
     name: "Roofing Services in Hendersonville, TN",
     description: "Professional roofing services in Hendersonville, TN and Sumner County including roof replacement, repair, and storm damage restoration.",
-    url: "https://thestellarroofing.com/nashville/service-areas/hendersonville",
+    url: "https://www.thestellarroofing.com/nashville/service-areas/hendersonville",
     areaServed: "Hendersonville, TN",
     phone: loc.phone,
   });

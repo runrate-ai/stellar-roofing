@@ -14,7 +14,7 @@ const loc = config.locations.nashville;
 export const metadata = {
   title: "Roofing Company Lebanon TN | Wilson County | Stellar Roofing",
   description: "Trusted roofing contractor in Lebanon, TN. Roof replacement, repair, storm & hail damage for Wilson County homes. Free estimates, lifetime warranty. Call (629) 277-4249.",
-  alternates: { canonical: 'https://thestellarroofing.com/nashville/service-areas/lebanon' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/nashville/service-areas/lebanon' },
 };
 
 const faqs = [
@@ -27,7 +27,7 @@ export default function LebanonPage() {
   const svcSchema = serviceSchema({
     name: "Roofing Services in Lebanon, TN",
     description: "Professional roofing services in Lebanon, TN and Wilson County including roof replacement, repair, and storm damage restoration.",
-    url: "https://thestellarroofing.com/nashville/service-areas/lebanon",
+    url: "https://www.thestellarroofing.com/nashville/service-areas/lebanon",
     areaServed: "Lebanon, TN",
     phone: loc.phone,
   });

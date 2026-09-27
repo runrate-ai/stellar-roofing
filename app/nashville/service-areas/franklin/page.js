@@ -14,7 +14,7 @@ const loc = config.locations.nashville;
 export const metadata = {
   title: "Roofing Company Franklin TN | Williamson County | Stellar Roofing",
   description: "Expert roofing contractor in Franklin, TN. Roof replacement, repair, storm & hail damage for Williamson County homes. Free estimates, lifetime warranty. Call (629) 277-4249.",
-  alternates: { canonical: 'https://thestellarroofing.com/nashville/service-areas/franklin' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/nashville/service-areas/franklin' },
 };
 
 const faqs = [
@@ -24,7 +24,7 @@ const faqs = [
 ];
 
 export default function FranklinPage() {
-  const svcSchema = serviceSchema({ name: "Roofing Services in Franklin, TN", description: "Professional roofing services in Franklin, TN and Williamson County including roof replacement, repair, and storm damage restoration.", url: "https://thestellarroofing.com/nashville/service-areas/franklin", areaServed: "Franklin, TN", phone: loc.phone });
+  const svcSchema = serviceSchema({ name: "Roofing Services in Franklin, TN", description: "Professional roofing services in Franklin, TN and Williamson County including roof replacement, repair, and storm damage restoration.", url: "https://www.thestellarroofing.com/nashville/service-areas/franklin", areaServed: "Franklin, TN", phone: loc.phone });
 
   return (
     <>

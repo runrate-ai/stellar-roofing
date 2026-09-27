@@ -13,7 +13,7 @@ const loc = config.locations.nashville;
 export const metadata = {
   title: "Storm & Hail Damage Roof Repair Nashville TN | Insurance Claims | Stellar Roofing",
   description: "Storm and hail damage roof repair in Nashville, TN. We inspect, document damage, and handle insurance claims start-to-finish. Free inspection. Call (629) 277-4249.",
-  alternates: { canonical: 'https://thestellarroofing.com/nashville/services/storm-damage-repair' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/nashville/services/storm-damage-repair' },
 };
 
 const faqs = [
@@ -27,7 +27,7 @@ export default function StormDamageNashvillePage() {
   const svcSchema = serviceSchema({
     name: "Storm Damage Roof Repair in Nashville, TN",
     description: "Expert storm damage roof repair in Nashville, TN. We assess hail, wind, and tornado damage and assist with insurance claims.",
-    url: "https://thestellarroofing.com/nashville/services/storm-damage-repair",
+    url: "https://www.thestellarroofing.com/nashville/services/storm-damage-repair",
     areaServed: "Nashville, TN",
     phone: loc.phone,
   });

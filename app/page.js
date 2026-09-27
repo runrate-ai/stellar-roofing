@@ -8,11 +8,11 @@ import config from '../lib/config';
 export const metadata = {
   title: "Stellar Roofing & Restorations | Nashville TN & Boise ID",
   description: "Stellar Roofing & Restorations serves Nashville, TN and Boise, ID. Free inspections, lifetime warranty, licensed & insured. Call today for a free estimate.",
-  alternates: { canonical: 'https://thestellarroofing.com' },
+  alternates: { canonical: 'https://www.thestellarroofing.com' },
   openGraph: {
     title: "Stellar Roofing & Restorations | Nashville TN & Boise ID",
     description: "Trusted roofing company serving Nashville, TN and Boise, ID. Free inspections, lifetime warranty, residential & commercial.",
-    url: 'https://thestellarroofing.com',
+    url: 'https://www.thestellarroofing.com',
     images: [{ url: '/images/hero.jpg', width: 1200, height: 630, alt: 'Stellar Roofing & Restorations' }],
   },
 };

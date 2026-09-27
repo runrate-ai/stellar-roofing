@@ -14,7 +14,7 @@ const loc = config.locations.nashville;
 export const metadata = {
   title: "Roofing Company Mount Juliet TN | Wilson County | Stellar Roofing",
   description: "Trusted roofing contractor in Mount Juliet, TN. Roof replacement, repair, storm & hail damage for Wilson County homes. Free estimates, lifetime warranty. Call (629) 277-4249.",
-  alternates: { canonical: 'https://thestellarroofing.com/nashville/service-areas/mount-juliet' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/nashville/service-areas/mount-juliet' },
 };
 
 const faqs = [
@@ -27,7 +27,7 @@ export default function MountJulietPage() {
   const svcSchema = serviceSchema({
     name: "Roofing Services in Mount Juliet, TN",
     description: "Professional roofing services in Mount Juliet, TN and Wilson County including roof replacement, repair, and storm damage restoration.",
-    url: "https://thestellarroofing.com/nashville/service-areas/mount-juliet",
+    url: "https://www.thestellarroofing.com/nashville/service-areas/mount-juliet",
     areaServed: "Mount Juliet, TN",
     phone: loc.phone,
   });

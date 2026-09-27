@@ -11,13 +11,13 @@ import config from '../../lib/config';
 const loc = config.locations.nashville;
 
 export const metadata = {
-  title: "Roofing Company Nashville TN | Free Estimates | Stellar Roofing",
-  description: "Nashville's trusted roofing contractor. Roof replacement, storm & hail damage repair, free inspections, lifetime warranty. Serving Davidson County & Middle Tennessee. Call (629) 277-4249.",
-  alternates: { canonical: 'https://thestellarroofing.com/nashville' },
+  title: { absolute: "Roofing Company Nashville TN | Trusted Nashville Roofers | Stellar Roofing" },
+  description: "Nashville roofers you can trust. Roof replacement, roof repair, storm & hail damage, free inspections, and a lifetime warranty across Davidson County & Middle Tennessee. Call (629) 277-4249.",
+  alternates: { canonical: 'https://www.thestellarroofing.com/nashville' },
   openGraph: {
-    title: "Roofing Company Nashville TN | Free Estimates | Stellar Roofing",
-    description: "Nashville's trusted roofing contractor. Roof replacement, storm damage, free inspections, lifetime warranty.",
-    url: 'https://thestellarroofing.com/nashville',
+    title: "Roofing Company Nashville TN | Trusted Nashville Roofers | Stellar Roofing",
+    description: "Nashville roofers you can trust. Roof replacement, repair, storm damage, free inspections, lifetime warranty.",
+    url: 'https://www.thestellarroofing.com/nashville',
     images: [{ url: '/images/hero.jpg', width: 1200, height: 630, alt: 'Stellar Roofing Nashville TN' }],
   },
 };
@@ -147,6 +147,7 @@ export default function NashvilleHubPage() {
             <p className="text-text-muted text-xs mt-4">*Ranges are estimates for Middle Tennessee. Your exact cost depends on roof size, pitch, materials, and decking condition. We provide free written estimates with no obligation.</p>
           </div>
           <p className="text-text-muted leading-relaxed">If your roof was damaged by hail or a storm, your homeowners insurance may cover most or all of the replacement cost. <Link href="/nashville/services/storm-damage-repair" className="text-primary font-semibold hover:underline">Learn about our insurance claims process →</Link></p>
+          <p className="text-text-muted leading-relaxed mt-4">Want the full breakdown? Read our <Link href="/nashville/blog/how-much-does-roof-replacement-cost-nashville" className="text-primary font-semibold hover:underline">Nashville roof replacement cost guide →</Link></p>
         </div>
       </section>
 
@@ -176,7 +177,7 @@ export default function NashvilleHubPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="reveal reveal-delay-1">
               <p className="text-primary font-bold uppercase tracking-widest text-sm mb-3">About Us</p>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-8">Nashville's Premier Roofing Team</h2>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-8">Nashville Roofers You Can Trust</h2>
               <p className="text-text-muted leading-relaxed text-lg mb-6">
                 At Stellar Roofing &amp; Restorations, we're committed to providing homeowners in Nashville and throughout Middle Tennessee with roofing services they can truly rely on. The company is led by Nate, who has spent many years working in the roofing industry and understands firsthand the importance of quality craftsmanship, honest communication, and dependable service.
               </p>

@@ -12,7 +12,7 @@ import config from '../../../lib/config';
 export const metadata = {
   title: "Roofing Company Murfreesboro TN | Stellar Roofing & Restorations",
   description: "Roofing services in Murfreesboro, TN. Roof replacement, repair, storm damage, free inspections. Stellar Roofing & Restorations — call (629) 277-4249.",
-  alternates: { canonical: 'https://thestellarroofing.com/service-areas/murfreesboro' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/service-areas/murfreesboro' },
 };
 
 const faqs = [
@@ -25,7 +25,7 @@ export default function MurfreesboroPage() {
   const svcSchema = serviceSchema({
     name: "Roofing Services in Murfreesboro, TN",
     description: "Professional roofing services in Murfreesboro, TN including roof replacement, repair, and storm damage restoration.",
-    url: "https://thestellarroofing.com/service-areas/murfreesboro",
+    url: "https://www.thestellarroofing.com/service-areas/murfreesboro",
     areaServed: "Murfreesboro, TN",
   });
   const faqSchemaData = faqSchema(faqs);

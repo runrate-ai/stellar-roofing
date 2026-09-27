@@ -14,7 +14,7 @@ const loc = config.locations.nashville;
 export const metadata = {
   title: "Roofing Company Gallatin TN | Sumner County | Stellar Roofing",
   description: "Trusted roofing contractor in Gallatin, TN. Roof replacement, repair, storm & hail damage for Sumner County homes. Free estimates, lifetime warranty. Call (629) 277-4249.",
-  alternates: { canonical: 'https://thestellarroofing.com/nashville/service-areas/gallatin' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/nashville/service-areas/gallatin' },
 };
 
 const faqs = [
@@ -27,7 +27,7 @@ export default function GallatinPage() {
   const svcSchema = serviceSchema({
     name: "Roofing Services in Gallatin, TN",
     description: "Professional roofing services in Gallatin, TN and Sumner County including roof replacement, repair, and storm damage restoration.",
-    url: "https://thestellarroofing.com/nashville/service-areas/gallatin",
+    url: "https://www.thestellarroofing.com/nashville/service-areas/gallatin",
     areaServed: "Gallatin, TN",
     phone: loc.phone,
   });

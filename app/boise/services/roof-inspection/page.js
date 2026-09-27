@@ -13,7 +13,7 @@ const loc = config.locations.boise;
 export const metadata = {
   title: "Free Roof Inspection Boise ID | Wind & Storm Damage Assessment | Stellar Roofing",
   description: "Free roof inspection in Boise, ID — wind damage, UV wear, winter damage, and more. No obligation, no sales pressure. Honest report with photos. Call today.",
-  alternates: { canonical: 'https://thestellarroofing.com/boise/services/roof-inspection' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/boise/services/roof-inspection' },
 };
 
 const faqs = [
@@ -27,7 +27,7 @@ export default function RoofInspectionBoisePage() {
   const svcSchema = serviceSchema({
     name: "Free Roof Inspection in Boise, ID",
     description: "Free, no-obligation roof inspections in Boise, ID. We check for wind damage, storm damage, UV wear, winter damage, and general roof condition.",
-    url: "https://thestellarroofing.com/boise/services/roof-inspection",
+    url: "https://www.thestellarroofing.com/boise/services/roof-inspection",
     areaServed: "Boise, ID",
     phone: loc.phone,
   });

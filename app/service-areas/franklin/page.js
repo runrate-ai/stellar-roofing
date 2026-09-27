@@ -12,7 +12,7 @@ import config from '../../../lib/config';
 export const metadata = {
   title: "Roofing Company Franklin TN | Stellar Roofing & Restorations",
   description: "Roofing services in Franklin, TN. Roof replacement, repair, storm damage, free inspections. Williamson County's trusted roofer. Call (629) 277-4249.",
-  alternates: { canonical: 'https://thestellarroofing.com/service-areas/franklin' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/service-areas/franklin' },
 };
 
 const faqs = [
@@ -25,7 +25,7 @@ export default function FranklinPage() {
   const svcSchema = serviceSchema({
     name: "Roofing Services in Franklin, TN",
     description: "Professional roofing services in Franklin, TN and Williamson County including roof replacement, repair, and storm damage restoration.",
-    url: "https://thestellarroofing.com/service-areas/franklin",
+    url: "https://www.thestellarroofing.com/service-areas/franklin",
     areaServed: "Franklin, TN",
   });
   const faqSchemaData = faqSchema(faqs);

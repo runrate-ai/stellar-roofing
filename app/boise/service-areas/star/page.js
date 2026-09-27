@@ -14,7 +14,7 @@ const loc = config.locations.boise;
 export const metadata = {
   title: "Roofing Company Star ID | Ada County | Stellar Roofing",
   description: "Trusted roofing contractor in Star, ID. Roof replacement, repair, wind damage & storm damage for Ada County homes. Free estimates, lifetime warranty. Call today.",
-  alternates: { canonical: 'https://thestellarroofing.com/boise/service-areas/star' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/boise/service-areas/star' },
 };
 
 const faqs = [
@@ -27,7 +27,7 @@ export default function StarPage() {
   const svcSchema = serviceSchema({
     name: "Roofing Services in Star, ID",
     description: "Professional roofing services in Star, ID including roof replacement, repair, and wind and storm damage restoration.",
-    url: "https://thestellarroofing.com/boise/service-areas/star",
+    url: "https://www.thestellarroofing.com/boise/service-areas/star",
     areaServed: "Star, ID",
     phone: loc.phone,
   });

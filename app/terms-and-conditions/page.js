@@ -4,7 +4,7 @@ import config from '../../lib/config';
 export const metadata = {
   title: "Terms & Conditions | Stellar Roofing & Restorations",
   description: "Terms and conditions for Stellar Roofing & Restorations roofing services in Nashville, TN.",
-  alternates: { canonical: 'https://thestellarroofing.com/terms-and-conditions' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/terms-and-conditions' },
 };
 
 export default function TermsAndConditionsPage() {

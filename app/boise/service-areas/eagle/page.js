@@ -14,7 +14,7 @@ const loc = config.locations.boise;
 export const metadata = {
   title: "Roofing Company Eagle ID | Premium Roofing & Storm Damage | Stellar Roofing",
   description: "Premium roofing contractor in Eagle, ID. Wind & storm damage, roof replacement & repair for Ada County's finest homes. Lifetime warranty, free estimates. Call today.",
-  alternates: { canonical: 'https://thestellarroofing.com/boise/service-areas/eagle' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/boise/service-areas/eagle' },
 };
 
 const faqs = [
@@ -24,7 +24,7 @@ const faqs = [
 ];
 
 export default function EaglePage() {
-  const svcSchema = serviceSchema({ name: "Roofing Services in Eagle, ID", description: "Professional roofing services in Eagle, ID including roof replacement, repair, and wind and storm damage restoration.", url: "https://thestellarroofing.com/boise/service-areas/eagle", areaServed: "Eagle, ID", phone: loc.phone });
+  const svcSchema = serviceSchema({ name: "Roofing Services in Eagle, ID", description: "Professional roofing services in Eagle, ID including roof replacement, repair, and wind and storm damage restoration.", url: "https://www.thestellarroofing.com/boise/service-areas/eagle", areaServed: "Eagle, ID", phone: loc.phone });
 
   return (
     <>

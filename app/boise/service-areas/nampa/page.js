@@ -14,7 +14,7 @@ const loc = config.locations.boise;
 export const metadata = {
   title: "Roofing Company Nampa ID | Canyon County Roofer | Stellar Roofing",
   description: "Trusted roofing contractor in Nampa, ID. Roof replacement, repair, wind damage & storm damage for Canyon County homes. Free estimates, lifetime warranty. Call today.",
-  alternates: { canonical: 'https://thestellarroofing.com/boise/service-areas/nampa' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/boise/service-areas/nampa' },
 };
 
 const faqs = [
@@ -24,7 +24,7 @@ const faqs = [
 ];
 
 export default function NampaPage() {
-  const svcSchema = serviceSchema({ name: "Roofing Services in Nampa, ID", description: "Professional roofing services in Nampa, ID and Canyon County including roof replacement, repair, and wind and storm damage restoration.", url: "https://thestellarroofing.com/boise/service-areas/nampa", areaServed: "Nampa, ID", phone: loc.phone });
+  const svcSchema = serviceSchema({ name: "Roofing Services in Nampa, ID", description: "Professional roofing services in Nampa, ID and Canyon County including roof replacement, repair, and wind and storm damage restoration.", url: "https://www.thestellarroofing.com/boise/service-areas/nampa", areaServed: "Nampa, ID", phone: loc.phone });
 
   return (
     <>

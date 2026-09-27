@@ -13,7 +13,7 @@ const loc = config.locations.nashville;
 export const metadata = {
   title: "Roof Repair Nashville TN | Leaks, Hail & Storm Damage | Stellar Roofing",
   description: "Fast roof repair in Nashville, TN. Leaks, missing shingles, storm & hail damage, flashing issues. Free estimates, no pressure. Call (629) 277-4249 — same-week service.",
-  alternates: { canonical: 'https://thestellarroofing.com/nashville/services/roof-repair' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/nashville/services/roof-repair' },
 };
 
 const faqs = [
@@ -27,7 +27,7 @@ export default function RoofRepairNashvillePage() {
   const svcSchema = serviceSchema({
     name: "Roof Repair in Nashville, TN",
     description: "Fast, reliable roof repair services in Nashville, TN. We fix leaks, damaged shingles, flashing issues, and storm damage.",
-    url: "https://thestellarroofing.com/nashville/services/roof-repair",
+    url: "https://www.thestellarroofing.com/nashville/services/roof-repair",
     areaServed: "Nashville, TN",
     phone: loc.phone,
   });

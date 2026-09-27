@@ -12,11 +12,11 @@ const loc = config.locations.boise;
 export const metadata = {
   title: "Roofing Company Boise ID | Wind & Storm Damage | Free Estimates | Stellar Roofing",
   description: "Boise's trusted roofing contractor. Wind & storm damage specialists, roof replacement, free inspections, lifetime warranty. Serving Ada & Canyon Counties. Call today.",
-  alternates: { canonical: 'https://thestellarroofing.com/boise' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/boise' },
   openGraph: {
     title: "Roofing Company Boise ID | Hail Damage & Free Estimates | Stellar Roofing",
     description: "Boise's trusted roofing contractor. Hail damage specialists, roof replacement, free inspections, lifetime warranty.",
-    url: 'https://thestellarroofing.com/boise',
+    url: 'https://www.thestellarroofing.com/boise',
     images: [{ url: '/images/hero.jpg', width: 1200, height: 630, alt: 'Stellar Roofing Boise Idaho Wind & Storm Damage' }],
   },
 };

@@ -13,7 +13,7 @@ const loc = config.locations.boise;
 export const metadata = {
   title: "Emergency Roof Repair Boise ID | Active Leaks & Storm Damage | Stellar Roofing",
   description: "Emergency roof repair in Boise, ID. Active leaks, wind damage, storm damage — we respond fast. Temporary tarping + permanent repairs in the Treasure Valley. Call now.",
-  alternates: { canonical: 'https://thestellarroofing.com/boise/services/emergency-roof-repair' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/boise/services/emergency-roof-repair' },
 };
 
 const faqs = [
@@ -27,7 +27,7 @@ export default function EmergencyRoofRepairBoisePage() {
   const svcSchema = serviceSchema({
     name: "Emergency Roof Repair in Boise, ID",
     description: "Fast emergency roof repair in Boise, ID. We respond quickly to active leaks, wind damage, storm damage, and urgent roofing issues throughout the Treasure Valley.",
-    url: "https://thestellarroofing.com/boise/services/emergency-roof-repair",
+    url: "https://www.thestellarroofing.com/boise/services/emergency-roof-repair",
     areaServed: "Boise, ID",
     phone: loc.phone,
   });

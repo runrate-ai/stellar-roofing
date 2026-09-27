@@ -12,7 +12,7 @@ import config from '../../../lib/config';
 export const metadata = {
   title: "Roofing Company Brentwood TN | Stellar Roofing & Restorations",
   description: "Roofing services in Brentwood, TN. Roof replacement, repair, storm damage, free inspections. Premium roofing for Brentwood homes. Call (629) 277-4249.",
-  alternates: { canonical: 'https://thestellarroofing.com/service-areas/brentwood' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/service-areas/brentwood' },
 };
 
 const faqs = [
@@ -25,7 +25,7 @@ export default function BrentwoodPage() {
   const svcSchema = serviceSchema({
     name: "Roofing Services in Brentwood, TN",
     description: "Premium roofing services in Brentwood, TN including roof replacement, repair, and storm damage restoration.",
-    url: "https://thestellarroofing.com/service-areas/brentwood",
+    url: "https://www.thestellarroofing.com/service-areas/brentwood",
     areaServed: "Brentwood, TN",
   });
   const faqSchemaData = faqSchema(faqs);

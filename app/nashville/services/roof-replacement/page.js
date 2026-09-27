@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { CheckCircle2, Phone } from 'lucide-react';
 import Breadcrumbs from '../../../../components/Breadcrumbs';
 import CTABanner from '../../../../components/CTABanner';
@@ -11,9 +12,9 @@ import config from '../../../../lib/config';
 const loc = config.locations.nashville;
 
 export const metadata = {
-  title: "Roof Replacement Nashville TN | $15k–$30k | Lifetime Warranty | Stellar Roofing",
-  description: "Expert roof replacement in Nashville, TN starting at $15,000. Lifetime warranty, free estimates, insurance claims help. Same-week scheduling. Call (629) 277-4249.",
-  alternates: { canonical: 'https://thestellarroofing.com/nashville/services/roof-replacement' },
+  title: { absolute: "Roof Replacement Nashville TN | Lifetime Warranty | Stellar Roofing" },
+  description: "Roof replacement in Nashville, TN with a lifetime workmanship warranty, free estimates, and insurance claims help. Same-week scheduling. Call (629) 277-4249.",
+  alternates: { canonical: 'https://www.thestellarroofing.com/nashville/services/roof-replacement' },
 };
 
 const faqs = [
@@ -28,7 +29,7 @@ export default function RoofReplacementNashvillePage() {
   const svcSchema = serviceSchema({
     name: "Roof Replacement in Nashville, TN",
     description: "Professional roof replacement services in Nashville, TN and Middle Tennessee. Lifetime warranty, free estimates, insurance claims assistance.",
-    url: "https://thestellarroofing.com/nashville/services/roof-replacement",
+    url: "https://www.thestellarroofing.com/nashville/services/roof-replacement",
     areaServed: "Nashville, TN",
     phone: loc.phone,
   });
@@ -66,9 +67,9 @@ export default function RoofReplacementNashvillePage() {
             Signs you may need a roof replacement include widespread shingle curling or cracking, large amounts of granule loss in gutters, visible sagging, persistent leaks that keep returning despite repairs, or a roof that's simply reached the end of its expected lifespan.
           </p>
 
-          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">How Much Does a Roof Replacement Cost in Nashville?</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">What Goes Into the Price</h2>
           <p className="text-text-muted leading-relaxed mb-4">A typical residential roof replacement in Nashville costs between <strong>$15,000 and $30,000</strong>. Several factors affect the final price:</p>
-          <ul className="space-y-2 mb-8">
+          <ul className="space-y-2 mb-4">
             {["Roof size (measured in squares — 100 sq ft each)", "Roof pitch and complexity (valleys, dormers, skylights)", "Material choice (3-tab, architectural, or premium shingles)", "Tear-off and disposal of old roofing materials", "Decking repairs if needed", "Location and accessibility"].map(item => (
               <li key={item} className="flex items-start gap-3 text-text-muted">
                 <CheckCircle2 size={18} className="text-primary flex-shrink-0 mt-0.5" />
@@ -76,6 +77,9 @@ export default function RoofReplacementNashvillePage() {
               </li>
             ))}
           </ul>
+          <p className="text-text-muted leading-relaxed mb-8">
+            For a full breakdown, read our <Link href="/nashville/blog/how-much-does-roof-replacement-cost-nashville" className="font-semibold text-primary underline">Nashville roof replacement cost guide</Link>, or compare <Link href="/nashville/blog/metal-roof-vs-shingles-cost" className="font-semibold text-primary underline">metal roofing vs. shingles</Link>.
+          </p>
 
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Roofing Materials We Install</h2>
           <div className="grid md:grid-cols-3 gap-6 mb-8">

@@ -13,7 +13,7 @@ const loc = config.locations.nashville;
 export const metadata = {
   title: "Commercial Roofing Nashville TN | TPO, Metal & Flat Roofs | Stellar Roofing",
   description: "Commercial roofing contractor in Nashville, TN. TPO, EPDM, metal, flat roof replacement & repair for businesses. After-hours scheduling, free estimates. Call (629) 277-4249.",
-  alternates: { canonical: 'https://thestellarroofing.com/nashville/services/commercial-roofing' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/nashville/services/commercial-roofing' },
 };
 
 const faqs = [
@@ -27,7 +27,7 @@ export default function CommercialRoofingNashvillePage() {
   const svcSchema = serviceSchema({
     name: "Commercial Roofing in Nashville, TN",
     description: "Commercial roofing installation and repair in Nashville, TN. Flat roofs, TPO, metal, and more for businesses of all sizes.",
-    url: "https://thestellarroofing.com/nashville/services/commercial-roofing",
+    url: "https://www.thestellarroofing.com/nashville/services/commercial-roofing",
     areaServed: "Nashville, TN",
     phone: loc.phone,
   });

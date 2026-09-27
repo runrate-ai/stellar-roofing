@@ -10,7 +10,8 @@ const inter = Inter({ subsets: ['latin'], display: 'swap' });
 export const metadata = {
   title: {
     default: `${config.business.name} | Nashville's Trusted Roofing Company`,
-    template: `%s | Stellar Roofing & Restorations`,
+    // Page titles already carry the brand; appending it again doubled it.
+    template: `%s`,
   },
   description: config.business.description,
   metadataBase: new URL(config.business.website),

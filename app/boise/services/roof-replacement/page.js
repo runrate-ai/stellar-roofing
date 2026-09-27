@@ -13,7 +13,7 @@ const loc = config.locations.boise;
 export const metadata = {
   title: "Roof Replacement Boise ID | Wind & Storm Damage & Insurance Claims | Stellar Roofing",
   description: "Expert roof replacement in Boise, ID. Wind & storm damage specialists, insurance claims help, lifetime warranty, free estimates. Serving the Treasure Valley. Call today.",
-  alternates: { canonical: 'https://thestellarroofing.com/boise/services/roof-replacement' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/boise/services/roof-replacement' },
 };
 
 const faqs = [
@@ -28,7 +28,7 @@ export default function RoofReplacementBoisePage() {
   const svcSchema = serviceSchema({
     name: "Roof Replacement in Boise, ID",
     description: "Professional roof replacement services in Boise, ID and the Treasure Valley. Lifetime warranty, free estimates, insurance claims assistance.",
-    url: "https://thestellarroofing.com/boise/services/roof-replacement",
+    url: "https://www.thestellarroofing.com/boise/services/roof-replacement",
     areaServed: "Boise, ID",
     phone: loc.phone,
   });

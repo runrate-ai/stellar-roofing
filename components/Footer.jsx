@@ -92,6 +92,7 @@ export default function Footer() {
                 <li><Link href="/about" className="text-white/70 hover:text-white text-sm transition-colors">About Us</Link></li>
                 <li><Link href="/contact" className="text-white/70 hover:text-white text-sm transition-colors">Contact</Link></li>
                 <li><Link href="/free-inspection" className="text-white/70 hover:text-white text-sm transition-colors">Free Inspection</Link></li>
+                <li><Link href="/nashville/blog" className="text-white/70 hover:text-white text-sm transition-colors">Roofing Guides</Link></li>
                 <li><Link href="/nashville" className="text-white/70 hover:text-white text-sm transition-colors">Nashville Location</Link></li>
                 <li><Link href="/boise" className="text-white/70 hover:text-white text-sm transition-colors">Boise Location</Link></li>
                 <li><Link href="/privacy-policy" className="text-white/70 hover:text-white text-sm transition-colors">Privacy Policy</Link></li>
@@ -181,6 +182,9 @@ export default function Footer() {
               <li><Link href="/about" className="text-white/70 hover:text-white text-sm transition-colors">About Us</Link></li>
               <li><Link href="/contact" className="text-white/70 hover:text-white text-sm transition-colors">Contact</Link></li>
               <li><Link href="/free-inspection" className="text-white/70 hover:text-white text-sm transition-colors">Free Inspection</Link></li>
+              {locationSlug === 'nashville' && (
+                <li><Link href="/nashville/blog" className="text-white/70 hover:text-white text-sm transition-colors">Roofing Guides</Link></li>
+              )}
               <li>
                 <Link href={locationSlug === 'nashville' ? '/boise' : '/nashville'} className="text-white/70 hover:text-white text-sm transition-colors">
                   {locationSlug === 'nashville' ? 'Boise, ID Location' : 'Nashville, TN Location'}

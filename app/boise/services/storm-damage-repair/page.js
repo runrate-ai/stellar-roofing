@@ -13,7 +13,7 @@ const loc = config.locations.boise;
 export const metadata = {
   title: "Wind & Storm Damage Roof Repair Boise ID | Free Inspection & Insurance Claims | Stellar Roofing",
   description: "Wind and storm damage roof repair in Boise, ID. Free inspection, complete insurance claims documentation, fast repairs. Ada & Canyon County. Call today.",
-  alternates: { canonical: 'https://thestellarroofing.com/boise/services/storm-damage-repair' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/boise/services/storm-damage-repair' },
 };
 
 const faqs = [
@@ -27,7 +27,7 @@ export default function StormDamageBoisePage() {
   const svcSchema = serviceSchema({
     name: "Storm Damage Roof Repair in Boise, ID",
     description: "Expert wind and storm damage roof repair in Boise, ID. We assess damage, document for insurance claims, and restore your Treasure Valley roof.",
-    url: "https://thestellarroofing.com/boise/services/storm-damage-repair",
+    url: "https://www.thestellarroofing.com/boise/services/storm-damage-repair",
     areaServed: "Boise, ID",
     phone: loc.phone,
   });

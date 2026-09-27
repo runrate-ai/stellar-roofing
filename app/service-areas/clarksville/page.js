@@ -12,7 +12,7 @@ import config from '../../../lib/config';
 export const metadata = {
   title: "Roofing Company Clarksville TN | Stellar Roofing & Restorations",
   description: "Roofing services in Clarksville, TN. Roof replacement, repair, storm damage, free inspections. Stellar Roofing & Restorations — call (629) 277-4249.",
-  alternates: { canonical: 'https://thestellarroofing.com/service-areas/clarksville' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/service-areas/clarksville' },
 };
 
 const faqs = [
@@ -25,7 +25,7 @@ export default function ClarksvillePage() {
   const svcSchema = serviceSchema({
     name: "Roofing Services in Clarksville, TN",
     description: "Professional roofing services in Clarksville, TN including roof replacement, repair, and storm damage restoration.",
-    url: "https://thestellarroofing.com/service-areas/clarksville",
+    url: "https://www.thestellarroofing.com/service-areas/clarksville",
     areaServed: "Clarksville, TN",
   });
   const faqSchemaData = faqSchema(faqs);

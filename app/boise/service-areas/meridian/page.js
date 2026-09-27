@@ -14,7 +14,7 @@ const loc = config.locations.boise;
 export const metadata = {
   title: "Roofing Company Meridian ID | Wind & Storm Damage Experts | Stellar Roofing",
   description: "Trusted roofing contractor in Meridian, ID. Wind & storm damage assessment, roof replacement, repair, insurance claims. Serving Paramount, Verado & all of Meridian. Call today.",
-  alternates: { canonical: 'https://thestellarroofing.com/boise/service-areas/meridian' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/boise/service-areas/meridian' },
 };
 
 const faqs = [
@@ -24,7 +24,7 @@ const faqs = [
 ];
 
 export default function MeridianPage() {
-  const svcSchema = serviceSchema({ name: "Roofing Services in Meridian, ID", description: "Professional roofing services in Meridian, ID including roof replacement, repair, wind damage, and storm damage restoration.", url: "https://thestellarroofing.com/boise/service-areas/meridian", areaServed: "Meridian, ID", phone: loc.phone });
+  const svcSchema = serviceSchema({ name: "Roofing Services in Meridian, ID", description: "Professional roofing services in Meridian, ID including roof replacement, repair, wind damage, and storm damage restoration.", url: "https://www.thestellarroofing.com/boise/service-areas/meridian", areaServed: "Meridian, ID", phone: loc.phone });
 
   return (
     <>

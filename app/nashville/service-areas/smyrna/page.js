@@ -14,7 +14,7 @@ const loc = config.locations.nashville;
 export const metadata = {
   title: "Roofing Company Smyrna TN | Rutherford County | Stellar Roofing",
   description: "Trusted roofing contractor in Smyrna, TN. Roof replacement, repair, storm & hail damage for Rutherford County homes. Free estimates, lifetime warranty. Call (629) 277-4249.",
-  alternates: { canonical: 'https://thestellarroofing.com/nashville/service-areas/smyrna' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/nashville/service-areas/smyrna' },
 };
 
 const faqs = [
@@ -27,7 +27,7 @@ export default function SmyrnaPage() {
   const svcSchema = serviceSchema({
     name: "Roofing Services in Smyrna, TN",
     description: "Professional roofing services in Smyrna, TN and Rutherford County including roof replacement, repair, and storm damage restoration.",
-    url: "https://thestellarroofing.com/nashville/service-areas/smyrna",
+    url: "https://www.thestellarroofing.com/nashville/service-areas/smyrna",
     areaServed: "Smyrna, TN",
     phone: loc.phone,
   });

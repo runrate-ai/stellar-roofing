@@ -12,7 +12,7 @@ import config from '../../../lib/config';
 export const metadata = {
   title: "Storm Damage Roof Repair Nashville TN | Insurance Help | Stellar Roofing",
   description: "Storm damage roof repair in Nashville, TN. Hail, wind, tornado damage assessment and repair. We handle insurance claims. Call Stellar Roofing (629) 277-4249.",
-  alternates: { canonical: 'https://thestellarroofing.com/services/storm-damage-repair' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/services/storm-damage-repair' },
 };
 
 const faqs = [
@@ -26,7 +26,7 @@ export default function StormDamageRepairPage() {
   const svcSchema = serviceSchema({
     name: "Storm Damage Roof Repair",
     description: "Expert storm damage roof repair in Nashville, TN. We assess hail, wind, and tornado damage and assist with insurance claims.",
-    url: "https://thestellarroofing.com/services/storm-damage-repair",
+    url: "https://www.thestellarroofing.com/services/storm-damage-repair",
   });
   const faqSchemaData = faqSchema(faqs);
 

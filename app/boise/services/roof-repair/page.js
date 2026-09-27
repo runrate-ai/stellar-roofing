@@ -13,7 +13,7 @@ const loc = config.locations.boise;
 export const metadata = {
   title: "Roof Repair Boise ID | Wind Damage, Leaks & Storm Damage | Stellar Roofing",
   description: "Fast roof repair in Boise, ID. Wind damage, active leaks, missing shingles, storm damage, flashing issues. Free estimates, no pressure. Call today — same-week service.",
-  alternates: { canonical: 'https://thestellarroofing.com/boise/services/roof-repair' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/boise/services/roof-repair' },
 };
 
 const faqs = [
@@ -27,7 +27,7 @@ export default function RoofRepairBoisePage() {
   const svcSchema = serviceSchema({
     name: "Roof Repair in Boise, ID",
     description: "Fast, reliable roof repair services in Boise, ID and the Treasure Valley. We fix wind damage, leaks, missing shingles, flashing issues, and more.",
-    url: "https://thestellarroofing.com/boise/services/roof-repair",
+    url: "https://www.thestellarroofing.com/boise/services/roof-repair",
     areaServed: "Boise, ID",
     phone: loc.phone,
   });

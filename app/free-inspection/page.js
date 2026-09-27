@@ -9,14 +9,14 @@ import config from '../../lib/config';
 export const metadata = {
   title: "Free Roof Inspection Nashville TN | Schedule Now | Stellar Roofing",
   description: "Schedule a free roof inspection in Nashville, TN. No obligation, no pressure — just an honest assessment of your roof. Call Stellar Roofing (629) 277-4249.",
-  alternates: { canonical: 'https://thestellarroofing.com/free-inspection' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/free-inspection' },
 };
 
 export default function FreeInspectionPage() {
   const svcSchema = serviceSchema({
     name: "Free Roof Inspection",
     description: "Free, no-obligation roof inspections in Nashville, TN for homeowners and businesses.",
-    url: "https://thestellarroofing.com/free-inspection",
+    url: "https://www.thestellarroofing.com/free-inspection",
   });
 
   return (

@@ -15,7 +15,7 @@ const config = {
     phone: "(629) 277-4249",
     phoneRaw: "6292774249",
     email: "Office@thestellarroofing.com",
-    website: "https://thestellarroofing.com",
+    website: "https://www.thestellarroofing.com",
     address: {
       type: "service-area",
       city: "Nashville",

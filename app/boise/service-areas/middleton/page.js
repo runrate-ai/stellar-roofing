@@ -14,7 +14,7 @@ const loc = config.locations.boise;
 export const metadata = {
   title: "Roofing Company Middleton ID | Canyon County | Stellar Roofing",
   description: "Trusted roofing contractor in Middleton, ID. Roof replacement, repair, wind & storm damage for Canyon County homes. Free estimates, lifetime warranty. Call today.",
-  alternates: { canonical: 'https://thestellarroofing.com/boise/service-areas/middleton' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/boise/service-areas/middleton' },
 };
 
 const faqs = [
@@ -27,7 +27,7 @@ export default function MiddletonPage() {
   const svcSchema = serviceSchema({
     name: "Roofing Services in Middleton, ID",
     description: "Professional roofing services in Middleton, ID and Canyon County including roof replacement, repair, and wind and storm damage restoration.",
-    url: "https://thestellarroofing.com/boise/service-areas/middleton",
+    url: "https://www.thestellarroofing.com/boise/service-areas/middleton",
     areaServed: "Middleton, ID",
     phone: loc.phone,
   });

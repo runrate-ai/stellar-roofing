@@ -62,6 +62,7 @@ export default function Navbar() {
                 <Link href="/boise" className="flex items-center gap-1.5 text-white hover:text-white/80 transition-colors text-base font-semibold">
                   <MapPin size={15} /> Boise, ID
                 </Link>
+                <Link href="/nashville/blog" className="text-white hover:text-white/80 transition-colors text-base font-semibold">Blog</Link>
                 <Link href="/about" className="text-white hover:text-white/80 transition-colors text-base font-semibold">About</Link>
                 <Link href="/contact" className="text-white hover:text-white/80 transition-colors text-base font-semibold">Contact</Link>
               </>
@@ -96,6 +97,9 @@ export default function Navbar() {
                   </div>
                 </div>
 
+                {locationSlug === 'nashville' && (
+                  <Link href="/nashville/blog" className="text-white hover:text-white/80 transition-colors text-base font-semibold">Blog</Link>
+                )}
                 <Link href="/about" className="text-white hover:text-white/80 transition-colors text-base font-semibold">About</Link>
                 <Link href="/contact" className="text-white hover:text-white/80 transition-colors text-base font-semibold">Contact</Link>
               </>
@@ -105,6 +109,7 @@ export default function Navbar() {
                 <Link href="/" className="text-white hover:text-white/80 transition-colors text-base font-semibold">Home</Link>
                 <Link href="/nashville" className="flex items-center gap-1 text-white hover:text-white/80 transition-colors text-base font-semibold">Nashville</Link>
                 <Link href="/boise" className="flex items-center gap-1 text-white hover:text-white/80 transition-colors text-base font-semibold">Boise</Link>
+                <Link href="/nashville/blog" className="text-white hover:text-white/80 transition-colors text-base font-semibold">Blog</Link>
                 <Link href="/about" className="text-white hover:text-white/80 transition-colors text-base font-semibold">About</Link>
                 <Link href="/contact" className="text-white hover:text-white/80 transition-colors text-base font-semibold">Contact</Link>
               </>
@@ -168,6 +173,7 @@ export default function Navbar() {
               <p className="text-white/50 text-xs font-semibold uppercase tracking-widest mb-4">Choose Your Location</p>
               <Link href="/nashville" onClick={() => setMobileOpen(false)} className="text-2xl font-bold text-white mb-4 flex items-center gap-2"><MapPin size={20} /> Nashville, TN</Link>
               <Link href="/boise" onClick={() => setMobileOpen(false)} className="text-2xl font-bold text-white mb-8 flex items-center gap-2"><MapPin size={20} /> Boise, ID</Link>
+              <Link href="/nashville/blog" onClick={() => setMobileOpen(false)} className="text-2xl font-bold text-white mb-6">Blog</Link>
               <Link href="/about" onClick={() => setMobileOpen(false)} className="text-2xl font-bold text-white mb-6">About Us</Link>
               <Link href="/contact" onClick={() => setMobileOpen(false)} className="text-2xl font-bold text-white mb-8">Contact</Link>
             </>
@@ -205,6 +211,9 @@ export default function Navbar() {
                 </>
               )}
 
+              {locationSlug !== 'boise' && (
+                <Link href="/nashville/blog" onClick={() => setMobileOpen(false)} className="text-2xl font-bold text-white mb-6">Blog</Link>
+              )}
               <Link href="/about" onClick={() => setMobileOpen(false)} className="text-2xl font-bold text-white mb-6">About Us</Link>
               <Link href="/contact" onClick={() => setMobileOpen(false)} className="text-2xl font-bold text-white mb-8">Contact</Link>
             </>

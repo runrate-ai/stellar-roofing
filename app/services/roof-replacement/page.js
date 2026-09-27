@@ -12,7 +12,7 @@ import config from '../../../lib/config';
 export const metadata = {
   title: "Roof Replacement Nashville TN | Free Estimates | Stellar Roofing",
   description: "Professional roof replacement in Nashville, TN. Lifetime warranty, free estimates, insurance claims help. Stellar Roofing & Restorations — call (629) 277-4249.",
-  alternates: { canonical: 'https://thestellarroofing.com/services/roof-replacement' },
+  alternates: { canonical: 'https://www.thestellarroofing.com/services/roof-replacement' },
 };
 
 const faqs = [
@@ -27,7 +27,7 @@ export default function RoofReplacementPage() {
   const svcSchema = serviceSchema({
     name: "Roof Replacement",
     description: "Professional roof replacement services in Nashville, TN and Middle Tennessee. Lifetime warranty, free estimates, insurance claims assistance.",
-    url: "https://thestellarroofing.com/services/roof-replacement",
+    url: "https://www.thestellarroofing.com/services/roof-replacement",
   });
   const faqSchemaData = faqSchema(faqs);
 
