@@ -31,8 +31,12 @@ export default function Footer() {
               <p className="text-white/70 text-sm mb-5">{config.business.tagline}</p>
 
               <p className="text-white/50 text-xs font-semibold uppercase tracking-wider mb-2">Nashville, TN</p>
-              <a href={`tel:${nashville.phoneRaw}`} className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm font-medium mb-4">
+              <a href={`tel:${nashville.phoneRaw}`} className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm font-medium mb-2">
                 <Phone size={14} /> {nashville.phone}
+              </a>
+              <a href={nashville.mapUrl} target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 text-white/80 hover:text-white transition-colors text-sm font-medium mb-4">
+                <MapPin size={14} className="mt-0.5 flex-shrink-0" />
+                <span>{nashville.address.street}<br />{nashville.address.city}, {nashville.address.state} {nashville.address.zip}</span>
               </a>
 
               <p className="text-white/50 text-xs font-semibold uppercase tracking-wider mb-2">Boise, ID</p>
@@ -128,9 +132,15 @@ export default function Footer() {
             <a href={`tel:${phoneRaw}`} className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm font-medium mb-2">
               <Phone size={15} /> {phone}
             </a>
-            <a href={`mailto:${email}`} className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm font-medium mb-4">
+            <a href={`mailto:${email}`} className="flex items-center gap-2 text-white/80 hover:text-white transition-colors text-sm font-medium mb-2">
               <Mail size={15} /> {email}
             </a>
+            {location.address && (
+              <a href={location.mapUrl} target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 text-white/80 hover:text-white transition-colors text-sm font-medium mb-4">
+                <MapPin size={15} className="mt-0.5 flex-shrink-0" />
+                <span>{location.address.street}<br />{location.address.city}, {location.address.state} {location.address.zip}</span>
+              </a>
+            )}
             {locationSlug === 'nashville' && location.mapEmbed && (
               <iframe
                 src={location.mapEmbed}

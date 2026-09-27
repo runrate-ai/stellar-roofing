@@ -111,7 +111,7 @@ export default function FunnelPage({ params }) {
                 <Phone size={24} fill="currentColor" /> {nashville.phone}
               </a>
               <p className="text-text-muted text-sm mt-1.5">
-                Open {nashville.hours.weekdays} Mon–Fri · Sat {nashville.hours.saturday}
+                {nashville.hours.summary}
               </p>
             </div>
 

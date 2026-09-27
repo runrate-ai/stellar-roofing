@@ -102,18 +102,8 @@ export default function ContactPage() {
                     <Clock className="text-primary" size={18} />
                   </div>
                   <div className="space-y-1 text-sm">
-                    <div className="flex gap-6">
-                      <span className="font-medium text-text-dark w-28">Mon – Fri</span>
-                      <span className="text-text-muted">{config.business.hours.weekdays}</span>
-                    </div>
-                    <div className="flex gap-6">
-                      <span className="font-medium text-text-dark w-28">Saturday</span>
-                      <span className="text-text-muted">{config.business.hours.saturday}</span>
-                    </div>
-                    <div className="flex gap-6">
-                      <span className="font-medium text-text-dark w-28">Sunday</span>
-                      <span className="text-text-muted">{config.business.hours.sunday}</span>
-                    </div>
+                    <p className="font-medium text-text-dark">{config.business.hours.summary}</p>
+                    <p className="text-text-muted">Call any time, including nights and weekends, for storm damage and active leaks.</p>
                   </div>
                 </div>
               </div>
