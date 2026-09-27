@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { CheckCircle2, Phone } from 'lucide-react';
 import Breadcrumbs from '../../../../components/Breadcrumbs';
 import CTABanner from '../../../../components/CTABanner';
@@ -121,6 +122,9 @@ export default function RoofRepairNashvillePage() {
             </div>
             <p className="text-text-muted text-xs mt-4">*Price ranges are estimates. Final cost depends on roof pitch, access, and materials. We provide free, written estimates before any work begins.</p>
           </div>
+          <p className="text-text-muted leading-relaxed">
+            What moves your price within these ranges, and when a repair stops making sense? Read our full <Link href="/nashville/blog/how-much-does-roof-repair-cost" className="font-semibold text-primary underline">roof repair cost guide</Link>.
+          </p>
         </div>
       </section>
 
