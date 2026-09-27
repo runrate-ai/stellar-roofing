@@ -8,7 +8,7 @@ export default function Breadcrumbs({ items }) {
   return (
     <>
       <SchemaMarkup schema={schema} />
-      <nav aria-label="Breadcrumb" className="py-3 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <nav aria-label="Breadcrumb" className="mt-[68px] md:mt-[78px] py-3 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <ol className="flex items-center gap-1 text-sm text-text-muted flex-wrap">
           {items.map((item, i) => (
             <li key={i} className="flex items-center gap-1">

@@ -51,7 +51,7 @@ export default function BoiseHubPage() {
       <SchemaMarkup schema={faqSchemaData} />
 
       {/* HERO */}
-      <section className="relative flex items-center justify-center" style={{ minHeight: 'calc(100vh - 44px)' }}>
+      <section className="relative flex items-center justify-center pt-28 pb-24 md:pt-32 md:pb-16" style={{ minHeight: 'calc(100vh - 44px)' }}>
         <Image src="/images/hero.jpg" alt="Boise roofing company - Stellar Roofing & Restorations" fill className="object-cover" priority quality={75} sizes="100vw" />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
