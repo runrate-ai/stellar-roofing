@@ -40,8 +40,9 @@ Uses the **current number (629) 277-4249** for now. The GHL number swap comes in
 - [ ] In GHL, build the workflow **"Contact Tag Added: ppc-lead"** → email + app notification to the owner, and create a task. *(Lead auto-text waits for A2P; see Priority 2.)* Claude supplies step-by-step instructions.
 
 **Step 4: test (together)**
-- [ ] Claude pushes the form live after your OK.
-- [ ] Submit one real test lead from a phone. Confirm it shows in GHL with the tag and fields, the owner gets notified, `/thank-you` loads, and Google Ads records a "PPC Funnel Lead".
+- [x] ✅ 2026-09-28 New form, offers, and price match pushed live on all 4 funnel pages (commit f94b25d); Token 2 added in Vercel.
+- [x] ✅ 2026-09-28 Live phone test lead reached GHL (tags, source, fields, note). gclid capture verified separately in the browser. Delete both `test`-tagged contacts in GHL.
+- [ ] Confirm Google Ads records a "PPC Funnel Lead" after the first real ad lead. Confirm it shows in GHL with the tag and fields, the owner gets notified, `/thank-you` loads, and Google Ads records a "PPC Funnel Lead".
 - [ ] Mark `generate_lead` as a key event in GA4.
 
 **Step 5: rebuild the campaign (Stellar team in Google Ads; Claude supplies exact settings)**
