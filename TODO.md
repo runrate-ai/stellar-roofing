@@ -17,7 +17,7 @@ Reference files: [CONTENT-PLAN.md](CONTENT-PLAN.md) · [KEYWORD-AUDIT.md](KEYWOR
 
 **Claude**
 - [ ] Check that Google has indexed the new blog posts and updated pages. If any are missing, list them so you can request indexing in Search Console. *(free)*
-- [ ] **PPC: fix lead tracking and diagnose why ads aren't converting.** See the PPC section below.
+- [ ] **PPC: fix the mobile lead form before any more ad spend.** See the PPC section and PPC-AUDIT.md.
 
 ## 📅 This month
 
@@ -51,7 +51,6 @@ Reference files: [CONTENT-PLAN.md](CONTENT-PLAN.md) · [KEYWORD-AUDIT.md](KEYWOR
 ## ❓ Decisions / answers needed from you
 
 - [ ] **Does Stellar do gutters?** If yes, a gutters page is worth it (Don Kennedy ranks #4–8; installation CPC $59).
-- [ ] **PPC: in the last month, did any leads from ads arrive in GHL, or by phone?**
 
 - [ ] **Boise:** hide from Google, drop from the sitemap, or leave as is? This affects the homepage title ("Nashville TN & Boise ID"), the nav, and the sitemap.
 - [ ] **Roof repair page promises:** can Stellar really deliver "same-week service" and "next day" response? If not, Claude softens them.
@@ -84,7 +83,12 @@ Reference files: [CONTENT-PLAN.md](CONTENT-PLAN.md) · [KEYWORD-AUDIT.md](KEYWOR
 
 **Findings 2026-09-28 (GA4, last ~30 days):** 110 paid sessions (98 people). **Zero `/thank-you` page views and zero GA4 key events**, so either no one finished the form, or the finishes aren't recorded. About 95 of ~110 paid visitors landed on the root funnel page; the service pages got 2–9 each. The form loads in a real browser (step 1 of 4). Phone calls from ads aren't tracked at all.
 
-- [ ] Confirm whether any ad leads reached GHL or came in by phone (answer above).
+- [x] ✅ 2026-09-28 Confirmed: **zero leads** from $1,821.51 / 212 clicks (Aug 12 – Sep 19). Full audit in [PPC-AUDIT.md](PPC-AUDIT.md).
+- [ ] **Keep ads paused** until the form fix and test lead are done (most ad groups are already paused).
+- [ ] Claude: switch the funnel back to the in-repo 3-step form (no iframe) and put it high on mobile. Needs `GHL_WEBHOOK_URL` confirmed in Vercel.
+- [ ] Check GHL for a lead around the one "conversion" Google Ads recorded (search: roofing companies murfreesboro tn).
+- [ ] Campaign rebuild in Google Ads: presence-only Nashville locations, English only, no broad match, pause "residential roofing companies", 4 tight ad groups → matching funnel pages, add the negative keyword list (PPC-AUDIT.md).
+- [ ] Relaunch at ~$40–50/day; review the search terms report every 2–3 days for 2 weeks.
 - [ ] Submit one real test lead end to end, and watch for `/thank-you` in GA4 Realtime and "PPC Funnel Lead" in Google Ads.
 - [ ] Add call tracking (Google Ads call assets / call-from-website conversion). Roofing ads convert heavily by phone.
 - [ ] Mark `generate_lead` as a key event in GA4 (current key events are close_convert_lead, qualify_lead, purchase).
