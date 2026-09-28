@@ -10,7 +10,7 @@ import FunnelFooter from '../../../components/funnel/FunnelFooter';
 import FunnelForm from '../../../components/funnel/FunnelForm';
 import CallLink from '../../../components/funnel/CallLink';
 import TrustRow from '../../../components/funnel/TrustRow';
-import ProjectGallery from '../../../components/funnel/ProjectGallery';
+import { ProjectGalleryEmbed, ProjectMapEmbed } from '../../../components/TrustyEmbed';
 import config from '../../../lib/config';
 import { funnels, funnelSlugs, getFunnel } from '../../../lib/funnels';
 import allReviews from '../../../client-data/reviews/reviews.json';
@@ -247,8 +247,23 @@ export default function FunnelPage({ params }) {
         </div>
       </section>
 
-      {/* ── COMPLETED JOBS (hidden until real photos added) ─── */}
-      <ProjectGallery />
+      {/* ── COMPLETED JOBS: real Stellar projects from Trusty ── */}
+      <section className="bg-bg-alt py-14 lg:py-18 px-4">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl lg:text-4xl font-extrabold text-primary text-center mb-3">
+            Recent Roofs We&apos;ve Completed
+          </h2>
+          <p className="text-text-muted text-lg text-center mb-10 max-w-2xl mx-auto">
+            Real homes, real crews, right here in Middle Tennessee.
+          </p>
+          <ProjectGalleryEmbed src={nashville.projectGalleryEmbed} />
+          {/* Desktop only: on phones a map grabs touch scrolling. */}
+          <div className="hidden md:block mt-10">
+            <h3 className="text-2xl font-bold text-primary mb-4 text-center">Where We&apos;ve Been Working</h3>
+            <ProjectMapEmbed src={nashville.projectMapEmbed} className="h-[480px]" />
+          </div>
+        </div>
+      </section>
 
       {/* ── SOCIAL PROOF (real reviews only) ────────────────── */}
       {reviews.length > 0 && (
