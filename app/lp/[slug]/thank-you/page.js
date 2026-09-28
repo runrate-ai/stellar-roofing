@@ -84,8 +84,8 @@ export default function FunnelThankYouPage({ params }) {
             <h3 className="font-bold text-primary mb-1.5">Bring your other quotes</h3>
             <p className="text-text-muted text-sm leading-relaxed">
               Have a comparable written estimate from another licensed contractor?
-              Bring it to your appointment and we&apos;ll beat it — with the lifetime
-              warranty still included.
+              Bring it to your appointment and we&apos;ll match it, apples to apples,
+              with the lifetime warranty still included.
             </p>
           </div>
 
