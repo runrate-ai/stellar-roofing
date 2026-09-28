@@ -26,6 +26,15 @@ Uses the **current number (629) 277-4249** for now. The GHL number swap comes in
 - [ ] Track taps on the phone button as a conversion.
 - [ ] Show it on a local preview (phone size) for approval before anything goes live.
 
+**Step 2b: offer + booking (Claude, waiting on inputs)**
+- [x] ✅ 2026-09-28 Price "beat" → price **match**, apples to apples, on all funnel pages.
+- [x] ✅ 2026-09-28 Native form built and tested end to end locally (test contact "TEST Claude Funnel Check", tagged `test`; Brandon to delete it in GHL).
+- [ ] Restack offers per page: replacement = free gutters + dog-pampering install day + price match; general = price match + free inspection with the perks as backup; repair = free inspection/honest repair; storm = no perks until legal check.
+- [ ] Add real testimonials: text only, first name + last initial + area, no stock photos. **Needs: Brandon sends the testimonials.**
+- [ ] Dog perk terms. **Needs: groomer partner (or TBD), value cap, pickup/drop-off yes/no, replacements only.**
+- [ ] Booking calendar on the thank-you pages. **Needs: a "Free Roof Inspection" GHL calendar + `calendars.readonly` on Token 1.**
+- [ ] Legal: can free gutters or dog perks be offered on insurance-paid replacements in TN? Until confirmed, fine print says the offers apply to retail (non-insurance) replacements.
+
 **Step 3: connect it (Stellar team)**
 - [ ] Create **Token 2** ("Website – PPC Lead Form (Vercel)": contacts.write + contacts.readonly) and add it in Vercel → Settings → Environment Variables as `GHL_API_TOKEN` and `GHL_LOCATION_ID` (Production).
 - [ ] In GHL, build the workflow **"Contact Tag Added: ppc-lead"** → email + app notification to the owner, and create a task. *(Lead auto-text waits for A2P; see Priority 2.)* Claude supplies step-by-step instructions.
