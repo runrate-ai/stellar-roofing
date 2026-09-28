@@ -2,9 +2,9 @@
 
 The one list for SEO and website work. Update it as things get done, adding ✅ and the date. PPC funnel items live in [TOMORROW.md](TOMORROW.md) (summary at the bottom).
 
-**Last updated:** 2026-09-27
+**Last updated:** 2026-09-28
 
-Reference files: [KEYWORD-AUDIT.md](KEYWORD-AUDIT.md) · [LOCAL-SEO-AUDIT.md](LOCAL-SEO-AUDIT.md) · [LINK-PROSPECTS.md](LINK-PROSPECTS.md) · [BLOG_CONFIG.md](BLOG_CONFIG.md) · [SEO-MERGE-AUDIT.md](SEO-MERGE-AUDIT.md)
+Reference files: [CONTENT-PLAN.md](CONTENT-PLAN.md) · [KEYWORD-AUDIT.md](KEYWORD-AUDIT.md) · [LOCAL-SEO-AUDIT.md](LOCAL-SEO-AUDIT.md) · [LINK-PROSPECTS.md](LINK-PROSPECTS.md) · [BLOG_CONFIG.md](BLOG_CONFIG.md) · [SEO-MERGE-AUDIT.md](SEO-MERGE-AUDIT.md)
 
 ---
 
@@ -17,7 +17,7 @@ Reference files: [KEYWORD-AUDIT.md](KEYWORD-AUDIT.md) · [LOCAL-SEO-AUDIT.md](LO
 
 **Claude**
 - [ ] Check that Google has indexed the new blog posts and updated pages. If any are missing, list them so you can request indexing in Search Console. *(free)*
-- [ ] Keyword research: find what Stellar can realistically rank for, and turn it into a content plan. *(proposed 2026-09-27; waiting on go-ahead)*
+- [ ] **PPC: fix lead tracking and diagnose why ads aren't converting.** See the PPC section below.
 
 ## 📅 This month
 
@@ -28,12 +28,11 @@ Reference files: [KEYWORD-AUDIT.md](KEYWORD-AUDIT.md) · [LOCAL-SEO-AUDIT.md](LO
 - [ ] Check that Google approved the Business Profile category and service changes; they weren't showing on 2026-09-27.
 
 **Claude**
-- [ ] Blog post #2: Best roofing shingles, Owens Corning vs. GAF.
-- [ ] Blog post #3: How much does a roof inspection cost? (Stellar's are free)
-- [ ] Blog post #4: Roof leaking? What to do right now, and how to find the leak.
-- [ ] Blog post #5: Class 4 impact-resistant shingles: are they worth it?
-- [ ] Update the metal post to also target "metal roof cost" (14,800 searches/mo).
-- [ ] Expand the city pages using the Brentwood template: Murfreesboro, then Franklin, then Clarksville.
+*Build order from CONTENT-PLAN.md:*
+- [ ] Weeks 1–2: city pages for Hendersonville, Murfreesboro, and Franklin (Brentwood template); upgrade the commercial roofing page ("commercial roofers nashville" cluster, KD 0).
+- [ ] Weeks 3–4: city pages for Clarksville and Gallatin; storm damage and emergency page upgrades; new Goodlettsville page.
+- [ ] Weeks 5–6: blog posts on Owens Corning Duration (18,100/mo) and GAF Timberline HDZ (9,900/mo), plus the Owens Corning vs. GAF post; update the metal post for "metal roof cost" (14,800/mo).
+- [ ] Weeks 7–8: blog posts on roof inspection cost, roof leaking / finding a leak, and Class 4 shingles; add a flashing section to the repair page.
 - [ ] Set up rank tracking for about 25 money keywords (price-check the credits first).
 
 ## 🗓️ Next month
@@ -46,10 +45,13 @@ Reference files: [KEYWORD-AUDIT.md](KEYWORD-AUDIT.md) · [LOCAL-SEO-AUDIT.md](LO
 **Claude**
 - [ ] Site audit crawl for technical issues (price-check the credits first).
 - [ ] Search Console near-miss queries: once a few weeks of www data exist (about late October), find pages ranking #5–20 and improve them.
-- [ ] Add a roof flashing repair section to the repair page (2,900 searches/mo).
+- [ ] Roofing-basics blog cluster, 1–2 a week (drip edge, ice & water shield, underlayment, roof boot, step flashing, and so on; see CONTENT-PLAN.md).
 - [ ] Commercial roofing content: TPO vs. EPDM, and commercial roof types.
 
 ## ❓ Decisions / answers needed from you
+
+- [ ] **Does Stellar do gutters?** If yes, a gutters page is worth it (Don Kennedy ranks #4–8; installation CPC $59).
+- [ ] **PPC: in the last month, did any leads from ads arrive in GHL, or by phone?**
 
 - [ ] **Boise:** hide from Google, drop from the sitemap, or leave as is? This affects the homepage title ("Nashville TN & Boise ID"), the nav, and the sitemap.
 - [ ] **Roof repair page promises:** can Stellar really deliver "same-week service" and "next day" response? If not, Claude softens them.
@@ -80,6 +82,15 @@ Reference files: [KEYWORD-AUDIT.md](KEYWORD-AUDIT.md) · [LOCAL-SEO-AUDIT.md](LO
 
 ## PPC funnel (from TOMORROW.md)
 
+**Findings 2026-09-28 (GA4, last ~30 days):** 110 paid sessions (98 people). **Zero `/thank-you` page views and zero GA4 key events**, so either no one finished the form, or the finishes aren't recorded. About 95 of ~110 paid visitors landed on the root funnel page; the service pages got 2–9 each. The form loads in a real browser (step 1 of 4). Phone calls from ads aren't tracked at all.
+
+- [ ] Confirm whether any ad leads reached GHL or came in by phone (answer above).
+- [ ] Submit one real test lead end to end, and watch for `/thank-you` in GA4 Realtime and "PPC Funnel Lead" in Google Ads.
+- [ ] Add call tracking (Google Ads call assets / call-from-website conversion). Roofing ads convert heavily by phone.
+- [ ] Mark `generate_lead` as a key event in GA4 (current key events are close_convert_lead, qualify_lead, purchase).
+- [ ] Link Google Ads ↔ GA4 so campaign names show up in GA4 (currently missing).
+- [ ] Move the form off the `vibepreview.com` preview host to a permanent GHL form URL.
+
 - [ ] Submit one real test lead and confirm "PPC Funnel Lead" flips to Active in Google Ads.
 - [ ] Each ad group's Final URL points at its own funnel page.
 - [ ] Negative keywords (auto hail terms, jobs, DIY, and so on).
@@ -103,3 +114,7 @@ Reference files: [KEYWORD-AUDIT.md](KEYWORD-AUDIT.md) · [LOCAL-SEO-AUDIT.md](LO
 - Mobile fix: hero headlines and breadcrumbs no longer hide behind the navbar.
 - BLOG_CONFIG.md set up; blog post: roof repair cost (live), linked from the roof repair page.
 - Link prospecting research (LINK-PROSPECTS.md).
+
+**2026-09-28**
+- Running TODO list created.
+- Keyword research and content plan (CONTENT-PLAN.md).
