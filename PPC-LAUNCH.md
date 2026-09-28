@@ -33,7 +33,7 @@ Rebuild into 4 ad groups. **Phrase match ("…") and exact match ([…]) only; n
 [roof leak repair near me]
 "roof repair nashville"
 "emergency roof repair"
-"roof leak" "near me"
+"roof leak near me"
 "roofer for leak"
 "fix roof leak"
 "roof repair company"
