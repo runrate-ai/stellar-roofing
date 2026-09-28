@@ -29,9 +29,9 @@ Uses the **current number (629) 277-4249** for now. The GHL number swap comes in
 **Step 2b: offer + booking (Claude, waiting on inputs)**
 - [x] ✅ 2026-09-28 Price "beat" → price **match**, apples to apples, on all funnel pages.
 - [x] ✅ 2026-09-28 Native form built and tested end to end locally (test contact "TEST Claude Funnel Check", tagged `test`; Brandon to delete it in GHL).
-- [ ] Restack offers per page: replacement = free gutters + dog-pampering install day + price match; general = price match + free inspection with the perks as backup; repair = free inspection/honest repair; storm = no perks until legal check.
-- [ ] Add real testimonials: text only, first name + last initial + area, no stock photos. **Needs: Brandon sends the testimonials.**
-- [ ] Dog perk terms. **Needs: groomer partner (or TBD), value cap, pickup/drop-off yes/no, replacements only.**
+- [x] ✅ 2026-09-28 Restack offers per page: replacement = free gutters + dog-pampering install day + price match; general = price match + free inspection with the perks as backup; repair = free inspection/honest repair; storm = no perks until legal check.
+- [x] ✅ 2026-09-28 Testimonials: left off for now (2 of 3 supplied reviews were by Stellar team members). Add real Google reviews as they come in.
+- [x] ✅ 2026-09-28 Dog perk: Dog Oasis (Goodlettsville), daycare + bath, up to $75, owner drops off/picks up, retail replacements only.
 - [ ] Booking calendar on the thank-you pages. **Needs: a "Free Roof Inspection" GHL calendar + `calendars.readonly` on Token 1.**
 - [ ] Legal: can free gutters or dog perks be offered on insurance-paid replacements in TN? Until confirmed, fine print says the offers apply to retail (non-insurance) replacements.
 
