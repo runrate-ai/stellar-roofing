@@ -1,19 +1,27 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
-import { useRouter } from 'next/navigation';
 import { Home, Wrench, CloudLightning, HelpCircle, ArrowLeft, Phone, Loader2, ShieldCheck } from 'lucide-react';
 import config from '../../lib/config';
+import { DEFAULT_FUNNEL_SLUG } from '../../lib/funnels';
+import { pushDataLayer } from './tracking';
 
 const nashville = config.locations.nashville;
 
+// Values must match the GHL "Project Type" and "Project Urgency" option lists
+// (checked again server-side in /api/funnel-lead).
 const PROJECT_TYPES = [
   { value: 'Roof Replacement', label: 'Roof Replacement', hint: 'Full new roof', Icon: Home },
   { value: 'Roof Repair', label: 'Roof Repair', hint: 'Leak or damage', Icon: Wrench },
   { value: 'Storm Damage', label: 'Storm Damage', hint: 'Hail or wind', Icon: CloudLightning },
-  { value: 'Not Sure', label: "I'm Not Sure", hint: 'Need an expert look', Icon: HelpCircle },
+  { value: "I'm Not Sure", label: "I'm Not Sure", hint: 'Need an expert look', Icon: HelpCircle },
 ];
 
-const TIMELINES = ['As soon as possible', 'Within 1–3 months', 'Just getting pricing'];
+const TIMELINES = [
+  { value: 'As soon as possible — Emergency', label: 'As soon as possible' },
+  { value: 'Within 1 month', label: 'Within a month' },
+  { value: 'Within 1–3 months', label: 'In 1–3 months' },
+  { value: 'Just getting pricing / Planning ahead', label: 'Just getting pricing' },
+];
 
 const ATTRIBUTION_KEYS = [
   'gclid', 'wbraid', 'gbraid',
@@ -22,25 +30,27 @@ const ATTRIBUTION_KEYS = [
 
 const TOTAL_STEPS = 3;
 
-function pushDataLayer(event, data = {}) {
-  if (typeof window === 'undefined') return;
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({ event, ...data });
+// The subdomain serves funnels at /<slug> (the default at /), while the main
+// domain serves them at /lp/<slug>. Send the visitor to the matching thank-you
+// page, which fires the generate_lead conversion.
+function thankYouPath(slug) {
+  if (window.location.pathname.startsWith('/lp/')) return `/lp/${slug}/thank-you`;
+  return slug === DEFAULT_FUNNEL_SLUG ? '/thank-you' : `/${slug}/thank-you`;
 }
 
-export default function FunnelForm({ id = 'quote-form', compact = false }) {
-  const router = useRouter();
+export default function FunnelForm({ id = 'quote-form', funnelSlug, heading, submitLabel }) {
   const [step, setStep] = useState(1);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [fields, setFields] = useState({
-    projectType: '', timeline: '', address: '', zip: '', name: '', phone: '', email: '',
+    projectType: '', timeline: '', address: '', zip: '', name: '', phone: '', email: '', company: '',
   });
   const attribution = useRef({});
   const startedRef = useRef(false);
+  const rootRef = useRef(null);
 
-  // Capture Google Ads click IDs and UTMs once on mount. These live only in the
-  // landing URL, so if we don't grab them here they're gone by submit time.
+  // Google Ads click IDs and UTMs live only in the landing URL; grab them on
+  // mount or they're gone by submit time.
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const captured = {};
@@ -48,11 +58,7 @@ export default function FunnelForm({ id = 'quote-form', compact = false }) {
       const value = params.get(key);
       if (value) captured[key] = value;
     });
-    attribution.current = {
-      ...captured,
-      landingPage: window.location.href,
-      referrer: document.referrer || '',
-    };
+    attribution.current = { ...captured, landingPage: window.location.href };
   }, []);
 
   const set = (key, value) => {
@@ -60,16 +66,18 @@ export default function FunnelForm({ id = 'quote-form', compact = false }) {
     setError('');
     if (!startedRef.current) {
       startedRef.current = true;
-      pushDataLayer('funnel_form_start');
+      pushDataLayer('funnel_form_start', { funnel_slug: funnelSlug });
     }
   };
 
   const goToStep = next => {
     setStep(next);
     setError('');
-    pushDataLayer('funnel_form_step', { funnel_step: next });
-    // Keep the form in view on mobile, where steps can shift page height.
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    pushDataLayer('funnel_form_step', { funnel_slug: funnelSlug, funnel_step: next });
+    // Only scroll when the top of the form has left the screen; otherwise the
+    // page jumps on every step.
+    const top = rootRef.current?.getBoundingClientRect().top ?? 0;
+    if (top < 0) rootRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const selectProject = value => {
@@ -79,7 +87,7 @@ export default function FunnelForm({ id = 'quote-form', compact = false }) {
 
   const handleStep2 = e => {
     e.preventDefault();
-    if (!fields.zip.trim()) return setError('Please enter your ZIP code.');
+    if (fields.zip.length !== 5) return setError('Please enter your 5-digit ZIP code.');
     goToStep(3);
   };
 
@@ -96,23 +104,16 @@ export default function FunnelForm({ id = 'quote-form', compact = false }) {
       const res = await fetch('/api/funnel-lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...fields, ...attribution.current }),
+        body: JSON.stringify({ ...fields, ...attribution.current, funnelSlug }),
       });
       const data = await res.json().catch(() => ({}));
-
-      if (!res.ok || !data.ok) {
-        setSubmitting(false);
-        setError(`Something went wrong on our end. Please call us at ${nashville.phone} and we'll take care of you right away.`);
-        return;
-      }
-
-      pushDataLayer('generate_lead', {
-        funnel_project_type: fields.projectType,
-        funnel_timeline: fields.timeline,
-      });
-      router.push('/lp/nashville-roofing/thank-you');
+      if (!res.ok || !data.ok) throw new Error('lead not accepted');
+      // The thank-you page fires generate_lead, so the conversion counts once
+      // whether a visitor submits here or lands there another way.
+      window.location.assign(thankYouPath(funnelSlug));
     } catch {
       setSubmitting(false);
+      pushDataLayer('funnel_form_error', { funnel_slug: funnelSlug });
       setError(`Something went wrong on our end. Please call us at ${nashville.phone} and we'll take care of you right away.`);
     }
   };
@@ -120,31 +121,25 @@ export default function FunnelForm({ id = 'quote-form', compact = false }) {
   const inputClass =
     'w-full rounded-lg border-2 border-slate-200 px-4 py-3.5 text-text-dark text-base placeholder:text-slate-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition';
   const labelClass = 'block text-sm font-semibold text-text-dark mb-1.5';
+  const backClass = 'mt-3 w-full flex items-center justify-center gap-1.5 text-text-muted hover:text-primary text-sm font-semibold transition';
 
   return (
     <div
       id={id}
+      ref={rootRef}
       className="scroll-mt-24 bg-white rounded-2xl shadow-2xl ring-1 ring-black/5 overflow-hidden"
     >
-      {/* Header */}
-      <div className="bg-primary px-6 py-5 text-center">
-        <p className="text-white font-extrabold text-xl leading-tight">
-          {compact ? 'Claim Your Free Gutters' : 'Get Your Free Estimate + Free Gutters'}
-        </p>
-        <p className="text-white/70 text-sm mt-1">
-          Takes about 30 seconds — no obligation
-        </p>
+      <div className="bg-primary px-6 py-4 text-center">
+        <p className="text-white font-extrabold text-xl leading-tight">{heading || 'Get Your Free Roof Inspection'}</p>
+        <p className="text-white/70 text-sm mt-1">3 quick steps · no obligation</p>
       </div>
 
-      {/* Progress */}
       <div className="px-6 pt-5">
         <div className="flex items-center justify-between mb-2">
           <span className="text-xs font-bold uppercase tracking-wider text-text-muted">
             Step {step} of {TOTAL_STEPS}
           </span>
-          <span className="text-xs font-bold text-primary">
-            {Math.round((step / TOTAL_STEPS) * 100)}%
-          </span>
+          <span className="text-xs font-bold text-primary">{Math.round((step / TOTAL_STEPS) * 100)}%</span>
         </div>
         <div className="h-2 w-full rounded-full bg-slate-100 overflow-hidden">
           <div
@@ -155,11 +150,11 @@ export default function FunnelForm({ id = 'quote-form', compact = false }) {
       </div>
 
       <div className="px-6 py-6">
-        {/* STEP 1 — project type */}
+        {/* STEP 1: project type. Tapping a card advances; no Continue button to hunt for. */}
         {step === 1 && (
           <div>
             <h3 className="text-lg font-bold text-text-dark mb-1">What do you need help with?</h3>
-            <p className="text-text-muted text-sm mb-5">Choose one to get started.</p>
+            <p className="text-text-muted text-sm mb-5">Tap one to get started.</p>
             <div className="grid grid-cols-2 gap-3">
               {PROJECT_TYPES.map(({ value, label, hint, Icon }) => (
                 <button
@@ -177,72 +172,75 @@ export default function FunnelForm({ id = 'quote-form', compact = false }) {
           </div>
         )}
 
-        {/* STEP 2 — property */}
+        {/* STEP 2: property */}
         {step === 2 && (
-          <form onSubmit={handleStep2}>
+          <form onSubmit={handleStep2} noValidate>
             <h3 className="text-lg font-bold text-text-dark mb-1">Where is the property?</h3>
             <p className="text-text-muted text-sm mb-5">So we can confirm we service your area.</p>
 
             <div className="mb-4">
-              <label className={labelClass} htmlFor="lp-address">Street address <span className="font-normal text-text-muted">(optional)</span></label>
+              <label className={labelClass} htmlFor={`${id}-zip`}>ZIP code</label>
               <input
-                id="lp-address" type="text" autoComplete="street-address" className={inputClass}
+                id={`${id}-zip`} type="text" inputMode="numeric" autoComplete="postal-code" required
+                className={inputClass} placeholder="37072" maxLength={5}
+                value={fields.zip}
+                onChange={e => set('zip', e.target.value.replace(/\D/g, ''))}
+              />
+            </div>
+
+            <div className="mb-4">
+              <label className={labelClass} htmlFor={`${id}-address`}>
+                Street address <span className="font-normal text-text-muted">(optional)</span>
+              </label>
+              <input
+                id={`${id}-address`} type="text" autoComplete="street-address" className={inputClass}
                 placeholder="123 Main St"
                 value={fields.address}
                 onChange={e => set('address', e.target.value)}
               />
             </div>
 
-            <div className="mb-4">
-              <label className={labelClass} htmlFor="lp-zip">ZIP code</label>
-              <input
-                id="lp-zip" type="text" inputMode="numeric" autoComplete="postal-code" required
-                className={inputClass} placeholder="37203" maxLength={5}
-                value={fields.zip}
-                onChange={e => set('zip', e.target.value.replace(/\D/g, ''))}
-              />
-            </div>
-
             <div className="mb-5">
-              <span className={labelClass}>How soon do you need this done?</span>
-              <div className="space-y-2">
+              <span className={labelClass}>How soon do you need it? <span className="font-normal text-text-muted">(optional)</span></span>
+              <div className="grid grid-cols-2 gap-2">
                 {TIMELINES.map(option => (
                   <button
-                    key={option} type="button"
-                    onClick={() => set('timeline', option)}
-                    className={`w-full text-left rounded-lg border-2 px-4 py-3 text-sm font-semibold transition ${
-                      fields.timeline === option
+                    key={option.value} type="button"
+                    onClick={() => set('timeline', fields.timeline === option.value ? '' : option.value)}
+                    aria-pressed={fields.timeline === option.value}
+                    className={`text-left rounded-lg border-2 px-3 py-2.5 text-sm font-semibold transition ${
+                      fields.timeline === option.value
                         ? 'border-primary bg-primary/5 text-primary'
                         : 'border-slate-200 text-text-dark hover:border-primary/50'
                     }`}
                   >
-                    {option}
+                    {option.label}
                   </button>
                 ))}
               </div>
             </div>
 
-            {error && <p className="text-red-600 text-sm font-semibold mb-3">{error}</p>}
+            {error && <p className="text-red-600 text-sm font-semibold mb-3" role="alert">{error}</p>}
 
             <button type="submit" className="w-full rounded-lg bg-cta hover:bg-cta-hover text-primary font-extrabold text-lg py-4 transition shadow-lg">
               Continue →
             </button>
-            <button type="button" onClick={() => goToStep(1)} className="mt-3 w-full flex items-center justify-center gap-1.5 text-text-muted hover:text-primary text-sm font-semibold transition">
+            <button type="button" onClick={() => goToStep(1)} className={backClass}>
               <ArrowLeft size={14} /> Back
             </button>
           </form>
         )}
 
-        {/* STEP 3 — contact */}
+        {/* STEP 3: contact */}
         {step === 3 && (
-          <form onSubmit={handleSubmit}>
-            <h3 className="text-lg font-bold text-text-dark mb-1">Where should we send your estimate?</h3>
-            <p className="text-text-muted text-sm mb-5">We'll reach out within 1 business day.</p>
+          <form onSubmit={handleSubmit} noValidate>
+            <h3 className="text-lg font-bold text-text-dark mb-1">Who should we contact?</h3>
+            <p className="text-text-muted text-sm mb-5">We&apos;ll reach out to schedule your free inspection.</p>
 
             <div className="mb-4">
-              <label className={labelClass} htmlFor="lp-name">Full name</label>
+              <label className={labelClass} htmlFor={`${id}-name`}>Full name</label>
               <input
-                id="lp-name" type="text" autoComplete="name" required className={inputClass}
+                id={`${id}-name`} type="text" autoComplete="name" required className={inputClass}
                 placeholder="Jane Smith"
                 value={fields.name}
                 onChange={e => set('name', e.target.value)}
@@ -250,29 +248,45 @@ export default function FunnelForm({ id = 'quote-form', compact = false }) {
             </div>
 
             <div className="mb-4">
-              <label className={labelClass} htmlFor="lp-phone">Phone number</label>
+              <label className={labelClass} htmlFor={`${id}-phone`}>Phone number</label>
               <input
-                id="lp-phone" type="tel" autoComplete="tel" required className={inputClass}
-                placeholder="(629) 555-0123"
+                id={`${id}-phone`} type="tel" autoComplete="tel" required className={inputClass}
+                placeholder="(615) 555-0123"
                 value={fields.phone}
                 onChange={e => set('phone', e.target.value)}
               />
             </div>
 
             <div className="mb-5">
-              <label className={labelClass} htmlFor="lp-email">Email <span className="font-normal text-text-muted">(optional)</span></label>
+              <label className={labelClass} htmlFor={`${id}-email`}>
+                Email <span className="font-normal text-text-muted">(optional)</span>
+              </label>
               <input
-                id="lp-email" type="email" autoComplete="email" className={inputClass}
+                id={`${id}-email`} type="email" autoComplete="email" className={inputClass}
                 placeholder="jane@example.com"
                 value={fields.email}
                 onChange={e => set('email', e.target.value)}
               />
             </div>
 
+            {/* Honeypot: hidden from people, filled by bots. */}
+            <div aria-hidden="true" className="absolute left-[-9999px] w-px h-px overflow-hidden">
+              <label htmlFor={`${id}-company`}>Company</label>
+              <input
+                id={`${id}-company`} type="text" tabIndex={-1} autoComplete="off"
+                value={fields.company}
+                onChange={e => setFields(prev => ({ ...prev, company: e.target.value }))}
+              />
+            </div>
+
             {error && (
-              <div className="mb-4 rounded-lg bg-red-50 border border-red-200 px-4 py-3">
+              <div className="mb-4 rounded-lg bg-red-50 border border-red-200 px-4 py-3" role="alert">
                 <p className="text-red-700 text-sm font-semibold">{error}</p>
-                <a href={`tel:${nashville.phoneRaw}`} className="mt-2 inline-flex items-center gap-1.5 text-red-700 font-bold underline">
+                <a
+                  href={`tel:${nashville.phoneRaw}`}
+                  onClick={() => pushDataLayer('phone_call_click', { funnel_slug: funnelSlug, click_location: 'form_error' })}
+                  className="mt-2 inline-flex items-center gap-1.5 text-red-700 font-bold underline"
+                >
                   <Phone size={14} /> {nashville.phone}
                 </a>
               </div>
@@ -282,20 +296,18 @@ export default function FunnelForm({ id = 'quote-form', compact = false }) {
               type="submit" disabled={submitting}
               className="w-full rounded-lg bg-cta hover:bg-cta-hover disabled:opacity-70 disabled:cursor-not-allowed text-primary font-extrabold text-lg py-4 transition shadow-lg flex items-center justify-center gap-2"
             >
-              {submitting ? (<><Loader2 size={20} className="animate-spin" /> Sending…</>) : 'Claim My Free Gutters'}
+              {submitting ? (<><Loader2 size={20} className="animate-spin" /> Sending…</>) : (submitLabel || 'Get My Free Inspection')}
             </button>
-
-            <button type="button" onClick={() => goToStep(2)} className="mt-3 w-full flex items-center justify-center gap-1.5 text-text-muted hover:text-primary text-sm font-semibold transition">
+            <button type="button" onClick={() => goToStep(2)} className={backClass}>
               <ArrowLeft size={14} /> Back
             </button>
           </form>
         )}
       </div>
 
-      {/* Reassurance */}
       <div className="border-t border-slate-100 px-6 py-4 flex items-center justify-center gap-2 text-text-muted">
         <ShieldCheck size={15} className="text-primary flex-shrink-0" />
-        <span className="text-xs">Your info is secure. No spam, no pushy sales calls.</span>
+        <span className="text-xs">Your info stays with Stellar Roofing. No spam.</span>
       </div>
     </div>
   );

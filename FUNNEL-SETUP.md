@@ -86,38 +86,30 @@ and `gclid` survives. Unknown slugs 404 rather than serving a blank page.
 
 ## 2. The lead form
 
-The form is **hosted by GHL** and embedded via iframe from
-`roofing-quo-882c305e.vibepreview.com`
-([`components/funnel/EmbeddedForm.jsx`](components/funnel/EmbeddedForm.jsx)).
-GHL captures leads directly — no webhook in the path.
+Since 2026-09-28 the form is the site's own 3-step form
+([`components/funnel/FunnelForm.jsx`](components/funnel/FunnelForm.jsx)), not
+the GHL AI Studio iframe it replaced. The iframe scrolled inside a fixed box on
+phones, and $1,821 of ad spend produced no CRM leads (see PPC-AUDIT.md).
 
-### ⚠️ Required: map the attribution params in GHL
+How a lead flows:
+1. The form captures `gclid`, `wbraid`, `gbraid`, and the UTMs from the landing
+   URL on load, then collects project type, ZIP (+ optional address and
+   timeline), name, phone, and optional email.
+2. It posts to `/api/funnel-lead`, which upserts the GHL contact through the
+   GHL API: tag `ppc-lead` plus `ppc-<slug>`, source `PPC Funnel – <ad group>`,
+   custom fields Project Type, Project Urgency, Google Click ID, wbraid,
+   gbraid, utm_*, and Landing Page, and a summary note.
+3. On success the visitor lands on the thank-you page, which fires
+   `generate_lead`. On failure the form shows the phone number instead.
 
-A cross-origin iframe can't read the parent page's URL, so `EmbeddedForm`
-forwards these to the iframe as query params:
+**Required env vars** (Vercel → Settings → Environment Variables, Production):
+`GHL_API_TOKEN` (Private Integration "Website – PPC Lead Form (Vercel)", scopes
+contacts.write + contacts.readonly) and `GHL_LOCATION_ID`.
 
-`gclid`, `wbraid`, `gbraid`, `utm_source`, `utm_medium`, `utm_campaign`,
-`utm_term`, `utm_content`
+Notifications are a GHL workflow triggered by "Contact Tag Added: ppc-lead".
 
-**GHL must map them to hidden fields or attribution stops here.** Add custom
-fields on the form and set each to populate from the matching URL parameter.
-Without `gclid` you can see that leads arrived but not which keyword or ad
-produced them.
-
-Test: load `get.thestellarroofing.com/?gclid=TEST123` and confirm the value
-lands on the submitted contact record.
-
-### ⚠️ Confirm the embed URL is permanent
-
-Rendering is **confirmed working** (verified in-browser 2026-08-09).
-
-Still open: `vibepreview.com` looks like a preview domain. If it's temporary or
-gets recycled, the live funnel silently loses its form on every variation.
-Move it to a stable domain before spend starts.
-
-`components/funnel/FunnelForm.jsx` and `app/api/funnel-lead/` are the previous
-in-repo form and its GHL webhook endpoint. Both are unused but retained as a
-fallback.
+Test: load `get.thestellarroofing.com/?gclid=TEST123`, submit, and confirm the
+contact in GHL has the tag, Google Click ID = TEST123, and the note.
 
 ---
 

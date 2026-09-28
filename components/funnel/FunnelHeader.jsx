@@ -1,12 +1,13 @@
 import Image from 'next/image';
 import { Phone } from 'lucide-react';
 import config from '../../lib/config';
+import CallLink from './CallLink';
 
 const nashville = config.locations.nashville;
 
 // Deliberately not a <nav>. The only outbound action is the phone number —
 // every other link would be a leak on paid traffic.
-export default function FunnelHeader() {
+export default function FunnelHeader({ funnelSlug }) {
   return (
     <header className="sticky top-0 z-50 bg-primary shadow-lg">
       <div className="max-w-6xl mx-auto px-4 h-[72px] md:h-[84px] flex items-center justify-between">
@@ -24,16 +25,18 @@ export default function FunnelHeader() {
             <p className="text-white/60 text-[11px] font-semibold uppercase tracking-wider">
               Call for fastest service
             </p>
-            <a href={`tel:${nashville.phoneRaw}`} className="text-white font-extrabold text-lg hover:text-white/80 transition-colors">
+            <CallLink phoneRaw={nashville.phoneRaw} funnelSlug={funnelSlug} location="header" className="text-white font-extrabold text-lg hover:text-white/80 transition-colors">
               {nashville.phone}
-            </a>
+            </CallLink>
           </div>
-          <a
-            href={`tel:${nashville.phoneRaw}`}
+          <CallLink
+            phoneRaw={nashville.phoneRaw}
+            funnelSlug={funnelSlug}
+            location="header"
             className="sm:hidden flex items-center gap-2 bg-cta hover:bg-cta-hover text-primary font-bold px-4 py-2.5 rounded-lg transition-colors"
           >
             <Phone size={16} fill="currentColor" /> Call Now
-          </a>
+          </CallLink>
         </div>
       </div>
     </header>

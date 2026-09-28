@@ -19,7 +19,7 @@ export const metadata = {
   // Restorations" template, which would otherwise append the brand a second
   // time to a title that already carries it.
   title: { absolute: 'Request Received | Stellar Roofing & Restorations' },
-  description: 'Thanks — we received your request and will be in touch within one business day.',
+  description: 'Thanks, we received your request and will be in touch to schedule your free inspection.',
   robots: { index: false, follow: false },
 };
 
@@ -29,9 +29,8 @@ export default function FunnelThankYouPage({ params }) {
 
   return (
     <>
-      {/* Fires generate_lead for GTM. The form lives in a cross-origin iframe,
-          so GTM can't observe the submit itself — this page is the conversion
-          signal. Point the GHL form's post-submit redirect here. */}
+      {/* Fires generate_lead for GTM. The funnel form sends visitors here only
+          after GHL accepts the lead, so this page is the conversion signal. */}
       <ConversionEvent slug={funnel.slug} adGroup={funnel.adGroup} />
 
       <FunnelHeader />
@@ -45,8 +44,8 @@ export default function FunnelThankYouPage({ params }) {
             You&apos;re All Set — We Got Your Request
           </h1>
           <p className="text-white/85 text-lg leading-relaxed mb-8">
-            A member of our Nashville team will reach out within one business day
-            to schedule your free inspection.
+            A member of our Nashville team will reach out soon to schedule your
+            free inspection.
           </p>
           <a
             href={`tel:${nashville.phoneRaw}`}

@@ -7,7 +7,8 @@ import {
 } from 'lucide-react';
 import FunnelHeader from '../../../components/funnel/FunnelHeader';
 import FunnelFooter from '../../../components/funnel/FunnelFooter';
-import EmbeddedForm from '../../../components/funnel/EmbeddedForm';
+import FunnelForm from '../../../components/funnel/FunnelForm';
+import CallLink from '../../../components/funnel/CallLink';
 import TrustRow from '../../../components/funnel/TrustRow';
 import ProjectGallery from '../../../components/funnel/ProjectGallery';
 import config from '../../../lib/config';
@@ -56,16 +57,18 @@ export default function FunnelPage({ params }) {
 
   return (
     <>
-      <FunnelHeader />
+      <FunnelHeader funnelSlug={funnel.slug} />
 
       {/* ── HERO ────────────────────────────────────────────── */}
       <section className="relative bg-gradient-to-b from-bg-alt to-white">
         <div className="relative max-w-6xl mx-auto px-4 py-10 lg:py-16">
-          <div className="grid lg:grid-cols-[1fr_560px] gap-10 lg:gap-14 items-start">
+          {/* Phones: headline, then the form, then the supporting copy, so the
+              form sits near the top instead of below the pillars. Desktop: copy
+              on the left, form on the right. */}
+          <div className="grid lg:grid-cols-[1fr_460px] lg:grid-rows-[auto_1fr] gap-x-14 gap-y-7 items-start">
 
-            {/* Copy */}
-            <div className="text-center lg:text-left">
-              {/* Navy text on amber, not white — white on #F59E0B is ~2.1:1 */}
+            <div className="text-center lg:text-left lg:col-start-1 lg:row-start-1">
+              {/* Navy text on amber, not white; white on #F59E0B is ~2.1:1 */}
               <div className="inline-flex items-center gap-2 rounded-full bg-cta px-4 py-1.5 mb-5">
                 <Gift size={15} className="text-primary" />
                 <span className="text-primary font-extrabold text-xs uppercase tracking-wider">
@@ -75,15 +78,24 @@ export default function FunnelPage({ params }) {
 
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary leading-[1.12] mb-5">
                 {headline.before}
-                {/* cta-hover (#D97706), not cta — the lighter amber fails on white */}
+                {/* cta-hover (#D97706), not cta; the lighter amber fails on white */}
                 <span className="text-cta-hover">{headline.highlight}</span>
                 {headline.after}
               </h1>
 
-              {/* Above the fold on mobile — the full trust bar below the hero
-                  is never seen by most paid visitors. */}
-              <TrustRow className="mb-6" />
+              <TrustRow />
+            </div>
 
+            <div className="lg:col-start-2 lg:row-start-1 lg:row-span-2">
+              <FunnelForm
+                id="quote-form"
+                funnelSlug={funnel.slug}
+                heading={funnel.formHeading}
+                submitLabel={funnel.submitLabel}
+              />
+            </div>
+
+            <div className="text-center lg:text-left lg:col-start-1 lg:row-start-2">
               <p className="text-text-muted text-lg lg:text-xl leading-relaxed mb-7 max-w-xl mx-auto lg:mx-0">
                 {funnel.subhead}
               </p>
@@ -104,21 +116,17 @@ export default function FunnelPage({ params }) {
                 })}
               </div>
 
-              <a
-                href={`tel:${nashville.phoneRaw}`}
+              <CallLink
+                phoneRaw={nashville.phoneRaw}
+                funnelSlug={funnel.slug}
+                location="hero"
                 className="inline-flex items-center gap-2.5 text-primary font-extrabold text-2xl hover:text-cta-hover transition-colors"
               >
                 <Phone size={24} fill="currentColor" /> {nashville.phone}
-              </a>
+              </CallLink>
               <p className="text-text-muted text-sm mt-1.5">
                 {nashville.hours.summary}
               </p>
-            </div>
-
-            {/* Form — not sticky: at 900px the frame is taller than most
-                laptop viewports, so pinning it would cut off the bottom. */}
-            <div>
-              <EmbeddedForm id="quote-form" lazy={false} />
             </div>
           </div>
         </div>
@@ -315,20 +323,27 @@ export default function FunnelPage({ params }) {
 
       {/* ── FINAL CTA ───────────────────────────────────────── */}
       <section className="bg-primary py-14 lg:py-18 px-4">
-        <div className="max-w-5xl mx-auto grid lg:grid-cols-[1fr_560px] gap-10 items-center">
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-[1fr_460px] gap-10 items-center">
           <div className="text-center lg:text-left">
             <h2 className="text-3xl lg:text-4xl font-extrabold text-white mb-4 leading-tight">
               {closing.heading}
             </h2>
             <p className="text-white/80 text-lg mb-7">{closing.body}</p>
-            <a
-              href={`tel:${nashville.phoneRaw}`}
+            <CallLink
+              phoneRaw={nashville.phoneRaw}
+              funnelSlug={funnel.slug}
+              location="closing"
               className="inline-flex items-center gap-2.5 rounded-lg bg-white text-primary font-extrabold text-xl px-8 py-4 hover:bg-white/90 transition shadow-lg"
             >
               <Phone size={22} fill="currentColor" /> {nashville.phone}
-            </a>
+            </CallLink>
           </div>
-          <EmbeddedForm id="quote-form-bottom" />
+          <FunnelForm
+            id="quote-form-bottom"
+            funnelSlug={funnel.slug}
+            heading={funnel.formHeading}
+            submitLabel={funnel.submitLabel}
+          />
         </div>
       </section>
 
