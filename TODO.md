@@ -2,6 +2,8 @@
 
 The one list for PPC, SEO, and website work, **in priority order**. Work top to bottom. Mark items ✅ with the date as they're done and move them to Done.
 
+Brandon's own action items are also GHL tasks (with due dates), on the internal contact **"Stellar Game Plan (internal)"**, assigned to Brandon.
+
 **Last updated:** 2026-09-28
 
 Reference files: [PPC-AUDIT.md](PPC-AUDIT.md) · [CONTENT-PLAN.md](CONTENT-PLAN.md) · [LOCAL-SEO-AUDIT.md](LOCAL-SEO-AUDIT.md) · [LINK-PROSPECTS.md](LINK-PROSPECTS.md) · [KEYWORD-AUDIT.md](KEYWORD-AUDIT.md) · [BLOG_CONFIG.md](BLOG_CONFIG.md) · [TOMORROW.md](TOMORROW.md) (original funnel launch notes)
@@ -138,4 +140,5 @@ Uses the **current number (629) 277-4249** for now. The GHL number swap comes in
 **2026-09-28**
 - Running TODO list created; keyword research and content plan (CONTENT-PLAN.md).
 - Google Ads audit (PPC-AUDIT.md): $1,821.51 / 212 clicks / 0 leads. Causes: the mobile form, broad-match waste, and location/language settings.
+- GHL access set up (Token 1). Internal contact "Stellar Game Plan (internal)" created; 10 Priority 1/2 tasks added in GHL, assigned to Brandon.
 - GHL read access set up (Token 1). Confirmed no CRM contacts or form submissions from the funnel since the ads started; "Ai Studio Form Lead – Google PPC" workflow is still a draft; most GHL automations are drafts.
