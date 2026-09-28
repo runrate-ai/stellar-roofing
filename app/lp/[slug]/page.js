@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import {
   Phone, CheckCircle2, Shield, BadgeCheck, FileCheck, SearchCheck,
   Star, ClipboardCheck, HardHat, Home, Wrench, CloudLightning,
-  Building2, AlertTriangle, Gift, TrendingDown,
+  Building2, AlertTriangle, Gift, TrendingDown, PawPrint,
 } from 'lucide-react';
 import FunnelHeader from '../../../components/funnel/FunnelHeader';
 import FunnelFooter from '../../../components/funnel/FunnelFooter';
@@ -24,7 +24,7 @@ const reviews = allReviews.filter(r => !r.placeholder).slice(0, 3);
 
 const ICONS = {
   Home, Wrench, CloudLightning, SearchCheck, Building2, AlertTriangle,
-  Gift, TrendingDown, ClipboardCheck, HardHat, FileCheck, Shield, BadgeCheck,
+  Gift, TrendingDown, ClipboardCheck, HardHat, FileCheck, Shield, BadgeCheck, PawPrint,
 };
 
 export function generateStaticParams() {
@@ -101,7 +101,7 @@ export default function FunnelPage({ params }) {
               </p>
 
               {/* Offer pillars */}
-              <div className="grid sm:grid-cols-2 gap-3 mb-8 max-w-xl mx-auto lg:mx-0">
+              <div className={`grid gap-3 mb-8 max-w-xl mx-auto lg:mx-0 ${pillars.length === 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-2'}`}>
                 {pillars.map(pillar => {
                   const Icon = ICONS[pillar.icon] || Gift;
                   return (
@@ -159,7 +159,7 @@ export default function FunnelPage({ params }) {
             <p className="text-text-muted text-lg max-w-2xl mx-auto">{offer.subhead}</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className={`grid gap-6 ${offer.cards.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
             {offer.cards.map(card => {
               const Icon = ICONS[card.icon] || Gift;
               const isCta = card.accent === 'cta';
