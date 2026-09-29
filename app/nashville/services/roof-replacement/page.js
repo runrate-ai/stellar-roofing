@@ -95,7 +95,7 @@ export default function RoofReplacementNashvillePage() {
             ))}
           </div>
           <p className="text-text-muted leading-relaxed mb-2">
-            We install <strong>Owens Corning</strong> and <strong>GAF</strong> shingles, two of the most widely used shingle brands in the country. We&apos;ll walk you through the product options during your free estimate.
+            We install <strong><a href="https://www.owenscorning.com/en-us/roofing/shingles" target="_blank" rel="noopener" className="text-primary underline underline-offset-2 hover:text-primary-light">Owens Corning®</a></strong> and <strong>GAF</strong> shingles, two of the most widely used shingle brands in the country. We&apos;ll walk you through the product options during your free estimate.
           </p>
           <p className="text-text-muted text-xs leading-relaxed mb-8">
             Stellar Roofing &amp; Restorations is an independent contractor and is not an affiliate of Owens Corning Roofing and Asphalt, LLC or its affiliated companies, or of GAF.
