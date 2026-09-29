@@ -54,7 +54,7 @@ Use the exact paths below. Link 2–4 times per post, where they naturally fit.
 - `/nashville/services/commercial-roofing` — commercial roofs
 - `/nashville/services/emergency-roof-repair` — active leaks, urgent damage (Stellar answers 24/7)
 - `/free-inspection` — the conversion page; the main CTA target
-- `/nashville/service-areas/<city>` — city pages: nashville, murfreesboro, clarksville, franklin, brentwood, hendersonville, gallatin, smyrna, spring-hill, mount-juliet, lebanon
+- `/nashville/service-areas/<city>` — city pages: nashville, murfreesboro, clarksville, franklin, brentwood, hendersonville, goodlettsville, gallatin, smyrna, spring-hill, mount-juliet, lebanon
 - Existing blog posts, at `/nashville/blog/<slug>`:
   - how-much-does-roof-replacement-cost-nashville (cost)
   - metal-roof-vs-shingles-cost (metal vs shingles)
