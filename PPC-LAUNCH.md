@@ -6,7 +6,7 @@ Account: 373-543-2315 (under "RunRate Manager PPC"). Old campaign: "PPC August 1
 
 **Decision (2026-09-29): build a brand-new campaign** named `Search – Nashville Leads (Relaunch)`. **Pause** the old campaign; don't delete it. Its search terms report is where the negatives come from, and paused history stays readable. The old campaign had no conversions, so a new one loses no bidding data, and a clean start means clean before/after reporting. Everything below applies to the **new** campaign.
 
-- [ ] New campaign → objective **Leads** → type **Search** → conversion goals: **PPC Funnel Lead**, **Calls from ads (60s+)**, **Funnel Call Tap** (set these as the campaign's goals, not "all account goals").
+- [ ] New campaign → objective **Leads** → type **Search** → conversion goals: **Submit lead forms** (PPC Funnel Lead), **Contacts** (Phone Call Clicked), **Phone call leads** (calls from ads) (set these as the campaign's goals, not "all account goals").
 - [ ] Put the negatives in a **shared negative keyword list** (Tools → Shared library → Exclusion lists) and apply it to the new campaign, so they carry over to any future campaign.
 
 > **Heads-up:** leads currently arrive in GHL **silently**; the `ppc-lead` alert workflow isn't built yet. Until it is, check GHL for `ppc-lead` contacts at least twice a day. Speed to call back decides most roofing leads.
@@ -121,6 +121,8 @@ All headlines are ≤30 characters and descriptions ≤90, already checked. Pin 
   - Name: `Calls from ads (60s+)` · Value: **$300** · Count: **One** · Call length: **60 seconds** · Primary.
 
 ### E2. Taps on the phone number on the landing pages
+
+> **Update 2026-09-29: already set up, skip the rest of E2.** The account already has a website conversion called **"Phone Call Clicked"**. The live GTM container has a Google Ads conversion tag (label `WV3YCIGJtt8cEO7r87pE`) that fires on clicks of `tel:` links, so every phone tap on the funnel and the main site already counts. Use "Phone Call Clicked" as the call-tap goal instead of creating "Funnel Call Tap". Later, lower its value from $1,000 to about $150.
 The funnel now pushes a `phone_call_click` event every time someone taps a call button.
 - [ ] **Google Ads:** Goals → Conversions → **+ New conversion action → Website → Add a conversion action manually**:
   - Name: `Funnel Call Tap` · Category: **Phone call lead** · Value: **$150** · Count: **One** · Primary.
