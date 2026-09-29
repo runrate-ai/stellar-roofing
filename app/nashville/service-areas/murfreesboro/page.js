@@ -12,19 +12,24 @@ import config from '../../../../lib/config';
 const loc = config.locations.nashville;
 
 export const metadata = {
-  title: "Roofing Company Murfreesboro TN | Rutherford County | Stellar Roofing",
-  description: "Trusted roofing contractor in Murfreesboro, TN. Roof replacement, repair, storm & hail damage for Rutherford County homes. Free estimates. Call (629) 277-4249.",
+  title: { absolute: "Roofing Company Murfreesboro TN | Roofers & Roof Repair | Stellar Roofing" },
+  description: "Murfreesboro, TN roofing company for roof repair, roof replacement, and hail & storm damage across Rutherford County. Free inspections, lifetime workmanship warranty. Call (629) 277-4249.",
   alternates: { canonical: 'https://www.thestellarroofing.com/nashville/service-areas/murfreesboro' },
 };
 
 const faqs = [
-  { question: "Do you serve Murfreesboro and Rutherford County?", answer: "Yes. Murfreesboro is one of our regularly served areas in Middle Tennessee. We handle roof replacements, repairs, inspections, and storm damage claims throughout Rutherford County." },
-  { question: "Is Murfreesboro affected by the same storm patterns as Nashville?", answer: "Yes. Rutherford County sits in the same Middle Tennessee storm corridor and experiences similar hail, wind, and tornado risk as Nashville and Davidson County. Annual inspections are a good idea for any homeowner in the area." },
-  { question: "How long will it take to get a free estimate in Murfreesboro?", answer: "We typically can schedule a free inspection and estimate within a few days. For storm damage situations we try to prioritize as quickly as possible." },
+  { question: "Do you serve all of Murfreesboro and Rutherford County?", answer: "Yes. We work throughout Murfreesboro, including the Blackman area, Gateway and Medical Center Parkway, the neighborhoods around MTSU, and the newer subdivisions on the edges of town, plus nearby Smyrna." },
+  { question: "Do you repair roofs in Murfreesboro, or only replace them?", answer: "Both. Plenty of Murfreesboro roofs just need a repair: a leak at a vent or chimney, shingles lifted by wind, or a worn pipe boot. We inspect first, and if a repair is the right call, that's what we recommend." },
+  { question: "My Murfreesboro home is fairly new. Could it still have roof problems?", answer: "Yes. Newer homes often have builder-grade shingles and quick installs, and wind and hail don't care how old the roof is. A free inspection tells you whether there's damage worth fixing or claiming." },
+  { question: "Do you help with hail and storm insurance claims in Murfreesboro?", answer: "Yes. Rutherford County sits in the same Middle Tennessee storm corridor as Nashville. We document damage with photos and can meet your adjuster on-site at no extra charge." },
+  { question: "How do I get a free estimate in Murfreesboro?", answer: "Fill out the short form on this page or call us. We'll set a time to inspect the roof and give you a written estimate with no obligation." },
 ];
 
+const nearby = ['smyrna', 'nashville', 'lebanon', 'mount-juliet', 'franklin', 'brentwood'];
+const trustItems = ['Lifetime Workmanship Warranty', 'Free Inspections', 'Licensed & Insured', 'Insurance Claims Help', 'Locally Owned'];
+
 export default function MurfreesboroPage() {
-  const svcSchema = serviceSchema({ name: "Roofing Services in Murfreesboro, TN", description: "Professional roofing services in Murfreesboro, TN and Rutherford County including roof replacement, repair, and storm damage restoration.", url: "https://www.thestellarroofing.com/nashville/service-areas/murfreesboro", areaServed: "Murfreesboro, TN", phone: loc.phone });
+  const svcSchema = serviceSchema({ name: "Roofing Services in Murfreesboro, TN", description: "Roof repair, roof replacement, and storm damage restoration in Murfreesboro, TN and Rutherford County.", url: "https://www.thestellarroofing.com/nashville/service-areas/murfreesboro", areaServed: "Murfreesboro, TN", phone: loc.phone });
 
   return (
     <>
@@ -37,9 +42,9 @@ export default function MurfreesboroPage() {
         <Image src="/images/service-roof-replacement.jpg" alt="Roofing company in Murfreesboro, TN" fill className="object-cover" priority />
         <div className="absolute inset-0 bg-primary/75" />
         <div className="relative z-10 px-4 max-w-4xl mx-auto">
-          <div className="flex items-center gap-2 text-white/80 mb-2"><MapPin size={18} /><span className="font-semibold text-sm">Murfreesboro, TN</span></div>
+          <div className="flex items-center gap-2 text-white/80 mb-2"><MapPin size={18} /><span className="font-semibold text-sm">Murfreesboro, TN · Rutherford County</span></div>
           <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Roofing Company in Murfreesboro, TN</h1>
-          <p className="text-white/90 text-lg mb-5">Serving Rutherford County with professional, reliable roofing.</p>
+          <p className="text-white/90 text-lg mb-5">Roof repair, replacement, and storm damage for Rutherford County homes.</p>
           <a href={`tel:${loc.phoneRaw}`} className="inline-flex items-center gap-2 bg-white hover:bg-white/90 text-primary font-bold px-6 py-3 rounded-lg transition-colors">
             <Phone size={18} /> {loc.phone}
           </a>
@@ -48,16 +53,29 @@ export default function MurfreesboroPage() {
 
       <section id="estimate-section" className="py-10 px-4 bg-bg-alt">
         <div className="max-w-2xl mx-auto">
-          <SiteLeadForm type="quote" title="Get a Free Roofing Estimate in Murfreesboro" />
+          <SiteLeadForm type="quote" title="Get a Free Roof Inspection in Murfreesboro" />
         </div>
+      </section>
+
+      <section className="bg-bg-alt py-5 px-4 border-b border-slate-200">
+        <ul className="max-w-5xl mx-auto flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm font-semibold text-primary">
+          {trustItems.map(item => (
+            <li key={item} className="flex items-center gap-2"><CheckCircle2 size={16} /> {item}</li>
+          ))}
+        </ul>
       </section>
 
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Roofing in Murfreesboro &amp; Rutherford County</h2>
-          <p className="text-text-muted leading-relaxed mb-6">Murfreesboro has been one of the fastest-growing cities in the entire United States for over a decade. The city's rapid expansion — from its downtown core near the Rutherford County Courthouse to massive new developments in areas like NorthPoint and Northwest Rutherford — means thousands of new homes are being built every year, alongside a large existing stock of homes from the 1990s and 2000s that are now reaching the age where roof replacement becomes necessary.</p>
-          <p className="text-text-muted leading-relaxed mb-6">Like the rest of Middle Tennessee, Murfreesboro sits in a region with significant storm activity. Hail events are common during spring and summer months, and the city has seen its share of tornado and high-wind damage in recent years. Our team is experienced with the roofing challenges specific to Rutherford County and responds quickly when storms cause damage in the area.</p>
-          <p className="text-text-muted leading-relaxed mb-8">Stellar Roofing &amp; Restorations makes regular service trips throughout Rutherford County. From the time you call for your free inspection to the final nail sweep when the job is done, you'll experience the professional, no-pressure approach that has earned us the trust of homeowners throughout Middle Tennessee.</p>
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Murfreesboro Roofers You Can Trust</h2>
+          <p className="text-text-muted leading-relaxed mb-6">Murfreesboro has grown fast, and a lot of its homes went up in the same building boom. That means many roofs in Blackman, around Gateway, and in the subdivisions off Old Fort Parkway and Veterans Parkway are reaching the age where problems start to show: granule loss, lifted shingles, and leaks at flashing and vents.</p>
+          <p className="text-text-muted leading-relaxed mb-6">Stellar Roofing &amp; Restorations gives Murfreesboro homeowners a straight answer. We get on the roof, photograph what we find, and tell you whether you need a repair, a replacement, or nothing at all right now.</p>
+
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Roof Repair in Murfreesboro, TN</h2>
+          <p className="text-text-muted leading-relaxed mb-6">A leak is rarely where the water stain is. We trace it back to the source, whether that&apos;s flashing, a pipe boot, a valley, or wind-damaged shingles, and fix what&apos;s actually broken. See our <Link href="/nashville/blog/how-much-does-roof-repair-cost" className="font-semibold text-primary underline">roof repair cost guide</Link> for typical price ranges, or learn more about our <Link href="/nashville/services/roof-repair" className="font-semibold text-primary underline">roof repair service</Link>.</p>
+
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Roof Replacement and Storm Damage in Rutherford County</h2>
+          <p className="text-text-muted leading-relaxed mb-8">When a roof is done, we replace it with Owens Corning or GAF architectural shingles and back the work with a lifetime workmanship warranty. Rutherford County sees regular hail and wind, and hail bruising is hard to spot from the ground. After a storm, we offer free inspections and can meet your adjuster on-site. Start with our <Link href="/nashville/blog/what-size-hail-damages-a-roof" className="font-semibold text-primary underline">guide to what size hail damages a roof</Link> and the <Link href="/nashville/blog/signs-you-need-a-new-roof" className="font-semibold text-primary underline">signs you need a new roof</Link>.</p>
 
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Roofing Services in Murfreesboro, TN</h2>
           <ul className="space-y-3 mb-8">
@@ -71,10 +89,19 @@ export default function MurfreesboroPage() {
               </li>
             ))}
           </ul>
+
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Nearby Areas We Serve</h2>
+          <div className="flex flex-wrap gap-3">
+            {nearby.map(slug => loc.serviceAreas.find(a => a.slug === slug)).filter(Boolean).map(a => (
+              <Link key={a.slug} href={`/nashville/service-areas/${a.slug}`} className="bg-bg-alt hover:bg-slate-200 text-primary font-semibold text-sm px-4 py-2 rounded-full transition-colors">
+                {a.city}, {a.state}
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
-      <CTABanner heading="Murfreesboro — Schedule Your Free Roof Inspection" subtext="Honest assessments, lifetime warranty, insurance claims help." phone={loc.phone} phoneRaw={loc.phoneRaw} />
+      <CTABanner heading="Need a Roofer in Murfreesboro?" subtext="Free inspections, honest answers, and a lifetime workmanship warranty on every roof we replace." phone={loc.phone} phoneRaw={loc.phoneRaw} />
       <FAQ faqs={faqs} heading="Murfreesboro Roofing FAQs" />
     </>
   );

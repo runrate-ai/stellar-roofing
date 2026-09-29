@@ -96,7 +96,7 @@ Uses the **current number (629) 277-4249** for now. The GHL number swap comes in
 
 *Ranking: build order from CONTENT-PLAN.md*
 - [ ] Check that Google has indexed the new blog posts and updated pages *(free)*.
-- [ ] City pages for Hendersonville, Murfreesboro, and Franklin (Brentwood template); upgrade the commercial roofing page.
+- [x] ✅ 2026-09-28 City pages for Hendersonville, Murfreesboro, and Franklin rewritten (Brentwood template, roof repair sections, FAQs, blog links); commercial roofing page upgraded (flat roof repair, process, property managers).
 - [ ] City pages for Clarksville and Gallatin; upgrade the storm damage and emergency pages; new Goodlettsville page.
 - [ ] Blog posts on Owens Corning Duration, GAF Timberline HDZ, and Owens Corning vs. GAF; update the metal post for "metal roof cost".
 - [ ] Blog posts on roof inspection cost, roof leaking / finding a leak, and Class 4 shingles; flashing section on the repair page.
