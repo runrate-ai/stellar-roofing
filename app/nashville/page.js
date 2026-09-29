@@ -4,6 +4,7 @@ import { Phone, Shield, SearchCheck, BadgeCheck, FileCheck, Home, Wrench, CloudL
 import SchemaMarkup from '../../components/SchemaMarkup';
 import CTABanner from '../../components/CTABanner';
 import FAQ from '../../components/FAQ';
+import ShingleBrands from '../../components/ShingleBrands';
 import ReviewWidget from '../../components/ReviewWidget';
 import { ProjectGalleryEmbed, ProjectMapEmbed } from '../../components/TrustyEmbed';
 import { localBusinessSchema, faqSchema } from '../../lib/schema';
@@ -121,6 +122,7 @@ export default function NashvilleHubPage() {
               );
             })}
           </div>
+          <ShingleBrands className="mt-12 text-center max-w-2xl mx-auto" />
         </div>
       </section>
 
