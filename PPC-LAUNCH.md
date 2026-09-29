@@ -84,7 +84,7 @@ Keep the existing hail keywords (roof hail damage, hail damage roof repair, and 
 ```
 
 ### Negative keywords
-Add at the **campaign** level: the full list in PPC-AUDIT.md (reviews, jobs, home depot, lowes, supply, DIY, rv, shed, mobile home, grants, out-of-area cities, Spanish terms, and so on), plus competitor names from the search terms report (exact match).
+Use the ready-to-paste list in **[NEGATIVE-KEYWORDS.md](NEGATIVE-KEYWORDS.md)**, as a shared list applied to the new campaign.
 
 ## Part C: Ads (Responsive Search Ads)
 
