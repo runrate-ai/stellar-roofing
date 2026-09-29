@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { CheckCircle2, Phone, AlertTriangle, Clock } from 'lucide-react';
 import Breadcrumbs from '../../../../components/Breadcrumbs';
 import CTABanner from '../../../../components/CTABanner';
@@ -11,15 +12,17 @@ import config from '../../../../lib/config';
 const loc = config.locations.nashville;
 
 export const metadata = {
-  title: "Emergency Roof Repair Nashville TN | Active Leaks & Storm Damage | Stellar Roofing",
-  description: "Emergency roof repair in Nashville, TN. Active leaks, blown-off shingles, storm damage — we respond fast. Temporary tarping + permanent repairs. Call (629) 277-4249 now.",
+  title: { absolute: "24/7 Emergency Roof Repair Nashville TN | Roof Leak Repair | Stellar Roofing" },
+  description: "24/7 emergency roof repair and roof leak repair in Nashville, TN. Active leaks, blown-off shingles, fallen limbs, emergency roof tarping, then permanent repairs. Call (629) 277-4249 any time.",
   alternates: { canonical: 'https://www.thestellarroofing.com/nashville/services/emergency-roof-repair' },
 };
 
 const faqs = [
   { question: "What qualifies as an emergency roof repair?", answer: "Any situation where water is actively entering your home, a section of your roof has collapsed or is severely damaged, large portions of shingles have blown off, or structural integrity has been compromised qualifies as a roofing emergency. When in doubt, call us and we'll help you assess the situation." },
-  { question: "How fast can you respond to an emergency in Nashville?", answer: "We prioritize emergency calls and aim to respond the next morning in most cases. For urgent situations — active interior flooding or severe structural damage — call us directly and we'll do our best to get someone out as quickly as possible." },
+  { question: "How fast can you respond to an emergency in Nashville?", answer: "We answer the phone 24/7. Tell us what's happening, and we'll prioritize active leaks and serious damage and get someone out as quickly as we can. Call rather than using the form if water is coming in." },
   { question: "What's the difference between a temporary and permanent repair?", answer: "A temporary repair (like tarping) is meant to stop immediate water intrusion and protect your home until a permanent repair can be made. A permanent repair restores your roof to full integrity using proper materials." },
+  { question: "Do you tarp roofs?", answer: "Yes. Emergency roof tarping is often the first step when shingles are missing or a limb has punched through. A properly secured tarp keeps water out until the permanent repair is done. If you can do it safely, photograph the damage before the tarp goes on." },
+  { question: "How do you find where a roof leak is coming from?", answer: "Water travels along decking and rafters before it shows up on a ceiling, so the stain is rarely right under the hole. We check the usual sources first, including flashing at chimneys and walls, pipe boots, valleys, and damaged shingles, and trace the path from the attic when needed." },
   { question: "Will insurance cover emergency roof repair?", answer: "If the damage was caused by a covered event like a storm or wind, your homeowners insurance should cover emergency repairs. Document everything with photos before any temporary repairs are made." },
 ];
 
@@ -51,8 +54,8 @@ export default function EmergencyRoofRepairNashvillePage() {
             <AlertTriangle className="text-white" size={28} />
             <span className="text-white font-bold uppercase tracking-wider text-sm">Emergency Service</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Emergency Roof Repair in Nashville, TN</h1>
-          <p className="text-white/90 text-xl mb-6">Active leak? Call us now. We respond fast.</p>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">24/7 Emergency Roof Repair in Nashville, TN</h1>
+          <p className="text-white/90 text-xl mb-6">Roof leaking? We answer 24/7. Call now.</p>
           <a href={`tel:${loc.phoneRaw}`} className="inline-flex items-center gap-2 bg-white hover:bg-white/90 text-primary font-extrabold px-8 py-4 rounded-lg transition-colors text-xl">
             <Phone size={22} /> {loc.phone}
           </a>
@@ -122,12 +125,39 @@ export default function EmergencyRoofRepairNashvillePage() {
             </div>
           </div>
 
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Roof Leak Repair in Nashville</h2>
+          <p className="text-text-muted leading-relaxed mb-8">
+            Most roof leaks start in a handful of places: flashing around chimneys, walls, and skylights; cracked pipe boots; valleys; and shingles lifted or torn off by wind. Because water runs along the decking before it drips, the stain on your ceiling is rarely right under the problem. We trace the leak to its source, photograph it, and fix it properly instead of smearing sealant over the spot. See our <Link href="/nashville/services/roof-repair" className="font-semibold text-primary underline">roof repair service</Link> and <Link href="/nashville/blog/how-much-does-roof-repair-cost" className="font-semibold text-primary underline">roof repair cost guide</Link>.
+          </p>
+
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Emergency Roof Tarping</h2>
+          <p className="text-text-muted leading-relaxed mb-8">
+            When a storm tears off shingles or a limb punches through, a properly secured tarp is the fastest way to stop more water getting in. We tarp the damaged area, then come back for the permanent repair, and our photos double as documentation for your insurance claim. If hail or wind caused the damage, see our <Link href="/nashville/services/storm-damage-repair" className="font-semibold text-primary underline">storm damage repair</Link> page.
+          </p>
+
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">What to Do While You Wait</h2>
+          <ol className="space-y-3 mb-8 list-decimal pl-5 text-text-muted">
+            <li><strong className="text-primary">Stay off the roof.</strong> Wet or storm-damaged roofs are dangerous. Leave it to us.</li>
+            <li><strong className="text-primary">Keep away from water near electrical fixtures.</strong> If water is reaching lights or outlets, shut off power to that area at the breaker if you can do it safely.</li>
+            <li><strong className="text-primary">Catch the water and move valuables.</strong> Buckets, towels, and plastic sheeting over furniture and electronics limit the damage.</li>
+            <li><strong className="text-primary">Take photos.</strong> Photograph the ceiling, the water, and anything damaged. Your insurance company will want them.</li>
+          </ol>
+
           <div className="bg-primary rounded-2xl p-10 text-center mb-8">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">Roof Emergency? Call Right Now.</h2>
             <p className="text-white/80 mb-6">Don't wait. Every minute water is in your home causes more damage.</p>
             <a href={`tel:${loc.phoneRaw}`} className="inline-flex items-center gap-3 bg-white hover:bg-white/90 text-primary font-extrabold px-10 py-5 rounded-xl transition-colors text-2xl">
               <Phone size={28} /> {loc.phone}
             </a>
+          </div>
+
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Areas We Cover</h2>
+          <div className="flex flex-wrap gap-3 mb-8">
+            {loc.serviceAreas.map(a => (
+              <Link key={a.slug} href={`/nashville/service-areas/${a.slug}`} className="bg-bg-alt hover:bg-slate-200 text-primary font-semibold text-sm px-4 py-2 rounded-full transition-colors">
+                {a.city}, {a.state}
+              </Link>
+            ))}
           </div>
         </div>
       </section>

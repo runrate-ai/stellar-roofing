@@ -12,8 +12,8 @@ import config from '../../../../lib/config';
 const loc = config.locations.nashville;
 
 export const metadata = {
-  title: "Roof Repair & Replacement Clarksville TN | Stellar Roofing",
-  description: "Roof repair and replacement in Clarksville, TN. Shingle repair, storm damage, hail damage, insurance claims. Montgomery County's trusted roofer. Call (629) 277-4249.",
+  title: { absolute: "Roofing Company Clarksville TN | Roofers & Roof Repair | Stellar Roofing" },
+  description: "Clarksville, TN roofing company for roof repair, roof replacement, and hail & storm damage across Montgomery County. Free inspections, insurance claims help. Call (629) 277-4249.",
   alternates: { canonical: 'https://www.thestellarroofing.com/nashville/service-areas/clarksville' },
 };
 
@@ -21,8 +21,8 @@ const faqs = [
   { question: "How much does roof repair cost in Clarksville, TN?", answer: "Most roof repairs in Clarksville range from $400 to $2,500 depending on the type and extent of the damage. Minor shingle repairs or pipe boot replacements are on the lower end. More extensive repairs involving flashing, decking, or large storm-damaged areas will cost more. We provide free written estimates before any work begins." },
   { question: "How much does a roof replacement cost in Clarksville, TN?", answer: "A typical residential roof replacement in Clarksville ranges from $14,000 to $28,000, depending on your roof's size, pitch, and the materials you choose. Architectural shingles are the most popular option in the area. We provide free estimates with no obligation." },
   { question: "Does insurance cover storm damage in Clarksville?", answer: "In most cases, yes. Homeowners insurance typically covers hail and wind damage. Clarksville gets significant storm activity each year. We help Clarksville homeowners document damage, meet with their adjuster, and navigate the full insurance claims process — at no extra charge." },
-  { question: "How quickly can you get to my Clarksville home?", answer: "We make regular service trips to Clarksville and Montgomery County. For standard inspections and estimates, we're typically available within a few days. For storm damage or urgent situations, we prioritize as quickly as possible." },
-  { question: "Do you do shingle roof repair in Clarksville?", answer: "Yes. Shingle repair is one of our most common services in Clarksville — from replacing a few blown-off shingles after a wind event to repairing larger sections damaged by hail. We fix it right and stand behind the work with a warranty." },
+  { question: "How quickly can you get to my Clarksville home?", answer: "Fill out the short form on this page or call us, and we'll set a time for a free inspection. After a storm, tell us about any active leaks so we can prioritize them." },
+  { question: "Do you do shingle roof repair in Clarksville?", answer: "Yes. We handle everything from replacing a few blown-off shingles after a wind event to repairing larger sections damaged by hail. We fix it right and stand behind the work with a warranty." },
 ];
 
 export default function ClarksvillePage() {
@@ -51,8 +51,8 @@ export default function ClarksvillePage() {
         <div className="absolute inset-0 bg-primary/75" />
         <div className="relative z-10 px-4 max-w-4xl mx-auto">
           <div className="flex items-center gap-2 text-white/80 mb-2"><MapPin size={18} /><span className="font-semibold text-sm">Clarksville, TN — Montgomery County</span></div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Roof Repair &amp; Replacement in Clarksville, TN</h1>
-          <p className="text-white/90 text-lg mb-5">Montgomery County's trusted roofing contractor — shingle repair, storm damage, hail claims.</p>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Roofing Company in Clarksville, TN</h1>
+          <p className="text-white/90 text-lg mb-5">Roof repair, replacement, and storm damage for Montgomery County homes.</p>
           <a href={`tel:${loc.phoneRaw}`} className="inline-flex items-center gap-2 bg-white hover:bg-white/90 text-primary font-bold px-6 py-3 rounded-lg transition-colors">
             <Phone size={18} /> {loc.phone}
           </a>
@@ -68,12 +68,12 @@ export default function ClarksvillePage() {
       {/* CONTENT */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Roofing Services in Clarksville, TN</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Clarksville Roofers for Repair and Replacement</h2>
           <p className="text-text-muted leading-relaxed mb-6">
             Stellar Roofing &amp; Restorations provides roof repair and replacement services throughout Clarksville and Montgomery County. Whether you need a few shingles fixed after a wind event, a full roof replacement on a home that's reached the end of its lifespan, or help navigating a storm damage insurance claim, our team delivers professional service with no pressure and no surprises.
           </p>
           <p className="text-text-muted leading-relaxed mb-8">
-            Clarksville is Tennessee's fifth-largest city and one of the fastest-growing in the state. Like the rest of Middle Tennessee, it sits squarely in a region that sees regular severe weather — hailstorms, high winds, and heavy rain that can cause significant roofing damage. Our team makes regular service trips to Clarksville and responds quickly when storms come through Montgomery County.
+            Clarksville is Tennessee's fifth-largest city and one of the fastest-growing in the state. Like the rest of Middle Tennessee, it sits squarely in a region that sees regular severe weather — hailstorms, high winds, and heavy rain that can cause significant roofing damage. When storms come through Montgomery County, we offer free inspections and document the damage for your insurance claim.
           </p>
 
           {/* COST TABLE */}
@@ -99,7 +99,7 @@ export default function ClarksvillePage() {
 
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Storm &amp; Hail Damage Roof Repair in Clarksville</h2>
           <p className="text-text-muted leading-relaxed mb-4">
-            Storm damage is the most common reason Clarksville homeowners call us. Montgomery County sees significant hail and wind events each year, and the damage isn't always obvious from the ground. Hail bruises asphalt shingles, knocking granules loose and shortening their lifespan — even when the roof appears intact.
+            Storm damage is one of the most common reasons Clarksville homeowners call a roofer. Montgomery County sees significant hail and wind events each year, and the damage isn't always obvious from the ground. Hail bruises asphalt shingles, knocking granules loose and shortening their lifespan — even when the roof appears intact.
           </p>
           <p className="text-text-muted leading-relaxed mb-6">
             If your Clarksville home has experienced a recent storm, we recommend a free inspection before your window to file an insurance claim closes. We document all damage with photos, help you understand your coverage, and meet with your adjuster on-site if needed.
@@ -138,10 +138,17 @@ export default function ClarksvillePage() {
               <span key={n} className="bg-bg-alt text-text-muted text-sm px-4 py-2 rounded-lg">{n}</span>
             ))}
           </div>
+
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Nearby Areas We Serve</h2>
+          <div className="flex flex-wrap gap-3">
+            {['nashville', 'hendersonville', 'gallatin', 'franklin'].map(slug => loc.serviceAreas.find(a => a.slug === slug)).filter(Boolean).map(a => (
+              <Link key={a.slug} href={`/nashville/service-areas/${a.slug}`} className="bg-bg-alt hover:bg-slate-200 text-primary font-semibold text-sm px-4 py-2 rounded-full transition-colors">
+                {a.city}, {a.state}
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
-
-      {/* GHL FORM */}
 
       <CTABanner
         heading="Clarksville — Schedule Your Free Roof Inspection"

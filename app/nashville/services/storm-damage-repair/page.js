@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { CheckCircle2, Phone, AlertTriangle } from 'lucide-react';
 import Breadcrumbs from '../../../../components/Breadcrumbs';
 import CTABanner from '../../../../components/CTABanner';
@@ -11,8 +12,8 @@ import config from '../../../../lib/config';
 const loc = config.locations.nashville;
 
 export const metadata = {
-  title: "Storm & Hail Damage Roof Repair Nashville TN | Insurance Claims | Stellar Roofing",
-  description: "Storm and hail damage roof repair in Nashville, TN. We inspect, document damage, and handle insurance claims start-to-finish. Free inspection. Call (629) 277-4249.",
+  title: { absolute: "Storm Damage Roof Repair Nashville TN | Hail & Wind Damage | Stellar Roofing" },
+  description: "Storm damage roof repair in Nashville, TN: hail damage, wind damage, and fallen limbs. Free inspection with photos, and we can meet your adjuster on-site. Call (629) 277-4249.",
   alternates: { canonical: 'https://www.thestellarroofing.com/nashville/services/storm-damage-repair' },
 };
 
@@ -20,6 +21,7 @@ const faqs = [
   { question: "What should I do right after a storm damages my roof?", answer: "First, stay safe and don't go on the roof yourself. Document any damage you can see from the ground with photos. Call your insurance company to report the damage and then call us for a free inspection. We can meet with your adjuster and help document everything properly." },
   { question: "Does insurance cover storm damage roof repair in Nashville?", answer: "In most cases, yes. Homeowners insurance typically covers storm damage including hail, wind, and tornado damage. We work directly with your insurance adjuster to make sure all damage is documented and you receive the full coverage you're entitled to." },
   { question: "How do I know if my roof has hail damage?", answer: "Hail damage can be subtle. Signs include small circular dents on shingles (they look like bruises), granules washing off into gutters, dents on gutters and downspouts, or damage to vents and flashing. A professional inspection is the best way to assess hail damage accurately." },
+  { question: "What does wind damage to a roof look like?", answer: "Look for missing shingles, shingles that are creased or folded back, lifted edges along the ridge and rakes, exposed nails, and shingle pieces in the yard. Wind can also break the seal strip under shingles, which you often can't see from the ground but which lets the next storm peel them off." },
   { question: "How long do I have to file an insurance claim after storm damage?", answer: "Most homeowner insurance policies require claims to be filed within 1 year of the damage, but policies vary. We recommend calling your insurance company and a roofer as soon as possible after a storm to start the process." },
 ];
 
@@ -78,8 +80,8 @@ export default function StormDamageNashvillePage() {
           <p className="text-text-muted leading-relaxed mb-4">Nashville and Middle Tennessee sit in one of the most storm-prone regions in the country. Severe weather here can include:</p>
           <ul className="space-y-2 mb-8">
             {[
-              "Hailstorms — Nashville averages multiple significant hail events per year, with stones large enough to damage shingles, gutters, and flashing",
-              "High winds — Straight-line winds and thunderstorm gusts routinely exceed 60 mph, easily stripping shingles off a roof",
+              "Hailstorms — hail hits somewhere in Middle Tennessee most springs, often with stones large enough to damage shingles, gutters, and flashing",
+              "High winds — severe thunderstorms and straight-line winds can lift, crease, and strip shingles off a roof",
               "Tornadoes — The March 2020 tornado that tore through Nashville and East Nashville caused widespread roofing destruction across hundreds of homes",
               "Heavy rain and flooding — Prolonged rainfall puts pressure on any existing vulnerabilities in your roof",
               "Ice and snow — Rare but impactful winter storms can cause ice dam formation and snow load stress",
@@ -93,10 +95,32 @@ export default function StormDamageNashvillePage() {
 
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Hail Damage Roof Repair in Nashville, TN</h2>
           <p className="text-text-muted leading-relaxed mb-4">
-            Hail damage is one of the leading causes of roof replacement in Middle Tennessee. Nashville and the surrounding counties — Davidson, Rutherford, Williamson, and Montgomery — experience multiple significant hail events every year. The challenge is that hail damage often looks minor from the ground but has actually compromised shingle integrity across a large portion of the roof, shortening its remaining lifespan by 5–10 years.
+            Hail damage is one of the leading causes of roof replacement in Middle Tennessee. Davidson, Sumner, Rutherford, Williamson, and Montgomery counties all see regular hail. The challenge is that hail damage often looks minor from the ground but has knocked granules loose and bruised shingles across a large part of the roof, which shortens its remaining life. Not sure your storm was big enough to matter? Read <Link href="/nashville/blog/what-size-hail-damages-a-roof" className="font-semibold text-primary underline">what size hail damages a roof</Link>.
           </p>
           <p className="text-text-muted leading-relaxed mb-8">
             If a hail event has occurred in your area, a free inspection is the only way to know the true condition of your roof. We document all damage with photos and written notes — the same documentation required to support a successful insurance claim.
+          </p>
+
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Wind Damage Roof Repair</h2>
+          <p className="text-text-muted leading-relaxed mb-4">
+            Wind damage is easier to miss than you&apos;d think. A strong gust can break the seal strip that holds a shingle down without tearing it off, and the next storm finishes the job. Signs you can check from the ground:
+          </p>
+          <ul className="space-y-2 mb-4">
+            {[
+              "Missing shingles, or shingle pieces in the yard and gutters",
+              "Shingles that look creased, folded back, or lifted at the edges",
+              "Damaged ridge cap along the peak of the roof",
+              "Bent or loose flashing, vents, or drip edge",
+              "Fallen limbs or debris on the roof",
+            ].map(item => (
+              <li key={item} className="flex items-start gap-3 text-text-muted">
+                <CheckCircle2 size={18} className="text-primary flex-shrink-0 mt-0.5" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="text-text-muted leading-relaxed mb-8">
+            If water is already coming in, see our <Link href="/nashville/services/emergency-roof-repair" className="font-semibold text-primary underline">24/7 emergency roof repair</Link> page.
           </p>
 
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Our Storm Damage Insurance Claims Process</h2>
@@ -117,6 +141,18 @@ export default function StormDamageNashvillePage() {
               </li>
             ))}
           </ol>
+          <p className="text-text-muted leading-relaxed mb-8">
+            For a deeper walkthrough, read our <Link href="/nashville/blog/hail-damage-roof-insurance-claim" className="font-semibold text-primary underline">guide to hail damage insurance claims</Link>.
+          </p>
+
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Areas We Cover</h2>
+          <div className="flex flex-wrap gap-3 mb-8">
+            {loc.serviceAreas.map(a => (
+              <Link key={a.slug} href={`/nashville/service-areas/${a.slug}`} className="bg-bg-alt hover:bg-slate-200 text-primary font-semibold text-sm px-4 py-2 rounded-full transition-colors">
+                {a.city}, {a.state}
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

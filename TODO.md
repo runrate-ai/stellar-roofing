@@ -97,7 +97,8 @@ Uses the **current number (629) 277-4249** for now. The GHL number swap comes in
 *Ranking: build order from CONTENT-PLAN.md*
 - [ ] Check that Google has indexed the new blog posts and updated pages *(free)*.
 - [x] ✅ 2026-09-28 City pages for Hendersonville, Murfreesboro, and Franklin rewritten (Brentwood template, roof repair sections, FAQs, blog links); commercial roofing page upgraded (flat roof repair, process, property managers).
-- [ ] City pages for Clarksville and Gallatin; upgrade the storm damage and emergency pages; new Goodlettsville page.
+- [x] ✅ 2026-09-28 Clarksville retargeted and Gallatin rewritten; storm damage page (wind damage section, softened unverified stats) and emergency page (24/7, leak repair, tarping, what-to-do steps) upgraded; new Goodlettsville page (added to nav, footer, sitemap).
+- [ ] **Brandon:** confirm the Clarksville page's price table ($250–$28,000+ ranges, written before this session) matches what Stellar actually charges, or Claude removes it.
 - [ ] Blog posts on Owens Corning Duration, GAF Timberline HDZ, and Owens Corning vs. GAF; update the metal post for "metal roof cost".
 - [ ] Blog posts on roof inspection cost, roof leaking / finding a leak, and Class 4 shingles; flashing section on the repair page.
 - [ ] Rank tracking for ~25 money keywords (price-check the credits first).
