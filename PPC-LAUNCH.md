@@ -2,7 +2,12 @@
 
 Written 2026-09-28. The funnel now captures leads into GHL (tested live). This is the campaign rebuild, call tracking, and relaunch. Why each change: [PPC-AUDIT.md](PPC-AUDIT.md).
 
-Account: 373-543-2315 (under "RunRate Manager PPC"). Campaign: "PPC August 11th - Search Leads".
+Account: 373-543-2315 (under "RunRate Manager PPC"). Old campaign: "PPC August 11th - Search Leads".
+
+**Decision (2026-09-29): build a brand-new campaign** named `Search – Nashville Leads (Relaunch)`. **Pause** the old campaign; don't delete it. Its search terms report is where the negatives come from, and paused history stays readable. The old campaign had no conversions, so a new one loses no bidding data, and a clean start means clean before/after reporting. Everything below applies to the **new** campaign.
+
+- [ ] New campaign → objective **Leads** → type **Search** → conversion goals: **PPC Funnel Lead**, **Calls from ads (60s+)**, **Funnel Call Tap** (set these as the campaign's goals, not "all account goals").
+- [ ] Put the negatives in a **shared negative keyword list** (Tools → Shared library → Exclusion lists) and apply it to the new campaign, so they carry over to any future campaign.
 
 > **Heads-up:** leads currently arrive in GHL **silently**; the `ppc-lead` alert workflow isn't built yet. Until it is, check GHL for `ppc-lead` contacts at least twice a day. Speed to call back decides most roofing leads.
 
@@ -23,7 +28,7 @@ In the campaign → **Settings**:
 
 ## Part B: Keywords and ad groups
 
-Rebuild into 4 ad groups. **Phrase match ("…") and exact match ([…]) only; no broad match.** Pause or remove the old ad groups (including "residential roofing companies", which took 51% of spend).
+Build 4 ad groups in the new campaign. **Phrase match ("…") and exact match ([…]) only; no broad match.** Leave the old campaign paused (its "residential roofing companies" ad group took 51% of spend).
 
 ### Ad group 1: Roof Repair → `https://get.thestellarroofing.com/roof-repair`
 ```
