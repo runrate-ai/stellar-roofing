@@ -8,6 +8,13 @@ Brandon's own action items are also GHL tasks (with due dates), on the internal 
 
 Reference files: [PPC-LAUNCH.md](PPC-LAUNCH.md) · [PPC-AUDIT.md](PPC-AUDIT.md) · [CONTENT-PLAN.md](CONTENT-PLAN.md) · [LOCAL-SEO-AUDIT.md](LOCAL-SEO-AUDIT.md) · [LINK-PROSPECTS.md](LINK-PROSPECTS.md) · [KEYWORD-AUDIT.md](KEYWORD-AUDIT.md) · [BLOG_CONFIG.md](BLOG_CONFIG.md) · [TOMORROW.md](TOMORROW.md) (original funnel launch notes)
 
+## ▶️ Next session (2026-09-29): Google Ads relaunch
+
+Work through [PPC-LAUNCH.md](PPC-LAUNCH.md) together, Parts A–F. Have Google Ads, GTM (GTM-MCP6RQRL), and GHL open.
+- Before turning spend on: build the GHL new-lead alert workflow (`ppc-lead` + `website-lead` tags) so leads don't arrive silently.
+- GTM: `phone_call_click` trigger + "Funnel Call Tap" conversion tag, then publish; Claude verifies the live container.
+- After launch: send the search terms report every 2–3 days for the first 2 weeks.
+
 ---
 
 ## 🥇 Priority 1: fix the PPC ads and funnel (now)
