@@ -4,6 +4,7 @@ import { Phone, Shield, SearchCheck, BadgeCheck, FileCheck, MapPin } from 'lucid
 import SchemaMarkup from '../components/SchemaMarkup';
 import { localBusinessSchema } from '../lib/schema';
 import config from '../lib/config';
+import ShingleBrands from '../components/ShingleBrands';
 
 export const metadata = {
   title: "Stellar Roofing & Restorations | Nashville TN & Boise ID",
@@ -150,6 +151,7 @@ export default function BrandHomePage() {
               </div>
             ))}
           </div>
+          <ShingleBrands className="mt-10 max-w-2xl mx-auto" />
         </div>
       </section>
 

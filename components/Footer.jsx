@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import config from '../lib/config';
+import ShingleBrands from './ShingleBrands';
 
 const nashville = config.locations.nashville;
 const boise = config.locations.boise;
@@ -107,6 +108,7 @@ export default function Footer() {
         </div>
         <div className="border-t border-white/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center text-white/50 text-sm">
+            <ShingleBrands dark className="mb-3" />
             &copy; {year} {config.business.legalName}. All Rights Reserved. | Nashville, TN &amp; Boise, ID
           </div>
         </div>
@@ -208,6 +210,7 @@ export default function Footer() {
       </div>
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center text-white/50 text-sm">
+          <ShingleBrands dark className="mb-3" />
           &copy; {year} {config.business.legalName}. All Rights Reserved. | {location.city}, {location.state}
         </div>
       </div>
