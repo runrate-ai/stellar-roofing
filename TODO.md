@@ -4,7 +4,7 @@ The one list for PPC, SEO, and website work, **in priority order**. Work top to 
 
 Brandon's own action items are also GHL tasks (with due dates), on the internal contact **"Stellar Game Plan (internal)"**, assigned to Brandon.
 
-**Last updated:** 2026-09-28
+**Last updated:** 2026-09-29
 
 Reference files: [PPC-LAUNCH.md](PPC-LAUNCH.md) · [PPC-AUDIT.md](PPC-AUDIT.md) · [CONTENT-PLAN.md](CONTENT-PLAN.md) · [LOCAL-SEO-AUDIT.md](LOCAL-SEO-AUDIT.md) · [LINK-PROSPECTS.md](LINK-PROSPECTS.md) · [KEYWORD-AUDIT.md](KEYWORD-AUDIT.md) · [BLOG_CONFIG.md](BLOG_CONFIG.md) · [TOMORROW.md](TOMORROW.md) (original funnel launch notes)
 
@@ -100,6 +100,11 @@ Uses the **current number (629) 277-4249** for now. The GHL number swap comes in
 - [ ] **Brandon, in GHL:** add `website-lead` to the new-lead alert workflow (same as `ppc-lead`). Delete the test contact "Test Website Lead" (tagged `test`).
 - [ ] Add the Trusty project gallery to the service pages.
 - [ ] "Meet Nate" section on `/nashville` once a photo is available.
+
+*Accessibility (right after the Ads relaunch; build it in, no overlay widget like UserWay)*
+- [ ] Audit the funnel pages first, then the main site (Lighthouse + axe + a keyboard-only pass).
+- [ ] Fix what it finds: form labels (incl. the 3-step form's tap buttons), image alt text, color contrast, visible focus outlines, a skip-to-content link, and keyboard traps in the Trusty/Roofle embeds.
+- [ ] Add a short accessibility statement page with a contact method.
 
 *Ranking: build order from CONTENT-PLAN.md*
 - [ ] Check that Google has indexed the new blog posts and updated pages *(free)*.
