@@ -3,7 +3,7 @@ import { CheckCircle2, Phone, Search } from 'lucide-react';
 import Breadcrumbs from '../../../../components/Breadcrumbs';
 import CTABanner from '../../../../components/CTABanner';
 import FAQ from '../../../../components/FAQ';
-import GHLForm from '../../../../components/GHLForm';
+import SiteLeadForm from '../../../../components/SiteLeadForm';
 import SchemaMarkup from '../../../../components/SchemaMarkup';
 import { serviceSchema, faqSchema } from '../../../../lib/schema';
 import config from '../../../../lib/config';
@@ -55,6 +55,12 @@ export default function RoofInspectionBoisePage() {
         </div>
       </section>
 
+      <section id="estimate-section" className="py-10 px-4 bg-bg-alt">
+        <div className="max-w-2xl mx-auto">
+          <SiteLeadForm type="inspection" title="Schedule Your Free Roof Inspection in Boise" />
+        </div>
+      </section>
+
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <p className="text-lg text-text-muted leading-relaxed mb-8">
@@ -100,12 +106,6 @@ export default function RoofInspectionBoisePage() {
             <h3 className="text-xl font-bold text-primary mb-2">No Obligation. No Pressure. Ever.</h3>
             <p className="text-text-muted max-w-xl mx-auto">If your roof is in great shape, we'll tell you. If we find problems, we'll explain your options clearly. No high-pressure sales tactics — ever.</p>
           </div>
-        </div>
-      </section>
-
-      <section className="py-12 px-4 bg-bg-alt">
-        <div className="max-w-2xl mx-auto">
-          <GHLForm type="inspection" title="Schedule Your Free Roof Inspection in Boise" />
         </div>
       </section>
 

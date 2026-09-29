@@ -4,7 +4,7 @@ import { CheckCircle2, Phone, MapPin } from 'lucide-react';
 import Breadcrumbs from '../../../../components/Breadcrumbs';
 import CTABanner from '../../../../components/CTABanner';
 import FAQ from '../../../../components/FAQ';
-import GHLForm from '../../../../components/GHLForm';
+import SiteLeadForm from '../../../../components/SiteLeadForm';
 import SchemaMarkup from '../../../../components/SchemaMarkup';
 import { localBusinessSchema, serviceSchema, faqSchema } from '../../../../lib/schema';
 import config from '../../../../lib/config';
@@ -48,6 +48,12 @@ export default function BoiseAreaPage() {
         </div>
       </section>
 
+      <section id="estimate-section" className="py-10 px-4 bg-bg-alt">
+        <div className="max-w-2xl mx-auto">
+          <SiteLeadForm type="quote" title="Get a Free Roofing Estimate in Boise" />
+        </div>
+      </section>
+
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Boise's Trusted Roofing Team</h2>
@@ -67,12 +73,6 @@ export default function BoiseAreaPage() {
               </li>
             ))}
           </ul>
-        </div>
-      </section>
-
-      <section className="py-12 px-4 bg-bg-alt">
-        <div className="max-w-2xl mx-auto">
-          <GHLForm type="quote" title="Get a Free Roofing Estimate in Boise" />
         </div>
       </section>
 

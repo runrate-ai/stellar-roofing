@@ -1,7 +1,7 @@
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
-import { SiteHeader, SiteFooter, SiteMobileCTA, RoofleWidget } from '../components/SiteChrome';
+import { SiteHeader, SiteFooter, SiteMobileCTA, RoofleWidget, PhoneClickTracker } from '../components/SiteChrome';
 import AnimationProvider from '../components/AnimationProvider';
 import config from '../lib/config';
 
@@ -47,6 +47,7 @@ export default function RootLayout({ children }) {
         </main>
         <SiteFooter />
         <SiteMobileCTA />
+        <PhoneClickTracker />
       </body>
     </html>
   );

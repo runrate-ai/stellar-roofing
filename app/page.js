@@ -21,11 +21,12 @@ const nashville = config.locations.nashville;
 const boise = config.locations.boise;
 
 export default function BrandHomePage() {
-  const schema = localBusinessSchema();
+  // The brand homepage describes both branches, so Boise searchers see Boise too.
+  const schemas = [localBusinessSchema('nashville'), localBusinessSchema('boise')];
 
   return (
     <>
-      <SchemaMarkup schema={schema} />
+      {schemas.map(schema => <SchemaMarkup key={schema.url} schema={schema} />)}
 
       {/* HERO */}
       <section className="relative flex items-center justify-center pt-28 pb-24 md:pt-32 md:pb-16" style={{ minHeight: 'calc(100vh - 44px)' }}>

@@ -96,7 +96,13 @@ export async function POST(request) {
     return NextResponse.json({ ok: false, error: 'Lead routing is not configured.' }, { status: 500 });
   }
 
-  const funnel = getFunnel(clean(body.funnelSlug, 60));
+  // Two sources share this route: PPC funnel pages (leadSource "funnel") and
+  // main-site pages (leadSource "website"), in Nashville or Boise.
+  const isWebsite = body.leadSource === 'website';
+  const market = body.market === 'boise' ? 'boise' : 'nashville';
+  const funnel = isWebsite ? null : getFunnel(clean(body.funnelSlug, 60));
+  const pagePath = clean(body.pagePath, 300);
+  const message = clean(body.message, 2000);
   const projectType = PROJECT_TYPES.includes(body.projectType) ? body.projectType : "I'm Not Sure";
   const timeline = TIMELINES.includes(body.timeline) ? body.timeline : '';
   const name = clean(body.name, 120);
@@ -107,6 +113,7 @@ export async function POST(request) {
 
   const customFields = [
     { key: 'project_type', field_value: projectType },
+    ...(message ? [{ key: 'your_message', field_value: message }] : []),
     ...(timeline ? [{ key: 'project_urgency', field_value: timeline }] : []),
     ...(landingPage ? [{ key: 'landing_page', field_value: landingPage }] : []),
     ...Object.entries(ATTRIBUTION_FIELDS)
@@ -122,10 +129,14 @@ export async function POST(request) {
     ...(email ? { email } : {}),
     ...(address ? { address1: address } : {}),
     ...(zip ? { postalCode: zip } : {}),
-    state: 'TN',
+    state: market === 'boise' ? 'ID' : 'TN',
     country: 'US',
-    source: `PPC Funnel – ${funnel?.adGroup || 'Nashville'}`,
-    tags: ['ppc-lead', ...(funnel ? [`ppc-${funnel.slug}`] : [])],
+    source: isWebsite
+      ? `Website – ${pagePath || '/'}`
+      : `PPC Funnel – ${funnel?.adGroup || 'Nashville'}`,
+    tags: isWebsite
+      ? ['website-lead', market]
+      : ['ppc-lead', ...(funnel ? [`ppc-${funnel.slug}`] : [])],
     customFields,
   };
 
@@ -139,10 +150,13 @@ export async function POST(request) {
   // A readable summary on the contact, so whoever calls back has the context
   // without opening custom fields. Best effort: the lead already exists.
   const note = [
-    `New PPC lead – ${funnel?.adGroup || 'Nashville'}`,
+    isWebsite
+      ? `New website lead (${market === 'boise' ? 'Boise' : 'Nashville'}) – ${pagePath || '/'}`
+      : `New PPC lead – ${funnel?.adGroup || 'Nashville'}`,
     `Project: ${projectType}`,
     timeline && `Timeline: ${timeline}`,
     (address || zip) && `Property: ${[address, zip].filter(Boolean).join(', ')}`,
+    message && `Message: ${message}`,
     landingPage && `Landing page: ${landingPage}`,
     clean(body.gclid) ? 'Came from a Google Ads click (gclid captured).' : 'No Google Ads click ID on this visit.',
   ].filter(Boolean).join('\n');

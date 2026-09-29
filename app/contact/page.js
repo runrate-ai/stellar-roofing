@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Phone, Mail, Clock, MapPin } from 'lucide-react';
 import Breadcrumbs from '../../components/Breadcrumbs';
-import GHLForm from '../../components/GHLForm';
+import SiteLeadForm from '../../components/SiteLeadForm';
 import SchemaMarkup from '../../components/SchemaMarkup';
 import { localBusinessSchema } from '../../lib/schema';
 import config from '../../lib/config';
@@ -110,7 +110,7 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <GHLForm type="contact" title="Send Us a Message" />
+              <SiteLeadForm title="Send Us a Message" showMessage />
             </div>
           </div>
         </div>

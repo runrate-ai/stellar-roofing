@@ -3,7 +3,7 @@ import { CheckCircle2, Phone } from 'lucide-react';
 import Breadcrumbs from '../../../../components/Breadcrumbs';
 import CTABanner from '../../../../components/CTABanner';
 import FAQ from '../../../../components/FAQ';
-import GHLForm from '../../../../components/GHLForm';
+import SiteLeadForm from '../../../../components/SiteLeadForm';
 import SchemaMarkup from '../../../../components/SchemaMarkup';
 import { serviceSchema, faqSchema } from '../../../../lib/schema';
 import config from '../../../../lib/config';
@@ -55,6 +55,12 @@ export default function RoofRepairBoisePage() {
         </div>
       </section>
 
+      <section id="estimate-section" className="py-10 px-4 bg-bg-alt">
+        <div className="max-w-2xl mx-auto">
+          <SiteLeadForm type="quote" title="Request a Free Roof Repair Estimate in Boise" />
+        </div>
+      </section>
+
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <p className="text-lg text-text-muted leading-relaxed mb-8">
@@ -97,12 +103,6 @@ export default function RoofRepairBoisePage() {
             </div>
             <p className="text-text-muted text-xs mt-4">*Price ranges are estimates. Final cost depends on roof pitch, access, and materials. We provide free, written estimates before any work begins.</p>
           </div>
-        </div>
-      </section>
-
-      <section className="py-12 px-4 bg-bg-alt">
-        <div className="max-w-2xl mx-auto">
-          <GHLForm type="quote" title="Request a Free Roof Repair Estimate in Boise" />
         </div>
       </section>
 

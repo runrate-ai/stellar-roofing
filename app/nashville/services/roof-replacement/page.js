@@ -4,7 +4,7 @@ import { CheckCircle2, Phone } from 'lucide-react';
 import Breadcrumbs from '../../../../components/Breadcrumbs';
 import CTABanner from '../../../../components/CTABanner';
 import FAQ from '../../../../components/FAQ';
-import GHLForm from '../../../../components/GHLForm';
+import SiteLeadForm from '../../../../components/SiteLeadForm';
 import SchemaMarkup from '../../../../components/SchemaMarkup';
 import { serviceSchema, faqSchema } from '../../../../lib/schema';
 import config from '../../../../lib/config';
@@ -54,6 +54,12 @@ export default function RoofReplacementNashvillePage() {
           <a href={`tel:${loc.phoneRaw}`} className="inline-flex items-center gap-2 bg-white hover:bg-white/90 text-primary font-bold px-6 py-3 rounded-lg transition-colors">
             <Phone size={18} /> Call {loc.phone}
           </a>
+        </div>
+      </section>
+
+      <section id="estimate-section" className="py-10 px-4 bg-bg-alt">
+        <div className="max-w-2xl mx-auto">
+          <SiteLeadForm type="quote" title="Get Your Free Roof Replacement Estimate" />
         </div>
       </section>
 
@@ -116,12 +122,6 @@ export default function RoofReplacementNashvillePage() {
           <p className="text-text-muted leading-relaxed mb-8">
             Every roof replacement completed by Stellar Roofing &amp; Restorations comes with a lifetime workmanship warranty. Combined with the manufacturer's material warranty (typically 25–50 years), you have comprehensive coverage and real peace of mind.
           </p>
-        </div>
-      </section>
-
-      <section className="py-12 px-4 bg-bg-alt">
-        <div className="max-w-2xl mx-auto">
-          <GHLForm type="quote" title="Get Your Free Roof Replacement Estimate" />
         </div>
       </section>
 

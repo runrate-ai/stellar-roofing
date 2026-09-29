@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { CheckCircle2, Phone, Shield, SearchCheck, BadgeCheck, FileCheck } from 'lucide-react';
 import Breadcrumbs from '../../components/Breadcrumbs';
-import GHLForm from '../../components/GHLForm';
+import SiteLeadForm from '../../components/SiteLeadForm';
 import SchemaMarkup from '../../components/SchemaMarkup';
 import { serviceSchema } from '../../lib/schema';
 import config from '../../lib/config';
@@ -119,7 +119,7 @@ export default function FreeInspectionPage() {
 
             {/* GHL FORM */}
             <div>
-              <GHLForm type="inspection" title="Schedule Your Free Inspection" />
+              <SiteLeadForm type="inspection" title="Schedule Your Free Inspection" />
             </div>
           </div>
         </div>

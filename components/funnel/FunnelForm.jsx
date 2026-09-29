@@ -5,7 +5,6 @@ import config from '../../lib/config';
 import { DEFAULT_FUNNEL_SLUG } from '../../lib/funnels';
 import { pushDataLayer } from './tracking';
 
-const nashville = config.locations.nashville;
 
 // Values must match the GHL "Project Type" and "Project Urgency" option lists
 // (checked again server-side in /api/funnel-lead).
@@ -38,12 +37,24 @@ function thankYouPath(slug) {
   return slug === DEFAULT_FUNNEL_SLUG ? '/thank-you' : `/${slug}/thank-you`;
 }
 
-export default function FunnelForm({ id = 'quote-form', funnelSlug, heading, submitLabel }) {
+// Shared by the PPC funnel and the main site. Main-site pages pass
+// leadSource="website", their market, and a thank-you URL.
+export default function FunnelForm({
+  id = 'quote-form',
+  funnelSlug,
+  heading,
+  submitLabel,
+  leadSource = 'funnel',
+  market = 'nashville',
+  thankYouHref,
+  showMessage = false,
+}) {
+  const location = config.locations[market] || config.locations.nashville;
   const [step, setStep] = useState(1);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [fields, setFields] = useState({
-    projectType: '', timeline: '', address: '', zip: '', name: '', phone: '', email: '', company: '',
+    projectType: '', timeline: '', address: '', zip: '', name: '', phone: '', email: '', message: '', company: '',
   });
   const attribution = useRef({});
   const startedRef = useRef(false);
@@ -66,14 +77,14 @@ export default function FunnelForm({ id = 'quote-form', funnelSlug, heading, sub
     setError('');
     if (!startedRef.current) {
       startedRef.current = true;
-      pushDataLayer('funnel_form_start', { funnel_slug: funnelSlug });
+      pushDataLayer('funnel_form_start', { funnel_slug: funnelSlug, lead_source: leadSource });
     }
   };
 
   const goToStep = next => {
     setStep(next);
     setError('');
-    pushDataLayer('funnel_form_step', { funnel_slug: funnelSlug, funnel_step: next });
+    pushDataLayer('funnel_form_step', { funnel_slug: funnelSlug, lead_source: leadSource, funnel_step: next });
     // Only scroll when the top of the form has left the screen; otherwise the
     // page jumps on every step.
     const top = rootRef.current?.getBoundingClientRect().top ?? 0;
@@ -100,21 +111,26 @@ export default function FunnelForm({ id = 'quote-form', funnelSlug, heading, sub
 
     setSubmitting(true);
     setError('');
+    // On shared pages (contact, free inspection) an Idaho ZIP (83xxx) routes
+    // the lead to the Boise branch.
+    const leadMarket = leadSource === 'website' && fields.zip.startsWith('83') ? 'boise' : market;
     try {
       const res = await fetch('/api/funnel-lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...fields, ...attribution.current, funnelSlug }),
+        body: JSON.stringify({ ...fields, ...attribution.current, funnelSlug, leadSource, market: leadMarket, pagePath: window.location.pathname }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.ok) throw new Error('lead not accepted');
       // The thank-you page fires generate_lead, so the conversion counts once
       // whether a visitor submits here or lands there another way.
-      window.location.assign(thankYouPath(funnelSlug));
+      window.location.assign(
+        typeof thankYouHref === 'function' ? thankYouHref(leadMarket) : (thankYouHref || thankYouPath(funnelSlug))
+      );
     } catch {
       setSubmitting(false);
-      pushDataLayer('funnel_form_error', { funnel_slug: funnelSlug });
-      setError(`Something went wrong on our end. Please call us at ${nashville.phone} and we'll take care of you right away.`);
+      pushDataLayer('funnel_form_error', { funnel_slug: funnelSlug, lead_source: leadSource });
+      setError(`Something went wrong on our end. Please call us at ${location.phone} and we'll take care of you right away.`);
     }
   };
 
@@ -182,7 +198,7 @@ export default function FunnelForm({ id = 'quote-form', funnelSlug, heading, sub
               <label className={labelClass} htmlFor={`${id}-zip`}>ZIP code</label>
               <input
                 id={`${id}-zip`} type="text" inputMode="numeric" autoComplete="postal-code" required
-                className={inputClass} placeholder="37072" maxLength={5}
+                className={inputClass} placeholder={market === 'boise' ? '83702' : '37072'} maxLength={5}
                 value={fields.zip}
                 onChange={e => set('zip', e.target.value.replace(/\D/g, ''))}
               />
@@ -251,7 +267,7 @@ export default function FunnelForm({ id = 'quote-form', funnelSlug, heading, sub
               <label className={labelClass} htmlFor={`${id}-phone`}>Phone number</label>
               <input
                 id={`${id}-phone`} type="tel" autoComplete="tel" required className={inputClass}
-                placeholder="(615) 555-0123"
+                placeholder={market === 'boise' ? '(208) 555-0123' : '(615) 555-0123'}
                 value={fields.phone}
                 onChange={e => set('phone', e.target.value)}
               />
@@ -269,6 +285,20 @@ export default function FunnelForm({ id = 'quote-form', funnelSlug, heading, sub
               />
             </div>
 
+            {showMessage && (
+              <div className="mb-5">
+                <label className={labelClass} htmlFor={`${id}-message`}>
+                  Anything we should know? <span className="font-normal text-text-muted">(optional)</span>
+                </label>
+                <textarea
+                  id={`${id}-message`} rows={3} className={inputClass}
+                  placeholder="Leak over the kitchen, storm last week, and so on"
+                  value={fields.message}
+                  onChange={e => set('message', e.target.value)}
+                />
+              </div>
+            )}
+
             {/* Honeypot: hidden from people, filled by bots. */}
             <div aria-hidden="true" className="absolute left-[-9999px] w-px h-px overflow-hidden">
               <label htmlFor={`${id}-company`}>Company</label>
@@ -283,11 +313,11 @@ export default function FunnelForm({ id = 'quote-form', funnelSlug, heading, sub
               <div className="mb-4 rounded-lg bg-red-50 border border-red-200 px-4 py-3" role="alert">
                 <p className="text-red-700 text-sm font-semibold">{error}</p>
                 <a
-                  href={`tel:${nashville.phoneRaw}`}
-                  onClick={() => pushDataLayer('phone_call_click', { funnel_slug: funnelSlug, click_location: 'form_error' })}
+                  href={`tel:${location.phoneRaw}`}
+                  onClick={() => pushDataLayer('phone_call_click', { funnel_slug: funnelSlug, lead_source: leadSource, click_location: 'form_error' })}
                   className="mt-2 inline-flex items-center gap-1.5 text-red-700 font-bold underline"
                 >
-                  <Phone size={14} /> {nashville.phone}
+                  <Phone size={14} /> {location.phone}
                 </a>
               </div>
             )}

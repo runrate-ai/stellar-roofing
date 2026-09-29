@@ -4,7 +4,7 @@ import { CheckCircle2, Phone, MapPin } from 'lucide-react';
 import Breadcrumbs from '../../../../components/Breadcrumbs';
 import CTABanner from '../../../../components/CTABanner';
 import FAQ from '../../../../components/FAQ';
-import GHLForm from '../../../../components/GHLForm';
+import SiteLeadForm from '../../../../components/SiteLeadForm';
 import SchemaMarkup from '../../../../components/SchemaMarkup';
 import { serviceSchema, faqSchema } from '../../../../lib/schema';
 import config from '../../../../lib/config';
@@ -56,6 +56,12 @@ export default function ClarksvillePage() {
           <a href={`tel:${loc.phoneRaw}`} className="inline-flex items-center gap-2 bg-white hover:bg-white/90 text-primary font-bold px-6 py-3 rounded-lg transition-colors">
             <Phone size={18} /> {loc.phone}
           </a>
+        </div>
+      </section>
+
+      <section id="estimate-section" className="py-10 px-4 bg-bg-alt">
+        <div className="max-w-2xl mx-auto">
+          <SiteLeadForm type="quote" title="Get a Free Roofing Estimate in Clarksville" />
         </div>
       </section>
 
@@ -136,11 +142,6 @@ export default function ClarksvillePage() {
       </section>
 
       {/* GHL FORM */}
-      <section className="py-12 px-4 bg-bg-alt">
-        <div className="max-w-2xl mx-auto">
-          <GHLForm type="quote" title="Get a Free Roofing Estimate in Clarksville" />
-        </div>
-      </section>
 
       <CTABanner
         heading="Clarksville — Schedule Your Free Roof Inspection"

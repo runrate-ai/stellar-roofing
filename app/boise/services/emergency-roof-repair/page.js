@@ -3,7 +3,7 @@ import { CheckCircle2, Phone, AlertTriangle, Clock } from 'lucide-react';
 import Breadcrumbs from '../../../../components/Breadcrumbs';
 import CTABanner from '../../../../components/CTABanner';
 import FAQ from '../../../../components/FAQ';
-import GHLForm from '../../../../components/GHLForm';
+import SiteLeadForm from '../../../../components/SiteLeadForm';
 import SchemaMarkup from '../../../../components/SchemaMarkup';
 import { serviceSchema, faqSchema } from '../../../../lib/schema';
 import config from '../../../../lib/config';
@@ -56,6 +56,12 @@ export default function EmergencyRoofRepairBoisePage() {
           <a href={`tel:${loc.phoneRaw}`} className="inline-flex items-center gap-2 bg-white hover:bg-white/90 text-primary font-extrabold px-8 py-4 rounded-lg transition-colors text-xl">
             <Phone size={22} /> {loc.phone}
           </a>
+        </div>
+      </section>
+
+      <section id="estimate-section" className="py-10 px-4 bg-bg-alt">
+        <div className="max-w-2xl mx-auto">
+          <SiteLeadForm type="quote" title="Request Emergency Roof Repair in Boise" />
         </div>
       </section>
 
@@ -123,12 +129,6 @@ export default function EmergencyRoofRepairBoisePage() {
               <Phone size={28} /> {loc.phone}
             </a>
           </div>
-        </div>
-      </section>
-
-      <section className="py-12 px-4 bg-bg-alt">
-        <div className="max-w-2xl mx-auto">
-          <GHLForm type="quote" title="Request Emergency Roof Repair in Boise" />
         </div>
       </section>
 

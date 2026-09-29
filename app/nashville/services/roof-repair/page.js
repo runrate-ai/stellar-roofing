@@ -4,7 +4,7 @@ import { CheckCircle2, Phone } from 'lucide-react';
 import Breadcrumbs from '../../../../components/Breadcrumbs';
 import CTABanner from '../../../../components/CTABanner';
 import FAQ from '../../../../components/FAQ';
-import GHLForm from '../../../../components/GHLForm';
+import SiteLeadForm from '../../../../components/SiteLeadForm';
 import SchemaMarkup from '../../../../components/SchemaMarkup';
 import { serviceSchema, faqSchema } from '../../../../lib/schema';
 import config from '../../../../lib/config';
@@ -53,6 +53,12 @@ export default function RoofRepairNashvillePage() {
           <a href={`tel:${loc.phoneRaw}`} className="inline-flex items-center gap-2 bg-white hover:bg-white/90 text-primary font-bold px-6 py-3 rounded-lg transition-colors">
             <Phone size={18} /> Call {loc.phone}
           </a>
+        </div>
+      </section>
+
+      <section id="estimate-section" className="py-10 px-4 bg-bg-alt">
+        <div className="max-w-2xl mx-auto">
+          <SiteLeadForm type="quote" title="Request a Free Roof Repair Estimate" />
         </div>
       </section>
 
@@ -125,12 +131,6 @@ export default function RoofRepairNashvillePage() {
           <p className="text-text-muted leading-relaxed">
             What moves your price within these ranges, and when a repair stops making sense? Read our full <Link href="/nashville/blog/how-much-does-roof-repair-cost" className="font-semibold text-primary underline">roof repair cost guide</Link>.
           </p>
-        </div>
-      </section>
-
-      <section className="py-12 px-4 bg-bg-alt">
-        <div className="max-w-2xl mx-auto">
-          <GHLForm type="quote" title="Request a Free Roof Repair Estimate" />
         </div>
       </section>
 

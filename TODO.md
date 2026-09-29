@@ -86,9 +86,15 @@ Uses the **current number (629) 277-4249** for now. The GHL number swap comes in
 
 ---
 
-## 4️⃣ Priority 4: website SEO content (Claude)
+## 4️⃣ Priority 4: main website, ranking and converting (Claude)
 
-*Build order from CONTENT-PLAN.md*
+**Conversion (done 2026-09-28, see Done):** the 3-step form sits right under the hero on every Nashville and Boise page and writes straight into GHL.
+- [ ] **Brandon, in GTM:** the "PPC Funnel Lead" Ads tag fires on every `generate_lead`, including website leads (`funnel_ad_group` = "Website"). That's fine: Google only counts it when the visitor came from an ad. In GA4, `generate_lead` becomes the site's lead key event.
+- [ ] **Brandon, in GHL:** add `website-lead` to the new-lead alert workflow (same as `ppc-lead`). Delete the test contact "Test Website Lead" (tagged `test`).
+- [ ] Add the Trusty project gallery to the service pages.
+- [ ] "Meet Nate" section on `/nashville` once a photo is available.
+
+*Ranking: build order from CONTENT-PLAN.md*
 - [ ] Check that Google has indexed the new blog posts and updated pages *(free)*.
 - [ ] City pages for Hendersonville, Murfreesboro, and Franklin (Brentwood template); upgrade the commercial roofing page.
 - [ ] City pages for Clarksville and Gallatin; upgrade the storm damage and emergency pages; new Goodlettsville page.
@@ -105,7 +111,8 @@ Uses the **current number (629) 277-4249** for now. The GHL number swap comes in
 
 - [ ] **The new GHL phone number** (for Priority 2).
 - [ ] **Does Stellar do gutters?** If yes, a gutters page is worth it.
-- [ ] **Boise:** hide from Google, drop from the sitemap, or leave as is?
+- [x] **Boise:** keep indexed and visible on the homepage (answered 2026-09-28). No Boise office or GBP yet, so the Boise schema has no address.
+- [ ] **Boise Business Profile:** set one up when there's a Boise address to verify with.
 - [ ] **Roof repair page promises:** can Stellar really deliver "same-week service" and "next day" response? If not, Claude softens them.
 - [ ] **Lifetime warranty:** workmanship only, or manufacturer too?
 - [ ] **SEO goal and timeframe**, for example "top 3 in Maps around Goodlettsville/Hendersonville in 6 months".
@@ -133,6 +140,14 @@ Uses the **current number (629) 277-4249** for now. The GHL number swap comes in
 ---
 
 ## ✅ Done
+
+**2026-09-28: main-site conversion**
+- Old GHL iframe form replaced site-wide with the native 3-step form (`SiteLeadForm`). Leads go into GHL tagged `website-lead` + `nashville`/`boise`, with the page path as the source and a summary note. Boise ZIPs (83xxx) route to the Boise market.
+- Form moved directly under the hero on all 33 Nashville and Boise service and city pages. The contact page form has a message field.
+- `/thank-you` fires `generate_lead` and shows the Boise number for Boise leads.
+- Every phone tap on the main site now pushes `phone_call_click` (`lead_source: website`), so the GTM call-tap conversion covers the site too.
+- Homepage schema lists both Nashville and Boise; Boise has no address or map pin (no office yet).
+- Tested locally: test lead landed in GHL with the right tags, source, and state.
 
 **2026-09-26 / 27**
 - Merge audit, keyword audit, OpenSEO project set up.

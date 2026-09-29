@@ -1,10 +1,12 @@
 'use client';
+import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Script from 'next/script';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import MobileCTABar from './MobileCTABar';
 import { isFunnelHostname } from '../lib/funnel-host';
+import { pushDataLayer } from './funnel/tracking';
 
 // Paid-traffic funnel routes render without site chrome: no nav, no footer,
 // no Roofle slideout. Every exit path competes with the form, and the Roofle
@@ -43,4 +45,29 @@ export function RoofleWidget() {
       strategy="afterInteractive"
     />
   );
+}
+
+// Reports every tap on a tel: link on the main site to GTM as
+// phone_call_click. Funnel pages report their own taps (CallLink), so this
+// listener stays off there.
+export function PhoneClickTracker() {
+  const isFunnel = useIsFunnel();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (isFunnel) return undefined;
+    const onClick = event => {
+      const link = event.target.closest?.('a[href^="tel:"]');
+      if (!link) return;
+      pushDataLayer('phone_call_click', {
+        lead_source: 'website',
+        click_location: window.location.pathname,
+        phone_number: link.getAttribute('href').replace('tel:', ''),
+      });
+    };
+    document.addEventListener('click', onClick);
+    return () => document.removeEventListener('click', onClick);
+  }, [isFunnel, pathname]);
+
+  return null;
 }

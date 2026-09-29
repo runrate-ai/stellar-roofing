@@ -4,7 +4,7 @@ import { CheckCircle2, Phone, AlertTriangle, Clock } from 'lucide-react';
 import Breadcrumbs from '../../../components/Breadcrumbs';
 import CTABanner from '../../../components/CTABanner';
 import FAQ from '../../../components/FAQ';
-import GHLForm from '../../../components/GHLForm';
+import SiteLeadForm from '../../../components/SiteLeadForm';
 import SchemaMarkup from '../../../components/SchemaMarkup';
 import { serviceSchema, faqSchema } from '../../../lib/schema';
 import config from '../../../lib/config';
@@ -166,7 +166,7 @@ export default function EmergencyRoofRepairPage() {
       {/* GHL FORM */}
       <section className="py-12 px-4 bg-bg-alt">
         <div className="max-w-2xl mx-auto">
-          <GHLForm type="quote" title="Request Emergency Roof Repair" />
+          <SiteLeadForm type="quote" title="Request Emergency Roof Repair" />
         </div>
       </section>
 
