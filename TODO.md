@@ -4,16 +4,34 @@ The one list for PPC, SEO, and website work, **in priority order**. Work top to 
 
 Brandon's own action items are also GHL tasks (with due dates), on the internal contact **"Stellar Game Plan (internal)"**, assigned to Brandon.
 
-**Last updated:** 2026-09-29
+**Last updated:** 2026-09-30
 
 Reference files: [PPC-LAUNCH.md](PPC-LAUNCH.md) · [PPC-AUDIT.md](PPC-AUDIT.md) · [CONTENT-PLAN.md](CONTENT-PLAN.md) · [LOCAL-SEO-AUDIT.md](LOCAL-SEO-AUDIT.md) · [LINK-PROSPECTS.md](LINK-PROSPECTS.md) · [KEYWORD-AUDIT.md](KEYWORD-AUDIT.md) · [BLOG_CONFIG.md](BLOG_CONFIG.md) · [TOMORROW.md](TOMORROW.md) (original funnel launch notes)
 
-## ▶️ Next session (2026-09-29): Google Ads relaunch
+## ▶️ Google Ads relaunch: in progress (started 2026-09-29)
 
-Work through [PPC-LAUNCH.md](PPC-LAUNCH.md) together, Parts A–F. Have Google Ads, GTM (GTM-MCP6RQRL), and GHL open.
-- Before turning spend on: build the GHL new-lead alert workflow (`ppc-lead` + `website-lead` tags) so leads don't arrive silently.
-- GTM: `phone_call_click` trigger + "Funnel Call Tap" conversion tag, then publish; Claude verifies the live container.
-- After launch: send the search terms report every 2–3 days for the first 2 weeks.
+New campaign **`Search – Nashville Leads (Relaunch)`** is live; the old "PPC August 11th" campaign is paused. Reference: [PPC-LAUNCH.md](PPC-LAUNCH.md) · [PPC-ADGROUPS.md](PPC-ADGROUPS.md) · [NEGATIVE-KEYWORDS.md](NEGATIVE-KEYWORDS.md).
+
+**Done**
+- [x] Campaign published: Search only (no partners/Display), 7 counties, **Presence** only, Maximize clicks with a **$12 max CPC**, **$45/day**, AI Max off, tracking suffix (utm_term = keyword) set.
+- [x] Goals: Submit lead forms (PPC Funnel Lead), Contacts (Phone Call Clicked, already wired in GTM to `tel:` clicks), Phone call leads (calls from ads).
+- [x] Ad group **Roof Repair** live (10 keywords, 15 headlines, 4 descriptions).
+- [x] Campaign-level sitelinks (4) and call asset (629) 277-4249; Google-AI "Services In Boise…" sitelinks removed/paused.
+- [x] Shared negative list **Relaunch negatives** (131) applied.
+
+**Still to do (Brandon, in Google Ads)**
+- [ ] Add ad groups **Roofers**, **Roof Replacement**, **Storm Damage** from PPC-ADGROUPS.md (clears "Eligible (Limited) / missing keywords").
+- [ ] Callouts: add the 6 at the **Campaign** level via "Use existing" (they only saved on the Roof Repair ad group).
+- [ ] Add to Roof Repair: `"roof leak contractor"`, `"roof repair companies near me"`.
+- [ ] Turn off **Auto-apply recommendations** (All campaigns → Recommendations → Auto-apply) and **Automatically created assets** (campaign Settings → More settings; and Admin → Account settings).
+- [ ] Structured snippet (Services) and business logo; later, real job photos as image assets.
+- [ ] If saves keep failing, disable the ad blocker for ads.google.com.
+
+**Still to do (together)**
+- [ ] Build the GHL new-lead alert workflow in the GHL UI (`ppc-lead` + `website-lead`); the API can't create workflows. Until then, check GHL morning and evening.
+- [ ] ~2026-10-02: export the **Search terms** report and send it to Claude; repeat every 2–3 days for 2 weeks.
+- [ ] After ~15 conversions (~2 weeks): switch to Maximize conversions and lower the conversion values from $1,000 (form $150–300, phone tap $150, ad call $300).
+- [ ] Stop rule: 60+ clicks with no leads or calls → pause and review.
 
 ---
 
