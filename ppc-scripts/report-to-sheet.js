@@ -150,6 +150,8 @@ function writeTab(ss, tab) {
       var r = it.next();
       rows.push(tab.fields.map(function (f) {
         var v = r[f[0]];
+        if (v === null || v === undefined) return '';
+        if (typeof v === 'object') return String(v);
         return /_micros$/.test(f[0]) ? Number(v) / 1e6 : v;
       }));
     }
