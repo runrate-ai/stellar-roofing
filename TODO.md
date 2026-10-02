@@ -4,7 +4,7 @@ The one list for PPC, SEO, and website work, **in priority order**. Work top to 
 
 Brandon's own action items are also GHL tasks (with due dates), on the internal contact **"Stellar Game Plan (internal)"**, assigned to Brandon.
 
-**Last updated:** 2026-09-30
+**Last updated:** 2026-10-02
 
 Reference files: [PPC-LAUNCH.md](PPC-LAUNCH.md) · [PPC-AUDIT.md](PPC-AUDIT.md) · [CONTENT-PLAN.md](CONTENT-PLAN.md) · [LOCAL-SEO-AUDIT.md](LOCAL-SEO-AUDIT.md) · [LINK-PROSPECTS.md](LINK-PROSPECTS.md) · [KEYWORD-AUDIT.md](KEYWORD-AUDIT.md) · [BLOG_CONFIG.md](BLOG_CONFIG.md) · [TOMORROW.md](TOMORROW.md) (original funnel launch notes)
 
@@ -19,10 +19,13 @@ New campaign **`Search – Nashville Leads (Relaunch)`** is live; the old "PPC A
 - [x] Campaign-level sitelinks (4) and call asset (629) 277-4249; Google-AI "Services In Boise…" sitelinks removed/paused.
 - [x] Shared negative list **Relaunch negatives** (131) applied.
 
+**Results so far (Sep 29 – Oct 1):** 281 impressions, 10 clicks, $48.90 ($4.89/click), 1 phone-tap conversion; first real `ppc-lead` form contact arrived 2026-10-02. Claude reads the numbers from the Google Sheet **"Stellar Ads Report"** (written by `ppc-scripts/report-to-sheet.js`).
+
 **Still to do (Brandon, in Google Ads)**
-- [ ] Add ad groups **Roofers**, **Roof Replacement**, **Storm Damage** from PPC-ADGROUPS.md (clears "Eligible (Limited) / missing keywords").
+- [ ] Run `ppc-scripts/add-negatives.js` (30 new negatives from the first search terms report).
+- [ ] Set the **Report to sheet** script's Frequency to **Daily**.
+- [x] ✅ 2026-10-02 Roofers, Roof Replacement, and Storm Damage ad groups built by script (`ppc-scripts/build-ad-groups.js`); ads pending Google review.
 - [ ] Callouts: add the 6 at the **Campaign** level via "Use existing" (they only saved on the Roof Repair ad group).
-- [ ] Add to Roof Repair: `"roof leak contractor"`, `"roof repair companies near me"`.
 - [ ] Turn off **Auto-apply recommendations** (All campaigns → Recommendations → Auto-apply) and **Automatically created assets** (campaign Settings → More settings; and Admin → Account settings).
 - [ ] Structured snippet (Services) and business logo; later, real job photos as image assets.
 - [ ] If saves keep failing, disable the ad blocker for ads.google.com.
