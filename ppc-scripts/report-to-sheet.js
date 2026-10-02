@@ -7,7 +7,8 @@ var CAMPAIGN_NAME_CONTAINS = 'Nashville Leads (Relaunch)';
 var SHEET_NAME = 'Stellar Ads Report';
 var RANGE = 'LAST_30_DAYS';
 
-var WHERE = " WHERE campaign.name LIKE '%" + CAMPAIGN_NAME_CONTAINS + "%' AND segments.date DURING " + RANGE;
+var CAMPAIGN_ONLY = " WHERE campaign.name LIKE '%" + CAMPAIGN_NAME_CONTAINS + "%'";
+var WHERE = CAMPAIGN_ONLY + ' AND segments.date DURING ' + RANGE;
 var METRICS = [
   ['metrics.impressions', 'Impressions'],
   ['metrics.clicks', 'Clicks'],
@@ -68,6 +69,48 @@ var TABS = [
       ['metrics.conversions', 'Conversions']
     ],
     tail: ''
+  },
+  // The three tabs below are settings, not performance, so they have no date range.
+  {
+    name: 'Campaign settings',
+    from: 'campaign',
+    where: CAMPAIGN_ONLY,
+    fields: [
+      ['campaign.name', 'Campaign'],
+      ['campaign.status', 'Status'],
+      ['campaign.primary_status', 'Serving status'],
+      ['campaign.bidding_strategy_type', 'Bidding'],
+      ['campaign_budget.amount_micros', 'Daily budget ($)'],
+      ['campaign.network_settings.target_partner_search_network', 'Search partners on'],
+      ['campaign.network_settings.target_content_network', 'Display network on'],
+      ['campaign.geo_target_type_setting.positive_geo_target_type', 'Location option']
+    ],
+    tail: ''
+  },
+  {
+    name: 'Campaign assets',
+    from: 'campaign_asset',
+    where: CAMPAIGN_ONLY,
+    fields: [
+      ['campaign_asset.field_type', 'Type'],
+      ['campaign_asset.status', 'Status'],
+      ['asset.sitelink_asset.link_text', 'Sitelink'],
+      ['asset.callout_asset.callout_text', 'Callout'],
+      ['asset.call_asset.phone_number', 'Phone'],
+      ['asset.final_urls', 'URL']
+    ],
+    tail: " AND campaign_asset.status != 'REMOVED'"
+  },
+  {
+    name: 'Negatives',
+    from: 'shared_criterion',
+    where: " WHERE shared_set.status = 'ENABLED'",
+    fields: [
+      ['shared_set.name', 'List'],
+      ['shared_criterion.keyword.text', 'Negative keyword'],
+      ['shared_criterion.keyword.match_type', 'Match type']
+    ],
+    tail: ''
   }
 ];
 
@@ -99,7 +142,7 @@ function openOrCreate(name) {
 
 function writeTab(ss, tab) {
   var query = 'SELECT ' + tab.fields.map(function (f) { return f[0]; }).join(', ') +
-    ' FROM ' + tab.from + WHERE + tab.tail;
+    ' FROM ' + tab.from + (tab.where || WHERE) + tab.tail;
   var rows = [tab.fields.map(function (f) { return f[1]; })];
   try {
     var it = AdsApp.report(query).rows();
@@ -107,7 +150,7 @@ function writeTab(ss, tab) {
       var r = it.next();
       rows.push(tab.fields.map(function (f) {
         var v = r[f[0]];
-        return f[0] === 'metrics.cost_micros' ? Number(v) / 1e6 : v;
+        return /_micros$/.test(f[0]) ? Number(v) / 1e6 : v;
       }));
     }
   } catch (e) {
