@@ -92,6 +92,7 @@ var TABS = [
     from: 'campaign_asset',
     where: CAMPAIGN_ONLY,
     fields: [
+      ['campaign.name', 'Campaign'],
       ['campaign_asset.field_type', 'Type'],
       ['campaign_asset.status', 'Status'],
       ['asset.sitelink_asset.link_text', 'Sitelink'],

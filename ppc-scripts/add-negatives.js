@@ -18,14 +18,17 @@ var NEW_NEGATIVES = [
 ];
 
 function main() {
-  var lists = AdsApp.negativeKeywordLists()
-    .withCondition("shared_set.name = '" + LIST_NAME + "'")
-    .get();
-  if (!lists.hasNext()) {
+  // Match the list name ignoring capitals ("Relaunch Negatives" vs "Relaunch negatives").
+  var list = null;
+  var lists = AdsApp.negativeKeywordLists().get();
+  while (lists.hasNext()) {
+    var l = lists.next();
+    if (l.getName().toLowerCase() === LIST_NAME.toLowerCase()) list = l;
+  }
+  if (!list) {
     Logger.log('STOP: no negative keyword list named "' + LIST_NAME + '".');
     return;
   }
-  var list = lists.next();
   list.addNegativeKeywords(NEW_NEGATIVES);
   Logger.log('Added ' + NEW_NEGATIVES.length + ' negatives to "' + list.getName() + '".');
 }
