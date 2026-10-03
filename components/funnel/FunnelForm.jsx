@@ -99,6 +99,10 @@ export default function FunnelForm({
   const handleStep2 = e => {
     e.preventDefault();
     if (fields.zip.length !== 5) return setError('Please enter your 5-digit ZIP code.');
+    const address = fields.address.trim();
+    if (address.length < 5 || !/\d/.test(address) || !/[a-z]/i.test(address)) {
+      return setError('Please enter the street address, like 123 Main St.');
+    }
     goToStep(3);
   };
 
@@ -206,10 +210,10 @@ export default function FunnelForm({
 
             <div className="mb-4">
               <label className={labelClass} htmlFor={`${id}-address`}>
-                Street address <span className="font-normal text-text-muted">(optional)</span>
+                Street address
               </label>
               <input
-                id={`${id}-address`} type="text" autoComplete="street-address" className={inputClass}
+                id={`${id}-address`} type="text" autoComplete="street-address" required className={inputClass}
                 placeholder="123 Main St"
                 value={fields.address}
                 onChange={e => set('address', e.target.value)}

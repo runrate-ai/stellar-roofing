@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 const GHL_API = 'https://services.leadconnectorhq.com';
 const GHL_VERSION = '2021-07-28';
 
-const REQUIRED = ['name', 'phone', 'projectType'];
+const REQUIRED = ['name', 'phone', 'projectType', 'address'];
 
 // Must match the option lists on the GHL custom fields "Project Type" and
 // "Project Urgency" exactly, or GHL stores the value blank.
