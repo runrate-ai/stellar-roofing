@@ -22,17 +22,17 @@ New campaign **`Search – Nashville Leads (Relaunch)`** is live; the old "PPC A
 **Results so far (Sep 29 – Oct 1):** 281 impressions, 10 clicks, $48.90 ($4.89/click), 1 phone-tap conversion; first real `ppc-lead` form contact arrived 2026-10-02. Claude reads the numbers from the Google Sheet **"Stellar Ads Report"** (written by `ppc-scripts/report-to-sheet.js`).
 
 **Still to do (Brandon, in Google Ads)**
-- [ ] Run `ppc-scripts/add-negatives.js` (30 new negatives from the first search terms report).
-- [ ] Set the **Report to sheet** script's Frequency to **Daily**.
+- [x] ✅ 2026-10-02 30 negatives added (list now 161) and the report script scheduled daily.
 - [x] ✅ 2026-10-02 Roofers, Roof Replacement, and Storm Damage ad groups built by script (`ppc-scripts/build-ad-groups.js`); ads pending Google review.
-- [ ] Callouts: add the 6 at the **Campaign** level via "Use existing" (they only saved on the Roof Repair ad group).
+- [x] ✅ 2026-10-02 Callouts (6), structured snippet, and logo at the campaign level (verified in the report sheet).
 - [ ] Turn off **Auto-apply recommendations** (All campaigns → Recommendations → Auto-apply) and **Automatically created assets** (campaign Settings → More settings; and Admin → Account settings).
-- [ ] Structured snippet (Services) and business logo; later, real job photos as image assets.
+- [ ] Later: real job photos as image assets.
 - [ ] If saves keep failing, disable the ad blocker for ads.google.com.
 
 **Still to do (together)**
 - [ ] Build the GHL new-lead alert workflow in the GHL UI (`ppc-lead` + `website-lead`); the API can't create workflows. Until then, check GHL morning and evening.
-- [ ] ~2026-10-02: export the **Search terms** report and send it to Claude; repeat every 2–3 days for 2 weeks.
+- [ ] ~2026-10-05 (Monday): Claude reviews the "Stellar Ads Report" sheet (search terms, spend by ad group) and writes the next negatives; repeat every 2–3 days for 2 weeks.
+- [ ] Call back the two real leads (ad lead 2026-10-02, website /contact lead 2026-09-29) if not done.
 - [ ] After ~15 conversions (~2 weeks): switch to Maximize conversions and lower the conversion values from $1,000 (form $150–300, phone tap $150, ad call $300).
 - [ ] Stop rule: 60+ clicks with no leads or calls → pause and review.
 
