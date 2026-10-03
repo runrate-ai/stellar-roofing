@@ -3,6 +3,7 @@ import { CheckCircle2, Phone, Clock, ClipboardCheck, ArrowRight } from 'lucide-r
 import FunnelHeader from '../../../../components/funnel/FunnelHeader';
 import FunnelFooter from '../../../../components/funnel/FunnelFooter';
 import ConversionEvent from '../../../../components/funnel/ConversionEvent';
+import BookingEmbed from '../../../../components/funnel/BookingEmbed';
 import config from '../../../../lib/config';
 import { funnelSlugs, getFunnel } from '../../../../lib/funnels';
 
@@ -19,7 +20,7 @@ export const metadata = {
   // Restorations" template, which would otherwise append the brand a second
   // time to a title that already carries it.
   title: { absolute: 'Request Received | Stellar Roofing & Restorations' },
-  description: 'Thanks, we received your request and will be in touch to schedule your free inspection.',
+  description: 'Thanks, we received your request. Pick a time for your free roof inspection.',
   robots: { index: false, follow: false },
 };
 
@@ -43,18 +44,31 @@ export default function FunnelThankYouPage({ params }) {
           <h1 className="text-3xl lg:text-4xl font-extrabold text-white mb-4">
             You&apos;re All Set — We Got Your Request
           </h1>
-          <p className="text-white/85 text-lg leading-relaxed mb-8">
-            A member of our Nashville team will reach out soon to schedule your
-            free inspection.
+          <p className="text-white/85 text-lg leading-relaxed">
+            Skip the phone tag: pick a time for your free inspection below.
+            Prefer to talk? Call {nashville.phone}, we answer 24/7.
           </p>
-          <a
-            href={`tel:${nashville.phoneRaw}`}
-            className="inline-flex items-center gap-2.5 rounded-lg bg-white text-primary font-extrabold text-xl px-8 py-4 hover:bg-white/90 transition shadow-lg"
-          >
-            <Phone size={22} fill="currentColor" /> {nashville.phone}
-          </a>
-          <p className="text-white/55 text-sm mt-3">
-            Need it sooner? Call us directly and we&apos;ll get you on the schedule.
+        </div>
+      </section>
+
+      <section id="book" className="bg-bg-alt py-10 lg:py-14 px-4">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-2xl lg:text-3xl font-extrabold text-primary text-center mb-2">
+            Book Your Free Inspection
+          </h2>
+          <p className="text-text-muted text-center mb-6">
+            Choose a day and time that works for you. Use the same name and phone
+            number you just entered.
+          </p>
+          <div className="rounded-2xl overflow-hidden shadow-sm bg-white">
+            <BookingEmbed src={nashville.bookingWidget} />
+          </div>
+          <p className="text-text-muted text-sm text-center mt-5">
+            Not sure what time works?{' '}
+            <a href={`tel:${nashville.phoneRaw}`} className="font-bold text-primary underline">
+              Call {nashville.phone}
+            </a>{' '}
+            and we&apos;ll set it up with you.
           </p>
         </div>
       </section>
@@ -66,8 +80,8 @@ export default function FunnelThankYouPage({ params }) {
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { Icon: Phone, title: 'We Call You', desc: "Within one business day, from a local Nashville number. If we miss you, we'll leave a voicemail and text." },
-              { Icon: Clock, title: 'We Book Your Inspection', desc: "Pick a time that works. Most inspections take 30–45 minutes and you don't need to be home for the roof itself." },
+              { Icon: Clock, title: 'You Pick a Time', desc: 'Book it above, or we call you to set it up if you skip this step.' },
+              { Icon: Phone, title: 'We Inspect the Roof', desc: 'We get on the roof and photograph everything we find.' },
               { Icon: ClipboardCheck, title: 'You Get Your Estimate', desc: 'Photos of what we found and a clear written price — no pressure to sign anything.' },
             ].map(({ Icon, title, desc }) => (
               <div key={title} className="text-center">
