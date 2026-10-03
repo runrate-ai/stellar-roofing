@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Phone, CheckCircle, Clock, Shield } from 'lucide-react';
 import ConversionEvent from '../../components/funnel/ConversionEvent';
+import BookingEmbed from '../../components/funnel/BookingEmbed';
 import config from '../../lib/config';
 
 export const metadata = {
@@ -30,12 +31,25 @@ export default function ThankYouPage({ searchParams }) {
         </h1>
         <p className="text-xl text-text-muted mb-10 leading-relaxed">
           Thanks for reaching out to Stellar Roofing &amp; Restorations. We received your request
-          for a free roof inspection and our {location.city} team will reach out soon to schedule it.
+          for a free roof inspection{location.bookingWidget
+            ? '. Pick a time below to book it now, or we\'ll reach out to schedule it.'
+            : ` and our ${location.city} team will reach out soon to schedule it.`}
         </p>
+
+        {/* Only Nashville has a booking calendar; Boise leads get a call back. */}
+        {location.bookingWidget && (
+          <div className="mb-12 text-left">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-primary text-center mb-2">Book Your Free Inspection</h2>
+            <p className="text-text-muted text-center mb-6">Use the same name and phone number you just entered.</p>
+            <div className="rounded-2xl overflow-hidden shadow-md bg-white">
+              <BookingEmbed src={location.bookingWidget} />
+            </div>
+          </div>
+        )}
 
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           {[
-            { Icon: Clock, title: 'We Reach Out', desc: "We'll contact you to set a time that works for your free inspection." },
+            { Icon: Clock, title: location.bookingWidget ? 'Pick a Time' : 'We Reach Out', desc: location.bookingWidget ? "Book above, or we'll contact you to set a time if you skip it." : "We'll contact you to set a time that works for your free inspection." },
             { Icon: Shield, title: 'No Pressure', desc: 'Your inspection is 100% free with no obligation to buy anything.' },
             { Icon: CheckCircle, title: 'What to Expect', desc: 'We get on the roof, photograph what we find, and give you an honest assessment.' },
           ].map(({ Icon, title, desc }) => (

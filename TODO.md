@@ -29,6 +29,9 @@ New campaign **`Search – Nashville Leads (Relaunch)`** is live; the old "PPC A
 - [ ] Later: real job photos as image assets.
 - [ ] If saves keep failing, disable the ad blocker for ads.google.com.
 
+**Booking calendar (added 2026-10-02):** the GHL calendar is on the funnel thank-you pages and the main-site `/thank-you` (Nashville only).
+- [ ] **Brandon, in GHL:** rename the calendar from "Nate Sneed's Personal Calendar" to "Free Roof Inspection"; confirm its time zone is Central; turn on a booking notification for Nate.
+
 **Still to do (together)**
 - [ ] Build the GHL new-lead alert workflow in the GHL UI (`ppc-lead` + `website-lead`); the API can't create workflows. Until then, check GHL morning and evening.
 - [ ] ~2026-10-05 (Monday): Claude reviews the "Stellar Ads Report" sheet (search terms, spend by ad group) and writes the next negatives; repeat every 2–3 days for 2 weeks.
