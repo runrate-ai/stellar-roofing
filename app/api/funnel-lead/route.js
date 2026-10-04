@@ -134,11 +134,13 @@ export async function POST(request) {
     source: isWebsite
       ? `Website – ${pagePath || '/'}`
       : `PPC Funnel – ${funnel?.adGroup || 'Nashville'}`,
-    tags: isWebsite
-      ? ['website-lead', market]
-      : ['ppc-lead', ...(funnel ? [`ppc-${funnel.slug}`] : [])],
     customFields,
   };
+  // Tags are added in a separate call below. Sending `tags` in the upsert
+  // replaces every tag an existing contact already has.
+  const tags = isWebsite
+    ? ['website-lead', market]
+    : ['ppc-lead', ...(funnel ? [`ppc-${funnel.slug}`] : [])];
 
   const upsert = await ghl('/contacts/upsert', token, contact);
   const contactId = upsert.data?.contact?.id;
@@ -146,6 +148,9 @@ export async function POST(request) {
     console.error('[funnel-lead] GHL upsert failed:', upsert.status, JSON.stringify(upsert.data).slice(0, 500));
     return NextResponse.json({ ok: false, error: 'We could not submit your request.' }, { status: 502 });
   }
+
+  const tagged = await ghl(`/contacts/${contactId}/tags`, token, { tags });
+  if (!tagged.ok) console.error('[funnel-lead] GHL tagging failed:', tagged.status);
 
   // A readable summary on the contact, so whoever calls back has the context
   // without opening custom fields. Best effort: the lead already exists.

@@ -4,17 +4,15 @@
 
 var LIST_NAME = 'Relaunch negatives';
 
-// From the 2026-09-29 to 10-01 search terms report.
+// From the search terms report through 2026-10-03.
 var NEW_NEGATIVES = [
-  // Competitors and Maps-style business lookups
-  '"above all roofing"', '"garcia brothers"', '"4 square roofing"', '"bill reagan"',
-  '"carter & sons"', '"erie home"', '"feazel"', '"hayes brothers"', '"henry & sons"',
-  '"henry brothers"', '"hernandez & sons"', '"jolly roofing"', '"midsouth construction"',
-  '"radnor roofing"', '"rd herbert"', '"robinson family"', '"rss nashville"',
-  '"shaded acres"', '"southern roofing"', '"stephen pinaire"', '"union roofing"',
-  '"valdez & sons"', '"llc"', '"brothers"', '"& sons"', '"and sons"',
-  // Products and DIY
-  '"sealer"', '"sealant"', '"coating"', '"pipe boot"'
+  // Competitors
+  '"2m roofing"', '"bone dry"', '"distinctive roofing"', '"level 7"', '"all above roofing"',
+  // DIY and product searches
+  '"flex seal"', '"liquid nails"', '"caulk"', '"best product"', '"crazy seal"',
+  '"handyman"', '"screws"',
+  // Spanish-language searches
+  '"cerca de mi"'
 ];
 
 function main() {
