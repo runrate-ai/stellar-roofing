@@ -4,7 +4,7 @@ The one list for PPC, SEO, and website work, **in priority order**. Work top to 
 
 Brandon's own action items are also GHL tasks (with due dates), on the internal contact **"Stellar Game Plan (internal)"**, assigned to Brandon.
 
-**Last updated:** 2026-10-02
+**Last updated:** 2026-10-04
 
 Reference files: [PPC-LAUNCH.md](PPC-LAUNCH.md) · [PPC-AUDIT.md](PPC-AUDIT.md) · [CONTENT-PLAN.md](CONTENT-PLAN.md) · [LOCAL-SEO-AUDIT.md](LOCAL-SEO-AUDIT.md) · [LINK-PROSPECTS.md](LINK-PROSPECTS.md) · [KEYWORD-AUDIT.md](KEYWORD-AUDIT.md) · [BLOG_CONFIG.md](BLOG_CONFIG.md) · [TOMORROW.md](TOMORROW.md) (original funnel launch notes)
 
@@ -31,6 +31,10 @@ New campaign **`Search – Nashville Leads (Relaunch)`** is live; the old "PPC A
 
 **Booking calendar (added 2026-10-02):** the GHL calendar is on the funnel thank-you pages and the main-site `/thank-you` (Nashville only).
 - [ ] **Brandon, in GHL:** rename the calendar from "Nate Sneed's Personal Calendar" to "Free Roof Inspection"; confirm its time zone is Central; turn on a booking notification for Nate.
+
+**PostHog (added 2026-10-04):** live on the funnel and the main site (US Cloud, project 645820): page views, clicks, session recordings with typed input masked, and the funnel events. The lead form now also keeps a contact's existing GHL tags.
+- [ ] **Brandon, in PostHog:** watch the first recordings (Session replay) and confirm form fields show as masked; turn on "Filter out internal and test users" for your own IP.
+- [ ] Claude: build the lead funnel report (page view → form start → step 2 → step 3 → lead) once a few days of data exist.
 
 **Still to do (together)**
 - [ ] Build the GHL new-lead alert workflow in the GHL UI (`ppc-lead` + `website-lead`); the API can't create workflows. Until then, check GHL morning and evening.
