@@ -48,7 +48,7 @@ export default function PrivacyPolicyPage() {
           <ul className="list-disc pl-6 space-y-2 text-text-muted mb-8">
             <li><strong>Contact &amp; Quote Forms</strong> — When you submit a form on our website, your information is collected and processed through <strong>GoHighLevel (GHL)</strong>, our customer relationship management (CRM) platform.</li>
             <li><strong>Cookies</strong> — Our website uses cookies to track site usage and improve your experience. You may disable cookies in your browser settings, though some features may not function properly.</li>
-            <li><strong>Analytics</strong> — We may use third-party analytics tools (such as Google Analytics) to understand how visitors use our site.</li>
+            <li><strong>Analytics</strong> — We use third-party analytics tools (such as Google Analytics and PostHog) to understand how visitors use our site. This includes recordings of how visitors move through and click on our pages; anything typed into a form field is masked and is not captured in those recordings.</li>
             <li><strong>Phone Calls</strong> — If you call us directly, we may keep records of the call for service and quality purposes.</li>
           </ul>
 
