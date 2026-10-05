@@ -31,13 +31,34 @@ var TABS = [
       ['ad_group.name', 'Ad group'],
       ['search_term_view.status', 'Added/excluded']
     ].concat(METRICS),
-    tail: ' ORDER BY metrics.cost_micros DESC'
+    tail: ' ORDER BY metrics.clicks DESC, metrics.impressions DESC',
+    // Split into tabs of 50 rows ("Search terms", "Search terms 2", ...).
+    chunk: 50
   },
   {
     name: 'Ad groups',
     from: 'ad_group',
-    fields: [['ad_group.name', 'Ad group'], ['ad_group.status', 'Status']].concat(METRICS),
+    fields: [['ad_group.name', 'Ad group'], ['ad_group.status', 'Status']].concat(METRICS, [
+      ['metrics.search_impression_share', 'Impression share'],
+      ['metrics.search_top_impression_share', 'Top-of-page share'],
+      ['metrics.search_rank_lost_impression_share', 'Lost to rank (bid/quality)']
+    ]),
     tail: " AND ad_group.status != 'REMOVED'"
+  },
+  {
+    // How often the ads showed out of all the searches they could have shown
+    // for, and whether the misses came from budget or from bid/quality.
+    name: 'Impression share',
+    from: 'campaign',
+    fields: [
+      ['segments.date', 'Date'],
+      ['metrics.search_impression_share', 'Impression share'],
+      ['metrics.search_top_impression_share', 'Top-of-page share'],
+      ['metrics.search_absolute_top_impression_share', 'First-position share'],
+      ['metrics.search_budget_lost_impression_share', 'Lost to budget'],
+      ['metrics.search_rank_lost_impression_share', 'Lost to rank (bid/quality)']
+    ],
+    tail: ' ORDER BY segments.date DESC'
   },
   {
     name: 'Keywords',
@@ -46,7 +67,8 @@ var TABS = [
       ['ad_group.name', 'Ad group'],
       ['ad_group_criterion.keyword.text', 'Keyword'],
       ['ad_group_criterion.keyword.match_type', 'Match type'],
-      ['ad_group_criterion.status', 'Status']
+      ['ad_group_criterion.status', 'Status'],
+      ['ad_group_criterion.quality_info.quality_score', 'Quality score (1-10)']
     ].concat(METRICS),
     tail: " AND ad_group_criterion.status != 'REMOVED' ORDER BY metrics.cost_micros DESC"
   },
@@ -163,9 +185,21 @@ function writeTab(ss, tab) {
   var width = rows[0].length;
   rows = rows.map(function (r) { while (r.length < width) r.push(''); return r; });
 
-  var sheet = ss.getSheetByName(tab.name) || ss.insertSheet(tab.name);
-  sheet.clear();
-  sheet.getRange(1, 1, rows.length, width).setValues(rows);
-  sheet.setFrozenRows(1);
+  var header = rows[0];
+  var body = rows.slice(1);
+  var size = tab.chunk || Math.max(body.length, 1);
+  var pages = Math.max(Math.ceil(body.length / size), 1);
+  for (var p = 0; p < pages; p++) {
+    var name = p === 0 ? tab.name : tab.name + ' ' + (p + 1);
+    var page = [header].concat(body.slice(p * size, (p + 1) * size));
+    var sheet = ss.getSheetByName(name) || ss.insertSheet(name);
+    sheet.clear();
+    sheet.getRange(1, 1, page.length, width).setValues(page);
+    sheet.setFrozenRows(1);
+  }
+  // Remove leftover pages from a longer earlier run.
+  for (var extra = pages + 1; ss.getSheetByName(tab.name + ' ' + extra); extra++) {
+    ss.deleteSheet(ss.getSheetByName(tab.name + ' ' + extra));
+  }
   Logger.log(tab.name + ': ' + (rows.length - 1) + ' rows');
 }
