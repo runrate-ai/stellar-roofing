@@ -4,13 +4,16 @@
 
 var LIST_NAME = 'Relaunch negatives';
 
-// From the search terms report through 2026-10-03.
+// From the search terms report through 2026-10-04.
 var NEW_NEGATIVES = [
   // Competitors
   '"2m roofing"', '"bone dry"', '"distinctive roofing"', '"level 7"', '"all above roofing"',
+  '"ragan"', '"rivera family"',
   // DIY and product searches
   '"flex seal"', '"liquid nails"', '"caulk"', '"best product"', '"crazy seal"',
   '"handyman"', '"screws"',
+  // Research, not ready to hire
+  '"how much"', '"pictures"', '"cheaper"', '"vs"', '"spanish tile"', '"pitched roof"',
   // Spanish-language searches
   '"cerca de mi"'
 ];
