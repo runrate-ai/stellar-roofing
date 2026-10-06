@@ -1,10 +1,12 @@
 # Where we left off
 
-**Last updated:** 2026-10-05 (end of session)
+**Last updated:** 2026-10-06 (session wrapped up; nothing in progress)
 
 ## The headline
 
 The relaunched Google Ads campaign has run one week and produced **one real person** (they called and filled out the form) for $170. Brandon wants more leads and is frustrated with PPC. The open decision is whether to raise the budget and bid. Nobody is alerted when a lead arrives, because the GHL alert workflow still isn't built.
+
+The long setup session ended 2026-10-06. No work is half-finished and nothing is uncommitted. Brandon will start **short, separate sessions per task** from here (cheaper than one long one); say "wrap up" before closing so this page gets updated.
 
 ## Waiting on Brandon (ask about these first)
 
