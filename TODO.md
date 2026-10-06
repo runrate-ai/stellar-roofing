@@ -4,95 +4,47 @@ The one list for PPC, SEO, and website work, **in priority order**. Work top to 
 
 Brandon's own action items are also GHL tasks (with due dates), on the internal contact **"Stellar Game Plan (internal)"**, assigned to Brandon.
 
-**Last updated:** 2026-10-04
+**Last updated:** 2026-10-05
 
 Reference files: [PPC-LAUNCH.md](PPC-LAUNCH.md) · [PPC-AUDIT.md](PPC-AUDIT.md) · [CONTENT-PLAN.md](CONTENT-PLAN.md) · [LOCAL-SEO-AUDIT.md](LOCAL-SEO-AUDIT.md) · [LINK-PROSPECTS.md](LINK-PROSPECTS.md) · [KEYWORD-AUDIT.md](KEYWORD-AUDIT.md) · [BLOG_CONFIG.md](BLOG_CONFIG.md) · [TOMORROW.md](TOMORROW.md) (original funnel launch notes)
 
-## ▶️ Google Ads relaunch: in progress (started 2026-09-29)
+> **Where we left off, and what's next, lives in [brain/NOW.md](brain/NOW.md).** This file is the full list.
 
-New campaign **`Search – Nashville Leads (Relaunch)`** is live; the old "PPC August 11th" campaign is paused. Reference: [PPC-LAUNCH.md](PPC-LAUNCH.md) · [PPC-ADGROUPS.md](PPC-ADGROUPS.md) · [NEGATIVE-KEYWORDS.md](NEGATIVE-KEYWORDS.md).
+## 🥇 Priority 1: Google Ads and the funnel (live; now tuning)
+
+Campaign `Search – Nashville Leads (Relaunch)` has been live since 2026-09-29. Current numbers are in [brain/NOW.md](brain/NOW.md). Reference: [PPC-LAUNCH.md](PPC-LAUNCH.md) · [PPC-ADGROUPS.md](PPC-ADGROUPS.md) · [NEGATIVE-KEYWORDS.md](NEGATIVE-KEYWORDS.md) · [PPC-AUDIT.md](PPC-AUDIT.md) · scripts in `ppc-scripts/`.
+
+**Open: decisions (Brandon)**
+- [ ] Raise the budget ($45 → $75/day) and max bid ($12 → $15)? Proposed 2026-10-05.
+- [ ] Apply for Google Local Services Ads (pay per lead, "Google Guaranteed")?
+
+**Open: Brandon, in GHL**
+- [ ] Build the new-lead alert workflow (triggers: tag `ppc-lead`, tag `website-lead`, appointment booked; actions: email + in-app notification to Nate). The API can't create workflows. Until it exists, check GHL morning and evening.
+- [ ] Calendar: rename "Nate Sneed's Personal Calendar" to "Free Roof Inspection"; confirm Central time; turn on booking notifications; set the booking rules.
+- [ ] Delete the `test`-tagged contacts.
+
+**Open: Brandon, in Google Ads**
+- [ ] Turn off **Auto-apply recommendations** (All campaigns → Recommendations → Auto-apply) and **Automatically created assets** (campaign Settings → More settings; and Admin → Account settings).
+- [ ] Mark `generate_lead` as a key event in GA4; link Google Ads ↔ GA4.
+- [ ] Later: real job photos as image assets.
+
+**Open: Brandon, in PostHog**
+- [ ] Turn on "Filter test accounts"; confirm typed form fields are masked in the first recording with typing.
+
+**Open: Claude**
+- [ ] Every 2–3 days through mid-October: read the "Stellar Ads Report" sheet and GHL, update `ppc-scripts/add-negatives.js`, report real people (not conversions). Next: **2026-10-08**.
+- [ ] Add the quality-score breakdown to the report script; improve the Roofers ad group's landing page and ad match (quality score 3/10).
+- [ ] PostHog funnel report (page view → form start → step 2 → step 3 → lead); watch whether the required address costs completions.
+- [ ] After ~15 conversions: switch to Maximize conversions and lower the conversion values from the $1,000 placeholder (form $150–300, phone tap $150, ad call $300).
+- [ ] Stop rule: 60+ clicks with no leads or calls → pause and review.
+- [ ] Legal: can free gutters or the dog day be offered on insurance-paid replacements in TN? Until confirmed, the offers are retail-only and stay off storm traffic.
 
 **Done**
-- [x] Campaign published: Search only (no partners/Display), 7 counties, **Presence** only, Maximize clicks with a **$12 max CPC**, **$45/day**, AI Max off, tracking suffix (utm_term = keyword) set.
-- [x] Goals: Submit lead forms (PPC Funnel Lead), Contacts (Phone Call Clicked, already wired in GTM to `tel:` clicks), Phone call leads (calls from ads).
-- [x] Ad group **Roof Repair** live (10 keywords, 15 headlines, 4 descriptions).
-- [x] Campaign-level sitelinks (4) and call asset (629) 277-4249; Google-AI "Services In Boise…" sitelinks removed/paused.
-- [x] Shared negative list **Relaunch negatives** (131) applied.
-
-**Results so far (Sep 29 – Oct 1):** 281 impressions, 10 clicks, $48.90 ($4.89/click), 1 phone-tap conversion; first real `ppc-lead` form contact arrived 2026-10-02. Claude reads the numbers from the Google Sheet **"Stellar Ads Report"** (written by `ppc-scripts/report-to-sheet.js`).
-
-**Still to do (Brandon, in Google Ads)**
-- [x] ✅ 2026-10-02 30 negatives added (list now 161) and the report script scheduled daily.
-- [x] ✅ 2026-10-02 Roofers, Roof Replacement, and Storm Damage ad groups built by script (`ppc-scripts/build-ad-groups.js`); ads pending Google review.
-- [x] ✅ 2026-10-02 Callouts (6), structured snippet, and logo at the campaign level (verified in the report sheet).
-- [ ] Turn off **Auto-apply recommendations** (All campaigns → Recommendations → Auto-apply) and **Automatically created assets** (campaign Settings → More settings; and Admin → Account settings).
-- [ ] Later: real job photos as image assets.
-- [ ] If saves keep failing, disable the ad blocker for ads.google.com.
-
-**Booking calendar (added 2026-10-02):** the GHL calendar is on the funnel thank-you pages and the main-site `/thank-you` (Nashville only).
-- [ ] **Brandon, in GHL:** rename the calendar from "Nate Sneed's Personal Calendar" to "Free Roof Inspection"; confirm its time zone is Central; turn on a booking notification for Nate.
-
-**PostHog (added 2026-10-04):** live on the funnel and the main site (US Cloud, project 645820): page views, clicks, session recordings with typed input masked, and the funnel events. The lead form now also keeps a contact's existing GHL tags.
-- [ ] **Brandon, in PostHog:** watch the first recordings (Session replay) and confirm form fields show as masked; turn on "Filter out internal and test users" for your own IP.
-- [ ] Claude: build the lead funnel report (page view → form start → step 2 → step 3 → lead) once a few days of data exist.
-
-**Still to do (together)**
-- [ ] Build the GHL new-lead alert workflow in the GHL UI (`ppc-lead` + `website-lead`); the API can't create workflows. Until then, check GHL morning and evening.
-- [ ] ~2026-10-05 (Monday): Claude reviews the "Stellar Ads Report" sheet (search terms, spend by ad group) and writes the next negatives; repeat every 2–3 days for 2 weeks.
-- [ ] Call back the two real leads (ad lead 2026-10-02, website /contact lead 2026-09-29) if not done.
-- [ ] After ~15 conversions (~2 weeks): switch to Maximize conversions and lower the conversion values from $1,000 (form $150–300, phone tap $150, ad call $300).
-- [ ] Stop rule: 60+ clicks with no leads or calls → pause and review.
-
----
-
-## 🥇 Priority 1: fix the PPC ads and funnel (now)
-
-**Why first:** $1,821.51 was spent on 212 clicks with **zero leads**. The mobile form was hard to finish and never produced a CRM contact, and ~80% of visible spend went to the wrong searches. Details are in PPC-AUDIT.md. The ads are mostly paused, so keep them paused until this section is done.
-
-Uses the **current number (629) 277-4249** for now. The GHL number swap comes in Priority 2.
-
-**Step 1: GHL setup (Claude, using Token 1)**
-- [ ] Create GHL custom fields for lead tracking: gclid, wbraid, gbraid, utm_source, utm_medium, utm_campaign, utm_term, utm_content, landing_page, project_type, timeline.
-- [ ] Create the `ppc-lead` tag.
-
-**Step 2: rebuild the funnel form (Claude)**
-- [ ] Replace the AI Studio iframe with the site's built-in 3-step form on every funnel page. No inner scrolling, and the form sits right under the headline on phones.
-- [ ] Form posts to the site's own API route, which creates or updates the GHL contact (fields + `ppc-lead` tag) and fires the `generate_lead` conversion. On failure it shows a "call us" fallback, so leads are never silently lost.
-- [ ] Track taps on the phone button as a conversion.
-- [ ] Show it on a local preview (phone size) for approval before anything goes live.
-
-**Step 2b: offer + booking (Claude, waiting on inputs)**
-- [x] ✅ 2026-09-28 Price "beat" → price **match**, apples to apples, on all funnel pages.
-- [x] ✅ 2026-09-28 Native form built and tested end to end locally (test contact "TEST Claude Funnel Check", tagged `test`; Brandon to delete it in GHL).
-- [x] ✅ 2026-09-28 Restack offers per page: replacement = free gutters + dog-pampering install day + price match; general = price match + free inspection with the perks as backup; repair = free inspection/honest repair; storm = no perks until legal check.
-- [x] ✅ 2026-09-28 Testimonials: left off for now (2 of 3 supplied reviews were by Stellar team members). Add real Google reviews as they come in.
-- [x] ✅ 2026-09-28 Dog perk: Dog Oasis (Goodlettsville), daycare + bath, up to $75, owner drops off/picks up, retail replacements only.
-- [ ] Booking calendar on the thank-you pages. **Needs: a "Free Roof Inspection" GHL calendar + `calendars.readonly` on Token 1.**
-- [ ] Legal: can free gutters or dog perks be offered on insurance-paid replacements in TN? Until confirmed, fine print says the offers apply to retail (non-insurance) replacements.
-
-**Step 3: connect it (Stellar team)**
-- [ ] Create **Token 2** ("Website – PPC Lead Form (Vercel)": contacts.write + contacts.readonly) and add it in Vercel → Settings → Environment Variables as `GHL_API_TOKEN` and `GHL_LOCATION_ID` (Production).
-- [ ] In GHL, build the workflow **"Contact Tag Added: ppc-lead"** → email + app notification to the owner, and create a task. *(Lead auto-text waits for A2P; see Priority 2.)* Claude supplies step-by-step instructions.
-
-**Step 4: test (together)**
-- [x] ✅ 2026-09-28 New form, offers, and price match pushed live on all 4 funnel pages (commit f94b25d); Token 2 added in Vercel.
-- [x] ✅ 2026-09-28 Live phone test lead reached GHL (tags, source, fields, note). gclid capture verified separately in the browser. Delete both `test`-tagged contacts in GHL.
-- [ ] Confirm Google Ads records a "PPC Funnel Lead" after the first real ad lead. Confirm it shows in GHL with the tag and fields, the owner gets notified, `/thank-you` loads, and Google Ads records a "PPC Funnel Lead".
-- [ ] Mark `generate_lead` as a key event in GA4.
-
-**Step 5: rebuild the campaign (Stellar team in Google Ads; Claude supplies exact settings)**
-- [ ] Locations: Nashville-area counties, **"Presence"** only (not "presence or interest"). Language: English.
-- [ ] No broad match. Pause "residential roofing companies" (it took 51% of spend), or make it exact match.
-- [ ] 4 ad groups, each pointing at its own funnel page: repair → `/roof-repair`, replacement → `/roof-replacement`, storm/hail → `/storm-damage`, roofer/company + city → `/`.
-- [ ] Add the negative keyword list from PPC-AUDIT.md, plus competitor names.
-- [ ] Add a **call asset** (current number for now) with call reporting on, counting calls ≥60 seconds as conversions.
-- [ ] Link Google Ads ↔ GA4.
-
-**Step 6: relaunch and watch**
-- [ ] Relaunch at ~$40–50/day.
-- [ ] Review the search terms every 2–3 days for 2 weeks and add negatives (Claude reviews exports you send).
-- [ ] If 60+ clicks bring no leads after the fixes, pause and re-check.
-- [ ] Legal review of the price-beat fine print and the storm/insurance copy on the funnel pages.
+- [x] 2026-09-28 Funnel rebuilt: native 3-step form into GHL, price match / free gutters / Dog Oasis dog day, Trusty photos; tested live.
+- [x] 2026-09-29 New campaign published (Search only, 7 counties, Presence, Maximize clicks, $12 max CPC, $45/day, AI Max off, keyword in the tracking suffix); sitelinks, callouts, call asset, snippet, logo.
+- [x] 2026-10-02 All four ad groups live and approved (39 phrase/exact keywords); report sheet scheduled daily; negatives at 182 by 2026-10-05.
+- [x] 2026-10-02 Booking calendar on the funnel and main-site thank-you pages; street address required on every form.
+- [x] 2026-10-04 PostHog installed; lead API keeps a contact's existing GHL tags.
 
 ---
 
@@ -125,7 +77,6 @@ Uses the **current number (629) 277-4249** for now. The GHL number swap comes in
 
 **Conversion (done 2026-09-28, see Done):** the 3-step form sits right under the hero on every Nashville and Boise page and writes straight into GHL.
 - [ ] **Brandon, in GTM:** the "PPC Funnel Lead" Ads tag fires on every `generate_lead`, including website leads (`funnel_ad_group` = "Website"). That's fine: Google only counts it when the visitor came from an ad. In GA4, `generate_lead` becomes the site's lead key event.
-- [ ] **Brandon, in GHL:** add `website-lead` to the new-lead alert workflow (same as `ppc-lead`). Delete the test contact "Test Website Lead" (tagged `test`).
 - [ ] Add the Trusty project gallery to the service pages.
 - [ ] "Meet Nate" section on `/nashville` once a photo is available.
 
