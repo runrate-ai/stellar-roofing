@@ -2,6 +2,10 @@
 
 Newest first. A few lines per session: what was done and what was decided. Details live in git history and the docs each entry points to.
 
+## 2026-10-08
+
+- SEO + ads check (cloud session). Ads: $293.81, 37 clicks, 3 conversions, none since Oct 2; Oct 5–6 limited by budget (56% lost). Updated `add-negatives.js` with 30 competitor/DIY terms. GHL not checked (no token in the cloud). SEO technical crawl clean; titles too long is the only finding.
+
 ## 2026-10-06
 
 - Wrapped up the long setup session. Brandon confirmed he'll use short per-task sessions from now on. Nothing in progress; next scheduled work is the 2026-10-08 ads review.

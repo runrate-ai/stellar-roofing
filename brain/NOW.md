@@ -1,6 +1,6 @@
 # Where we left off
 
-**Last updated:** 2026-10-06 (session wrapped up; nothing in progress)
+**Last updated:** 2026-10-08 (SEO + ads check done; negatives script updated, waiting on Brandon to run it)
 
 ## The headline
 
@@ -10,6 +10,7 @@ The long setup session ended 2026-10-06. No work is half-finished and nothing is
 
 ## Waiting on Brandon (ask about these first)
 
+0. **Run the updated `ppc-scripts/add-negatives.js`** (30 terms from the 2026-10-08 check). Also: did anyone call or fill out the form since Oct 2? Claude couldn't read GHL from the cloud session.
 1. **Raise the ad budget and bid?** Proposed: budget $45 → **$75/day**, max CPC $12 → **$15**. He asked "should we increase the cap"; Claude first said wait until Thursday, then left it to him once he said volume matters most. No answer yet.
 2. **Build the GHL new-lead alert** (10 min, in the GHL UI). Design: one workflow, three triggers (tag added `ppc-lead`, tag added `website-lead`, customer booked appointment on the inspection calendar), then an internal email and an in-app notification to Nate. Full copy-paste steps were given in chat on 2026-10-02; re-give them.
 3. **GHL calendar cleanup:** rename "Nate Sneed's Personal Calendar" to "Free Roof Inspection" (name and description were given), confirm Central time, turn on booking notifications. Suggested rules: 60-min slots, 60-min interval, 4-hour minimum notice, 14-day range, 30-min post buffer, max 4/day.
@@ -23,14 +24,20 @@ The long setup session ended 2026-10-06. No work is half-finished and nothing is
 
 ## What Claude does next
 
-- **Thursday 2026-10-08: ads review.** Read the "Stellar Ads Report" sheet and GHL. Then:
-  - Update `ppc-scripts/add-negatives.js` with: `"valor roofing"`, `"weatherguard"`, `"summit ridge"`, `"top dawg"`, `"watson roofing"`, `"turbo poly"`, `"roof patch"`, `"what's good"`, `"sealing"`, `"leak source"`, plus anything new. Print the script in chat for Brandon to paste.
+- **Ads follow-ups from the 2026-10-08 review** (negatives already done):
   - Add the quality-score breakdown (ad relevance, landing page experience, expected CTR) to `ppc-scripts/report-to-sheet.js`.
   - Improve the Roofers ad group's landing page and ad match ("roofing company near me" has quality score 3/10).
 - **PostHog funnel report** (page view → form start → step 2 → step 3 → lead) once there's about a week of traffic. Watch whether the required street address (since 2026-10-02) is costing form completions.
 - **Blog:** GAF Timberline HDZ post is paused by Brandon; Owens Corning vs. GAF and the metal roof cost update come after.
 
-## Google Ads snapshot (Sep 29 – Oct 4)
+## Google Ads snapshot (Sep 29 – Oct 6, checked 2026-10-08)
+
+- $293.81, 37 clicks ($7.94 each), 3 Google conversions, all on Oct 1–2. **Oct 3–6: $186.92, 22 clicks, 0 conversions.**
+- Oct 5–6: impression share under 10%, and **56% lost to budget** (Oct 5 spent $77 on the $45 budget). Budget is now the bigger limit, not rank.
+- Quality score 3 on "roofing company near me", "roof leak repair", "hail damage roof repair"; 5 on "roof repair nashville".
+- The sheet's "Last updated" was still 2026-10-07 6:04 on the morning of Oct 8; check whether the daily run is still firing.
+
+## Earlier snapshot (Sep 29 – Oct 4)
 
 | | |
 |---|---|
@@ -53,6 +60,10 @@ The Sep 29 website lead (Contact page) came from **Instagram**, not ads or searc
 - PostHog on the funnel and main site since 2026-10-04 (recordings, autocapture, funnel events; privacy policy updated).
 - Lead API adds tags without replacing a contact's existing tags (fixed 2026-10-04).
 - SEO: Hendersonville, Murfreesboro, Franklin, Clarksville, Gallatin, Goodlettsville pages; commercial, storm, emergency upgrades; Owens Corning Duration blog post; "Shingles we install" line on the homepage, `/nashville`, and footer.
+
+## SEO check (2026-10-08)
+
+All 51 sitemap URLs return 200, are indexable, have the right canonical, one H1, schema, and image alt text. `/thank-you` and the funnel are noindex (correct). Only finding: most titles run 66–95 characters and get cut off in Google (meta descriptions 166–205). Low priority. Rankings and Search Console weren't checked (no access from the cloud session).
 
 ## Known problems
 

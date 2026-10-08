@@ -4,18 +4,17 @@
 
 var LIST_NAME = 'Relaunch negatives';
 
-// From the search terms report through 2026-10-04.
+// From the search terms report through 2026-10-06.
 var NEW_NEGATIVES = [
   // Competitors
-  '"2m roofing"', '"bone dry"', '"distinctive roofing"', '"level 7"', '"all above roofing"',
-  '"ragan"', '"rivera family"',
+  '"valor roofing"', '"weatherguard"', '"summit ridge"', '"top dawg"', '"watson roofing"',
+  '"taltek"', '"risher"', '"steve keese"', '"parmer"', '"metro roofing"', '"a 1 roofing"',
+  '"next level roofing"', '"proudfoot"', '"tim rigsby"', '"abs roofing"', '"highway roofing"',
+  '"nextdoor roofing"', '"no limits roofing"', '"redemption roofing"', '"family roof repair"',
+  '"executive park"', '[top roofing]',
   // DIY and product searches
-  '"flex seal"', '"liquid nails"', '"caulk"', '"best product"', '"crazy seal"',
-  '"handyman"', '"screws"',
-  // Research, not ready to hire
-  '"how much"', '"pictures"', '"cheaper"', '"vs"', '"spanish tile"', '"pitched roof"',
-  // Spanish-language searches
-  '"cerca de mi"'
+  '"turbo poly"', '"roof patch"', '"what\'s good"', '"sealing"', '"leak source"',
+  '"spray"', '"flex armor"', '"erie metal"'
 ];
 
 function main() {
