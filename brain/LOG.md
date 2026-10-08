@@ -6,6 +6,7 @@ Newest first. A few lines per session: what was done and what was decided. Detai
 
 - Merged the cloud branch `claude/jolly-lamport-52yppj` into local `main` (fast-forward, not pushed). The fetch first failed on iCloud duplicate files in `.git` (`refs/heads/main 2`, `refs/remotes/origin/main 2`, `index 2`, `index 3`); moved them out of the repo.
 - Rankings + Search Console check through OpenSEO (184 credits). 15 clicks / 4,228 impressions since Sep 26. One page-1 ranking ("roof replacement nashville", cost blog post); nothing else in the top 50 for Nashville head terms or city terms. Found storm damage, Franklin, Goodlettsville, Brentwood pages not indexed. Details in NOW.md.
+- Ran the OpenSEO `seo-audit` skill and saved the report in OpenSEO ("SEO Audit — Oct 7, 2026"). Verdict: site is technically clean; the blockers are indexing, zero reviews/listings, and no job proof on city pages.
 - Note: the cloud session dated its entries 2026-10-08, a day ahead of the Mac's clock.
 
 ## 2026-10-08

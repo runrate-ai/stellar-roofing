@@ -92,6 +92,8 @@ All 51 sitemap URLs return 200, are indexable, have the right canonical, one H1,
 - Indexed but Google still holds the pre-upgrade version: roof-repair (Sep 12), roof-replacement (Sep 11), emergency-roof-repair (Jun 24), roof-inspection (Jul 4).
 - Fine: homepage, `/nashville`, Hendersonville, Murfreesboro, Gallatin, Clarksville, commercial roofing.
 
+**Full OpenSEO audit (2026-10-07):** report saved at https://app.openseo.so/p/fefa6b78-083c-4175-a73f-5ecd6a06bf7a/reports/2b067f48-ddd0-4876-b401-40307fb549d2. Crawl of 53 pages clean (only long titles, long meta descriptions, heading order). Three recommendations, in order: (1) request indexing for the 8 URLs; (2) first Google reviews plus Yelp, BBB, Thumbtack, Nextdoor profiles (map pack tops all 20 searches; directories are 5–6 of the top 10 in city results); (3) add real local job photos to the Gallatin and Hendersonville pages (Trusty embed is only on `/nashville` today). Open question for Brandon: the `/nashville` headline says "Nashville's Most Trusted Roofing Company", which can't be verified; keep or reword?
+
 **Next for SEO:** after Brandon requests indexing, recheck those 8 URLs in a week. Then: fix the cost-post mix-up (link the replacement cost post from the replacement service page and the repair cost post), and consider a rank tracker for ~20 terms.
 
 ## Known problems
