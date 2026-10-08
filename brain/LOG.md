@@ -2,6 +2,12 @@
 
 Newest first. A few lines per session: what was done and what was decided. Details live in git history and the docs each entry points to.
 
+## 2026-10-07 (local session)
+
+- Merged the cloud branch `claude/jolly-lamport-52yppj` into local `main` (fast-forward, not pushed). The fetch first failed on iCloud duplicate files in `.git` (`refs/heads/main 2`, `refs/remotes/origin/main 2`, `index 2`, `index 3`); moved them out of the repo.
+- Rankings + Search Console check through OpenSEO (184 credits). 15 clicks / 4,228 impressions since Sep 26. One page-1 ranking ("roof replacement nashville", cost blog post); nothing else in the top 50 for Nashville head terms or city terms. Found storm damage, Franklin, Goodlettsville, Brentwood pages not indexed. Details in NOW.md.
+- Note: the cloud session dated its entries 2026-10-08, a day ahead of the Mac's clock.
+
 ## 2026-10-08
 
 - SEO + ads check (cloud session). Ads: $293.81, 37 clicks, 3 conversions, none since Oct 2; Oct 5–6 limited by budget (56% lost). Updated `add-negatives.js` with 30 competitor/DIY terms. GHL not checked (no token in the cloud). SEO technical crawl clean; titles too long is the only finding.

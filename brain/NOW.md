@@ -1,6 +1,6 @@
 # Where we left off
 
-**Last updated:** 2026-10-08 (SEO + ads check done; 30 negatives added and run; next: OpenSEO check in a local session)
+**Last updated:** 2026-10-07 (local session: cloud notes merged; OpenSEO rankings + Search Console check done; local `main` is ahead of origin, not pushed)
 
 ## The headline
 
@@ -10,6 +10,7 @@ The long setup session ended 2026-10-06. No work is half-finished and nothing is
 
 ## Waiting on Brandon (ask about these first)
 
+00. **Request Indexing in Search Console** (5 min) for the 8 URLs listed under "Rankings and Search Console check" below. Storm damage, Franklin, Goodlettsville and Brentwood are not in Google's index.
 0. Did anyone call or fill out the form since Oct 2? Claude couldn't read GHL from the cloud session. (The 30 new negatives were run on 2026-10-08.)
 1. **Raise the ad budget and bid?** Proposed: budget $45 → **$75/day**, max CPC $12 → **$15**. He asked "should we increase the cap"; Claude first said wait until Thursday, then left it to him once he said volume matters most. No answer yet.
 2. **Build the GHL new-lead alert** (10 min, in the GHL UI). Design: one workflow, three triggers (tag added `ppc-lead`, tag added `website-lead`, customer booked appointment on the inspection calendar), then an internal email and an in-app notification to Nate. Full copy-paste steps were given in chat on 2026-10-02; re-give them.
@@ -61,9 +62,37 @@ The Sep 29 website lead (Contact page) came from **Instagram**, not ads or searc
 - Lead API adds tags without replacing a contact's existing tags (fixed 2026-10-04).
 - SEO: Hendersonville, Murfreesboro, Franklin, Clarksville, Gallatin, Goodlettsville pages; commercial, storm, emergency upgrades; Owens Corning Duration blog post; "Shingles we install" line on the homepage, `/nashville`, and footer.
 
-## SEO check (2026-10-08)
+## SEO check (technical crawl, cloud session)
 
-All 51 sitemap URLs return 200, are indexable, have the right canonical, one H1, schema, and image alt text. `/thank-you` and the funnel are noindex (correct). Only finding: most titles run 66–95 characters and get cut off in Google (meta descriptions 166–205). Low priority. **Next:** rankings and Search Console check through OpenSEO, which needs a local session on the Mac.
+All 51 sitemap URLs return 200, are indexable, have the right canonical, one H1, schema, and image alt text. `/thank-you` and the funnel are noindex (correct). Only finding: most titles run 66–95 characters and get cut off in Google (meta descriptions 166–205). Low priority.
+
+## Rankings and Search Console check (2026-10-07, OpenSEO, 184 credits)
+
+**Search Console** (data only exists from Sep 26, so "28 days" is really Sep 26 – Oct 5): **15 clicks, 4,228 impressions**. Impressions went from ~180/day to ~600/day after the Sep 28 pages; average position 27 → 18. About 8 of the clicks are `/nashville` (mostly brand), 2 are a Boise page.
+
+- City pages are getting seen but sit on pages 2–4, **0 clicks**: Murfreesboro 564 impressions (pos 29), Gallatin 532 (www URL pos 12.7), Clarksville 443 (19.5), Hendersonville 416 (22), Spring Hill 366 (18), Smyrna 308 (23), Lebanon 141 (21).
+- Closest to page 1: storm/hail/emergency + city queries (pos 6–11 in Clarksville, Hendersonville, Smyrna, Murfreesboro, Spring Hill), "roof repair companies gallatin tn" 9.8, "roof contractors gallatin tn" 12.
+- Owens Corning Duration post: 456 impressions, pos 11.6, 1 click (many are out-of-state queries).
+- Nashville head terms barely register: no impressions at all for "roofing company nashville", "roofers nashville", "roofing contractor nashville".
+- Boise pages still take roughly a tenth of impressions.
+
+**Live Google check from each city (top ~50, one snapshot):**
+
+- "roof replacement nashville": **2nd organic result** (6th item on the page, under the map pack), with the cost blog post, not the service page.
+- "roof replacement cost nashville": #25, and Google shows the roof *repair* cost post for it (wrong page).
+- Not in the top 50: roofing company nashville tn, roofers nashville, roofing contractor nashville, roof repair nashville, storm damage roof repair nashville, commercial roofing nashville, roof inspection nashville. (Emergency roof repair nashville returned only 14 rows; not in them.)
+- Not found for "roofing company [city] tn" in Hendersonville, Gallatin, Murfreesboro, Franklin, Clarksville, or "roof repair [city] tn" in Hendersonville, Gallatin, Murfreesboro, Clarksville. Goodlettsville: only our paid ad shows.
+- Not in any map pack. No rank tracker is set up in OpenSEO.
+
+**Indexing problems found (live pages are fine; Google's copy is stale or missing):**
+
+- `/nashville/services/storm-damage-repair`: **not indexed**. "Duplicate without user-selected canonical"; Google picked an unrelated site as canonical. Last crawled Sep 20, before the upgrade.
+- `/nashville/service-areas/franklin`: **not indexed** ("Alternate page with proper canonical", last crawled Aug 30).
+- `/nashville/service-areas/goodlettsville` and `/brentwood`: **unknown to Google** (in the sitemap, never crawled).
+- Indexed but Google still holds the pre-upgrade version: roof-repair (Sep 12), roof-replacement (Sep 11), emergency-roof-repair (Jun 24), roof-inspection (Jul 4).
+- Fine: homepage, `/nashville`, Hendersonville, Murfreesboro, Gallatin, Clarksville, commercial roofing.
+
+**Next for SEO:** after Brandon requests indexing, recheck those 8 URLs in a week. Then: fix the cost-post mix-up (link the replacement cost post from the replacement service page and the repair cost post), and consider a rank tracker for ~20 terms.
 
 ## Known problems
 
