@@ -1,6 +1,6 @@
 # Where we left off
 
-**Last updated:** 2026-10-08 (SEO + ads check done; negatives script updated, waiting on Brandon to run it)
+**Last updated:** 2026-10-08 (SEO + ads check done; 30 negatives added and run; next: OpenSEO check in a local session)
 
 ## The headline
 
@@ -10,7 +10,7 @@ The long setup session ended 2026-10-06. No work is half-finished and nothing is
 
 ## Waiting on Brandon (ask about these first)
 
-0. **Run the updated `ppc-scripts/add-negatives.js`** (30 terms from the 2026-10-08 check). Also: did anyone call or fill out the form since Oct 2? Claude couldn't read GHL from the cloud session.
+0. Did anyone call or fill out the form since Oct 2? Claude couldn't read GHL from the cloud session. (The 30 new negatives were run on 2026-10-08.)
 1. **Raise the ad budget and bid?** Proposed: budget $45 → **$75/day**, max CPC $12 → **$15**. He asked "should we increase the cap"; Claude first said wait until Thursday, then left it to him once he said volume matters most. No answer yet.
 2. **Build the GHL new-lead alert** (10 min, in the GHL UI). Design: one workflow, three triggers (tag added `ppc-lead`, tag added `website-lead`, customer booked appointment on the inspection calendar), then an internal email and an in-app notification to Nate. Full copy-paste steps were given in chat on 2026-10-02; re-give them.
 3. **GHL calendar cleanup:** rename "Nate Sneed's Personal Calendar" to "Free Roof Inspection" (name and description were given), confirm Central time, turn on booking notifications. Suggested rules: 60-min slots, 60-min interval, 4-hour minimum notice, 14-day range, 30-min post buffer, max 4/day.
@@ -63,7 +63,7 @@ The Sep 29 website lead (Contact page) came from **Instagram**, not ads or searc
 
 ## SEO check (2026-10-08)
 
-All 51 sitemap URLs return 200, are indexable, have the right canonical, one H1, schema, and image alt text. `/thank-you` and the funnel are noindex (correct). Only finding: most titles run 66–95 characters and get cut off in Google (meta descriptions 166–205). Low priority. Rankings and Search Console weren't checked (no access from the cloud session).
+All 51 sitemap URLs return 200, are indexable, have the right canonical, one H1, schema, and image alt text. `/thank-you` and the funnel are noindex (correct). Only finding: most titles run 66–95 characters and get cut off in Google (meta descriptions 166–205). Low priority. **Next:** rankings and Search Console check through OpenSEO, which needs a local session on the Mac.
 
 ## Known problems
 
