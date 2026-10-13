@@ -2,6 +2,10 @@
 
 Newest first. A few lines per session: what was done and what was decided. Details live in git history and the docs each entry points to.
 
+## 2026-10-12
+
+- PPC check from the sheet (full export) and GHL. $605.15 / 69 clicks / 1 real person since launch; nothing since Oct 2 ($498, 54 clicks). Budget now $75/day. "roof repair company" has quality score 1. Wrote 60 new negatives into `add-negatives.js` (not yet run). Brandon confirmed he requested indexing for the 8 URLs.
+
 ## 2026-10-07 (local session)
 
 - Merged the cloud branch `claude/jolly-lamport-52yppj` into local `main` (fast-forward, not pushed). The fetch first failed on iCloud duplicate files in `.git` (`refs/heads/main 2`, `refs/remotes/origin/main 2`, `index 2`, `index 3`); moved them out of the repo.

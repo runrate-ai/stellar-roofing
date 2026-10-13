@@ -4,17 +4,22 @@
 
 var LIST_NAME = 'Relaunch negatives';
 
-// From the search terms report through 2026-10-06.
+// From the search terms report through 2026-10-11.
 var NEW_NEGATIVES = [
   // Competitors
-  '"valor roofing"', '"weatherguard"', '"summit ridge"', '"top dawg"', '"watson roofing"',
-  '"taltek"', '"risher"', '"steve keese"', '"parmer"', '"metro roofing"', '"a 1 roofing"',
-  '"next level roofing"', '"proudfoot"', '"tim rigsby"', '"abs roofing"', '"highway roofing"',
-  '"nextdoor roofing"', '"no limits roofing"', '"redemption roofing"', '"family roof repair"',
-  '"executive park"', '[top roofing]',
-  // DIY and product searches
-  '"turbo poly"', '"roof patch"', '"what\'s good"', '"sealing"', '"leak source"',
-  '"spray"', '"flex armor"', '"erie metal"'
+  '"5 star roofing"', '"best choice"', '"abc roofing"', '"armor roofing"', '"baker roofing"',
+  '"best pro roofing"', '"bill ray"', '"blue ribbon"', '"bowen roofing"', '"brandon james"',
+  '"centimark"', '"collier roofing"', '"ford roofing"', '"heartland roofing"', '"metal masters"',
+  '"mid south roofing"', '"music city roofer"', '"premier roofing"', '"procare"',
+  '"roof commander"', '"ryan roofing"', '"shingle rx"', '"storm guard"', '"styles roofing"',
+  '"summit roofing"', '"roof dude"', '"three hartz"', '"tn recon"', '"true built"',
+  '"weathertech"', '"zabala"', '"roof savers"', '"roofers mart"', '"mennonite"', '"erie"',
+  // DIY, research, and assistance-program searches
+  '"cement"', '"wet patch"', '"m seal"', '"leak stopper"', '"roof seal"', '"pipe collar"',
+  '"how do you"', '"how long"', '"how often"', '"what to do"',
+  '"estimator"', '"price list"', '"per foot"', '"sq ft"', '"homewyse"',
+  '"largest roofing"', '"top 10"', '"top 100"', '"united states"',
+  '"low income"', '"habitat for humanity"', '"program"', '"roof coatings"', '"crew"', '"locations"'
 ];
 
 function main() {
