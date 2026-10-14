@@ -4,11 +4,28 @@ The one list for PPC, SEO, and website work, **in priority order**. Work top to 
 
 Brandon's own action items are also GHL tasks (with due dates), on the internal contact **"Stellar Game Plan (internal)"**, assigned to Brandon.
 
-**Last updated:** 2026-10-05
+**Last updated:** 2026-10-14
 
 Reference files: [PPC-LAUNCH.md](PPC-LAUNCH.md) · [PPC-AUDIT.md](PPC-AUDIT.md) · [CONTENT-PLAN.md](CONTENT-PLAN.md) · [LOCAL-SEO-AUDIT.md](LOCAL-SEO-AUDIT.md) · [LINK-PROSPECTS.md](LINK-PROSPECTS.md) · [KEYWORD-AUDIT.md](KEYWORD-AUDIT.md) · [BLOG_CONFIG.md](BLOG_CONFIG.md) · [TOMORROW.md](TOMORROW.md) (original funnel launch notes)
 
 > **Where we left off, and what's next, lives in [brain/NOW.md](brain/NOW.md).** This file is the full list.
+
+## ▶ Next up (added 2026-10-14, with urgency and time)
+
+| # | Task | Who | Urgency | Time |
+|---|---|---|---|---|
+| 1 | Run the updated `add-negatives.js` (60 terms). Answer: metal roofs? max CPC $12 or $15? | Brandon | **Do today** (money leaking) | 5 min |
+| 2 | Confirm the 4 Google reviews are from real customers; set up the same-day review request (text + direct link) | Brandon | **Do today** | 10 min |
+| 3 | Business Profile: upload real job photos (9 now, rivals 25–92), fill in Services, add only true extra categories | Brandon | This week | 15–20 min |
+| 4 | Build the GHL new-lead alert (Claude re-gives the steps) | Brandon | This week (nobody is told when a lead arrives) | 10 min |
+| 5 | Promo video on the Nashville site and funnels: decide placement and hosting, then Claude compresses, embeds, and tracks plays | Brandon decides, Claude builds | This week | Decision 5 min; build 45 min |
+| 6 | Google Ads: turn off Auto-apply recommendations and Automatically created assets | Brandon | This week | 5 min |
+| 7 | PostHog funnel report: do ad visitors start the form? | Claude | This week | 20 min |
+| 8 | Recheck indexing of the 8 URLs, then point the Business Profile link at `/nashville/service-areas/goodlettsville` | Claude, then Brandon | After Oct 15 | 10 min |
+| 9 | GHL calendar cleanup (rename, Central time, notifications, booking rules) | Brandon | Soon | 10 min |
+| 10 | Decide on Local Services Ads; Claude writes the application steps | Brandon | Soon | Decision 5 min; apply 30 min |
+| 11 | Delete the 3 `test`-tagged GHL contacts | Brandon | Low | 3 min |
+| 12 | Instagram bio link with UTM so IG leads are labeled | Brandon | Low | 2 min |
 
 ## 🥇 Priority 1: Google Ads and the funnel (live; now tuning)
 
