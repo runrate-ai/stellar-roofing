@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import PromoVideo from '../../components/PromoVideo';
 import Link from 'next/link';
-import { Phone, Shield, SearchCheck, BadgeCheck, FileCheck, Home, Wrench, CloudLightning, Search, Building2, AlertTriangle, MapPin, PlayCircle } from 'lucide-react';
+import { Phone, Shield, SearchCheck, BadgeCheck, FileCheck, Home, Wrench, CloudLightning, Search, Building2, AlertTriangle, MapPin, PlayCircle, PawPrint } from 'lucide-react';
 import SchemaMarkup from '../../components/SchemaMarkup';
 import CTABanner from '../../components/CTABanner';
 import FAQ from '../../components/FAQ';
@@ -88,6 +88,26 @@ export default function NashvilleHubPage() {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">Meet Stellar Roofing &amp; Restorations</h2>
           <PromoVideo location="nashville_home" />
+        </div>
+      </section>
+
+      {/* STELLAR PUPPY PROMISE */}
+      <section className="bg-bg-alt py-14 px-4">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-5">
+            <PawPrint size={28} className="text-primary" />
+          </div>
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">The Stellar Puppy Promise</h2>
+          <p className="text-text-muted text-lg leading-relaxed mb-5">
+            A roof replacement is loud, and most dogs hate it. So on install day we pick up your dog and take them to Dog Oasis in Goodlettsville for a day of play, then a bath, teeth brushed, ears cleaned, and nails buffed. We book it and we pay for it.
+          </p>
+          <blockquote className="text-primary font-semibold text-lg leading-relaxed mb-5">
+            &ldquo;Not only are you going to come home to a brand new roof, but you&apos;re going to have a dog that is clean and better than when you left.&rdquo;
+            <footer className="text-text-muted text-sm font-normal mt-2">Nate, owner of Stellar Roofing &amp; Restorations</footer>
+          </blockquote>
+          <p className="text-text-muted text-xs leading-relaxed max-w-2xl mx-auto">
+            Applies to complete retail (non-insurance) roof replacements: one dog, one day at Dog Oasis, 812 Meadowlark Lane, Goodlettsville, TN, booked and paid for by Stellar Roofing &amp; Restorations (value up to $75). Baths are available Tuesday through Saturday. Subject to Dog Oasis availability and its vaccination and temperament requirements.
+          </p>
         </div>
       </section>
 
