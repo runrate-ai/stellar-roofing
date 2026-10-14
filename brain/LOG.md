@@ -2,6 +2,10 @@
 
 Newest first. A few lines per session: what was done and what was decided. Details live in git history and the docs each entry points to.
 
+## 2026-10-14
+
+- Local SEO audit (OpenSEO): #3 of 20 for "roofing company" at the storefront, found at 4 of 9 grid points (0 in top 3), not in top 21 downtown. Profile has 4 real-looking reviews and 9 photos (was 0 and 0 on Sep 27), so the earlier "0 reviews" note in NOW.md, TODO.md and the OpenSEO business overview was corrected.
+
 ## 2026-10-12
 
 - PPC check from the sheet (full export) and GHL. $605.15 / 69 clicks / 1 real person since launch; nothing since Oct 2 ($498, 54 clicks). Budget now $75/day. "roof repair company" has quality score 1. Wrote 60 new negatives into `add-negatives.js` (not yet run). Brandon confirmed he requested indexing for the 8 URLs.

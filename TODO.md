@@ -62,8 +62,8 @@ Campaign `Search – Nashville Leads (Relaunch)` has been live since 2026-09-29.
 ## 🥉 Priority 3: local SEO, reviews, and listings
 
 **Stellar team**
-- [ ] **Google reviews:** ask every past customer; reply to every review. Goal: 20+ by late November. *(#1 Maps factor; Stellar has 0.)*
-- [ ] **Business Profile photos:** 20+ real job photos, then more after each job.
+- [ ] **Google reviews:** ask every past customer; reply to every review. Goal: 20+ by late November. *(#1 Maps factor; Stellar has 4 as of 2026-10-14, rivals nearby 64–96.)*
+- [ ] **Business Profile photos:** 20+ real job photos (9 on 2026-10-14; rivals 25–92), then more after each job.
 - [ ] **Claim the core listings yourself** (free, you keep them): Bing Places, Apple Business Connect, Facebook, Yelp, BBB, Nextdoor. Use the exact details block in LINK-PROSPECTS.md.
 - [ ] **Decide on GHL Listings (Yext)** for the rest of the directory network. Check the price first. If yes: use (629) 277-4249, the Goodlettsville address, and the `/nashville` URL, **not** the GHL tracking number. Listings may drop off if you cancel.
 - [ ] Check that Google approved the Business Profile category and service changes.
