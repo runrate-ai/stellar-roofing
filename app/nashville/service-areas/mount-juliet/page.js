@@ -71,6 +71,9 @@ export default function MountJulietPage() {
           <p className="text-text-muted leading-relaxed mb-8">
             Stellar Roofing &amp; Restorations serves Mount Juliet homeowners with the same professional, no-pressure approach and lifetime workmanship warranty we deliver throughout Middle Tennessee. Whether you need a free post-storm inspection, a repair, or a full roof replacement, we'll give you an honest assessment and a fair estimate.
           </p>
+          <p className="text-text-muted leading-relaxed mb-8">
+            Whether you need a <Link href="/nashville/services/roof-repair" className="font-semibold text-primary underline">roof repair</Link>, a <Link href="/nashville/services/roof-replacement" className="font-semibold text-primary underline">full roof replacement</Link>, or a <Link href="/nashville/services/storm-damage-repair" className="font-semibold text-primary underline">storm damage inspection</Link> in Mount Juliet, start with a free inspection. For typical prices, see our <Link href="/nashville/blog/how-much-does-roof-repair-cost" className="font-semibold text-primary underline">roof repair cost guide</Link> and the <Link href="/nashville/blog/how-much-does-roof-replacement-cost-nashville" className="font-semibold text-primary underline">roof replacement cost guide</Link>.
+          </p>
 
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Roofing Services in Mount Juliet, TN</h2>
           <ul className="space-y-3 mb-8">

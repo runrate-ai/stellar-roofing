@@ -22,6 +22,8 @@ export default function RoofCostGuide() {
 
       <p>That range is wide for a reason. This guide walks through what actually drives the price, so you can go into any estimate with realistic expectations and compare quotes on equal terms.</p>
 
+      <p>Only fixing a leak or a few shingles? That is a separate, much smaller number. See our <Link href={postPath('how-much-does-roof-repair-cost')}>roof repair cost guide</Link>.</p>
+
       <h2>What Drives the Cost of a Roof Replacement?</h2>
 
       <h3>Roof size</h3>

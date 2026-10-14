@@ -71,6 +71,9 @@ export default function LebanonPage() {
           <p className="text-text-muted leading-relaxed mb-8">
             Stellar Roofing &amp; Restorations serves Lebanon homeowners with the same professional, no-pressure approach and lifetime workmanship warranty we deliver throughout Middle Tennessee. Free inspections, honest estimates, and quality craftsmanship on every project.
           </p>
+          <p className="text-text-muted leading-relaxed mb-8">
+            Whether you need a <Link href="/nashville/services/roof-repair" className="font-semibold text-primary underline">roof repair</Link>, a <Link href="/nashville/services/roof-replacement" className="font-semibold text-primary underline">full roof replacement</Link>, or a <Link href="/nashville/services/storm-damage-repair" className="font-semibold text-primary underline">storm damage inspection</Link> in Lebanon, start with a free inspection. For typical prices, see our <Link href="/nashville/blog/how-much-does-roof-repair-cost" className="font-semibold text-primary underline">roof repair cost guide</Link> and the <Link href="/nashville/blog/how-much-does-roof-replacement-cost-nashville" className="font-semibold text-primary underline">roof replacement cost guide</Link>.
+          </p>
 
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Roofing Services in Lebanon, TN</h2>
           <ul className="space-y-3 mb-8">

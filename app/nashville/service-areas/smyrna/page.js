@@ -71,6 +71,9 @@ export default function SmyrnaPage() {
           <p className="text-text-muted leading-relaxed mb-8">
             Like the rest of Middle Tennessee, Smyrna is subject to the region's active storm season. Hail events, high winds, and heavy rain regularly affect Rutherford County, and our team responds quickly to assess and repair storm-related roof damage. Stellar Roofing &amp; Restorations serves Smyrna homeowners with free inspections, honest estimates, and a lifetime workmanship warranty.
           </p>
+          <p className="text-text-muted leading-relaxed mb-8">
+            Whether you need a <Link href="/nashville/services/roof-repair" className="font-semibold text-primary underline">roof repair</Link>, a <Link href="/nashville/services/roof-replacement" className="font-semibold text-primary underline">full roof replacement</Link>, or a <Link href="/nashville/services/storm-damage-repair" className="font-semibold text-primary underline">storm damage inspection</Link> in Smyrna, start with a free inspection. For typical prices, see our <Link href="/nashville/blog/how-much-does-roof-repair-cost" className="font-semibold text-primary underline">roof repair cost guide</Link> and the <Link href="/nashville/blog/how-much-does-roof-replacement-cost-nashville" className="font-semibold text-primary underline">roof replacement cost guide</Link>.
+          </p>
 
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">Roofing Services in Smyrna, TN</h2>
           <ul className="space-y-3 mb-8">
