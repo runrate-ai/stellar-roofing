@@ -1,6 +1,6 @@
 # Where we left off
 
-**Last updated:** 2026-10-12 (PPC check done; new negatives script written, waiting on Brandon to run it; local `main` ahead of origin, not pushed)
+**Last updated:** 2026-10-14 (local SEO audit; promo video and Stellar Puppy Promise live on /nashville and funnels; negatives script handed to Brandon to run)
 
 ## The headline
 
@@ -10,9 +10,9 @@ The long setup session ended 2026-10-06. No work is half-finished and nothing is
 
 ## Waiting on Brandon (ask about these first)
 
-00. **Run the updated `add-negatives.js`** (60 new terms, printed in chat 2026-10-12). Answer: does Stellar install metal roofs? (Indexing requests for the 8 URLs were done by Brandon ~2026-10-08; recheck after 2026-10-15.)
+00. **Run the updated `add-negatives.js`** (60 new terms; full script and steps given in chat 2026-10-14). Brandon answered 2026-10-14: **Stellar does install metal roofs** (do NOT add "metal" as a negative) and **max CPC is $12**. Confirm he ran it. Open: standing seam, metal shingles, or both, so metal copy can be written. (Indexing requests for the 8 URLs were done by Brandon ~2026-10-08; recheck after 2026-10-15.)
 0. Did anyone call or fill out the form since Oct 2? Claude couldn't read GHL from the cloud session. (The 30 new negatives were run on 2026-10-08.)
-1. Budget was raised to **$75/day** by Brandon (seen in the sheet 2026-10-12). Whether max CPC went from $12 to $15 is unknown; ask.
+1. Budget was raised to **$75/day** by Brandon (seen in the sheet 2026-10-12). Max CPC confirmed still **$12** (2026-10-14).
 2. **Build the GHL new-lead alert** (10 min, in the GHL UI). Design: one workflow, three triggers (tag added `ppc-lead`, tag added `website-lead`, customer booked appointment on the inspection calendar), then an internal email and an in-app notification to Nate. Full copy-paste steps were given in chat on 2026-10-02; re-give them.
 3. **GHL calendar cleanup:** rename "Nate Sneed's Personal Calendar" to "Free Roof Inspection" (name and description were given), confirm Central time, turn on booking notifications. Suggested rules: 60-min slots, 60-min interval, 4-hour minimum notice, 14-day range, 30-min post buffer, max 4/day.
 4. **Google Local Services Ads:** Claude offered to write the application steps. Not answered.
@@ -24,6 +24,8 @@ The long setup session ended 2026-10-06. No work is half-finished and nothing is
 10. Owens Corning logo artwork file (for the badge); GHL number A2P approval.
 
 ## What Claude does next
+
+- **Video and Puppy Promise (done 2026-10-14):** YouTube unlisted video (`ajLg0usGdBU`) is a click-to-play embed on `/nashville` (hero link + section) and every funnel. "The Stellar Puppy Promise" band is on `/nashville`; funnel dog-day copy now matches Nate's video (Stellar picks the dog up, play day, bath, teeth, ears, nails; retail replacements only, up to $75, Dog Oasis, 812 Meadowlark Lane). Open: confirm "we bring the dog home" wording; Nate is asking Dog Oasis (dogoasis.com) for a backlink to `https://www.thestellarroofing.com/nashville`. `promo_video_play` events go to PostHog.
 
 - **Ads follow-ups from the 2026-10-08 review** (negatives already done):
   - Add the quality-score breakdown (ad relevance, landing page experience, expected CTR) to `ppc-scripts/report-to-sheet.js`.

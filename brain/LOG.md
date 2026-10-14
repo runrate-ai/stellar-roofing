@@ -4,6 +4,8 @@ Newest first. A few lines per session: what was done and what was decided. Detai
 
 ## 2026-10-14
 
+- Promo video (YouTube unlisted) added as click-to-play on `/nashville` and all funnels; "The Stellar Puppy Promise" band added to `/nashville` and funnel copy aligned to Nate's video transcript; Dog Oasis linked. Brandon confirmed: installs metal roofs, max CPC $12. Negatives script (60 terms, no "metal") handed over to run. TODO.md got a "Next up" table.
+
 - Local SEO audit (OpenSEO): #3 of 20 for "roofing company" at the storefront, found at 4 of 9 grid points (0 in top 3), not in top 21 downtown. Profile has 4 real-looking reviews and 9 photos (was 0 and 0 on Sep 27), so the earlier "0 reviews" note in NOW.md, TODO.md and the OpenSEO business overview was corrected.
 
 ## 2026-10-12
