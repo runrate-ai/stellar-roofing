@@ -99,7 +99,7 @@ export default function NashvilleHubPage() {
           </div>
           <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">The Stellar Puppy Promise</h2>
           <p className="text-text-muted text-lg leading-relaxed mb-5">
-            A roof replacement is loud, and most dogs hate it. So on install day we pick up your dog and take them to Dog Oasis in Goodlettsville for a day of play, then a bath, teeth brushed, ears cleaned, and nails buffed. We book it and we pay for it.
+            A roof replacement is loud, and most dogs hate it. So on install day we pick up your dog and take them to <a href="https://dogoasis.com/" target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-primary">Dog Oasis</a> in Goodlettsville for a day of play, then a bath, teeth brushed, ears cleaned, and nails buffed. We book it and we pay for it.
           </p>
           <blockquote className="text-primary font-semibold text-lg leading-relaxed mb-5">
             &ldquo;Not only are you going to come home to a brand new roof, but you&apos;re going to have a dog that is clean and better than when you left.&rdquo;
