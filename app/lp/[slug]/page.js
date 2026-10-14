@@ -10,6 +10,7 @@ import FunnelFooter from '../../../components/funnel/FunnelFooter';
 import FunnelForm from '../../../components/funnel/FunnelForm';
 import CallLink from '../../../components/funnel/CallLink';
 import TrustRow from '../../../components/funnel/TrustRow';
+import PromoVideo from '../../../components/PromoVideo';
 import { ProjectGalleryEmbed, ProjectMapEmbed } from '../../../components/TrustyEmbed';
 import config from '../../../lib/config';
 import { funnels, funnelSlugs, getFunnel } from '../../../lib/funnels';
@@ -127,6 +128,11 @@ export default function FunnelPage({ params }) {
               <p className="text-text-muted text-sm mt-1.5">
                 {nashville.hours.summary}
               </p>
+
+              <div className="mt-8 max-w-xl mx-auto lg:mx-0">
+                <p className="text-primary font-bold text-sm mb-2.5">See who you&apos;d be working with</p>
+                <PromoVideo location="funnel_hero" funnelSlug={funnel.slug} />
+              </div>
             </div>
           </div>
         </div>

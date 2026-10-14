@@ -1,6 +1,7 @@
 import Image from 'next/image';
+import PromoVideo from '../../components/PromoVideo';
 import Link from 'next/link';
-import { Phone, Shield, SearchCheck, BadgeCheck, FileCheck, Home, Wrench, CloudLightning, Search, Building2, AlertTriangle, MapPin } from 'lucide-react';
+import { Phone, Shield, SearchCheck, BadgeCheck, FileCheck, Home, Wrench, CloudLightning, Search, Building2, AlertTriangle, MapPin, PlayCircle } from 'lucide-react';
 import SchemaMarkup from '../../components/SchemaMarkup';
 import CTABanner from '../../components/CTABanner';
 import FAQ from '../../components/FAQ';
@@ -76,6 +77,17 @@ export default function NashvilleHubPage() {
               <Phone size={20} /> {loc.phone}
             </a>
           </div>
+          <a href="#video" className="inline-flex items-center gap-2 mt-6 text-white/90 hover:text-white font-semibold underline underline-offset-4">
+            <PlayCircle size={20} /> Watch our video
+          </a>
+        </div>
+      </section>
+
+      {/* PROMO VIDEO */}
+      <section id="video" className="bg-white py-14 px-4 scroll-mt-20">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">Meet Stellar Roofing &amp; Restorations</h2>
+          <PromoVideo location="nashville_home" />
         </div>
       </section>
 
