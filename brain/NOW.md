@@ -4,6 +4,8 @@
 
 ## The headline
 
+**2026-10-16 update:** Brandon **paused Google PPC** (no leads or conversions). **Meta ads launch in a few days** (Business Manager and ad account exist; no Meta pixel yet). PostHog on the funnel showed 59 visitors Oct 4–15, 2 form starts, 0 leads, 0 call taps, half gone in 15 seconds. Local-ranking plan (reviews, profile, citations, links, tracking) is in `TODO.md`. No LSAs.
+
 The relaunched Google Ads campaign has run one week and produced **one real person** (they called and filled out the form) for $170. Brandon wants more leads and is frustrated with PPC. The open decision is whether to raise the budget and bid. Nobody is alerted when a lead arrives, because the GHL alert workflow still isn't built.
 
 The long setup session ended 2026-10-06. No work is half-finished and nothing is uncommitted. Brandon will start **short, separate sessions per task** from here (cheaper than one long one); say "wrap up" before closing so this page gets updated.

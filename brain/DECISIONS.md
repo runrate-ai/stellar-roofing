@@ -4,6 +4,8 @@ Newest first. Each one says what was decided and why.
 
 | Date | Decision | Why |
 |---|---|---|
+| 2026-10-16 | **Google Ads PPC is paused** (no leads or conversions). **Meta ads launch in a few days.** | Brandon's decision. Funnel conversion problem (3% form start, 0 call taps) must be fixed before paying for more traffic. |
+| 2026-10-16 | **No Google Local Services Ads** for now. | Brandon said no. Reviews + Business Profile are the local-ranking plan instead. |
 | 2026-10-05 | Brandon's goal for PPC is **lead volume**. He doesn't consider tracking whether each lead closed important right now. | His words. Still report real people, not Google's conversion count. |
 | 2026-10-04 | Analytics: **PostHog Cloud (US)** for recordings and funnels; keep Google Analytics for counts. Not Plausible, not Clarity, not self-hosted PostHog. | Free at this traffic; recordings + funnels + A/B tests in one tool. |
 | 2026-10-04 | Don't install the big third-party skill/agent catalogs (claude-skills, claude-code-templates). Cherry-pick one piece only for a specific need. | Mostly irrelevant here; unreviewed code; more skills slows the assistant. |

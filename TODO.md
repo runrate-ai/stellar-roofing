@@ -23,9 +23,23 @@ Reference files: [PPC-LAUNCH.md](PPC-LAUNCH.md) · [PPC-AUDIT.md](PPC-AUDIT.md) 
 | 7 | PostHog funnel report: do ad visitors start the form? | Claude | This week | 20 min |
 | 8 | Recheck indexing of the 8 URLs, then point the Business Profile link at `/nashville/service-areas/goodlettsville` | Claude, then Brandon | After Oct 15 | 10 min |
 | 9 | GHL calendar cleanup (rename, Central time, notifications, booking rules) | Brandon | Soon | 10 min |
-| 10 | Decide on Local Services Ads; Claude writes the application steps | Brandon | Soon | Decision 5 min; apply 30 min |
+| 10 | ~~Local Services Ads~~ Decided NO 2026-10-16 | | | |
 | 11 | Delete the 3 `test`-tagged GHL contacts | Brandon | Low | 3 min |
 | 12 | Instagram bio link with UTM so IG leads are labeled | Brandon | Low | 2 min |
+
+## ▶ Local ranking plan (added 2026-10-16): get into the Goodlettsville map pack
+
+Goal: top 3 for "roofing company" and "roof repair" around Goodlettsville, then widen. Rivals: National Roof Co (96 reviews), Cannons (64), WCM (61). Google PPC is paused; Meta ads launch soon. Timeline numbers are estimates, not guarantees. Depends on jobs per month (ask Nate).
+
+| When | Milestone | Check |
+|---|---|---|
+| Weeks 1–2 (by ~Oct 30) | Review requests on every finished job; 20+ real photos on the profile; Services list; true extra categories; Yelp, BBB, Thumbtack, Nextdoor, Apple, Bing claimed via GHL Listings with logo + site link; Goodlettsville page indexed (request indexing again) and set as the profile link; Dog Oasis link ask; rank tracker + grid baseline | Profile completeness equals rivals |
+| Month 1 (by ~Nov 15) | 10–15 reviews; weekly real-job photo posts; city pages link to service pages | Grid shows Stellar at more points |
+| Months 2–3 (Dec–Jan) | 25–30 reviews; 3–5 local links (chamber, Little League, Habitat, Dog Oasis) | **Top 3 at the storefront** |
+| Months 4–6 (Feb–Apr) | 40–60 reviews; cost and service content | Competitive with Cannons and WCM across Goodlettsville; city pages on page 1 for low-competition terms |
+| Months 9–12+ | Keep going | Nashville head terms and downtown stay a long shot vs Don Kennedy |
+
+**Open items:** Goodlettsville page was still "URL is unknown to Google" on 2026-10-16 (Brandon requested indexing ~Oct 8); the storm-damage page has Google picking an unrelated site (747live.bet) as canonical; Franklin page still shows an old crawl.
 
 ## 🥇 Priority 1: Google Ads and the funnel (live; now tuning)
 
@@ -33,7 +47,7 @@ Campaign `Search – Nashville Leads (Relaunch)` has been live since 2026-09-29.
 
 **Open: decisions (Brandon)**
 - [ ] Raise the budget ($45 → $75/day) and max bid ($12 → $15)? Proposed 2026-10-05.
-- [ ] Apply for Google Local Services Ads (pay per lead, "Google Guaranteed")?
+- [x] Local Services Ads: decided NO (2026-10-16).
 
 **Open: Brandon, in GHL**
 - [ ] Build the new-lead alert workflow (triggers: tag `ppc-lead`, tag `website-lead`, appointment booked; actions: email + in-app notification to Nate). The API can't create workflows. Until it exists, check GHL morning and evening.
