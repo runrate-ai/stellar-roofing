@@ -43,8 +43,8 @@ Brandon starts **short, separate sessions per task**; say "wrap up" before closi
 - Budget is now **$75/day** (Brandon raised it; date unknown, max CPC not visible in the sheet). Oct 8 spent $133. Oct 10–11: ~$38/day, 0% lost to budget, 64–70% lost to rank. Impression share 30–36%.
 - By ad group: Roof Repair $322.56 / 38 clicks / all 3 conversions; Roofers $153.74 / 17; Replacement $128.85 / 14; Storm $0 / 28 impressions.
 - **"roof repair company" (phrase) has quality score 1**, with 718 impressions and $165.54, the biggest keyword. It is catching general "roofing company" searches and sending them to the repair page. Fix proposed: ad-group negatives in Roof Repair so those go to Roofers. Not done yet.
-- Only 26 of 69 clicks are itemized by search term; 5 of those 26 were competitor names. `ppc-scripts/add-negatives.js` now holds 60 new negatives (through Oct 11); run by Brandon 2026-10-16.
-- Metal: Stellar **does** install metal roofs (all types), so "metal" is NOT a negative. The negatives script (60 terms) was run by Brandon 2026-10-16.
+- Only 26 of 69 clicks are itemized by search term; 5 of those 26 were competitor names. `ppc-scripts/add-negatives.js` now holds 60 new negatives (through Oct 11); run by Brandon 2026-10-14.
+- Metal: Stellar **does** install metal roofs (all types), so "metal" is NOT a negative. The negatives script (60 terms) was run by Brandon 2026-10-14.
 - Next diagnostic: PostHog funnel (do ad visitors start the form?). 54 clicks with nothing is too many to blame on search terms alone.
 
 ## Earlier snapshot (Sep 29 – Oct 6, checked 2026-10-08)
