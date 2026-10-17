@@ -78,6 +78,10 @@ export default function FunnelForm({
     if (fields.phone.replace(/\D/g, '').length < 10) {
       return setError('Please enter a valid 10-digit phone number.');
     }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email.trim())) {
+      return setError('Please enter a valid email address.');
+    }
+    if (showMessage && !fields.message.trim()) return setError('Please tell us a little about your project.');
 
     setSubmitting(true);
     setError('');
@@ -175,11 +179,9 @@ export default function FunnelForm({
           </div>
 
           <div className="mb-4">
-            <label className={labelClass} htmlFor={`${id}-email`}>
-              Email <span className="font-normal text-text-muted">(optional)</span>
-            </label>
+            <label className={labelClass} htmlFor={`${id}-email`}>Email</label>
             <input
-              id={`${id}-email`} type="email" autoComplete="email" className={inputClass}
+              id={`${id}-email`} type="email" autoComplete="email" required className={inputClass}
               placeholder="jane@example.com"
               value={fields.email}
               onChange={e => set('email', e.target.value)}
@@ -188,11 +190,9 @@ export default function FunnelForm({
 
           {showMessage && (
             <div className="mb-4">
-              <label className={labelClass} htmlFor={`${id}-message`}>
-                Anything we should know? <span className="font-normal text-text-muted">(optional)</span>
-              </label>
+              <label className={labelClass} htmlFor={`${id}-message`}>Tell us about your project</label>
               <textarea
-                id={`${id}-message`} rows={3} className={inputClass}
+                id={`${id}-message`} rows={3} required className={inputClass}
                 placeholder="Leak over the kitchen, storm last week, and so on"
                 value={fields.message}
                 onChange={e => set('message', e.target.value)}
