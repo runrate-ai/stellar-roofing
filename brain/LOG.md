@@ -2,6 +2,10 @@
 
 Newest first. A few lines per session: what was done and what was decided. Details live in git history and the docs each entry points to.
 
+## 2026-10-17
+
+- Built and pushed: A2P consent (checkbox, privacy/terms SMS sections, footer links on every form step), form in the `/nashville` hero, funnel mobile fix, metal roofing copy, Puppy Promise, promo video. Bing Webmaster checked (set up, 51 URLs, 0 errors). PostHog funnel report done (59 visitors, 2 form starts, 0 leads). Competitive landscape saved in OpenSEO. Plan and timeline added to TODO.md. Decisions: no LSAs, Google PPC paused, Meta coming, no second/keyword domains. Brandon claiming Yelp; Nate asking Dog Oasis for a backlink.
+
 ## 2026-10-14
 
 - Promo video (YouTube unlisted) added as click-to-play on `/nashville` and all funnels; "The Stellar Puppy Promise" band added to `/nashville` and funnel copy aligned to Nate's video transcript; Dog Oasis linked. Brandon confirmed: installs metal roofs, max CPC $12. Negatives script (60 terms, no "metal") handed over to run. TODO.md got a "Next up" table.

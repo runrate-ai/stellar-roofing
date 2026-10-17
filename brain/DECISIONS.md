@@ -4,6 +4,10 @@ Newest first. Each one says what was decided and why.
 
 | Date | Decision | Why |
 |---|---|---|
+| 2026-10-17 | SMS consent on forms is an **optional, unchecked box**; texting only people who tick it (tag `sms-consent`). Terms and Privacy links in every form footer. | Needed for A2P 10DLC; consent can't be a condition of purchase. |
+| 2026-10-16 | **No second or keyword domains** (e.g. bestrooferinnashville.com). A plain 301 for brand variants is fine, but no SEO value. | Doorway/spam risk, "best" claim can't be verified. |
+| 2026-10-14 | Metal roofing: Stellar installs **all types**, covered by the lifetime workmanship warranty. **No metal price on the site.** No brand named until Brandon confirms. | Brandon's words. |
+| 2026-10-14 | **The Stellar Puppy Promise** copy matches Nate's video (Stellar picks up the dog; play day; bath, teeth, ears, nails). Retail (non-insurance) replacements only, Dog Oasis, up to $75. | Brandon: "whatever he said in the video." |
 | 2026-10-16 | **Google Ads PPC is paused** (no leads or conversions). **Meta ads launch in a few days.** | Brandon's decision. Funnel conversion problem (3% form start, 0 call taps) must be fixed before paying for more traffic. |
 | 2026-10-16 | **No Google Local Services Ads** for now. | Brandon said no. Reviews + Business Profile are the local-ranking plan instead. |
 | 2026-10-05 | Brandon's goal for PPC is **lead volume**. He doesn't consider tracking whether each lead closed important right now. | His words. Still report real people, not Google's conversion count. |

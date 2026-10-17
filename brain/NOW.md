@@ -1,48 +1,50 @@
 # Where we left off
 
-**Last updated:** 2026-10-14 (local SEO audit; promo video and Stellar Puppy Promise live on /nashville and funnels; negatives script handed to Brandon to run)
+**Last updated:** 2026-10-17 (video, Puppy Promise, metal, A2P consent, hero form, funnel mobile fix all live; Google PPC paused; Meta ads launching; next is the Meta pixel)
 
 ## The headline
 
-**2026-10-16 update:** Brandon **paused Google PPC** (no leads or conversions). **Meta ads launch in a few days** (Business Manager and ad account exist; no Meta pixel yet). PostHog on the funnel showed 59 visitors Oct 4–15, 2 form starts, 0 leads, 0 call taps, half gone in 15 seconds. Local-ranking plan (reviews, profile, citations, links, tracking) is in `TODO.md`. No LSAs.
+**Google PPC is paused** (Brandon, ~Oct 16): no leads or conversions. **Meta ads launch in a few days.** Business Manager and ad account exist; **no Meta pixel yet** (waiting on the pixel ID from Brandon). PostHog on the funnel (Oct 4–15): 59 visitors, 2 form starts, 0 leads, 0 call taps, half gone in 15 seconds. So the funnel page is the first problem to fix before paying for traffic: on 2026-10-17 Claude tightened the mobile top so all four form options show on the first screen (pushed). Results need a few days of traffic to judge.
 
-The relaunched Google Ads campaign has run one week and produced **one real person** (they called and filled out the form) for $170. Brandon wants more leads and is frustrated with PPC. The open decision is whether to raise the budget and bid. Nobody is alerted when a lead arrives, because the GHL alert workflow still isn't built.
+Local ranking: Stellar is #3 on the Goodlettsville map for "roofing company" with **4 reviews** vs 96 / 64 / 61 for National Roof Co / Cannons / WCM. The 12-month plan with dated milestones is in `TODO.md` ("Local ranking plan"). LSAs: decided no.
 
-The long setup session ended 2026-10-06. No work is half-finished and nothing is uncommitted. Brandon will start **short, separate sessions per task** from here (cheaper than one long one); say "wrap up" before closing so this page gets updated.
+Brandon starts **short, separate sessions per task**; say "wrap up" before closing so this page gets updated.
 
 ## Waiting on Brandon (ask about these first)
 
-00. **Run the updated `add-negatives.js`** (60 new terms; full script and steps given in chat 2026-10-14). Brandon answered 2026-10-14: **Stellar does install metal roofs** (do NOT add "metal" as a negative) and **max CPC is $12**. Confirm he ran it. Open: standing seam, metal shingles, or both, so metal copy can be written. (Indexing requests for the 8 URLs were done by Brandon ~2026-10-08; recheck after 2026-10-15.)
-0. Did anyone call or fill out the form since Oct 2? Claude couldn't read GHL from the cloud session. (The 30 new negatives were run on 2026-10-08.)
-1. Budget was raised to **$75/day** by Brandon (seen in the sheet 2026-10-12). Max CPC confirmed still **$12** (2026-10-14).
-2. **Build the GHL new-lead alert** (10 min, in the GHL UI). Design: one workflow, three triggers (tag added `ppc-lead`, tag added `website-lead`, customer booked appointment on the inspection calendar), then an internal email and an in-app notification to Nate. Full copy-paste steps were given in chat on 2026-10-02; re-give them.
-3. **GHL calendar cleanup:** rename "Nate Sneed's Personal Calendar" to "Free Roof Inspection" (name and description were given), confirm Central time, turn on booking notifications. Suggested rules: 60-min slots, 60-min interval, 4-hour minimum notice, 14-day range, 30-min post buffer, max 4/day.
-4. **Google Local Services Ads:** Claude offered to write the application steps. Not answered.
-5. **Google reviews:** the listing shows **4** (all 5 stars, Oct 5–10, each with an owner reply; checked 2026-10-14). Confirm they're from real customers, then keep asking after every job. Top Goodlettsville rivals have 64–96. Also: only 9 photos and 1 category; add real job photos and only the categories Stellar truly offers. Point the profile link at `/nashville/service-areas/goodlettsville` once Google has indexed it. Report: https://app.openseo.so/p/fefa6b78-083c-4175-a73f-5ecd6a06bf7a/reports/767f9a9f-006b-4cf5-b0c9-0dfd62dc6401
-6. **Google Ads housekeeping:** turn off Auto-apply recommendations and Automatically created assets (the report sheet can't show these).
-7. **PostHog:** turn on "Filter test accounts"; confirm typed fields are masked in the first recording that has typing.
-8. **Instagram bio link:** change to `https://www.thestellarroofing.com/?utm_source=instagram&utm_medium=social` so IG leads are labeled in GHL.
-9. **Delete the `test`-tagged contacts in GHL** (three of them).
-10. Owens Corning logo artwork file (for the badge); GHL number A2P approval.
+1. **Meta Pixel ID** (Events Manager, Connect data sources, Web, Meta Pixel). Claude then adds the pixel, Conversions API, a lead event, and gives the UTM link format. Also: which offer will the Meta ads lead with?
+2. **Test lead after the A2P changes:** name "Test", phone 615-555-0142, tick the SMS box; check the `sms-consent` tag in GHL; tag `test`.
+3. **A2P/10DLC registration** in GHL: site now has SMS consent checkbox on every form, SMS sections in Privacy and Terms, Terms and Privacy links in the form footer. If GHL rejects the wording, Claude adjusts.
+4. **Business Profile:** real job photos (9 now; rivals 25–92), Services list, true extra categories. Switch the profile link to `/nashville/service-areas/goodlettsville` once Google has indexed it.
+5. **Request indexing** was done by Brandon 2026-10-16 for the Goodlettsville, storm-damage, and Franklin pages. Claude rechecks about **2026-10-23**. (Goodlettsville was "unknown to Google" on Oct 16.)
+6. **Citations:** Yelp claim in progress (2026-10-17). Also Thumbtack, Nextdoor, BBB, Apple, Bing Places. GHL Listings is Yext-style; keep name, address, phone, hours identical everywhere and don't let it overwrite the Google profile. Don't ask customers for Yelp reviews.
+7. **Dog Oasis backlink:** Nate is asking Dog Oasis (dogoasis.com) to link to `https://www.thestellarroofing.com/nashville`. The site links to them from the Puppy Promise band.
+8. **Confirm** the Puppy Promise "we bring the dog home" wording; and whether the Owens Corning / IKO / GAF shingle list changed (Brandon said Owens Corning and IKO on 2026-10-14; the file says Owens Corning and GAF). No brand is named on the metal copy until this is answered.
+9. **Connect the PostHog MCP** (mcp.posthog.com) in connector settings, so Claude can read funnels without the Chrome workaround.
+10. **Build the GHL new-lead alert** (10 min). One workflow, triggers: tag `ppc-lead`, tag `website-lead`, appointment booked; actions: email and in-app notification to Nate. Re-give steps.
+11. **GHL calendar cleanup:** rename to "Free Roof Inspection", Central time, booking notifications, booking rules (60-min slots, 4-hour notice, 14-day range, max 4/day).
+12. **Google Ads housekeeping** (still worth doing even when paused): turn off Auto-apply recommendations and Automatically created assets.
+13. Small: delete the `test`-tagged GHL contacts; Instagram bio link with UTM (`https://www.thestellarroofing.com/?utm_source=instagram&utm_medium=social`); PostHog "Filter test accounts"; Owens Corning logo artwork; ask Nate for jobs per month (sets the review timeline).
+14. The metal-roof blog post (`metal-roof-vs-shingles-cost`) probably lists prices; Brandon said metal prices can't be listed. Review it.
+15. The hero headline "Nashville's Most Trusted Roofing Company" can't be verified; keep or reword?
 
 ## What Claude does next
 
-- **Video and Puppy Promise (done 2026-10-14):** YouTube unlisted video (`ajLg0usGdBU`) is a click-to-play embed on `/nashville` (hero link + section) and every funnel. "The Stellar Puppy Promise" band is on `/nashville`; funnel dog-day copy now matches Nate's video (Stellar picks the dog up, play day, bath, teeth, ears, nails; retail replacements only, up to $75, Dog Oasis, 812 Meadowlark Lane). Open: confirm "we bring the dog home" wording; Nate is asking Dog Oasis (dogoasis.com) for a backlink to `https://www.thestellarroofing.com/nashville`. `promo_video_play` events go to PostHog.
+- **Meta pixel and tracking** once Brandon sends the pixel ID: pixel + Conversions API on the funnel and main site, lead event on `/thank-you`, UTM format, read-only Meta reporting.
+- **Recheck indexing** of the Goodlettsville, storm-damage, and Franklin pages on 2026-10-23; then switch the profile link. Consider Bing IndexNow (Bing Webmaster is set up, 51 URLs, 0 errors).
+- **Rank tracker** (OpenSEO, about 20 terms) plus a monthly Maps grid: show the credit estimate first.
+- **PostHog funnel check** after a few days of Meta traffic: form starts per visitor after the mobile fix.
+- **Metal:** a dedicated metal page and ad group only if Meta/search data shows volume; needs Brandon's brand answer.
+- **Blog:** GAF Timberline HDZ post paused by Brandon; Owens Corning vs. GAF and the metal roof cost update come after.
 
-- **Ads follow-ups from the 2026-10-08 review** (negatives already done):
-  - Add the quality-score breakdown (ad relevance, landing page experience, expected CTR) to `ppc-scripts/report-to-sheet.js`.
-  - Improve the Roofers ad group's landing page and ad match ("roofing company near me" has quality score 3/10).
-- **PostHog funnel report** (page view → form start → step 2 → step 3 → lead) once there's about a week of traffic. Watch whether the required street address (since 2026-10-02) is costing form completions.
-- **Blog:** GAF Timberline HDZ post is paused by Brandon; Owens Corning vs. GAF and the metal roof cost update come after.
-
-## Google Ads snapshot (Sep 29 – Oct 11, checked 2026-10-12)
+## Google Ads (PAUSED) snapshot (Sep 29 – Oct 11, checked 2026-10-12)
 
 - **$605.15, 69 clicks ($8.77 each), 3 Google conversions, 1 real person** (Oct 2). **Oct 3–11: $498.26, 54 clicks, 0 conversions, 0 new GHL leads.** GHL checked 2026-10-12: only the Oct 2 `ppc-lead` and the Sep 29 Instagram `website-lead`; calls to Nate's cell are not visible to Claude.
 - Budget is now **$75/day** (Brandon raised it; date unknown, max CPC not visible in the sheet). Oct 8 spent $133. Oct 10–11: ~$38/day, 0% lost to budget, 64–70% lost to rank. Impression share 30–36%.
 - By ad group: Roof Repair $322.56 / 38 clicks / all 3 conversions; Roofers $153.74 / 17; Replacement $128.85 / 14; Storm $0 / 28 impressions.
 - **"roof repair company" (phrase) has quality score 1**, with 718 impressions and $165.54, the biggest keyword. It is catching general "roofing company" searches and sending them to the repair page. Fix proposed: ad-group negatives in Roof Repair so those go to Roofers. Not done yet.
-- Only 26 of 69 clicks are itemized by search term; 5 of those 26 were competitor names. `ppc-scripts/add-negatives.js` now holds 60 new negatives (through Oct 11); **Brandon has not run it yet**.
-- Open question: does Stellar install **metal roofs**? About 25 metal searches showed (no clicks yet). If no, add "metal" as a negative.
+- Only 26 of 69 clicks are itemized by search term; 5 of those 26 were competitor names. `ppc-scripts/add-negatives.js` now holds 60 new negatives (through Oct 11); run by Brandon 2026-10-16.
+- Metal: Stellar **does** install metal roofs (all types), so "metal" is NOT a negative. The negatives script (60 terms) was run by Brandon 2026-10-16.
 - Next diagnostic: PostHog funnel (do ad visitors start the form?). 54 clicks with nothing is too many to blame on search terms alone.
 
 ## Earlier snapshot (Sep 29 – Oct 6, checked 2026-10-08)
@@ -69,6 +71,7 @@ The long setup session ended 2026-10-06. No work is half-finished and nothing is
 The Sep 29 website lead (Contact page) came from **Instagram**, not ads or search.
 
 ## Live on the site (all pushed)
+- 2026-10-14 to 17: YouTube unlisted promo video (click-to-play, `promo_video_play` event) on `/nashville` and funnels; "The Stellar Puppy Promise" band on `/nashville` and funnel copy matching Nate's video (retail replacements only, Dog Oasis, up to $75); metal roofing added to the roof-replacement funnel and service page (no price; the homepage metal price line was removed); lead form in the `/nashville` hero; A2P consent checkbox, SMS sections in Privacy and Terms, Terms and Privacy links in every form footer, full business address in both pages; funnel mobile top tightened.
 
 - Native 3-step lead form on the funnel and the main site; **street address required** since 2026-10-02.
 - GHL booking calendar on the funnel thank-you pages and `/thank-you` (Nashville only).

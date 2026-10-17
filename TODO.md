@@ -4,7 +4,7 @@ The one list for PPC, SEO, and website work, **in priority order**. Work top to 
 
 Brandon's own action items are also GHL tasks (with due dates), on the internal contact **"Stellar Game Plan (internal)"**, assigned to Brandon.
 
-**Last updated:** 2026-10-14
+**Last updated:** 2026-10-17
 
 Reference files: [PPC-LAUNCH.md](PPC-LAUNCH.md) · [PPC-AUDIT.md](PPC-AUDIT.md) · [CONTENT-PLAN.md](CONTENT-PLAN.md) · [LOCAL-SEO-AUDIT.md](LOCAL-SEO-AUDIT.md) · [LINK-PROSPECTS.md](LINK-PROSPECTS.md) · [KEYWORD-AUDIT.md](KEYWORD-AUDIT.md) · [BLOG_CONFIG.md](BLOG_CONFIG.md) · [TOMORROW.md](TOMORROW.md) (original funnel launch notes)
 
@@ -14,7 +14,7 @@ Reference files: [PPC-LAUNCH.md](PPC-LAUNCH.md) · [PPC-AUDIT.md](PPC-AUDIT.md) 
 
 | # | Task | Who | Urgency | Time |
 |---|---|---|---|---|
-| 1 | Run the updated `add-negatives.js` (60 terms; do NOT add "metal", Stellar installs metal; max CPC is $12). | Brandon | **Do today** (money leaking) | 5 min |
+| 1 | ✅ 2026-10-16 Run the updated `add-negatives.js` (60 terms; do NOT add "metal"; max CPC $12). | Brandon | **Do today** (money leaking) | 5 min |
 | 2 | Confirm the 4 Google reviews are from real customers; set up the same-day review request (text + direct link) | Brandon | **Do today** | 10 min |
 | 3 | Business Profile: upload real job photos (9 now, rivals 25–92), fill in Services, add only true extra categories | Brandon | This week | 15–20 min |
 | 4 | Build the GHL new-lead alert (Claude re-gives the steps) | Brandon | This week (nobody is told when a lead arrives) | 10 min |
