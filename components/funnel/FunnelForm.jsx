@@ -11,7 +11,7 @@ import { pushDataLayer } from './tracking';
 const PROJECT_TYPES = ['Roof Replacement', 'Roof Repair', 'Storm Damage', "I'm Not Sure"];
 
 const ATTRIBUTION_KEYS = [
-  'gclid', 'wbraid', 'gbraid',
+  'gclid', 'wbraid', 'gbraid', 'fbclid',
   'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
 ];
 
