@@ -358,9 +358,17 @@ export default function FunnelForm({
         )}
       </div>
 
-      <div className="border-t border-slate-100 px-6 py-4 flex items-center justify-center gap-2 text-text-muted">
-        <ShieldCheck size={15} className="text-primary flex-shrink-0" />
-        <span className="text-xs">Your info stays with Stellar Roofing. No spam.</span>
+      <div className="border-t border-slate-100 px-6 py-4 flex flex-col items-center gap-1.5 text-text-muted">
+        <div className="flex items-center justify-center gap-2">
+          <ShieldCheck size={15} className="text-primary flex-shrink-0" />
+          <span className="text-xs">Your info stays with Stellar Roofing. No spam.</span>
+        </div>
+        {/* Shown on every step. Full URLs so they work from the funnel subdomain. */}
+        <div className="text-xs">
+          <a href="https://www.thestellarroofing.com/terms-and-conditions" target="_blank" rel="noopener" className="underline hover:text-primary">Terms</a>
+          <span className="mx-2" aria-hidden="true">&middot;</span>
+          <a href="https://www.thestellarroofing.com/privacy-policy" target="_blank" rel="noopener" className="underline hover:text-primary">Privacy Policy</a>
+        </div>
       </div>
     </div>
   );
