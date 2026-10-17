@@ -94,3 +94,13 @@
   .reveal-delay-2 { transition-delay: 0.2s; }
   .reveal-delay-3 { transition-delay: 0.3s; }
 }
+
+/* Roofle "Instant Roof Quote" slide-out: move it from the right edge to the
+   left edge. The widget's script sets an inline translateX(100%) when closed
+   and translateX(0%) when open, so only the closed state is overridden, and
+   opening still works. The tab sits on the panel's right edge, rotated to
+   face outward. */
+#quick-quote-wrapper { left: 0 !important; right: auto !important; max-width: 100vw; }
+#quick-quote-wrapper[style*="translateX(100%)"] { transform: translateX(-100%) !important; }
+#quick-quote-button-wrapper { left: 100% !important; right: auto !important; }
+#quick-quote-button { transform: matrix(0, 1, -1, 0, -101.168, -43) !important; }
