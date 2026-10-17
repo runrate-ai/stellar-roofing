@@ -54,7 +54,7 @@ export default function FunnelForm({
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [fields, setFields] = useState({
-    projectType: '', timeline: '', address: '', zip: '', name: '', phone: '', email: '', message: '', company: '',
+    projectType: '', timeline: '', address: '', zip: '', name: '', phone: '', email: '', message: '', company: '', smsConsent: false,
   });
   const attribution = useRef({});
   const startedRef = useRef(false);
@@ -326,12 +326,31 @@ export default function FunnelForm({
               </div>
             )}
 
+            {/* A2P 10DLC consent: optional, unchecked by default, never required to submit. */}
+            <div className="mb-4 flex items-start gap-3">
+              <input
+                id={`${id}-sms`} type="checkbox" className="mt-1 h-5 w-5 flex-shrink-0 rounded border-2 border-slate-300 accent-primary"
+                checked={fields.smsConsent}
+                onChange={e => set('smsConsent', e.target.checked)}
+              />
+              <label htmlFor={`${id}-sms`} className="text-xs leading-relaxed text-text-muted">
+                I agree to receive text messages from Stellar Roofing &amp; Restorations about my roofing inquiry, estimate, and appointment. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Consent is not a condition of purchase. See our{' '}
+                <a href="https://www.thestellarroofing.com/privacy-policy" target="_blank" rel="noopener" className="underline">Privacy Policy</a> and{' '}
+                <a href="https://www.thestellarroofing.com/terms-and-conditions" target="_blank" rel="noopener" className="underline">Terms &amp; Conditions</a>.
+              </label>
+            </div>
+
             <button
               type="submit" disabled={submitting}
               className="w-full rounded-lg bg-cta hover:bg-cta-hover disabled:opacity-70 disabled:cursor-not-allowed text-primary font-extrabold text-lg py-4 transition shadow-lg flex items-center justify-center gap-2"
             >
               {submitting ? (<><Loader2 size={20} className="animate-spin" /> Sending…</>) : (submitLabel || 'Get My Free Inspection')}
             </button>
+            <p className="mt-3 text-center text-[11px] leading-snug text-text-muted">
+              By submitting, you agree to our{' '}
+              <a href="https://www.thestellarroofing.com/privacy-policy" target="_blank" rel="noopener" className="underline">Privacy Policy</a> and{' '}
+              <a href="https://www.thestellarroofing.com/terms-and-conditions" target="_blank" rel="noopener" className="underline">Terms &amp; Conditions</a>.
+            </p>
             <button type="button" onClick={() => goToStep(2)} className={backClass}>
               <ArrowLeft size={14} /> Back
             </button>

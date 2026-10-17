@@ -138,9 +138,13 @@ export async function POST(request) {
   };
   // Tags are added in a separate call below. Sending `tags` in the upsert
   // replaces every tag an existing contact already has.
-  const tags = isWebsite
-    ? ['website-lead', market]
-    : ['ppc-lead', ...(funnel ? [`ppc-${funnel.slug}`] : [])];
+  const smsConsent = body.smsConsent === true;
+  const tags = [
+    ...(isWebsite
+      ? ['website-lead', market]
+      : ['ppc-lead', ...(funnel ? [`ppc-${funnel.slug}`] : [])]),
+    ...(smsConsent ? ['sms-consent'] : []),
+  ];
 
   const upsert = await ghl('/contacts/upsert', token, contact);
   const contactId = upsert.data?.contact?.id;
@@ -164,6 +168,7 @@ export async function POST(request) {
     message && `Message: ${message}`,
     landingPage && `Landing page: ${landingPage}`,
     clean(body.gclid) ? 'Came from a Google Ads click (gclid captured).' : 'No Google Ads click ID on this visit.',
+    smsConsent ? `SMS consent: checked the text-message box on the form (${new Date().toISOString()}).` : 'SMS consent: not given. Do not text; call or email.',
   ].filter(Boolean).join('\n');
   const noted = await ghl(`/contacts/${contactId}/notes`, token, { body: note });
   if (!noted.ok) console.error('[funnel-lead] GHL note failed:', noted.status);
