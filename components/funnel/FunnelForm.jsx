@@ -149,12 +149,12 @@ export default function FunnelForm({
       ref={rootRef}
       className="scroll-mt-24 bg-white rounded-2xl shadow-2xl ring-1 ring-black/5 overflow-hidden"
     >
-      <div className="bg-primary px-6 py-4 text-center">
+      <div className="bg-primary px-5 py-3 sm:px-6 sm:py-4 text-center">
         <p className="text-white font-extrabold text-xl leading-tight">{heading || 'Get Your Free Roof Inspection'}</p>
         <p className="text-white/70 text-sm mt-1">3 quick steps · no obligation</p>
       </div>
 
-      <div className="px-6 pt-5">
+      <div className="px-6 pt-4 sm:pt-5">
         <div className="flex items-center justify-between mb-2">
           <span className="text-xs font-bold uppercase tracking-wider text-text-muted">
             Step {step} of {TOTAL_STEPS}
@@ -174,14 +174,14 @@ export default function FunnelForm({
         {step === 1 && (
           <div>
             <h3 className="text-lg font-bold text-text-dark mb-1">What do you need help with?</h3>
-            <p className="text-text-muted text-sm mb-5">Tap one to get started.</p>
+            <p className="text-text-muted text-sm mb-3 sm:mb-5">Tap one to get started.</p>
             <div className="grid grid-cols-2 gap-3">
               {PROJECT_TYPES.map(({ value, label, hint, Icon }) => (
                 <button
                   key={value}
                   type="button"
                   onClick={() => selectProject(value)}
-                  className="group flex flex-col items-center text-center gap-2 rounded-xl border-2 border-slate-200 px-3 py-5 hover:border-primary hover:bg-primary/5 focus:border-primary focus:outline-none transition"
+                  className="group flex flex-col items-center text-center gap-2 rounded-xl border-2 border-slate-200 px-3 py-4 sm:py-5 hover:border-primary hover:bg-primary/5 focus:border-primary focus:outline-none transition"
                 >
                   <Icon size={26} className="text-primary" />
                   <span className="font-bold text-text-dark text-sm leading-tight">{label}</span>

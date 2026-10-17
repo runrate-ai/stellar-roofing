@@ -62,22 +62,22 @@ export default function FunnelPage({ params }) {
 
       {/* ── HERO ────────────────────────────────────────────── */}
       <section className="relative bg-gradient-to-b from-bg-alt to-white">
-        <div className="relative max-w-6xl mx-auto px-4 py-10 lg:py-16">
+        <div className="relative max-w-6xl mx-auto px-4 py-4 sm:py-10 lg:py-16">
           {/* Phones: headline, then the form, then the supporting copy, so the
               form sits near the top instead of below the pillars. Desktop: copy
               on the left, form on the right. */}
-          <div className="grid lg:grid-cols-[1fr_460px] lg:grid-rows-[auto_1fr] gap-x-14 gap-y-7 items-start">
+          <div className="grid lg:grid-cols-[1fr_460px] lg:grid-rows-[auto_1fr] gap-x-14 gap-y-4 lg:gap-y-7 items-start">
 
             <div className="text-center lg:text-left lg:col-start-1 lg:row-start-1">
               {/* Navy text on amber, not white; white on #F59E0B is ~2.1:1 */}
-              <div className="inline-flex items-center gap-2 rounded-full bg-cta px-4 py-1.5 mb-5">
+              <div className="inline-flex items-center gap-2 rounded-full bg-cta px-3 py-1 mb-3 sm:px-4 sm:py-1.5 sm:mb-5">
                 <Gift size={15} className="text-primary" />
                 <span className="text-primary font-extrabold text-xs uppercase tracking-wider">
                   {funnel.eyebrow}
                 </span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-primary leading-[1.12] mb-5">
+              <h1 className="text-[1.65rem] sm:text-4xl lg:text-5xl font-extrabold text-primary leading-[1.12] mb-3 sm:mb-5">
                 {headline.before}
                 {/* cta-hover (#D97706), not cta; the lighter amber fails on white */}
                 <span className="text-cta-hover">{headline.highlight}</span>
