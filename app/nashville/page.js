@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import PromoVideo from '../../components/PromoVideo';
-import SiteLeadForm from '../../components/SiteLeadForm';
+import Script from 'next/script';
 import Link from 'next/link';
 import { Phone, Shield, SearchCheck, BadgeCheck, FileCheck, Home, Wrench, CloudLightning, Search, Building2, AlertTriangle, MapPin, PlayCircle, PawPrint } from 'lucide-react';
 import SchemaMarkup from '../../components/SchemaMarkup';
@@ -55,36 +55,44 @@ export default function NashvilleHubPage() {
       <SchemaMarkup schema={lbSchema} />
       <SchemaMarkup schema={faqSchemaData} />
 
-      {/* HERO */}
-      <section className="relative flex items-center pt-24 pb-10 md:pt-32 md:pb-16 lg:min-h-[calc(100vh-44px)]">
+      {/* HERO. The lead form is temporarily off this page (A2P review); visitors use the chat widget, the call button, or the estimate page. Restore <SiteLeadForm id="hero-estimate" /> in a two-column grid when the form returns. */}
+      <section className="relative flex items-center justify-center pt-28 pb-24 md:pt-32 md:pb-16" style={{ minHeight: 'calc(100vh - 44px)' }}>
         <Image src="/images/hero.jpg" alt="Nashville roofing company - Stellar Roofing & Restorations" fill className="object-cover" priority quality={75} sizes="100vw" />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-4 grid lg:grid-cols-[1fr_440px] gap-8 lg:gap-14 items-center">
-          <div className="text-center lg:text-left">
-            <div className="flex items-center justify-center lg:justify-start gap-2 text-white/80 mb-3">
-              <MapPin size={16} />
-              <span className="text-sm font-semibold uppercase tracking-wider">Nashville, TN</span>
-            </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-4 leading-tight">
-              Nashville's Most Trusted<br />Roofing Company
-            </h1>
-            <p className="text-lg md:text-xl text-white/90 mb-6 font-medium">
-              Free Inspections&nbsp;&bull;&nbsp;Lifetime Warranty&nbsp;&bull;&nbsp;Licensed &amp; Insured
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a href={`tel:${loc.phoneRaw}`} className="flex items-center justify-center gap-2 border-2 border-white text-white hover:bg-white hover:text-primary font-semibold px-8 py-4 rounded-lg transition-colors text-lg">
-                <Phone size={20} /> {loc.phone}
-              </a>
-            </div>
-            <a href="#video" className="inline-flex items-center gap-2 mt-6 text-white/90 hover:text-white font-semibold underline underline-offset-4">
-              <PlayCircle size={20} /> Watch our video
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+          <div className="flex items-center justify-center gap-2 text-white/80 mb-3">
+            <MapPin size={16} />
+            <span className="text-sm font-semibold uppercase tracking-wider">Nashville, TN</span>
+          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 leading-tight">
+            Nashville's Most Trusted<br />Roofing Company
+          </h1>
+          <p className="text-xl md:text-2xl text-white/90 mb-8 font-medium">
+            Free Inspections&nbsp;&bull;&nbsp;Lifetime Warranty&nbsp;&bull;&nbsp;Licensed &amp; Insured
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/free-inspection" className="bg-white hover:bg-white/90 text-primary font-bold px-8 py-4 rounded-lg transition-colors text-lg">
+              Get Free Estimate
+            </Link>
+            <a href={`tel:${loc.phoneRaw}`} className="flex items-center justify-center gap-2 border-2 border-white text-white hover:bg-white hover:text-primary font-semibold px-8 py-4 rounded-lg transition-colors text-lg">
+              <Phone size={20} /> {loc.phone}
             </a>
           </div>
-          <div>
-            <SiteLeadForm id="hero-estimate" title="Get Your Free Roof Inspection" />
-          </div>
+          <a href="#video" className="inline-flex items-center gap-2 mt-6 text-white/90 hover:text-white font-semibold underline underline-offset-4">
+            <PlayCircle size={20} /> Watch our video
+          </a>
         </div>
       </section>
+
+      {/* GHL chat widget (homepage only) */}
+      <Script
+        id="ghl-chat-widget"
+        src="https://widgets.leadconnectorhq.com/loader.js"
+        data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+        data-widget-id="6ad3a39cd28aca7d19ab2189"
+        data-source="WEB_USER"
+        strategy="lazyOnload"
+      />
 
       {/* PROMO VIDEO */}
       <section id="video" className="bg-white py-14 px-4 scroll-mt-20">
