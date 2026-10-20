@@ -2,6 +2,10 @@
 
 Newest first. A few lines per session: what was done and what was decided. Details live in git history and the docs each entry points to.
 
+## 2026-10-20 (Chamber badge)
+
+- Added the Goodlettsville Chamber member widget (`components/ChamberBadge.jsx`) to the `/nashville` hero only (Brandon: not the two-market homepage). Hidden until ChamberMaster activates member 2789. Merged 19 GitHub commits into local first; pushed to `main`. Fixed iCloud offloading again (source files and node_modules).
+
 ## 2026-10-20 (Meta ad videos)
 
 - Built Meta ad videos from Nate's real promo footage (`meta-ad-clips/stellar-nate-kinetic-30s-*.mp4`) and an AI b-roll version rendered in Hyperframes (`stellar-ai-hyperframes-{916,45,11,169}.mp4`, ElevenLabs "Brian" voice). Scripts, build code and `UPLOAD-GUIDE.md` are in `meta-ad-scripts/`; Hyperframes projects in `hyperframes-ad*/`.
