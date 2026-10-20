@@ -1,6 +1,6 @@
 # Where we left off
 
-**Last updated:** 2026-10-12 (PPC check done; new negatives script written, waiting on Brandon to run it; local `main` ahead of origin, not pushed)
+**Last updated:** 2026-10-20 (Meta ad videos built; v3 AI rebuild on hold; local `main` ahead of origin, not pushed)
 
 ## The headline
 
@@ -9,6 +9,8 @@ The relaunched Google Ads campaign has run one week and produced **one real pers
 The long setup session ended 2026-10-06. No work is half-finished and nothing is uncommitted. Brandon will start **short, separate sessions per task** from here (cheaper than one long one); say "wrap up" before closing so this page gets updated.
 
 ## Waiting on Brandon (ask about these first)
+
+000. **Meta ads:** videos are in `meta-ad-clips/`, guide in `meta-ad-scripts/UPLOAD-GUIDE.md`. Decide on the v3 AI rebuild (about 28 Kling shots, about $12; on hold), pick/approve which video to run, create the Meta Pixel (guide Steps 1-7), and have Nate record the hooks in `meta-ad-scripts/owner-video-hooks.md`. Higgsfield API balance is low; check console.higgsfield.ai.
 
 00. **Run the updated `add-negatives.js`** (60 new terms, printed in chat 2026-10-12). Answer: does Stellar install metal roofs? (Indexing requests for the 8 URLs were done by Brandon ~2026-10-08; recheck after 2026-10-15.)
 0. Did anyone call or fill out the form since Oct 2? Claude couldn't read GHL from the cloud session. (The 30 new negatives were run on 2026-10-08.)
