@@ -7,6 +7,7 @@ Newest first. A few lines per session: what was done and what was decided. Detai
 - Built Meta ad videos from Nate's real promo footage (`meta-ad-clips/stellar-nate-kinetic-30s-*.mp4`) and an AI b-roll version rendered in Hyperframes (`stellar-ai-hyperframes-{916,45,11,169}.mp4`, ElevenLabs "Brian" voice). Scripts, build code and `UPLOAD-GUIDE.md` are in `meta-ad-scripts/`; Hyperframes projects in `hyperframes-ad*/`.
 - Higgsfield API key is in `~/ig-carousels/.env`; helper `~/ig-carousels/tools/higgsfield/gen.py`. Kling 3.0 std is about $0.42 per 5s clip, Seedance 2.5 about $2.31 (720p). Balance not readable by API; the $10 Brandon added is mostly spent.
 - Decided: Traffic objective (landing page views) until a Meta Pixel exists; GTM steps for the pixel and Lead event are in the guide. No Meta Pixel in the site code.
+- Later the same day: moved to v7 (real footage + AI intro, Nate voice clone on ElevenLabs `eleven_v4` with only `speed` set, the way Brandon's reels are made; the earlier robotic takes forced v2 with custom stability and SSML pauses). Voice key and the "Nate" clone are on the ElevenLabs account in `~/ig-carousels/.env`. Builders: `hyperframes-v3/gen7.py` (ASPECT=916|45|11|169).
 - Brandon did not like the AI version (too slow, 10 shots, big captions vs the reference). v3 rebuild (about 28 Kling shots, about $12) is on hold. 10 owner-video hooks written (`owner-video-hooks.md`).
 
 ## 2026-10-14

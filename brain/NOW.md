@@ -10,7 +10,7 @@ The long setup session ended 2026-10-06. No work is half-finished and nothing is
 
 ## Waiting on Brandon (ask about these first)
 
-000. **Meta ads:** videos are in `meta-ad-clips/`, guide in `meta-ad-scripts/UPLOAD-GUIDE.md`. Decide on the v3 AI rebuild (about 28 Kling shots, about $12; on hold), pick/approve which video to run, create the Meta Pixel (guide Steps 1-7), and have Nate record the hooks in `meta-ad-scripts/owner-video-hooks.md`. Higgsfield API balance is low; check console.higgsfield.ai.
+000. **Meta ads:** the ad to run is **v7** (`meta-ad-clips/stellar-v7-nate-{916,45,11,169}.mp4`: real Stellar footage, AI snap intro, AI clone of Nate's voice made with ElevenLabs v4, Final Level music). Guide: `meta-ad-scripts/UPLOAD-GUIDE.md`. Confirm Nate is OK with his voice clone in paid ads, create the Meta Pixel (guide Steps 1-7), and have Nate record the hooks in `meta-ad-scripts/owner-video-hooks.md`. Higgsfield API balance is low; check console.higgsfield.ai.
 
 00. **Run the updated `add-negatives.js`** (60 new terms, printed in chat 2026-10-12). Answer: does Stellar install metal roofs? (Indexing requests for the 8 URLs were done by Brandon ~2026-10-08; recheck after 2026-10-15.)
 0. Did anyone call or fill out the form since Oct 2? Claude couldn't read GHL from the cloud session. (The 30 new negatives were run on 2026-10-08.)
