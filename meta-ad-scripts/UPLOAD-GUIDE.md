@@ -1,13 +1,22 @@
-# Upload guide: "Replace your roof?" AI kinetic ad (Hyperframes version)
+# Upload guide: "Why hire Stellar Roofing" (v7)
 
-Files (in `meta-ad-clips/`):
-- `stellar-ai-hyperframes-916.mp4` (1080x1920, 24.4s): Reels and Stories
-- `stellar-ai-hyperframes-45.mp4` (1080x1350, 24.4s): Feed
+Files (in `meta-ad-clips/`, 29s each):
+- `stellar-v7-nate-916.mp4` (1080x1920): Reels and Stories
+- `stellar-v7-nate-45.mp4` (1080x1350): Feed
+- `stellar-v7-nate-11.mp4` (1080x1080): square Feed and carousel
+- `stellar-v7-nate-169.mp4` (1920x1080): in-stream and landscape
 
-Voice: ElevenLabs "Brian" (a stock voice, not Nate or Brandon). Footage: AI-generated, labeled on screen as "Illustrative AI footage".
+What it is: fast cuts of Stellar's own real crew footage, a short AI-generated intro (old roof to new roof), captions, Final Level music (CC0), and a voiceover in an AI clone of Nate's voice (ElevenLabs).
 
-## Audience: retail replacement only
-The ad mentions the Puppy Promise, which applies to retail (non-insurance) replacements only. Do not add storm or insurance interests to this ad set.
+Voiceover:
+> So, why hire Stellar Roofing? Honestly, it starts with me. I'm Nate, I own the company, and I'm the one who inspects your roof, and that's free. Then you get a written estimate, so you know your number before you sign anything. And if you've got a comparable quote from someone else, we'll match it. Every replacement comes with a lifetime workmanship warranty, we're family owned, and when you call, we pick up, day or night. So if you're thinking about a new roof, tap Get Quote.
+
+Before running: confirm Nate is OK with an AI clone of his voice in paid ads (Brandon cloned it; Nate's consent is not recorded anywhere I can see).
+
+Older versions (v1 to v6, the AI-footage cuts, and the Nate real-voice cuts) are still in `meta-ad-clips/` and are not recommended.
+
+## Audience: retail replacement
+Homeowners considering a roof replacement. The ad does not mention the Puppy Promise, free gutters, or storm and insurance. Keep it on retail audiences.
 
 ## Campaign settings (suggested starting point)
 | Setting | Value |
@@ -23,11 +32,11 @@ The ad mentions the Puppy Promise, which applies to retail (non-insurance) repla
 **Optimization (decided 2026-10-20, no Meta Pixel yet):** Objective **Traffic**, performance goal **Landing page views**, destination Website. Count real leads from GHL (UTM source `facebook`). Once the pixel below is live and has fired Lead a few times, switch new ad sets to the **Leads** objective, conversion location Website, optimize for Leads.
 
 ## Ad creative
-Upload both files to one ad (placement customization): 9:16 for Stories/Reels, 4:5 for Feed.
+Upload all four files to one ad, and assign by placement: 9:16 for Stories/Reels, 4:5 for Feed, 1:1 for square placements, 16:9 for landscape. (Meta's placement customization lets you pick a different file per placement.)
 
 **Primary text** (first 125 characters are what shows; confirmed facts only):
 ```
-Getting quotes to replace your roof? Here's what to look for: a free inspection, a written estimate you can compare, and a lifetime workmanship warranty on every replacement. Family-owned, licensed and insured, and based in Goodlettsville. Our phone is answered 24/7. We'll even send your dog to a spa day on install day (retail replacements only).
+Why hire Stellar Roofing? Nate, the owner, inspects your roof himself, and it's free. You get a written estimate before you sign, and we'll match a comparable written quote. Every replacement comes with a lifetime workmanship warranty. Family owned, licensed and insured, and our phone is answered 24/7.
 ```
 
 **Headline** (pick one):
@@ -35,7 +44,7 @@ Getting quotes to replace your roof? Here's what to look for: a free inspection,
 Free Inspection + Written Estimate
 ```
 ```
-Replacing Your Roof? Start Here
+Why Hire Stellar Roofing?
 ```
 
 **Description:** `Licensed and insured`
@@ -43,17 +52,16 @@ Replacing Your Roof? Start Here
 
 **Website URL** (the funnel page):
 ```
-https://get.thestellarroofing.com/roof-replacement?utm_source=facebook&utm_medium=paid_social&utm_campaign=nashville-retail-replacement&utm_content=ai-kinetic-hyperframes
+https://get.thestellarroofing.com/roof-replacement?utm_source=facebook&utm_medium=paid_social&utm_campaign=nashville-retail-replacement&utm_content=why-hire-nate-v7
 ```
 
-Do not add: "best", "most trusted", price claims, financing, Owens Corning or GAF names, insurance outcomes, or the tracking phone number (it is not approved yet).
+Do not add: "best", "most trusted", "better than other companies", price claims, financing, Owens Corning or GAF names, insurance outcomes, or the tracking phone number (it is not approved yet). One shot in the video shows the office window logo with (629) 277-4249, the main number.
 
 ## AI-info label (what I can and can't confirm)
 I could not look up Meta's current Ads Manager screens, so check these in the UI:
 1. Meta applies "AI info" labels itself when it detects AI-generated content, and it requires advertisers to disclose AI use in some cases (realistic people or events; mandatory for political and social-issue ads). Policy and screens change, so read Meta's current "AI info" help page before publishing.
-2. If Ads Manager shows an AI disclosure option or toggle at the ad level, turn it on for this ad. Do not strip file metadata to avoid the label.
-3. The on-screen line "Illustrative AI footage" stays in both videos as our own disclosure.
-4. This is not a claim that the footage shows Stellar jobs. Real-footage ad is `stellar-nate-kinetic-30s-*.mp4` if you want a version with Nate.
+2. This ad has two AI parts: the opening 5 seconds (AI-generated roof and roofer, labeled on screen "AI-generated intro") and the voiceover (an AI clone of Nate's voice). If Ads Manager offers an AI disclosure option or toggle at the ad level, turn it on. Do not strip file metadata to avoid the label.
+3. Everything after the intro is real Stellar footage from the promo shoot.
 
 ## After launch
 - Report real people (each counted once) from GHL, filtered by `utm_source=facebook`. Meta "leads" are not jobs.
