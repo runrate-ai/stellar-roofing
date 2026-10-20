@@ -5,7 +5,6 @@ import SchemaMarkup from '../components/SchemaMarkup';
 import { localBusinessSchema } from '../lib/schema';
 import config from '../lib/config';
 import ShingleBrands from '../components/ShingleBrands';
-import ChamberBadge from '../components/ChamberBadge';
 
 export const metadata = {
   title: "Stellar Roofing & Restorations | Nashville TN & Boise ID",
@@ -83,8 +82,6 @@ export default function BrandHomePage() {
               </div>
             </Link>
           </div>
-
-          <ChamberBadge className="mt-8" />
         </div>
       </section>
 
