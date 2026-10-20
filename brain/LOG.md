@@ -10,7 +10,13 @@ Newest first. A few lines per session: what was done and what was decided. Detai
 - Later the same day: moved to v7 (real footage + AI intro, Nate voice clone on ElevenLabs `eleven_v4` with only `speed` set, the way Brandon's reels are made; the earlier robotic takes forced v2 with custom stability and SSML pauses). Voice key and the "Nate" clone are on the ElevenLabs account in `~/ig-carousels/.env`. Builders: `hyperframes-v3/gen7.py` (ASPECT=916|45|11|169).
 - Brandon did not like the AI version (too slow, 10 shots, big captions vs the reference). v3 rebuild (about 28 Kling shots, about $12) is on hold. 10 owner-video hooks written (`owner-video-hooks.md`).
 
+## 2026-10-17
+
+- Built and pushed: A2P consent (checkbox, privacy/terms SMS sections, footer links on every form step), form in the `/nashville` hero, funnel mobile fix, metal roofing copy, Puppy Promise, promo video. Bing Webmaster checked (set up, 51 URLs, 0 errors). PostHog funnel report done (59 visitors, 2 form starts, 0 leads). Competitive landscape saved in OpenSEO. Plan and timeline added to TODO.md. Decisions: no LSAs, Google PPC paused, Meta coming, no second/keyword domains. Brandon claiming Yelp; Nate asking Dog Oasis for a backlink.
+
 ## 2026-10-14
+
+- Promo video (YouTube unlisted) added as click-to-play on `/nashville` and all funnels; "The Stellar Puppy Promise" band added to `/nashville` and funnel copy aligned to Nate's video transcript; Dog Oasis linked. Brandon confirmed: installs metal roofs, max CPC $12. Negatives script (60 terms, no "metal") handed over to run. TODO.md got a "Next up" table.
 
 - Local SEO audit (OpenSEO): #3 of 20 for "roofing company" at the storefront, found at 4 of 9 grid points (0 in top 3), not in top 21 downtown. Profile has 4 real-looking reviews and 9 photos (was 0 and 0 on Sep 27), so the earlier "0 reviews" note in NOW.md, TODO.md and the OpenSEO business overview was corrected.
 

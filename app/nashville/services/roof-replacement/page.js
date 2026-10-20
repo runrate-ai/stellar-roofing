@@ -92,7 +92,7 @@ export default function RoofReplacementNashvillePage() {
             {[
               { title: "Architectural Shingles", desc: "Our most popular choice. Dimensional shingles offer excellent durability (25–30 year lifespan), great curb appeal, and good value. Available in dozens of colors." },
               { title: "3-Tab Shingles", desc: "A traditional, budget-friendly option. Best for lower-slope roofs or situations where cost is the primary factor. Typically carries a 20-year warranty." },
-              { title: "Metal Roofing", desc: "Long-lasting (40–70 years), energy-efficient, and extremely durable. Great for homeowners looking for a premium, low-maintenance option." },
+              { title: "Metal Roofing", desc: "We install all types of metal roofing, including standing seam and metal shingles. Long-lasting (40–70 years), energy-efficient, and low-maintenance, and backed by our lifetime workmanship warranty." },
             ].map(({ title, desc }) => (
               <div key={title} className="bg-bg-alt rounded-xl p-6">
                 <h3 className="font-bold text-primary mb-2">{title}</h3>

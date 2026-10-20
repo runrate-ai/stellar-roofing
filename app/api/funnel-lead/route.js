@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 const GHL_API = 'https://services.leadconnectorhq.com';
 const GHL_VERSION = '2021-07-28';
 
-const REQUIRED = ['name', 'phone', 'projectType', 'address'];
+const REQUIRED = ['name', 'phone', 'email', 'projectType', 'address', 'zip'];
 
 // Must match the option lists on the GHL custom fields "Project Type" and
 // "Project Urgency" exactly, or GHL stores the value blank.
@@ -39,6 +39,18 @@ function normalizePhone(raw) {
 }
 
 const clean = (value, max = 500) => String(value || '').trim().slice(0, max);
+
+// Where did a funnel lead come from? Decided by the click ID or UTM the ad
+// platform adds to the landing URL, since Meta and Google share the same pages.
+const META_SOURCES = ['facebook', 'fb', 'instagram', 'ig', 'meta', 'meta-ads'];
+function adSource(body) {
+  const utm = clean(body.utm_source, 60).toLowerCase();
+  if (clean(body.fbclid) || META_SOURCES.includes(utm)) return 'meta';
+  if (clean(body.gclid) || clean(body.wbraid) || clean(body.gbraid) || utm === 'google') return 'google';
+  return 'other';
+}
+const SOURCE_LABEL = { meta: 'Meta Ads', google: 'Google Ads', other: 'Funnel' };
+const SOURCE_TAG = { meta: 'meta-lead', google: 'google-ads-lead', other: null };
 
 function splitName(full) {
   const parts = full.split(/\s+/);
@@ -133,14 +145,22 @@ export async function POST(request) {
     country: 'US',
     source: isWebsite
       ? `Website – ${pagePath || '/'}`
-      : `PPC Funnel – ${funnel?.adGroup || 'Nashville'}`,
+      : `${SOURCE_LABEL[adSource(body)]} – ${funnel?.adGroup || 'Nashville'}`,
     customFields,
   };
   // Tags are added in a separate call below. Sending `tags` in the upsert
   // replaces every tag an existing contact already has.
-  const tags = isWebsite
-    ? ['website-lead', market]
-    : ['ppc-lead', ...(funnel ? [`ppc-${funnel.slug}`] : [])];
+  const smsConsent = body.smsConsent === true;
+  const tags = [
+    ...(isWebsite
+      ? ['website-lead', market]
+      : [
+          'funnel-lead',
+          ...(SOURCE_TAG[adSource(body)] ? [SOURCE_TAG[adSource(body)]] : []),
+          ...(funnel ? [`funnel-${funnel.slug}`] : []),
+        ]),
+    ...(smsConsent ? ['sms-consent'] : []),
+  ];
 
   const upsert = await ghl('/contacts/upsert', token, contact);
   const contactId = upsert.data?.contact?.id;
@@ -157,13 +177,16 @@ export async function POST(request) {
   const note = [
     isWebsite
       ? `New website lead (${market === 'boise' ? 'Boise' : 'Nashville'}) – ${pagePath || '/'}`
-      : `New PPC lead – ${funnel?.adGroup || 'Nashville'}`,
+      : `New funnel lead (${SOURCE_LABEL[adSource(body)]}) – ${funnel?.adGroup || 'Nashville'}`,
     `Project: ${projectType}`,
     timeline && `Timeline: ${timeline}`,
     (address || zip) && `Property: ${[address, zip].filter(Boolean).join(', ')}`,
     message && `Message: ${message}`,
     landingPage && `Landing page: ${landingPage}`,
-    clean(body.gclid) ? 'Came from a Google Ads click (gclid captured).' : 'No Google Ads click ID on this visit.',
+    clean(body.gclid) ? 'Came from a Google Ads click (gclid captured).' : '',
+    clean(body.fbclid) ? 'Came from a Meta ad click (fbclid captured).' : '',
+    !clean(body.gclid) && !clean(body.fbclid) ? 'No ad click ID on this visit (direct, organic, or untagged).' : '',
+    smsConsent ? `SMS consent: checked the text-message box on the form (${new Date().toISOString()}).` : 'SMS consent: not given. Do not text; call or email.',
   ].filter(Boolean).join('\n');
   const noted = await ghl(`/contacts/${contactId}/notes`, token, { body: note });
   if (!noted.ok) console.error('[funnel-lead] GHL note failed:', noted.status);

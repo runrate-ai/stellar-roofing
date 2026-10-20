@@ -1,6 +1,8 @@
 import Image from 'next/image';
+import PromoVideo from '../../components/PromoVideo';
+import Script from 'next/script';
 import Link from 'next/link';
-import { Phone, Shield, SearchCheck, BadgeCheck, FileCheck, Home, Wrench, CloudLightning, Search, Building2, AlertTriangle, MapPin } from 'lucide-react';
+import { Phone, Shield, SearchCheck, BadgeCheck, FileCheck, Home, Wrench, CloudLightning, Search, Building2, AlertTriangle, MapPin, PlayCircle, PawPrint } from 'lucide-react';
 import SchemaMarkup from '../../components/SchemaMarkup';
 import CTABanner from '../../components/CTABanner';
 import FAQ from '../../components/FAQ';
@@ -53,7 +55,7 @@ export default function NashvilleHubPage() {
       <SchemaMarkup schema={lbSchema} />
       <SchemaMarkup schema={faqSchemaData} />
 
-      {/* HERO */}
+      {/* HERO. The lead form is temporarily off this page (A2P review); visitors use the chat widget, the call button, or the estimate page. Restore <SiteLeadForm id="hero-estimate" /> in a two-column grid when the form returns. */}
       <section className="relative flex items-center justify-center pt-28 pb-24 md:pt-32 md:pb-16" style={{ minHeight: 'calc(100vh - 44px)' }}>
         <Image src="/images/hero.jpg" alt="Nashville roofing company - Stellar Roofing & Restorations" fill className="object-cover" priority quality={75} sizes="100vw" />
         <div className="absolute inset-0 bg-black/40" />
@@ -76,6 +78,47 @@ export default function NashvilleHubPage() {
               <Phone size={20} /> {loc.phone}
             </a>
           </div>
+          <a href="#video" className="inline-flex items-center gap-2 mt-6 text-white/90 hover:text-white font-semibold underline underline-offset-4">
+            <PlayCircle size={20} /> Watch our video
+          </a>
+        </div>
+      </section>
+
+      {/* GHL chat widget (homepage only) */}
+      <Script
+        id="ghl-chat-widget"
+        src="https://widgets.leadconnectorhq.com/loader.js"
+        data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+        data-widget-id="6ad3a39cd28aca7d19ab2189"
+        data-source="WEB_USER"
+        strategy="lazyOnload"
+      />
+
+      {/* PROMO VIDEO */}
+      <section id="video" className="bg-white py-14 px-4 scroll-mt-20">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">Meet Stellar Roofing &amp; Restorations</h2>
+          <PromoVideo location="nashville_home" />
+        </div>
+      </section>
+
+      {/* STELLAR PUPPY PROMISE */}
+      <section className="bg-bg-alt py-14 px-4">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-5">
+            <PawPrint size={28} className="text-primary" />
+          </div>
+          <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4">The Stellar Puppy Promise</h2>
+          <p className="text-text-muted text-lg leading-relaxed mb-5">
+            A roof replacement is loud, and most dogs hate it. So on install day we pick up your dog and take them to <a href="https://dogoasis.com/" target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-primary">Dog Oasis</a> in Goodlettsville for a day of play, then a bath, teeth brushed, ears cleaned, and nails buffed. We book it and we pay for it.
+          </p>
+          <blockquote className="text-primary font-semibold text-lg leading-relaxed mb-5">
+            &ldquo;Not only are you going to come home to a brand new roof, but you&apos;re going to have a dog that is clean and better than when you left.&rdquo;
+            <footer className="text-text-muted text-sm font-normal mt-2">Nate, owner of Stellar Roofing &amp; Restorations</footer>
+          </blockquote>
+          <p className="text-text-muted text-xs leading-relaxed max-w-2xl mx-auto">
+            Applies to complete retail (non-insurance) roof replacements: one dog, one day at Dog Oasis, 812 Meadowlark Lane, Goodlettsville, TN, booked and paid for by Stellar Roofing &amp; Restorations (value up to $75). Baths are available Tuesday through Saturday. Subject to Dog Oasis availability and its vaccination and temperament requirements.
+          </p>
         </div>
       </section>
 
@@ -139,7 +182,6 @@ export default function NashvilleHubPage() {
                 { type: "Larger home (2,800–4,000 sq ft)", range: "$22,000 – $30,000+" },
                 { type: "Architectural shingles (most popular)", range: "Included above" },
                 { type: "Premium / designer shingles", range: "Add $2,000 – $5,000" },
-                { type: "Metal roofing upgrade", range: "Add $8,000 – $15,000" },
               ].map(({ type, range }) => (
                 <div key={type} className="flex justify-between gap-4 py-2 border-b border-slate-100 last:border-0">
                   <span className="text-text-muted">{type}</span>

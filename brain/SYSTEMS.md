@@ -52,3 +52,8 @@ No secrets in this file. Tokens live in `.env.local` (local) and Vercel (product
 ## iCloud (recurring problem)
 
 The project sits on the iCloud-synced Desktop, and macOS offloads its files. Symptoms: `next dev` prints nothing and never serves; `next build` hangs at "Creating an optimized production build"; a shell command that reads files times out. Check with `find node_modules/next -flags +dataless | head`. Fix: stop the preview, `rm -rf node_modules .next && npm ci`, start the preview again. Use the Read tool, not `cat`, when a shell read hangs.
+- Bing Webmaster Tools: set up for `thestellarroofing.com` (51 URLs, 0 errors, 2026-10-17). IndexNow not enabled.
+- Promo video: YouTube unlisted `https://youtu.be/ajLg0usGdBU` (component `components/PromoVideo.jsx`).
+- PostHog MCP exists (`mcp.posthog.com`); not connected yet. Until then Claude reads PostHog through Claude in Chrome (HogQL via `/api/environments/645820/query/`).
+- Meta: Business Manager and ad account exist; no pixel yet (2026-10-17).
+- Dog Oasis (partner for the Puppy Promise): dogoasis.com, 812 Meadowlark Lane, Goodlettsville.

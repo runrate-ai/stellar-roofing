@@ -19,7 +19,7 @@ export default function PrivacyPolicyPage() {
       <section className="bg-primary py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Privacy Policy</h1>
-          <p className="text-white/80 text-xl">Last updated: March 2025</p>
+          <p className="text-white/80 text-xl">Last updated: October 2026</p>
         </div>
       </section>
 
@@ -67,6 +67,14 @@ export default function PrivacyPolicyPage() {
             We use <strong>GoHighLevel</strong> as our CRM and marketing automation platform. When you submit a form or interact with our communications, your data may be stored and managed within GoHighLevel. GoHighLevel has its own privacy practices — please refer to their privacy policy at <strong>gohighlevel.com</strong> for details. We do not sell your personal information to third parties. We may share your information with service providers (such as our CRM) solely to provide services to you.
           </p>
 
+          <h2 className="text-2xl font-bold text-primary mb-4">Text Messaging (SMS)</h2>
+          <p className="text-text-muted leading-relaxed mb-4">
+            If you give us your mobile number and check the box agreeing to receive text messages, we will use your number to text you about your inquiry, estimate, inspection appointment, and roofing project, such as appointment reminders and follow-ups. Message frequency varies. Message and data rates may apply. You can reply <strong>STOP</strong> at any time to opt out, or <strong>HELP</strong> for help. Consent to receive text messages is not a condition of purchasing any goods or services.
+          </p>
+          <p className="text-text-muted leading-relaxed mb-8">
+            <strong>No mobile information will be shared with third parties or affiliates for marketing or promotional purposes.</strong> Text messaging originator opt-in data and consent will not be shared with any third parties. We share your number only with service providers, such as our CRM and messaging provider, to the extent needed to deliver the messages you asked for. See our <a href="/terms-and-conditions" className="text-primary hover:text-primary-light underline">Terms &amp; Conditions</a> for the full SMS terms.
+          </p>
+
           <h2 className="text-2xl font-bold text-primary mb-4">Cookies</h2>
           <p className="text-text-muted leading-relaxed mb-8">
             Our site uses cookies — small data files stored on your device — to improve site functionality and analyze traffic. By continuing to use our site, you consent to our use of cookies. You can control cookies through your browser settings at any time.
@@ -102,7 +110,7 @@ export default function PrivacyPolicyPage() {
           </p>
           <p className="text-text-muted leading-relaxed">
             <strong>{config.business.name}</strong><br />
-            Nashville, TN<br />
+            110 Space Park N, Goodlettsville, TN 37072<br />
             Phone: <a href={`tel:${config.business.phoneRaw}`} className="text-primary hover:text-primary-light underline">{config.business.phone}</a><br />
             Email: <a href={`mailto:${config.business.email}`} className="text-primary hover:text-primary-light underline">{config.business.email}</a>
           </p>

@@ -19,7 +19,7 @@ export default function TermsAndConditionsPage() {
       <section className="bg-primary py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Terms &amp; Conditions</h1>
-          <p className="text-white/80 text-xl">Last updated: March 2025</p>
+          <p className="text-white/80 text-xl">Last updated: October 2026</p>
         </div>
       </section>
 
@@ -89,6 +89,18 @@ export default function TermsAndConditionsPage() {
             To the fullest extent permitted by law, Stellar Roofing &amp; Restorations shall not be liable for any indirect, incidental, special, or consequential damages arising out of or related to our services or your use of our website. Our total liability shall not exceed the amount paid by you for the specific service giving rise to the claim.
           </p>
 
+          <h2 className="text-2xl font-bold text-primary mb-4">SMS Text Messaging Terms</h2>
+          <ul className="list-disc pl-6 space-y-2 text-text-muted mb-8">
+            <li><strong>Program:</strong> {config.business.name} customer messages. If you check the consent box on one of our forms, we will text you about your inquiry, estimate, inspection appointment, and roofing project, including appointment reminders and follow-ups.</li>
+            <li><strong>Consent:</strong> Agreeing to receive text messages is optional and is not a condition of purchasing any goods or services.</li>
+            <li><strong>Frequency:</strong> Message frequency varies depending on your inquiry and project.</li>
+            <li><strong>Cost:</strong> Message and data rates may apply.</li>
+            <li><strong>Opt out:</strong> Reply <strong>STOP</strong> at any time to stop receiving text messages. You will receive one confirmation message.</li>
+            <li><strong>Help:</strong> Reply <strong>HELP</strong> for help, or contact us at <a href={`mailto:${config.business.email}`} className="text-primary hover:text-primary-light underline">{config.business.email}</a> or <a href={`tel:${config.business.phoneRaw}`} className="text-primary hover:text-primary-light underline">{config.business.phone}</a>.</li>
+            <li><strong>Carriers:</strong> Carriers are not liable for delayed or undelivered messages.</li>
+            <li><strong>Privacy:</strong> No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. See our <a href="/privacy-policy" className="text-primary hover:text-primary-light underline">Privacy Policy</a>.</li>
+          </ul>
+
           <h2 className="text-2xl font-bold text-primary mb-4">Website Use</h2>
           <p className="text-text-muted leading-relaxed mb-8">
             The content on this website is provided for general informational purposes only. We make no warranties regarding the accuracy, completeness, or suitability of the information. You may not use our website in any way that violates applicable laws, infringes on third-party rights, or could damage, overburden, or impair our systems.
@@ -110,7 +122,7 @@ export default function TermsAndConditionsPage() {
           </p>
           <p className="text-text-muted leading-relaxed">
             <strong>{config.business.name}</strong><br />
-            Nashville, TN<br />
+            110 Space Park N, Goodlettsville, TN 37072<br />
             Phone: <a href={`tel:${config.business.phoneRaw}`} className="text-primary hover:text-primary-light underline">{config.business.phone}</a><br />
             Email: <a href={`mailto:${config.business.email}`} className="text-primary hover:text-primary-light underline">{config.business.email}</a>
           </p>
