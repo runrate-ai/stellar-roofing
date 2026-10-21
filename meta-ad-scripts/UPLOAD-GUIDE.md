@@ -1,22 +1,24 @@
-# Upload guide: "Why hire Stellar Roofing" (v7)
+# Upload guide: "$5,999 new roof + free gutters" (v8)
 
-Files (in `meta-ad-clips/`, 29s each):
-- `stellar-v7-nate-916.mp4` (1080x1920): Reels and Stories
-- `stellar-v7-nate-45.mp4` (1080x1350): Feed
-- `stellar-v7-nate-11.mp4` (1080x1080): square Feed and carousel
-- `stellar-v7-nate-169.mp4` (1920x1080): in-stream and landscape
+Files (in `meta-ad-clips/`, 32s each; copies in `Desktop/Stellar Meta Ads/Videos/`):
+- `stellar-v8-price-916.mp4` (1080x1920): Reels and Stories
+- `stellar-v8-price-45.mp4` (1080x1350): Feed
+- `stellar-v8-price-11.mp4` (1080x1080): square Feed and carousel
+- `stellar-v8-price-169.mp4` (1920x1080): in-stream and landscape
 
-What it is: fast cuts of Stellar's own real crew footage, a short AI-generated intro (old roof to new roof), captions, Final Level music (CC0), and a voiceover in an AI clone of Nate's voice (ElevenLabs).
+What it is: the $5,999 is spoken in the first 3 seconds and shown big on screen. Fast cuts of Stellar's own real crew footage, a short AI-generated intro (old roof to new roof), captions, Final Level music (CC0), and a voiceover in an AI clone of Nate's voice (ElevenLabs v4).
 
 Voiceover:
-> So, why hire Stellar Roofing? Honestly, it starts with me. I'm Nate, I own the company, and I'm the one who inspects your roof, and that's free. Then you get a written estimate, so you know your number before you sign anything. And if you've got a comparable quote from someone else, we'll match it. Every replacement comes with a lifetime workmanship warranty, we're family owned, and when you call, we pick up, day or night. So if you're thinking about a new roof, tap Get Quote.
+> A new roof, starting at five thousand nine hundred ninety-nine dollars, plus free gutters? How? Well, it depends on the size of your roof, how hard the job is, and the materials. I'm Nate, and I own Stellar Roofing. I inspect your roof myself, and you get a written estimate, so you know your exact price before you decide. Every replacement comes with a lifetime workmanship warranty, and if you've got a comparable written quote, we'll match it. We're family owned, licensed and insured. So tap Get Quote, and see your price.
 
-Before running: confirm Nate is OK with an AI clone of his voice in paid ads (Brandon cloned it; Nate's consent is not recorded anywhere I can see).
+Confirmed 2026-10-21 by Brandon: Nate confirmed the $5,999 terms and OK'd the voice clone.
 
-Older versions (v1 to v6, the AI-footage cuts, and the Nate real-voice cuts) are still in `meta-ad-clips/` and are not recommended.
+Ad copy and headlines: `meta-ad-scripts/v8-ad-copy.md` (also `Desktop/Stellar Meta Ads/V8 Ad Copy and Headlines.md`). The "Ad copy" section below is superseded by that file.
 
-## Audience: retail replacement
-Homeowners considering a roof replacement. The ad does not mention the Puppy Promise, free gutters, or storm and insurance. Keep it on retail audiences.
+The earlier no-price v7 files (`stellar-v7-nate-*`) are the fallback if the price offer changes.
+
+## Audience: retail replacement only
+Homeowners considering a roof replacement. The free-gutters offer applies to retail (non-insurance) replacements only, so never run this to storm or insurance audiences.
 
 ## Campaign settings (suggested starting point)
 | Setting | Value |
@@ -32,30 +34,19 @@ Homeowners considering a roof replacement. The ad does not mention the Puppy Pro
 **Optimization (decided 2026-10-20, no Meta Pixel yet):** Objective **Traffic**, performance goal **Landing page views**, destination Website. Count real leads from GHL (UTM source `facebook`). Once the pixel below is live and has fired Lead a few times, switch new ad sets to the **Leads** objective, conversion location Website, optimize for Leads.
 
 ## Ad creative
-Upload all four files to one ad, and assign by placement: 9:16 for Stories/Reels, 4:5 for Feed, 1:1 for square placements, 16:9 for landscape. (Meta's placement customization lets you pick a different file per placement.)
+Upload all four files to one ad and assign by placement: 9:16 Stories/Reels, 4:5 Feed, 1:1 square, 16:9 landscape.
 
-**Primary text** (first 125 characters are what shows; confirmed facts only):
-```
-Why hire Stellar Roofing? Nate, the owner, inspects your roof himself, and it's free. You get a written estimate before you sign, and we'll match a comparable written quote. Every replacement comes with a lifetime workmanship warranty. Family owned, licensed and insured, and our phone is answered 24/7.
-```
-
-**Headline** (pick one):
-```
-Free Inspection + Written Estimate
-```
-```
-Why Hire Stellar Roofing?
-```
-
-**Description:** `Licensed and insured`
+Use primary text A from `v8-ad-copy.md` first (it matches the video), then test B and C.
+**Headline:** `$5,999 Roof? Here's How`
+**Description:** `Free inspection and estimate`
 **CTA button:** Get quote
 
 **Website URL** (the funnel page):
 ```
-https://get.thestellarroofing.com/roof-replacement?utm_source=facebook&utm_medium=paid_social&utm_campaign=nashville-retail-replacement&utm_content=why-hire-nate-v7
+https://get.thestellarroofing.com/roof-replacement?utm_source=facebook&utm_medium=paid_social&utm_campaign=nashville-new-roof-5999&utm_content=v8-how
 ```
 
-Do not add: "best", "most trusted", "better than other companies", price claims, financing, Owens Corning or GAF names, insurance outcomes, or the tracking phone number (it is not approved yet). One shot in the video shows the office window logo with (629) 277-4249, the main number.
+Price rules: always say "starting at"; keep the on-screen and in-ad fine print (depends on roof size, final price on the written estimate, free gutters terms). Do not add "best", "cheapest", "limited time", financing or monthly payments, insurance outcomes, Owens Corning or GAF names, or the tracking phone number (not approved yet). One shot shows the office window logo with (629) 277-4249, the main number.
 
 ## AI-info label (what I can and can't confirm)
 I could not look up Meta's current Ads Manager screens, so check these in the UI:
