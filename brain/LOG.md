@@ -2,6 +2,10 @@
 
 Newest first. A few lines per session: what was done and what was decided. Details live in git history and the docs each entry points to.
 
+## 2026-10-21
+
+- Chamber activated Stellar's listing. Moved the badge from the `/nashville` hero to the Nashville footer (all `/nashville/*` pages), set `secure: true`, dark text on the card. Pushed. iCloud had offloaded files and duplicated git refs again; fixed.
+
 ## 2026-10-20 (Chamber badge)
 
 - Added the Goodlettsville Chamber member widget (`components/ChamberBadge.jsx`) to the `/nashville` hero only (Brandon: not the two-market homepage). Hidden until ChamberMaster activates member 2789. Merged 19 GitHub commits into local first; pushed to `main`. Fixed iCloud offloading again (source files and node_modules).
