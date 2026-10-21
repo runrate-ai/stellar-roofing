@@ -1,12 +1,12 @@
-# Upload guide: "$5,999 new roof + free gutters" (v8)
+# Upload guide: "$5,999 new roof + free gutters" (v9, first-person snap intro)
 
 Files (in `meta-ad-clips/`, 32s each; copies in `Desktop/Stellar Meta Ads/Videos/`):
-- `stellar-v8-price-916.mp4` (1080x1920): Reels and Stories
-- `stellar-v8-price-45.mp4` (1080x1350): Feed
-- `stellar-v8-price-11.mp4` (1080x1080): square Feed and carousel
-- `stellar-v8-price-169.mp4` (1920x1080): in-stream and landscape
+- `stellar-v9-pov-916.mp4` (1080x1920): Reels and Stories
+- `stellar-v9-pov-45.mp4` (1080x1350): Feed
+- `stellar-v9-pov-11.mp4` (1080x1080): square Feed and carousel
+- `stellar-v9-pov-169.mp4` (1920x1080): in-stream and landscape
 
-What it is: the $5,999 is spoken in the first 3 seconds and shown big on screen. Fast cuts of Stellar's own real crew footage, a short AI-generated intro (old roof to new roof), captions, Final Level music (CC0), and a voiceover in an AI clone of Nate's voice (ElevenLabs v4).
+What it is: the $5,999 is spoken in the first 3 seconds and shown big on screen. Fast cuts of Stellar's own real crew footage, a first-person AI-generated intro (a hand snaps its fingers and an old worn roof turns into a new one), the Stellar logo in the corner, captions, Final Level music (CC0), and a voiceover in an AI clone of Nate's voice (ElevenLabs v4).
 
 Voiceover:
 > A new roof, starting at five thousand nine hundred ninety-nine dollars, plus free gutters? How? Well, it depends on the size of your roof, how hard the job is, and the materials. I'm Nate, and I own Stellar Roofing. I inspect your roof myself, and you get a written estimate, so you know your exact price before you decide. Every replacement comes with a lifetime workmanship warranty, and if you've got a comparable written quote, we'll match it. We're family owned, licensed and insured. So tap Get Quote, and see your price.
