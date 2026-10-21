@@ -15,6 +15,7 @@ function createWidget() {
   el.innerHTML = ''; // avoid a duplicate badge when the page is revisited client-side
   new window.MNI.Widgets.Member(WIDGET_ID, {
     member: 2789,
+    secure: true, // always use ChamberMaster's https endpoint (the http one is blocked on https pages)
     styleTemplate:
       '#@id{text-align:center;position:relative}#@id .mn-widget-member-name{font-weight:700}#@id .mn-widget-member-logo{max-width:100%}',
   }).create();
@@ -36,7 +37,7 @@ export default function ChamberBadge({ className = '' }) {
 
   return (
     <div className={filled ? `block ${className}` : 'hidden'}>
-      <div className="inline-block bg-white rounded-xl px-4 py-3 shadow-lg max-w-[220px]">
+      <div className="inline-block bg-white text-primary text-sm leading-snug rounded-xl px-4 py-3 shadow-lg max-w-[220px]">
         <div id={WIDGET_ID} ref={ref} />
       </div>
       <Script

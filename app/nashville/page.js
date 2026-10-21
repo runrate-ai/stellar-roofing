@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import PromoVideo from '../../components/PromoVideo';
-import ChamberBadge from '../../components/ChamberBadge';
 import Script from 'next/script';
 import Link from 'next/link';
 import { Phone, Shield, SearchCheck, BadgeCheck, FileCheck, Home, Wrench, CloudLightning, Search, Building2, AlertTriangle, MapPin, PlayCircle, PawPrint } from 'lucide-react';
@@ -82,7 +81,6 @@ export default function NashvilleHubPage() {
           <a href="#video" className="inline-flex items-center gap-2 mt-6 text-white/90 hover:text-white font-semibold underline underline-offset-4">
             <PlayCircle size={20} /> Watch our video
           </a>
-          <ChamberBadge className="mt-8" />
         </div>
       </section>
 

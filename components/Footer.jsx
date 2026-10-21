@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import config from '../lib/config';
 import ShingleBrands from './ShingleBrands';
+import ChamberBadge from './ChamberBadge';
 
 const nashville = config.locations.nashville;
 const boise = config.locations.boise;
@@ -205,6 +206,8 @@ export default function Footer() {
               <li><Link href="/privacy-policy" className="text-white/70 hover:text-white text-sm transition-colors">Privacy Policy</Link></li>
               <li><Link href="/terms-and-conditions" className="text-white/70 hover:text-white text-sm transition-colors">Terms &amp; Conditions</Link></li>
             </ul>
+            {/* Goodlettsville Chamber member badge: Nashville pages only */}
+            {locationSlug === 'nashville' && <ChamberBadge className="mt-6" />}
           </div>
         </div>
       </div>
