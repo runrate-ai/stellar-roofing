@@ -7,6 +7,8 @@ Newest first. A few lines per session: what was done and what was decided. Detai
 - Call with Nate: CompanyCam = inspections/production, GHL = all leads; outcome labels Good/Bad/Manual, state-first. Renamed CompanyCam labels (TN red, ID blue), created GHL `cc-*` tags, wrote the cold-call script (`sales-scripts/cold-call-script.md`).
 - Built and shipped the CompanyCam → GHL bridge (`app/api/companycam-webhook/route.js`), Vercel env set via CLI (project linked), webhook 302627 registered, four GHL workflows published, live end-to-end test passed. Found Nate's past projects have no customer contact info; he will add name/phone/email going forward. Brandon deleted the old "GHL" CompanyCam test token.
 
+- Published GHL workflow "No-Show: Disposition" (status No-show → tag `no-show`, Cold Call Appointments → No-Show, reschedule text). Safety-net workflow held back pending Brandon's decision. Waiting on Ryan (Premura) to sync dispositions.
+
 ## 2026-10-21 (SEO check, popup, Goodlettsville home page)
 
 - Full OpenSEO check (crawl, Search Console, indexing, Business Profile, Maps grid, Analytics). Crawl clean (only long titles/descriptions). Maps: found at 7 of 9 grid points (was 4), center #2. GBP 4 reviews, 11 photos, 1 category. GSC 28 days: `/nashville` 16 clicks, city pages 600-1,300 impressions and ~0 clicks. Storm-damage, Franklin, Goodlettsville, Brentwood still not indexed; Google has not recrawled the pages Brandon requested.
