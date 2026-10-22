@@ -159,6 +159,7 @@ Campaign `Search – Nashville Leads (Relaunch)` has been live since 2026-09-29.
 - [ ] Brandon: delete the CompanyCam project "TEST Bridge - delete me" and the test contact's lost opportunity.
 - [ ] Send Nate the cold-call script (`sales-scripts/cold-call-script.md`) for the callers / Tommy.
 - [ ] Renew the CompanyCam API token before 2027-10-22.
+- [ ] Later: long-term nurture campaign (mostly email, occasional SMS) for Bad Lead / Lost leads. Find them by tag `cc-tn-bad-lead` / `cc-id-bad-lead` or opportunity status Lost. Bad Lead currently only stops the short follow-up.
 - [ ] Move the project off the iCloud-synced Desktop, for example to `~/Projects`, so builds stop hanging.
 - [ ] Revoke GHL Token 1 once the Priority 1 setup is done.
 
