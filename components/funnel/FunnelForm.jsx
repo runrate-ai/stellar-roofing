@@ -34,8 +34,14 @@ export default function FunnelForm({
   market = 'nashville',
   thankYouHref,
   showMessage = false,
+  twoStep = false,
 }) {
   const location = config.locations[market] || config.locations.nashville;
+  // twoStep: step 1 asks only what/where (short, low-commitment); step 2 asks
+  // for contact details. Off by default, so existing forms are unchanged.
+  const [step, setStep] = useState(1);
+  const showStep1 = !twoStep || step === 1;
+  const showStep2 = !twoStep || step === 2;
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [fields, setFields] = useState({
@@ -66,14 +72,30 @@ export default function FunnelForm({
     }
   };
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-    if (!PROJECT_TYPES.includes(fields.projectType)) return setError('Please choose what you need help with.');
-    if (fields.zip.length !== 5) return setError('Please enter your 5-digit ZIP code.');
+  // Returns an error message for step 1 (what and where), or '' when it's fine.
+  const step1Error = () => {
+    if (!PROJECT_TYPES.includes(fields.projectType)) return 'Please choose what you need help with.';
+    if (fields.zip.length !== 5) return 'Please enter your 5-digit ZIP code.';
     const address = fields.address.trim();
     if (address.length < 5 || !/\d/.test(address) || !/[a-z]/i.test(address)) {
-      return setError('Please enter the street address, like 123 Main St.');
+      return 'Please enter the street address, like 123 Main St.';
     }
+    return '';
+  };
+
+  const goToStep2 = () => {
+    const problem = step1Error();
+    if (problem) return setError(problem);
+    setError('');
+    setStep(2);
+    pushDataLayer('funnel_form_step', { funnel_slug: funnelSlug, lead_source: leadSource, step: 2 });
+  };
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    if (twoStep && step === 1) return goToStep2();
+    const step1Problem = step1Error();
+    if (step1Problem) return setError(step1Problem);
     if (!fields.name.trim()) return setError('Please enter your name.');
     if (fields.phone.replace(/\D/g, '').length < 10) {
       return setError('Please enter a valid 10-digit phone number.');
@@ -125,6 +147,7 @@ export default function FunnelForm({
 
       <div className="px-6 py-5">
         <form onSubmit={handleSubmit} noValidate>
+          {showStep1 && (<>
           <div className="mb-3.5">
             <label className={labelClass} htmlFor={`${id}-type`}>What do you need help with?</label>
             <select
@@ -157,7 +180,14 @@ export default function FunnelForm({
               />
             </div>
           </div>
+          </>)}
 
+          {showStep2 && (<>
+          {twoStep && (
+            <button type="button" onClick={() => { setStep(1); setError(''); }} className="mb-3 text-sm font-semibold text-primary underline underline-offset-2">
+              &larr; Back
+            </button>
+          )}
           <div className="mb-3.5">
             <label className={labelClass} htmlFor={`${id}-name`}>Full name</label>
             <input
@@ -199,6 +229,7 @@ export default function FunnelForm({
               />
             </div>
           )}
+          </>)}
 
           {/* Honeypot: hidden from people, filled by bots. */}
           <div aria-hidden="true" className="absolute left-[-9999px] w-px h-px overflow-hidden">
@@ -224,6 +255,7 @@ export default function FunnelForm({
           )}
 
           {/* A2P 10DLC consent: optional, unchecked by default, never required to submit. */}
+          {showStep2 && (
           <div className="mb-4 flex items-start gap-3">
             <input
               id={`${id}-sms`} type="checkbox" className="mt-1 h-5 w-5 flex-shrink-0 rounded border-2 border-slate-300 accent-primary"
@@ -236,13 +268,17 @@ export default function FunnelForm({
               <a href="https://www.thestellarroofing.com/terms-and-conditions" target="_blank" rel="noopener" className="underline">Terms &amp; Conditions</a>.
             </label>
           </div>
+          )}
 
           <button
             type="submit" disabled={submitting}
             className="w-full rounded-lg bg-cta hover:bg-cta-hover disabled:opacity-70 disabled:cursor-not-allowed text-primary font-extrabold text-lg py-4 transition shadow-lg flex items-center justify-center gap-2"
           >
-            {submitting ? (<><Loader2 size={20} className="animate-spin" /> Sending…</>) : (submitLabel || 'Get My Free Inspection')}
+            {submitting ? (<><Loader2 size={20} className="animate-spin" /> Sending…</>) : (twoStep && step === 1 ? 'Next' : (submitLabel || 'Get My Free Inspection'))}
           </button>
+          {twoStep && step === 1 && (
+            <p className="mt-3 text-center text-xs font-semibold text-primary">Takes about 30 seconds to start.</p>
+          )}
         </form>
       </div>
 

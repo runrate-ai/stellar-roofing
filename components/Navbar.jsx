@@ -7,6 +7,7 @@ import { Phone, Menu, X, ChevronDown, MapPin } from 'lucide-react';
 import config from '../lib/config';
 
 const services = config.services;
+const OFFER_BAR_HEIGHT = 36;
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -14,9 +15,16 @@ export default function Navbar() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [areasOpen, setAreasOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  // The offer bar scrolls away with the page; the fixed header slides up to the
+  // top as it leaves. Only Nashville pages show the bar.
+  const [barOffset, setBarOffset] = useState(OFFER_BAR_HEIGHT);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+      setBarOffset(Math.max(0, OFFER_BAR_HEIGHT - window.scrollY));
+    };
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -32,9 +40,25 @@ export default function Navbar() {
   const locationPrefix = locationSlug ? `/${locationSlug}` : '';
   const serviceAreas = location?.serviceAreas || [];
 
+  const showOfferBar = Boolean(isNashville);
+
   return (
+    <>
+    {/* Offer bar: only claims that apply to every job (inspection, estimate, price match). */}
+    {showOfferBar && (
+      <Link
+        href="/free-inspection"
+        className="absolute top-0 left-0 right-0 z-[99] flex items-center justify-center gap-2 bg-cta px-3 text-center text-xs font-bold text-primary hover:bg-cta-hover sm:text-sm"
+        style={{ height: OFFER_BAR_HEIGHT }}
+      >
+        <span className="truncate sm:hidden">Free inspection &amp; estimate. We match written quotes.</span>
+        <span className="hidden truncate sm:inline">Free roof inspection &amp; written estimate. We&rsquo;ll match any written quote.</span>
+        <span className="hidden whitespace-nowrap underline sm:inline">Book yours &rarr;</span>
+      </Link>
+    )}
     <header
-      className={`fixed top-0 left-0 right-0 z-[100] w-full transition-all duration-500 ease-in-out ${
+      style={{ top: showOfferBar ? barOffset : 0 }}
+      className={`fixed left-0 right-0 z-[100] w-full transition-colors duration-500 ease-in-out ${
         isTransparent ? 'bg-transparent py-3' : 'bg-primary shadow-lg py-1'
       }`}
     >
@@ -246,5 +270,6 @@ export default function Navbar() {
         </div>
       </div>
     </header>
+    </>
   );
 }

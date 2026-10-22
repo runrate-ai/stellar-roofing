@@ -2,8 +2,10 @@ import Image from 'next/image';
 import PromoVideo from '../../components/PromoVideo';
 import Script from 'next/script';
 import Link from 'next/link';
-import { Phone, Shield, SearchCheck, BadgeCheck, FileCheck, Home, Wrench, CloudLightning, Search, Building2, AlertTriangle, MapPin, PlayCircle, PawPrint } from 'lucide-react';
+import { Phone, Shield, SearchCheck, BadgeCheck, FileCheck, Home, Wrench, CloudLightning, Search, Building2, AlertTriangle, MapPin, PlayCircle, PawPrint, ClipboardCheck, Scale, Gift } from 'lucide-react';
+import { PRICE_MATCH_FINE_PRINT, GUTTERS_FINE_PRINT } from '../../lib/funnels';
 import SchemaMarkup from '../../components/SchemaMarkup';
+import SiteLeadForm from '../../components/SiteLeadForm';
 import CTABanner from '../../components/CTABanner';
 import FAQ from '../../components/FAQ';
 import ShingleBrands from '../../components/ShingleBrands';
@@ -55,32 +57,34 @@ export default function NashvilleHubPage() {
       <SchemaMarkup schema={lbSchema} />
       <SchemaMarkup schema={faqSchemaData} />
 
-      {/* HERO. The lead form is temporarily off this page (A2P review); visitors use the chat widget, the call button, or the estimate page. Restore <SiteLeadForm id="hero-estimate" /> in a two-column grid when the form returns. */}
-      <section className="relative flex items-center justify-center pt-28 pb-24 md:pt-32 md:pb-16" style={{ minHeight: 'calc(100vh - 44px)' }}>
+      {/* HERO: headline left, lead form right on desktop; on phones the form sits under the headline and the estimate button jumps to it. */}
+      <section className="relative flex items-center justify-center pt-24 pb-10 md:pt-32 md:pb-16" style={{ minHeight: 'calc(100vh - 44px)' }}>
         <Image src="/images/hero.jpg" alt="Nashville roofing company - Stellar Roofing & Restorations" fill className="object-cover" priority quality={75} sizes="100vw" />
         <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <div className="flex items-center justify-center gap-2 text-white/80 mb-3">
+        <div className="relative z-10 grid w-full max-w-6xl mx-auto items-center gap-6 px-4 lg:gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="text-center lg:text-left">
+          <div className="flex items-center justify-center lg:justify-start gap-2 text-white/80 mb-3">
             <MapPin size={16} />
             <span className="text-sm font-semibold uppercase tracking-wider">Nashville, TN</span>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-3 md:mb-4 leading-tight">
             Nashville's Most Trusted<br />Roofing Company
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-8 font-medium">
+          <p className="text-base sm:text-xl md:text-2xl text-white/90 mb-5 md:mb-8 font-medium">
             Free Inspections&nbsp;&bull;&nbsp;Lifetime Warranty&nbsp;&bull;&nbsp;Licensed &amp; Insured
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/free-inspection" className="bg-white hover:bg-white/90 text-primary font-bold px-8 py-4 rounded-lg transition-colors text-lg">
-              Get Free Estimate
-            </Link>
-            <a href={`tel:${loc.phoneRaw}`} className="flex items-center justify-center gap-2 border-2 border-white text-white hover:bg-white hover:text-primary font-semibold px-8 py-4 rounded-lg transition-colors text-lg">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <a href={`tel:${loc.phoneRaw}`} className="flex items-center justify-center gap-2 border-2 border-white text-white hover:bg-white hover:text-primary font-semibold px-8 py-3 sm:py-4 rounded-lg transition-colors text-lg">
               <Phone size={20} /> {loc.phone}
             </a>
           </div>
-          <a href="#video" className="inline-flex items-center gap-2 mt-6 text-white/90 hover:text-white font-semibold underline underline-offset-4">
+          <a href="#video" className="hidden sm:inline-flex items-center gap-2 mt-6 text-white/90 hover:text-white font-semibold underline underline-offset-4">
             <PlayCircle size={20} /> Watch our video
           </a>
+        </div>
+        <div className="mx-auto w-full max-w-md lg:max-w-none">
+          <SiteLeadForm id="hero-estimate" title="Get Your Free Roof Inspection" twoStep />
+        </div>
         </div>
       </section>
 
@@ -166,6 +170,39 @@ export default function NashvilleHubPage() {
             })}
           </div>
           <ShingleBrands className="mt-12 text-center max-w-2xl mx-auto" />
+        </div>
+      </section>
+
+      {/* OFFERS. Only offers Nate confirmed. Gutters and the Puppy Promise are retail (non-insurance) replacements only. */}
+      <section className="py-16 px-4 bg-bg-alt reveal" id="offers">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-primary font-bold uppercase tracking-widest text-sm mb-3">Current Offers</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-3">What You Get When You Work With Stellar</h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {[
+              { Icon: ClipboardCheck, title: 'Free Inspection & Estimate', body: 'A free roof inspection and a written estimate, with no obligation and no pressure.', note: 'Every job' },
+              { Icon: Scale, title: 'Price Match Guarantee', body: "Bring a comparable written quote from a licensed, insured Tennessee roofer. We'll match it, apples to apples.", note: 'Every job' },
+              { Icon: Gift, title: 'Free Seamless Gutters', body: 'New 5" seamless aluminum gutters on the replaced roof sections with your full roof replacement.', note: 'Retail (non-insurance) replacements' },
+              { Icon: PawPrint, title: 'The Stellar Puppy Promise', body: 'On install day we take your dog to Dog Oasis in Goodlettsville for a spa day, on us (value up to $75).', note: 'Retail (non-insurance) replacements' },
+            ].map(({ Icon, title, body, note }) => (
+              <div key={title} className="flex flex-col rounded-2xl bg-white p-7 shadow-sm ring-1 ring-black/5">
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10"><Icon size={24} className="text-primary" /></div>
+                <h3 className="mb-2 text-xl font-bold text-primary">{title}</h3>
+                <p className="mb-4 flex-1 leading-relaxed text-text-muted">{body}</p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-primary/60">{note}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 text-center">
+            <Link href="/free-inspection" className="inline-block rounded-lg bg-cta px-8 py-4 text-lg font-extrabold text-primary shadow-lg transition hover:bg-cta-hover">
+              Book My Free Inspection
+            </Link>
+          </div>
+          <p className="mx-auto mt-8 max-w-3xl text-center text-xs leading-relaxed text-text-muted">
+            {PRICE_MATCH_FINE_PRINT} {GUTTERS_FINE_PRINT}
+          </p>
         </div>
       </section>
 
@@ -267,16 +304,18 @@ export default function NashvilleHubPage() {
             <p className="text-primary font-bold uppercase tracking-widest text-sm mb-3">The Process</p>
             <h2 className="text-3xl md:text-5xl font-bold text-primary">Simple &amp; Transparent</h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-12">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-6">
             {[
-              { step: "01", title: "Free Inspection", desc: "We start with a thorough, no-pressure assessment of your roof's condition to identify any issues." },
-              { step: "02", title: "Expert Estimate", desc: "You'll receive a detailed, honest estimate tailored to your home's specific needs and your budget." },
-              { step: "03", title: "Quality Install", desc: "Our professional crew completes your roofing project with precision, leaving your property spotless." },
+              { step: "01", title: "Contact", desc: "Call or fill out the form. We answer the phone around the clock." },
+              { step: "02", title: "Free Inspection", desc: "We look over your roof and give you a straight, no-pressure assessment." },
+              { step: "03", title: "Written Estimate", desc: "You get a clear written estimate. Have another quote? We'll match it, apples to apples." },
+              { step: "04", title: "Scheduling", desc: "Pick a start date that works for your family. We confirm materials and timing up front." },
+              { step: "05", title: "Install & Cleanup", desc: "Our crew installs your roof, then sweeps the yard for nails and leaves your property clean." },
             ].map(({ step, title, desc }, i) => (
-              <div key={step} className={`text-center reveal reveal-delay-${i + 1}`}>
-                <div className="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-black shadow-xl">{step}</div>
-                <h3 className="text-2xl font-bold text-primary mb-4">{title}</h3>
-                <p className="text-text-muted leading-relaxed text-lg">{desc}</p>
+              <div key={step} className={`text-center reveal reveal-delay-${(i % 3) + 1}`}>
+                <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-5 text-xl font-black shadow-xl">{step}</div>
+                <h3 className="text-xl font-bold text-primary mb-3">{title}</h3>
+                <p className="text-text-muted leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
