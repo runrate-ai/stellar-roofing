@@ -36,7 +36,7 @@ export default function BrentwoodPage() {
       <SchemaMarkup schema={svcSchema} />
       <SchemaMarkup schema={faqSchema(faqs)} />
 
-      <Breadcrumbs items={[{ name: "Nashville", path: "/nashville" }, { name: "Service Areas", path: "/nashville#service-areas" }, { name: "Brentwood", path: "/nashville/service-areas/brentwood" }]} />
+      <Breadcrumbs items={[{ name: "Goodlettsville", path: "/goodlettsville" }, { name: "Service Areas", path: "/goodlettsville#service-areas" }, { name: "Brentwood", path: "/nashville/service-areas/brentwood" }]} />
 
       <section className="relative h-64 md:h-80 flex items-center">
         <Image src="/images/crew-working-02.jpg" alt="Roofing company in Brentwood, TN" fill className="object-cover" priority />

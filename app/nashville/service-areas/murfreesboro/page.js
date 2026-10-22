@@ -36,7 +36,7 @@ export default function MurfreesboroPage() {
       <SchemaMarkup schema={svcSchema} />
       <SchemaMarkup schema={faqSchema(faqs)} />
 
-      <Breadcrumbs items={[{ name: "Nashville", path: "/nashville" }, { name: "Service Areas", path: "/nashville#service-areas" }, { name: "Murfreesboro", path: "/nashville/service-areas/murfreesboro" }]} />
+      <Breadcrumbs items={[{ name: "Goodlettsville", path: "/goodlettsville" }, { name: "Service Areas", path: "/goodlettsville#service-areas" }, { name: "Murfreesboro", path: "/nashville/service-areas/murfreesboro" }]} />
 
       <section className="relative h-64 md:h-80 flex items-center">
         <Image src="/images/service-roof-replacement.jpg" alt="Roofing company in Murfreesboro, TN" fill className="object-cover" priority />

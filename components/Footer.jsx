@@ -14,7 +14,7 @@ export default function Footer() {
   const pathname = usePathname();
   const year = new Date().getFullYear();
 
-  const isNashville = pathname?.startsWith('/nashville');
+  const isNashville = pathname?.startsWith('/nashville') || pathname?.startsWith('/goodlettsville');
   const isBoise = pathname?.startsWith('/boise');
   const locationSlug = isNashville ? 'nashville' : isBoise ? 'boise' : null;
   const location = locationSlug ? config.locations[locationSlug] : null;
@@ -53,8 +53,8 @@ export default function Footer() {
 
             {/* Col 2: Nashville areas */}
             <div>
-              <Link href="/nashville" className="flex items-center gap-2 font-semibold text-white mb-1 text-sm uppercase tracking-wider hover:text-white/80 transition-colors">
-                <MapPin size={14} /> Nashville, TN
+              <Link href="/goodlettsville" className="flex items-center gap-2 font-semibold text-white mb-1 text-sm uppercase tracking-wider hover:text-white/80 transition-colors">
+                <MapPin size={14} /> Goodlettsville, TN
               </Link>
               <p className="text-white/50 text-xs mb-4">Middle Tennessee</p>
               <ul className="space-y-2">
@@ -99,7 +99,7 @@ export default function Footer() {
                 <li><Link href="/contact" className="text-white/70 hover:text-white text-sm transition-colors">Contact</Link></li>
                 <li><Link href="/free-inspection" className="text-white/70 hover:text-white text-sm transition-colors">Free Inspection</Link></li>
                 <li><Link href="/nashville/blog" className="text-white/70 hover:text-white text-sm transition-colors">Roofing Guides</Link></li>
-                <li><Link href="/nashville" className="text-white/70 hover:text-white text-sm transition-colors">Nashville Location</Link></li>
+                <li><Link href="/goodlettsville" className="text-white/70 hover:text-white text-sm transition-colors">Goodlettsville Location</Link></li>
                 <li><Link href="/boise" className="text-white/70 hover:text-white text-sm transition-colors">Boise Location</Link></li>
                 <li><Link href="/privacy-policy" className="text-white/70 hover:text-white text-sm transition-colors">Privacy Policy</Link></li>
                 <li><Link href="/terms-and-conditions" className="text-white/70 hover:text-white text-sm transition-colors">Terms &amp; Conditions</Link></li>
@@ -199,8 +199,8 @@ export default function Footer() {
                 <li><Link href="/nashville/blog" className="text-white/70 hover:text-white text-sm transition-colors">Roofing Guides</Link></li>
               )}
               <li>
-                <Link href={locationSlug === 'nashville' ? '/boise' : '/nashville'} className="text-white/70 hover:text-white text-sm transition-colors">
-                  {locationSlug === 'nashville' ? 'Boise, ID Location' : 'Nashville, TN Location'}
+                <Link href={locationSlug === 'nashville' ? '/boise' : '/goodlettsville'} className="text-white/70 hover:text-white text-sm transition-colors">
+                  {locationSlug === 'nashville' ? 'Boise, ID Location' : 'Goodlettsville, TN Location'}
                 </Link>
               </li>
               <li><Link href="/privacy-policy" className="text-white/70 hover:text-white text-sm transition-colors">Privacy Policy</Link></li>

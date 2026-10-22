@@ -60,7 +60,7 @@ export default function ContactPage() {
                 <span className="text-sm font-semibold text-text-muted group-hover:text-primary transition-colors">{nashville.email}</span>
               </a>
               <div className="flex gap-3">
-                <Link href="/nashville" className="flex-1 text-center bg-primary hover:bg-primary-light text-white font-bold py-3 rounded-lg transition-colors text-sm">Nashville Hub</Link>
+                <Link href="/goodlettsville" className="flex-1 text-center bg-primary hover:bg-primary-light text-white font-bold py-3 rounded-lg transition-colors text-sm">Goodlettsville Home</Link>
                 <Link href="/nashville/service-areas/nashville" className="flex-1 text-center border border-primary text-primary hover:bg-primary hover:text-white font-bold py-3 rounded-lg transition-colors text-sm">Service Areas</Link>
               </div>
             </div>

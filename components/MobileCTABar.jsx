@@ -9,7 +9,7 @@ const boise = config.locations.boise;
 
 export default function MobileCTABar() {
   const pathname = usePathname();
-  const isNashville = pathname?.startsWith('/nashville');
+  const isNashville = pathname?.startsWith('/nashville') || pathname?.startsWith('/goodlettsville');
   const isBoise = pathname?.startsWith('/boise');
   const locationSlug = isNashville ? 'nashville' : isBoise ? 'boise' : null;
   const location = locationSlug ? config.locations[locationSlug] : null;

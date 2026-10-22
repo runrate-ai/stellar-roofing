@@ -53,17 +53,17 @@ export default function BrandHomePage() {
           {/* LOCATION CARDS */}
           <div className="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
             <Link
-              href="/nashville"
+              href="/goodlettsville"
               className="group bg-white/10 backdrop-blur-sm border-2 border-white/30 hover:bg-white hover:border-white rounded-2xl p-8 text-center transition-all duration-300 hover:shadow-2xl"
             >
               <MapPin size={32} className="text-white group-hover:text-primary mx-auto mb-3 transition-colors" />
-              <div className="text-2xl font-extrabold text-white group-hover:text-primary transition-colors mb-1">Nashville, TN</div>
-              <div className="text-white/80 group-hover:text-text-muted text-sm transition-colors mb-4">Middle Tennessee</div>
+              <div className="text-2xl font-extrabold text-white group-hover:text-primary transition-colors mb-1">Goodlettsville, TN</div>
+              <div className="text-white/80 group-hover:text-text-muted text-sm transition-colors mb-4">Serving Nashville &amp; Middle Tennessee</div>
               <div className="text-white group-hover:text-primary font-bold text-sm transition-colors mb-4">
                 {nashville.phone}
               </div>
               <div className="inline-flex items-center gap-1 text-white group-hover:text-primary font-bold text-sm transition-colors">
-                View Nashville &rarr;
+                View Goodlettsville &rarr;
               </div>
             </Link>
 
@@ -118,8 +118,8 @@ export default function BrandHomePage() {
                 What started in Nashville, Tennessee has grown to serve the Treasure Valley in Idaho — bringing the same commitment to quality craftsmanship, transparent pricing, and dependable service to both markets.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/nashville" className="inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-bold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-                  <MapPin size={18} /> Nashville, TN
+                <Link href="/goodlettsville" className="inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white font-bold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                  <MapPin size={18} /> Goodlettsville, TN
                 </Link>
                 <Link href="/boise" className="inline-flex items-center gap-2 border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold px-8 py-4 rounded-lg transition-all duration-300">
                   <MapPin size={18} /> Boise, ID

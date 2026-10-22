@@ -36,7 +36,7 @@ export default function HendersonvillePage() {
       <SchemaMarkup schema={svcSchema} />
       <SchemaMarkup schema={faqSchema(faqs)} />
 
-      <Breadcrumbs items={[{ name: "Nashville", path: "/nashville" }, { name: "Service Areas", path: "/nashville#service-areas" }, { name: "Hendersonville", path: "/nashville/service-areas/hendersonville" }]} />
+      <Breadcrumbs items={[{ name: "Goodlettsville", path: "/goodlettsville" }, { name: "Service Areas", path: "/goodlettsville#service-areas" }, { name: "Hendersonville", path: "/nashville/service-areas/hendersonville" }]} />
 
       <section className="relative h-64 md:h-80 flex items-center">
         <Image src="/images/service-roof-replacement.jpg" alt="Roofing company in Hendersonville, TN" fill className="object-cover" priority />

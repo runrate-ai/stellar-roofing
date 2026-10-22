@@ -30,14 +30,17 @@ export default function Navbar() {
   }, []);
 
   const isHomepage = pathname === '/';
-  const isNashville = pathname?.startsWith('/nashville');
+  const isNashville = pathname?.startsWith('/nashville') || pathname?.startsWith('/goodlettsville');
   const isBoise = pathname?.startsWith('/boise');
-  const isLocationHub = (isNashville && pathname === '/nashville') || (isBoise && pathname === '/boise');
+  const isLocationHub = (isNashville && pathname === '/goodlettsville') || (isBoise && pathname === '/boise');
   const isTransparent = (isHomepage || isLocationHub) && !scrolled;
 
   const locationSlug = isNashville ? 'nashville' : isBoise ? 'boise' : null;
   const location = locationSlug ? config.locations[locationSlug] : null;
   const locationPrefix = locationSlug ? `/${locationSlug}` : '';
+  // The Nashville market's home page is /goodlettsville (the office location); its services, areas and blog stay under /nashville.
+  const hubPath = location?.hubPath || locationPrefix;
+  const displayCity = locationSlug === 'nashville' ? 'Goodlettsville' : location?.city;
   const serviceAreas = location?.serviceAreas || [];
 
   const showOfferBar = Boolean(isNashville);
@@ -80,8 +83,8 @@ export default function Navbar() {
             {isHomepage ? (
               // Homepage: show both location links
               <>
-                <Link href="/nashville" className="flex items-center gap-1.5 text-white hover:text-white/80 transition-colors text-base font-semibold">
-                  <MapPin size={15} /> Nashville, TN
+                <Link href="/goodlettsville" className="flex items-center gap-1.5 text-white hover:text-white/80 transition-colors text-base font-semibold">
+                  <MapPin size={15} /> Goodlettsville, TN
                 </Link>
                 <Link href="/boise" className="flex items-center gap-1.5 text-white hover:text-white/80 transition-colors text-base font-semibold">
                   <MapPin size={15} /> Boise, ID
@@ -93,7 +96,7 @@ export default function Navbar() {
             ) : locationSlug ? (
               // Location section: show location-specific nav
               <>
-                <Link href={locationPrefix} className="text-white hover:text-white/80 transition-colors text-base font-semibold">Home</Link>
+                <Link href={hubPath} className="text-white hover:text-white/80 transition-colors text-base font-semibold">Home</Link>
 
                 <div className="relative group">
                   <button className="flex items-center gap-1 text-white hover:text-white/80 transition-colors text-base font-semibold py-4">
@@ -131,7 +134,7 @@ export default function Navbar() {
               // Other pages (about, contact, etc.): generic nav
               <>
                 <Link href="/" className="text-white hover:text-white/80 transition-colors text-base font-semibold">Home</Link>
-                <Link href="/nashville" className="flex items-center gap-1 text-white hover:text-white/80 transition-colors text-base font-semibold">Nashville</Link>
+                <Link href="/goodlettsville" className="flex items-center gap-1 text-white hover:text-white/80 transition-colors text-base font-semibold">Goodlettsville</Link>
                 <Link href="/boise" className="flex items-center gap-1 text-white hover:text-white/80 transition-colors text-base font-semibold">Boise</Link>
                 <Link href="/nashville/blog" className="text-white hover:text-white/80 transition-colors text-base font-semibold">Blog</Link>
                 <Link href="/about" className="text-white hover:text-white/80 transition-colors text-base font-semibold">About</Link>
@@ -146,7 +149,7 @@ export default function Navbar() {
               // Location section — show that location's phone
               <>
                 <span className="flex items-center gap-1 text-white/60 text-xs font-semibold uppercase tracking-wider">
-                  <MapPin size={12} /> {location.city}, {location.state}
+                  <MapPin size={12} /> {displayCity}, {location.state}
                 </span>
                 <a href={`tel:${location.phoneRaw}`} className="flex items-center gap-2 text-white hover:text-white/80 transition-colors text-base font-bold">
                   <Phone size={18} fill="currentColor" />
@@ -195,7 +198,7 @@ export default function Navbar() {
           {isHomepage ? (
             <>
               <p className="text-white/50 text-xs font-semibold uppercase tracking-widest mb-4">Choose Your Location</p>
-              <Link href="/nashville" onClick={() => setMobileOpen(false)} className="text-2xl font-bold text-white mb-4 flex items-center gap-2"><MapPin size={20} /> Nashville, TN</Link>
+              <Link href="/goodlettsville" onClick={() => setMobileOpen(false)} className="text-2xl font-bold text-white mb-4 flex items-center gap-2"><MapPin size={20} /> Goodlettsville, TN</Link>
               <Link href="/boise" onClick={() => setMobileOpen(false)} className="text-2xl font-bold text-white mb-8 flex items-center gap-2"><MapPin size={20} /> Boise, ID</Link>
               <Link href="/nashville/blog" onClick={() => setMobileOpen(false)} className="text-2xl font-bold text-white mb-6">Blog</Link>
               <Link href="/about" onClick={() => setMobileOpen(false)} className="text-2xl font-bold text-white mb-6">About Us</Link>
@@ -203,7 +206,7 @@ export default function Navbar() {
             </>
           ) : (
             <>
-              <Link href={locationPrefix || '/'} onClick={() => setMobileOpen(false)} className="text-2xl font-bold text-white mb-6">Home</Link>
+              <Link href={hubPath || '/'} onClick={() => setMobileOpen(false)} className="text-2xl font-bold text-white mb-6">Home</Link>
 
               {locationSlug && (
                 <>

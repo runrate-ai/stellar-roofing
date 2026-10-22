@@ -33,7 +33,7 @@ export default function NashvilleAreaPage() {
       <SchemaMarkup schema={svcSchema} />
       <SchemaMarkup schema={faqSchema(faqs)} />
 
-      <Breadcrumbs items={[{ name: "Nashville", path: "/nashville" }, { name: "Service Areas", path: "/nashville#service-areas" }, { name: "Nashville", path: "/nashville/service-areas/nashville" }]} />
+      <Breadcrumbs items={[{ name: "Goodlettsville", path: "/goodlettsville" }, { name: "Service Areas", path: "/goodlettsville#service-areas" }, { name: "Nashville", path: "/nashville/service-areas/nashville" }]} />
 
       <section className="relative h-64 md:h-80 flex items-center">
         <Image src="/images/hero.jpg" alt="Roofing company in Nashville, TN" fill className="object-cover" priority />

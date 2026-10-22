@@ -13,7 +13,7 @@ export default function sitemap() {
   }));
 
   const locationHubs = Object.values(config.locations).map(loc => ({
-    url: `${base}/${loc.slug}`,
+    url: `${base}${loc.hubPath || `/${loc.slug}`}`,
     lastModified: now,
     changeFrequency: 'monthly',
     priority: 0.95,

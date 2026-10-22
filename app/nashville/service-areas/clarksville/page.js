@@ -40,8 +40,8 @@ export default function ClarksvillePage() {
       <SchemaMarkup schema={faqSchema(faqs)} />
 
       <Breadcrumbs items={[
-        { name: "Nashville", path: "/nashville" },
-        { name: "Service Areas", path: "/nashville#service-areas" },
+        { name: "Goodlettsville", path: "/goodlettsville" },
+        { name: "Service Areas", path: "/goodlettsville#service-areas" },
         { name: "Clarksville", path: "/nashville/service-areas/clarksville" },
       ]} />
 

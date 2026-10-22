@@ -34,8 +34,8 @@ export default function AboutPage() {
           <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">About Stellar Roofing &amp; Restorations</h1>
           <p className="text-white/80 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">One company. Two markets. The same commitment to honest service and quality craftsmanship.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-            <Link href="/nashville" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-6 py-3 rounded-lg transition-colors">
-              <MapPin size={16} /> Nashville, TN
+            <Link href="/goodlettsville" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-6 py-3 rounded-lg transition-colors">
+              <MapPin size={16} /> Goodlettsville, TN
             </Link>
             <Link href="/boise" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-6 py-3 rounded-lg transition-colors">
               <MapPin size={16} /> Boise, ID
@@ -102,8 +102,8 @@ export default function AboutPage() {
               <a href={`tel:${nashville.phoneRaw}`} className="flex items-center gap-2 text-primary font-bold hover:text-primary-light transition-colors text-sm mb-4">
                 <Phone size={14} /> {nashville.phone}
               </a>
-              <Link href="/nashville" className="inline-block text-sm font-semibold text-primary border border-primary hover:bg-primary hover:text-white px-4 py-2 rounded-lg transition-colors">
-                View Nashville →
+              <Link href="/goodlettsville" className="inline-block text-sm font-semibold text-primary border border-primary hover:bg-primary hover:text-white px-4 py-2 rounded-lg transition-colors">
+                View Goodlettsville →
               </Link>
             </div>
             <div className="bg-white rounded-2xl p-8 shadow-sm">

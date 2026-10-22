@@ -26,7 +26,7 @@ export default function BlogPost({ slug, crumb, faqs = null, children }) {
       {faqs && <SchemaMarkup schema={faqSchema(faqs)} />}
 
       <Breadcrumbs items={[
-        { name: "Home", path: "/nashville" },
+        { name: "Home", path: "/goodlettsville" },
         { name: "Blog", path: BLOG_BASE },
         { name: crumb || post.title, path },
       ]} />

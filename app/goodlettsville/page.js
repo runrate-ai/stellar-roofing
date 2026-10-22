@@ -17,14 +17,14 @@ import config from '../../lib/config';
 const loc = config.locations.nashville;
 
 export const metadata = {
-  title: { absolute: "Roofing Company Nashville TN | Trusted Nashville Roofers | Stellar Roofing" },
-  description: "Nashville roofers you can trust. Roof replacement, roof repair, storm & hail damage, free inspections, and a lifetime warranty across Davidson County & Middle Tennessee. Call (629) 277-4249.",
-  alternates: { canonical: 'https://www.thestellarroofing.com/nashville' },
+  title: { absolute: "Roofing Company Goodlettsville & Nashville TN | Stellar Roofing" },
+  description: "Goodlettsville-based roofing company serving Nashville and Middle Tennessee. Roof replacement, repair, storm & hail damage, free inspections, lifetime workmanship warranty. (629) 277-4249.",
+  alternates: { canonical: 'https://www.thestellarroofing.com/goodlettsville' },
   openGraph: {
-    title: "Roofing Company Nashville TN | Trusted Nashville Roofers | Stellar Roofing",
-    description: "Nashville roofers you can trust. Roof replacement, repair, storm damage, free inspections, lifetime warranty.",
-    url: 'https://www.thestellarroofing.com/nashville',
-    images: [{ url: '/images/hero.jpg', width: 1200, height: 630, alt: 'Stellar Roofing Nashville TN' }],
+    title: "Roofing Company Goodlettsville & Nashville TN | Stellar Roofing",
+    description: "Goodlettsville-based roofing company serving Nashville and Middle Tennessee. Free inspections, lifetime workmanship warranty.",
+    url: 'https://www.thestellarroofing.com/goodlettsville',
+    images: [{ url: '/images/hero.jpg', width: 1200, height: 630, alt: 'Stellar Roofing, Goodlettsville and Nashville TN' }],
   },
 };
 
@@ -40,6 +40,8 @@ const serviceDescriptions = {
 };
 
 const faqs = [
+  { question: "Where is Stellar Roofing located?", answer: "Our office is at 110 Space Park N, Goodlettsville, TN 37072. Goodlettsville is home base, and we serve Nashville and the rest of Middle Tennessee from here." },
+  { question: "Do you serve both the Davidson and Sumner County sides of Goodlettsville?", answer: "Yes. Goodlettsville sits on both sides of the county line, and we work throughout the city, from the Rivergate area and Dickerson Pike to Long Hollow Pike and the neighborhoods near Moss-Wright Park." },
   { question: "How much does a new roof cost in Nashville, TN?", answer: "A typical roof replacement in Nashville costs between $15,000 and $30,000 for most homes, depending on the size of your roof, the materials chosen, and the complexity of the job. Architectural shingles are the most popular choice and typically fall in the middle of that range. We provide free estimates so you know exactly what to expect before committing to anything." },
   { question: "Will my homeowners insurance cover a roof replacement in Nashville?", answer: "In many cases, yes — if your roof was damaged by a storm, hail, wind, or another covered peril, your homeowners insurance policy may cover most or all of the replacement cost. Middle Tennessee sees multiple significant hail events each year, and many Nashville homeowners don't realize they're entitled to a claim. Stellar Roofing helps you document the damage, meet with your adjuster, and navigate the claims process from start to finish." },
   { question: "How do I know if my Nashville roof has hail damage?", answer: "Hail damage is often invisible from the ground. Common signs include granules washing off into your gutters, small circular dents or bruising on shingle surfaces, and dents on metal gutters or downspouts. After any significant storm in Middle Tennessee, we strongly recommend a free professional inspection — it's the only reliable way to know the true condition of your roof." },
@@ -280,7 +282,7 @@ export default function NashvilleHubPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="reveal reveal-delay-1">
               <p className="text-primary font-bold uppercase tracking-widest text-sm mb-3">About Us</p>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-8">Nashville Roofers You Can Trust</h2>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-8">Local Roofers, Based in Goodlettsville</h2>
               <p className="text-text-muted leading-relaxed text-lg mb-6">
                 At Stellar Roofing &amp; Restorations, we're committed to providing homeowners in Nashville and throughout Middle Tennessee with roofing services they can truly rely on. The company is led by Nate, who has spent many years working in the roofing industry and understands firsthand the importance of quality craftsmanship, honest communication, and dependable service.
               </p>
@@ -288,7 +290,7 @@ export default function NashvilleHubPage() {
                 Middle Tennessee's climate puts roofs through a real test — hot, humid summers, frequent hailstorms in spring and fall, and occasional tornado events like the destructive March 2020 storm that tore through East Nashville and Germantown. We know the local weather, the neighborhoods, and the roofing challenges specific to this region.
               </p>
               <p className="text-text-muted leading-relaxed text-lg mb-6">
-                Our office is at {config.locations.nashville.address.street}, {config.locations.nashville.address.city}, {config.locations.nashville.address.state} {config.locations.nashville.address.zip}, just north of Nashville. That puts us right next to Goodlettsville, Hendersonville, and Madison, with the rest of Middle Tennessee within driving distance. See our <Link href="/nashville/service-areas/goodlettsville" className="underline underline-offset-2 hover:text-primary">Goodlettsville roofing page</Link>.
+                Our office is at {config.locations.nashville.address.street}, {config.locations.nashville.address.city}, {config.locations.nashville.address.state} {config.locations.nashville.address.zip}, just north of Nashville. That puts us right next to Goodlettsville, Hendersonville, and Madison, with the rest of Middle Tennessee within driving distance.
               </p>
               <p className="text-text-muted leading-relaxed text-base mb-6 text-text-muted/80">
                 <strong className="text-primary">Neighborhoods we serve:</strong> East Nashville, 12 South, The Nations, Germantown, Sylvan Park, Green Hills, Bellevue, Antioch, Madison, Donelson, Inglewood, Berry Hill, and all of Davidson County.

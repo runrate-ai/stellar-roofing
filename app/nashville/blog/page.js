@@ -21,7 +21,7 @@ export const metadata = {
 export default function BlogIndex() {
   return (
     <>
-      <Breadcrumbs items={[{ name: "Home", path: "/nashville" }, { name: "Blog", path: BLOG_BASE }]} />
+      <Breadcrumbs items={[{ name: "Home", path: "/goodlettsville" }, { name: "Blog", path: BLOG_BASE }]} />
 
       <section className="bg-primary py-14 px-4">
         <div className="max-w-4xl mx-auto">

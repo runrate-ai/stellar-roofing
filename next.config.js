@@ -6,6 +6,9 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // The Nashville market home page moved to /goodlettsville (the office location). The old Goodlettsville city page was merged into it.
+      { source: '/nashville', destination: '/goodlettsville', permanent: true },
+      { source: '/nashville/service-areas/goodlettsville', destination: '/goodlettsville', permanent: true },
       // Old service URLs → Nashville (301 permanent)
       { source: '/services/roof-replacement', destination: '/nashville/services/roof-replacement', permanent: true },
       { source: '/services/roof-repair', destination: '/nashville/services/roof-repair', permanent: true },

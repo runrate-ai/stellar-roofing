@@ -36,7 +36,7 @@ export default function FranklinPage() {
       <SchemaMarkup schema={svcSchema} />
       <SchemaMarkup schema={faqSchema(faqs)} />
 
-      <Breadcrumbs items={[{ name: "Nashville", path: "/nashville" }, { name: "Service Areas", path: "/nashville#service-areas" }, { name: "Franklin", path: "/nashville/service-areas/franklin" }]} />
+      <Breadcrumbs items={[{ name: "Goodlettsville", path: "/goodlettsville" }, { name: "Service Areas", path: "/goodlettsville#service-areas" }, { name: "Franklin", path: "/nashville/service-areas/franklin" }]} />
 
       <section className="relative h-64 md:h-80 flex items-center">
         <Image src="/images/service-roof-repair.jpg" alt="Roofers in Franklin, TN" fill className="object-cover" priority />

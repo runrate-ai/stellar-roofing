@@ -39,8 +39,8 @@ export default function RoofRepairNashvillePage() {
       <SchemaMarkup schema={faqSchema(faqs)} />
 
       <Breadcrumbs items={[
-        { name: "Home", path: "/nashville" },
-        { name: "Services", path: "/nashville#services" },
+        { name: "Home", path: "/goodlettsville" },
+        { name: "Services", path: "/goodlettsville#services" },
         { name: "Roof Repair", path: "/nashville/services/roof-repair" },
       ]} />
 
