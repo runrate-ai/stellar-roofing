@@ -54,7 +54,7 @@ export default function EmergencyRoofRepairNashvillePage() {
             <AlertTriangle className="text-white" size={28} />
             <span className="text-white font-bold uppercase tracking-wider text-sm">Emergency Service</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">24/7 Emergency Roof Repair in Nashville, TN</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4"><span className="text-sky">24/7 Emergency Roof Repair</span> in Nashville, TN</h1>
           <p className="text-white/90 text-xl mb-6">Roof leaking? We answer 24/7. Call now.</p>
           <a href={`tel:${loc.phoneRaw}`} className="inline-flex items-center gap-2 bg-white hover:bg-white/90 text-primary font-extrabold px-8 py-4 rounded-lg transition-colors text-xl">
             <Phone size={22} /> {loc.phone}

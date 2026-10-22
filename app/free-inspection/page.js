@@ -32,7 +32,7 @@ export default function FreeInspectionPage() {
       <section className="bg-primary py-14 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-primary font-semibold uppercase tracking-widest text-sm mb-3">100% Free. Zero Obligation.</p>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Schedule Your Free Roof Inspection</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Schedule Your <span className="text-sky">Free Roof Inspection</span></h1>
           <p className="text-white/80 text-xl mb-6">An honest look at your roof — with no pressure to buy anything.</p>
           <a href={`tel:${config.business.phoneRaw}`} className="inline-flex items-center gap-2 bg-white hover:bg-white/90 text-primary font-bold px-8 py-4 rounded-lg transition-colors text-lg">
             <Phone size={20} /> Call {config.business.phone}

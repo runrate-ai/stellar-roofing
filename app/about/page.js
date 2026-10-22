@@ -31,7 +31,7 @@ export default function AboutPage() {
       {/* HERO */}
       <section className="bg-primary py-20 px-4">
         <div className="max-w-4xl mx-auto text-center reveal">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">About Stellar Roofing &amp; Restorations</h1>
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">About <span className="text-sky">Stellar Roofing &amp; Restorations</span></h1>
           <p className="text-white/80 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">One company. Two markets. The same commitment to honest service and quality craftsmanship.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <Link href="/goodlettsville" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-6 py-3 rounded-lg transition-colors">

@@ -44,19 +44,32 @@ export default function Navbar() {
   const serviceAreas = location?.serviceAreas || [];
 
   const showOfferBar = Boolean(isNashville);
+  // Free gutters apply to retail (non-insurance) replacements only, so storm,
+  // hail, and emergency pages get the wording without them.
+  const insuranceContext = /storm|hail|emergency/.test(pathname || '');
 
   return (
     <>
-    {/* Offer bar: only claims that apply to every job (inspection, estimate, price match). */}
+    {/* Offer bar. Gutters line is skipped on storm/insurance pages (retail-only offer). */}
     {showOfferBar && (
       <Link
-        href="/free-inspection"
-        className="absolute top-0 left-0 right-0 z-[99] flex items-center justify-center gap-2 bg-cta px-3 text-center text-xs font-bold text-primary hover:bg-cta-hover sm:text-sm"
+        href={insuranceContext ? '/free-inspection' : '/goodlettsville#offers'}
+        className="absolute top-0 left-0 right-0 z-[99] flex items-center justify-center gap-2 bg-star px-3 text-center text-xs font-bold text-white hover:bg-star-dark sm:text-sm"
         style={{ height: OFFER_BAR_HEIGHT }}
       >
-        <span className="truncate sm:hidden">Free inspection &amp; estimate. We match written quotes.</span>
-        <span className="hidden truncate sm:inline">Free roof inspection &amp; written estimate. We&rsquo;ll match any written quote.</span>
-        <span className="hidden whitespace-nowrap underline sm:inline">Book yours &rarr;</span>
+        {insuranceContext ? (
+          <>
+            <span className="truncate sm:hidden">Free inspections &bull; We match written quotes</span>
+            <span className="hidden truncate sm:inline">Free inspections &bull; Free written estimates &bull; We&rsquo;ll match any written quote</span>
+            <span className="hidden whitespace-nowrap underline sm:inline">Book yours &rarr;</span>
+          </>
+        ) : (
+          <>
+            <span className="truncate sm:hidden">Free gutters* &bull; We match quotes &bull; Free inspections</span>
+            <span className="hidden truncate sm:inline">Free gutters with a roof replacement* &bull; We&rsquo;ll match any written quote &bull; Free inspections</span>
+            <span className="hidden whitespace-nowrap underline sm:inline">See offers &rarr;</span>
+          </>
+        )}
       </Link>
     )}
     <header
@@ -79,27 +92,27 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-8 whitespace-nowrap">
             {isHomepage ? (
               // Homepage: show both location links
               <>
-                <Link href="/goodlettsville" className="flex items-center gap-1.5 text-white hover:text-white/80 transition-colors text-base font-semibold">
+                <Link href="/goodlettsville" className="flex items-center gap-1.5 text-white hover:text-sky transition-colors text-base font-semibold">
                   <MapPin size={15} /> Goodlettsville, TN
                 </Link>
-                <Link href="/boise" className="flex items-center gap-1.5 text-white hover:text-white/80 transition-colors text-base font-semibold">
+                <Link href="/boise" className="flex items-center gap-1.5 text-white hover:text-sky transition-colors text-base font-semibold">
                   <MapPin size={15} /> Boise, ID
                 </Link>
-                <Link href="/nashville/blog" className="text-white hover:text-white/80 transition-colors text-base font-semibold">Blog</Link>
-                <Link href="/about" className="text-white hover:text-white/80 transition-colors text-base font-semibold">About</Link>
-                <Link href="/contact" className="text-white hover:text-white/80 transition-colors text-base font-semibold">Contact</Link>
+                <Link href="/nashville/blog" className="text-white hover:text-sky transition-colors text-base font-semibold">Blog</Link>
+                <Link href="/about" className="text-white hover:text-sky transition-colors text-base font-semibold">About</Link>
+                <Link href="/contact" className="text-white hover:text-sky transition-colors text-base font-semibold">Contact</Link>
               </>
             ) : locationSlug ? (
               // Location section: show location-specific nav
               <>
-                <Link href={hubPath} className="text-white hover:text-white/80 transition-colors text-base font-semibold">Home</Link>
+                <Link href={hubPath} className="text-white hover:text-sky transition-colors text-base font-semibold">Home</Link>
 
                 <div className="relative group">
-                  <button className="flex items-center gap-1 text-white hover:text-white/80 transition-colors text-base font-semibold py-4">
+                  <button className="flex items-center gap-1 text-white hover:text-sky transition-colors text-base font-semibold py-4">
                     Services <ChevronDown size={16} className="group-hover:rotate-180 transition-transform duration-200" />
                   </button>
                   <div className="absolute top-full left-0 w-64 bg-white rounded-xl shadow-xl py-3 mt-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-200 z-[120]">
@@ -112,7 +125,7 @@ export default function Navbar() {
                 </div>
 
                 <div className="relative group">
-                  <button className="flex items-center gap-1 text-white hover:text-white/80 transition-colors text-base font-semibold py-4">
+                  <button className="flex items-center gap-1 text-white hover:text-sky transition-colors text-base font-semibold py-4">
                     Service Areas <ChevronDown size={16} className="group-hover:rotate-180 transition-transform duration-200" />
                   </button>
                   <div className="absolute top-full left-0 w-56 bg-white rounded-xl shadow-xl py-3 mt-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-200 z-[120]">
@@ -125,33 +138,33 @@ export default function Navbar() {
                 </div>
 
                 {locationSlug === 'nashville' && (
-                  <Link href="/nashville/blog" className="text-white hover:text-white/80 transition-colors text-base font-semibold">Blog</Link>
+                  <Link href="/nashville/blog" className="text-white hover:text-sky transition-colors text-base font-semibold">Blog</Link>
                 )}
-                <Link href="/about" className="text-white hover:text-white/80 transition-colors text-base font-semibold">About</Link>
-                <Link href="/contact" className="text-white hover:text-white/80 transition-colors text-base font-semibold">Contact</Link>
+                <Link href="/about" className="text-white hover:text-sky transition-colors text-base font-semibold">About</Link>
+                <Link href="/contact" className="text-white hover:text-sky transition-colors text-base font-semibold">Contact</Link>
               </>
             ) : (
               // Other pages (about, contact, etc.): generic nav
               <>
-                <Link href="/" className="text-white hover:text-white/80 transition-colors text-base font-semibold">Home</Link>
-                <Link href="/goodlettsville" className="flex items-center gap-1 text-white hover:text-white/80 transition-colors text-base font-semibold">Goodlettsville</Link>
-                <Link href="/boise" className="flex items-center gap-1 text-white hover:text-white/80 transition-colors text-base font-semibold">Boise</Link>
-                <Link href="/nashville/blog" className="text-white hover:text-white/80 transition-colors text-base font-semibold">Blog</Link>
-                <Link href="/about" className="text-white hover:text-white/80 transition-colors text-base font-semibold">About</Link>
-                <Link href="/contact" className="text-white hover:text-white/80 transition-colors text-base font-semibold">Contact</Link>
+                <Link href="/" className="text-white hover:text-sky transition-colors text-base font-semibold">Home</Link>
+                <Link href="/goodlettsville" className="flex items-center gap-1 text-white hover:text-sky transition-colors text-base font-semibold">Goodlettsville</Link>
+                <Link href="/boise" className="flex items-center gap-1 text-white hover:text-sky transition-colors text-base font-semibold">Boise</Link>
+                <Link href="/nashville/blog" className="text-white hover:text-sky transition-colors text-base font-semibold">Blog</Link>
+                <Link href="/about" className="text-white hover:text-sky transition-colors text-base font-semibold">About</Link>
+                <Link href="/contact" className="text-white hover:text-sky transition-colors text-base font-semibold">Contact</Link>
               </>
             )}
           </nav>
 
           {/* Phone + CTA */}
-          <div className="hidden lg:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-4 xl:gap-6 whitespace-nowrap">
             {location ? (
               // Location section — show that location's phone
               <>
-                <span className="flex items-center gap-1 text-white/60 text-xs font-semibold uppercase tracking-wider">
+                <span className="hidden xl:flex items-center gap-1 text-sky text-xs font-semibold uppercase tracking-wider whitespace-nowrap">
                   <MapPin size={12} /> {displayCity}, {location.state}
                 </span>
-                <a href={`tel:${location.phoneRaw}`} className="flex items-center gap-2 text-white hover:text-white/80 transition-colors text-base font-bold">
+                <a href={`tel:${location.phoneRaw}`} className="flex items-center gap-2 text-white hover:text-sky transition-colors text-base font-bold">
                   <Phone size={18} fill="currentColor" />
                   {location.phone}
                 </a>

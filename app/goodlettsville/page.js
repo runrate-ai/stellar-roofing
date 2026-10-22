@@ -6,6 +6,7 @@ import { Phone, Shield, SearchCheck, BadgeCheck, FileCheck, Home, Wrench, CloudL
 import { PRICE_MATCH_FINE_PRINT, GUTTERS_FINE_PRINT } from '../../lib/funnels';
 import SchemaMarkup from '../../components/SchemaMarkup';
 import SiteLeadForm from '../../components/SiteLeadForm';
+import WarrantySection from '../../components/WarrantySection';
 import CTABanner from '../../components/CTABanner';
 import FAQ from '../../components/FAQ';
 import ShingleBrands from '../../components/ShingleBrands';
@@ -65,19 +66,19 @@ export default function NashvilleHubPage() {
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 grid w-full max-w-6xl mx-auto items-center gap-6 px-4 lg:gap-10 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="text-center lg:text-left">
-          <div className="flex items-center justify-center lg:justify-start gap-2 text-white/80 mb-3">
+          <div className="flex items-center justify-center lg:justify-start gap-2 text-sky mb-3">
             <MapPin size={16} />
             <span className="text-sm font-semibold uppercase tracking-wider">Based in Goodlettsville, TN</span>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-3 md:mb-5 leading-tight">
-            Goodlettsville&rsquo;s Local Choice for Roof Repair &amp; Replacement
+            Goodlettsville&rsquo;s <span className="text-sky">Local Choice</span> for Roof Repair &amp; Replacement
           </h1>
           {/* Phones get the one-line version so the form stays on the first screen. */}
           <p className="text-base sm:text-xl text-white/90 mb-5 font-medium md:hidden">
             Free Inspections&nbsp;&bull;&nbsp;Lifetime Warranty&nbsp;&bull;&nbsp;Licensed &amp; Insured
           </p>
           <p className="hidden md:block text-lg lg:text-xl leading-relaxed text-white/85 mb-8">
-            <strong className="text-white">Locally based in Goodlettsville since 2020</strong>, Stellar Roofing &amp; Restorations handles <strong className="text-white">residential and commercial roofing</strong> for Goodlettsville, Nashville, and all of Middle Tennessee. Every roof replacement comes with a <strong className="text-white">lifetime workmanship warranty</strong>. We&rsquo;re licensed and insured, and we answer the phone 24/7.
+            <strong className="text-sky">Locally based in Goodlettsville since 2020</strong>, Stellar Roofing &amp; Restorations handles <strong className="text-sky">residential and commercial roofing</strong> for Goodlettsville, Nashville, and all of Middle Tennessee. Every roof replacement comes with a <strong className="text-sky">lifetime workmanship warranty</strong>. We&rsquo;re licensed and insured, and we answer the phone 24/7.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <a href={`tel:${loc.phoneRaw}`} className="flex items-center justify-center gap-2 border-2 border-white text-white hover:bg-white hover:text-primary font-semibold px-8 py-3 sm:py-4 rounded-lg transition-colors text-lg">
@@ -183,7 +184,7 @@ export default function NashvilleHubPage() {
       <section className="py-16 px-4 bg-bg-alt reveal" id="offers">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <p className="text-primary font-bold uppercase tracking-widest text-sm mb-3">Current Offers</p>
+            <p className="text-star font-bold uppercase tracking-widest text-sm mb-3">Current Offers</p>
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-3">What You Get When You Work With Stellar</h2>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -194,7 +195,7 @@ export default function NashvilleHubPage() {
               { Icon: PawPrint, title: 'The Stellar Puppy Promise', body: 'On install day we take your dog to Dog Oasis in Goodlettsville for a spa day, on us (value up to $75).', note: 'Retail (non-insurance) replacements' },
             ].map(({ Icon, title, body, note }) => (
               <div key={title} className="flex flex-col rounded-2xl bg-white p-7 shadow-sm ring-1 ring-black/5">
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10"><Icon size={24} className="text-primary" /></div>
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-star/10"><Icon size={24} className="text-star" /></div>
                 <h3 className="mb-2 text-xl font-bold text-primary">{title}</h3>
                 <p className="mb-4 flex-1 leading-relaxed text-text-muted">{body}</p>
                 <p className="text-xs font-semibold uppercase tracking-wide text-primary/60">{note}</p>
@@ -330,6 +331,8 @@ export default function NashvilleHubPage() {
           </div>
         </div>
       </section>
+
+      <WarrantySection />
 
       {/* REVIEWS */}
       <section className="py-20 px-4 bg-white reveal">

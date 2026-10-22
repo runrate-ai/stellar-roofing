@@ -49,7 +49,7 @@ export default function StormDamageNashvillePage() {
         <Image src="/images/service-storm-damage.jpg" alt="Storm damage roof repair in Nashville, TN" fill className="object-cover" priority />
         <div className="absolute inset-0 bg-primary/75" />
         <div className="relative z-10 px-4 max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Storm Damage Roof Repair in Nashville, TN</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4"><span className="text-sky">Storm Damage Roof Repair</span> in Nashville, TN</h1>
           <p className="text-white/90 text-xl mb-6">Insurance claims help. Fast response. Free inspections.</p>
           <a href={`tel:${loc.phoneRaw}`} className="inline-flex items-center gap-2 bg-white hover:bg-white/90 text-primary font-bold px-6 py-3 rounded-lg transition-colors">
             <Phone size={18} /> Call {loc.phone}

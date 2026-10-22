@@ -10,6 +10,11 @@ module.exports = {
       colors: {
         primary: '#0B1547',
         'primary-light': '#1a2a6b',
+        // Logo blues: royal blue (the lettering and star) and a light periwinkle
+        // (the astronaut suit). Navy stays the base for text and dark bars.
+        star: '#3D4EDB',
+        'star-dark': '#2F3DB5',
+        sky: '#9DB8FF',
         accent: '#FFFFFF',
         'accent-hover': '#F1F5F9',
         // Funnel CTA — from client-data/client.config.js brand.accent

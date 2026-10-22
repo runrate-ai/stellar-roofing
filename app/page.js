@@ -44,7 +44,7 @@ export default function BrandHomePage() {
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
           <p className="text-white/80 font-semibold uppercase tracking-widest text-sm mb-4">Serving Two Markets</p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
-            Out of This World<br />Roofing
+            <span className="text-sky">Out of This World</span><br />Roofing
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-12 font-medium">
             Free Inspections&nbsp;&bull;&nbsp;Lifetime Warranty&nbsp;&bull;&nbsp;Licensed &amp; Insured

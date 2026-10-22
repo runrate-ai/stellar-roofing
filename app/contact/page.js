@@ -30,7 +30,7 @@ export default function ContactPage() {
       {/* HERO */}
       <section className="bg-primary py-14 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Contact Stellar Roofing &amp; Restorations</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Contact <span className="text-sky">Stellar Roofing &amp; Restorations</span></h1>
           <p className="text-white/80 text-xl">Two locations. One standard of service.</p>
         </div>
       </section>

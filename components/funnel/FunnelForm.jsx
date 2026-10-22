@@ -140,9 +140,9 @@ export default function FunnelForm({
       ref={rootRef}
       className="scroll-mt-24 bg-white rounded-2xl shadow-2xl ring-1 ring-black/5 overflow-hidden"
     >
-      <div className="bg-primary px-5 py-3 sm:px-6 sm:py-4 text-center">
+      <div className="bg-star px-5 py-3 sm:px-6 sm:py-4 text-center">
         <p className="text-white font-extrabold text-xl leading-tight">{heading || 'Get Your Free Roof Inspection'}</p>
-        <p className="text-white/70 text-sm mt-1">Free estimate &middot; no obligation</p>
+        <p className="text-white/85 text-sm mt-1">Free estimate &middot; no obligation</p>
       </div>
 
       <div className="px-6 py-5">

@@ -47,7 +47,7 @@ export default function RoofInspectionNashvillePage() {
         <Image src="/images/service-inspection.jpg" alt="Free roof inspection in Nashville, TN" fill className="object-cover" priority />
         <div className="absolute inset-0 bg-primary/75" />
         <div className="relative z-10 px-4 max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Free Roof Inspection in Nashville, TN</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4"><span className="text-sky">Free Roof Inspection</span> in Nashville, TN</h1>
           <p className="text-white/90 text-xl mb-6">No obligation. No pressure. Just honest answers.</p>
           <a href={`tel:${loc.phoneRaw}`} className="inline-flex items-center gap-2 bg-white hover:bg-white/90 text-primary font-bold px-6 py-3 rounded-lg transition-colors">
             <Phone size={18} /> Call {loc.phone}

@@ -47,7 +47,7 @@ export default function StormDamageBoisePage() {
         <Image src="/images/service-storm-damage.jpg" alt="Storm damage roof repair in Boise, ID" fill className="object-cover" priority />
         <div className="absolute inset-0 bg-primary/75" />
         <div className="relative z-10 px-4 max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Wind &amp; Storm Damage Roof Repair in Boise, ID</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4"><span className="text-sky">Wind &amp; Storm Damage Roof Repair</span> in Boise, ID</h1>
           <p className="text-white/90 text-xl mb-6">Wind & storm damage specialists. Insurance claims help. Free inspections throughout the Treasure Valley.</p>
           <a href={`tel:${loc.phoneRaw}`} className="inline-flex items-center gap-2 bg-white hover:bg-white/90 text-primary font-bold px-6 py-3 rounded-lg transition-colors">
             <Phone size={18} /> Call {loc.phone}

@@ -27,7 +27,7 @@ export default function ThankYouPage({ searchParams }) {
         </div>
 
         <h1 className="text-4xl md:text-5xl font-extrabold text-primary mb-4">
-          You&apos;re All Set!
+          You&apos;re <span className="text-star">All Set!</span>
         </h1>
         <p className="text-xl text-text-muted mb-10 leading-relaxed">
           Thanks for reaching out to Stellar Roofing &amp; Restorations. We received your request

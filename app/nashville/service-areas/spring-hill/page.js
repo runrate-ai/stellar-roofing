@@ -48,7 +48,7 @@ export default function SpringHillPage() {
         <div className="absolute inset-0 bg-primary/75" />
         <div className="relative z-10 px-4 max-w-4xl mx-auto">
           <div className="flex items-center gap-2 text-white/80 mb-2"><MapPin size={18} /><span className="font-semibold text-sm">Spring Hill, TN — Williamson &amp; Maury County</span></div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Roofing Company in Spring Hill, TN</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Roofing Company in <span className="text-sky">Spring Hill, TN</span></h1>
           <p className="text-white/90 text-lg mb-5">Serving one of Middle Tennessee's fastest-growing communities.</p>
           <a href={`tel:${loc.phoneRaw}`} className="inline-flex items-center gap-2 bg-white hover:bg-white/90 text-primary font-bold px-6 py-3 rounded-lg transition-colors">
             <Phone size={18} /> {loc.phone}

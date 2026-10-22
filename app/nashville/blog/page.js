@@ -25,7 +25,7 @@ export default function BlogIndex() {
 
       <section className="bg-primary py-14 px-4">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-3">Roofing Guides for Nashville Homeowners</h1>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-3">Roofing Guides for <span className="text-sky">Nashville Homeowners</span></h1>
           <p className="text-white/80 text-lg">Straight answers on roof costs, storm damage, insurance claims, and materials from a local Middle Tennessee roofing team.</p>
         </div>
       </section>
