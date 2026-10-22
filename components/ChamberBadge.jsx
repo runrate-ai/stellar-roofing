@@ -16,8 +16,9 @@ function createWidget() {
   new window.MNI.Widgets.Member(WIDGET_ID, {
     member: 2789,
     secure: true, // always use ChamberMaster's https endpoint (the http one is blocked on https pages)
+    // Logo only: hide the member name and "Proud Member of" text and let the logo fill the card.
     styleTemplate:
-      '#@id{text-align:center;position:relative}#@id .mn-widget-member-name{font-weight:700}#@id .mn-widget-member-logo{max-width:100%;max-height:48px;width:auto}',
+      '#@id{text-align:center;position:relative;font-size:0;line-height:0}#@id .mn-widget-member-name{display:none}#@id > *:not(:has(img)){display:none}#@id a{display:block}#@id img,#@id .mn-widget-member-logo{display:block !important;width:100% !important;max-width:100% !important;height:auto !important;max-height:none !important;margin:0 auto !important}',
   }).create();
 }
 
@@ -37,7 +38,7 @@ export default function ChamberBadge({ className = '' }) {
 
   return (
     <div className={filled ? `block ${className}` : 'hidden'}>
-      <div className="inline-block bg-white text-primary text-[11px] leading-tight rounded-lg px-2.5 py-2 shadow-md max-w-[130px]">
+      <div className="inline-block w-[200px] max-w-full rounded-lg bg-white p-1.5 shadow-md">
         <div id={WIDGET_ID} ref={ref} />
       </div>
       <Script
