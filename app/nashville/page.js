@@ -65,10 +65,10 @@ export default function NashvilleHubPage() {
         <div className="text-center lg:text-left">
           <div className="flex items-center justify-center lg:justify-start gap-2 text-white/80 mb-3">
             <MapPin size={16} />
-            <span className="text-sm font-semibold uppercase tracking-wider">Nashville, TN</span>
+            <span className="text-sm font-semibold uppercase tracking-wider">Based in Goodlettsville, TN</span>
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-3 md:mb-4 leading-tight">
-            Nashville's Most Trusted<br />Roofing Company
+            Roofing Company Serving<br />Nashville &amp; Middle Tennessee
           </h1>
           <p className="text-base sm:text-xl md:text-2xl text-white/90 mb-5 md:mb-8 font-medium">
             Free Inspections&nbsp;&bull;&nbsp;Lifetime Warranty&nbsp;&bull;&nbsp;Licensed &amp; Insured
@@ -282,6 +282,9 @@ export default function NashvilleHubPage() {
               </p>
               <p className="text-text-muted leading-relaxed text-lg mb-6">
                 Middle Tennessee's climate puts roofs through a real test — hot, humid summers, frequent hailstorms in spring and fall, and occasional tornado events like the destructive March 2020 storm that tore through East Nashville and Germantown. We know the local weather, the neighborhoods, and the roofing challenges specific to this region.
+              </p>
+              <p className="text-text-muted leading-relaxed text-lg mb-6">
+                Our office is at {config.locations.nashville.address.street}, {config.locations.nashville.address.city}, {config.locations.nashville.address.state} {config.locations.nashville.address.zip}, just north of Nashville. That puts us right next to Goodlettsville, Hendersonville, and Madison, with the rest of Middle Tennessee within driving distance. See our <Link href="/nashville/service-areas/goodlettsville" className="underline underline-offset-2 hover:text-primary">Goodlettsville roofing page</Link>.
               </p>
               <p className="text-text-muted leading-relaxed text-base mb-6 text-text-muted/80">
                 <strong className="text-primary">Neighborhoods we serve:</strong> East Nashville, 12 South, The Nations, Germantown, Sylvan Park, Green Hills, Bellevue, Antioch, Madison, Donelson, Inglewood, Berry Hill, and all of Davidson County.
