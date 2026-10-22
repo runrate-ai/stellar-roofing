@@ -98,7 +98,7 @@ Campaign `Search – Nashville Leads (Relaunch)` has been live since 2026-09-29.
 - [ ] **Claim the core listings yourself** (free, you keep them): Bing Places, Apple Business Connect, Facebook, Yelp, BBB, Nextdoor. Use the exact details block in LINK-PROSPECTS.md.
 - [ ] **Decide on GHL Listings (Yext)** for the rest of the directory network. Check the price first. If yes: use (629) 277-4249, the Goodlettsville address, and the `/goodlettsville` URL, **not** the GHL tracking number. Listings may drop off if you cancel.
 - [ ] Check that Google approved the Business Profile category and service changes.
-- [ ] Join the Goodlettsville Chamber (and Hendersonville if the budget allows).
+- [x] Join the Goodlettsville Chamber ✅ 2026-10-21 (member badge in the Nashville footer). Hendersonville still optional.
 - [ ] Email Habitat for Humanity of Sumner County (draft A); ask Goodlettsville Little League about sponsorship.
 - [ ] Later: CAI Tennessee and GNAA (draft B); realtor and home inspector partnerships (draft C).
 
@@ -153,6 +153,12 @@ Campaign `Search – Nashville Leads (Relaunch)` has been live since 2026-09-29.
 
 - [ ] Delete the dead `app/services/*` and `app/service-areas/*` route files (301-redirected; never load).
 - [ ] Update the old hours in `client-data/client.config.js` (unused, but stale).
+- [x] CompanyCam → GHL connection ✅ 2026-10-22 (labels Good/Bad/Manual/Paid drive GHL tags, pipeline and follow-up texts).
+- [ ] Nate: enter name, phone, email on every new CompanyCam project; check his GHL user has the 615 cell for Manual alerts.
+- [ ] Confirm A2P approval so the follow-up texts deliver.
+- [ ] Brandon: delete the CompanyCam project "TEST Bridge - delete me" and the test contact's lost opportunity.
+- [ ] Send Nate the cold-call script (`sales-scripts/cold-call-script.md`) for the callers / Tommy.
+- [ ] Renew the CompanyCam API token before 2027-10-22.
 - [ ] Move the project off the iCloud-synced Desktop, for example to `~/Projects`, so builds stop hanging.
 - [ ] Revoke GHL Token 1 once the Priority 1 setup is done.
 
