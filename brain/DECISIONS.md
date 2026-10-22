@@ -4,6 +4,9 @@ Newest first. Each one says what was decided and why.
 
 | Date | Decision | Why |
 |---|---|---|
+| 2026-10-21 | **`/goodlettsville` is the home page of the Nashville market**; Nashville is a regular location page at `/nashville/service-areas/nashville`. `/nashville` and the old Goodlettsville city page 301 to the hub. Services, service areas and blog **stay under `/nashville/...`**. | Brandon's call, to match the Google Business Profile address (110 Space Park N, Goodlettsville). Kept the child URLs so pages that already rank don't move. Trade-off noted: Nashville head terms now rely on the Nashville page, the title, and body copy. |
+| 2026-10-21 | The hero no longer says "Nashville's Most Trusted Roofing Company". It says "Goodlettsville's Local Choice for Roof Repair & Replacement". | The "most trusted" claim couldn't be verified. |
+| 2026-10-21 | Exit popup, offer bar and hero form use only claims that apply to every job: free inspection, written estimate, price match, lifetime workmanship warranty. Free gutters and the Puppy Promise appear only in the offers section, labeled retail (non-insurance) only. No countdowns, no "limited time", no "pay full price" decline button. | Honesty rules in CLAUDE.md; offers are retail-only. |
 | 2026-10-17 | SMS consent on forms is an **optional, unchecked box**; texting only people who tick it (tag `sms-consent`). Terms and Privacy links in every form footer. | Needed for A2P 10DLC; consent can't be a condition of purchase. |
 | 2026-10-16 | **No second or keyword domains** (e.g. bestrooferinnashville.com). A plain 301 for brand variants is fine, but no SEO value. | Doorway/spam risk, "best" claim can't be verified. |
 | 2026-10-14 | Metal roofing: Stellar installs **all types**, covered by the lifetime workmanship warranty. **No metal price on the site.** No brand named until Brandon confirms. | Brandon's words. |

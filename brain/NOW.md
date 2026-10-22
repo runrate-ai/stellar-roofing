@@ -1,12 +1,14 @@
 # Where we left off
 
-**Last updated:** 2026-10-20 (merged the 2026-10-17 web session with the 2026-10-20 Meta ad video session; Meta ad v7 built)
+**Last updated:** 2026-10-21 (SEO check; popup, offer bar, hero form, and the Goodlettsville home page move pushed)
 
 ## The headline
 
 **Google PPC is paused** (Brandon, ~Oct 16): no leads or conversions. **Meta ads launch in a few days.** Business Manager and ad account exist; **no Meta pixel yet** (waiting on the pixel ID from Brandon). PostHog on the funnel (Oct 4–15): 59 visitors, 2 form starts, 0 leads, 0 call taps, half gone in 15 seconds. So the funnel page is the first problem to fix before paying for traffic: on 2026-10-17 Claude tightened the mobile top so all four form options show on the first screen (pushed). Results need a few days of traffic to judge.
 
 Local ranking: Stellar is #3 on the Goodlettsville map for "roofing company" with **4 reviews** vs 96 / 64 / 61 for National Roof Co / Cannons / WCM. The 12-month plan with dated milestones is in `TODO.md` ("Local ranking plan"). LSAs: decided no.
+
+**The Nashville home page is now `/goodlettsville`** (pushed 2026-10-21; `/nashville` 301s to it). Services, service areas and blog stay under `/nashville/...`. Live check of the deploy was not done in the session; look at it first.
 
 Brandon starts **short, separate sessions per task**; say "wrap up" before closing so this page gets updated.
 
@@ -17,7 +19,7 @@ Brandon starts **short, separate sessions per task**; say "wrap up" before closi
 1. **Meta Pixel ID** (Events Manager, Connect data sources, Web, Meta Pixel). Claude then adds the pixel, Conversions API, a lead event, and gives the UTM link format. Also: which offer will the Meta ads lead with?
 2. **Test lead after the A2P changes:** name "Test", phone 615-555-0142, tick the SMS box; check the `sms-consent` tag in GHL; tag `test`.
 3. **A2P/10DLC registration** in GHL: site now has SMS consent checkbox on every form, SMS sections in Privacy and Terms, Terms and Privacy links in the form footer. If GHL rejects the wording, Claude adjusts.
-4. **Business Profile:** real job photos (9 now; rivals 25–92), Services list, true extra categories. Switch the profile link to `/nashville/service-areas/goodlettsville` once Google has indexed it.
+4. **Business Profile:** change the website link to `https://www.thestellarroofing.com/goodlettsville` now (the home page moved there). Real job photos (11 now; rivals 25–92), Services list, true extra categories. **Search Console:** request indexing for `/goodlettsville`, and again for storm-damage, Franklin, Brentwood (Google had not recrawled them by 2026-10-21; the daily request limit means two batches).
 5. **Request indexing** was done by Brandon 2026-10-16 for the Goodlettsville, storm-damage, and Franklin pages. Claude rechecks about **2026-10-23**. (Goodlettsville was "unknown to Google" on Oct 16.)
 6. **Citations:** Yelp claim in progress (2026-10-17). Also Thumbtack, Nextdoor, BBB, Apple, Bing Places. GHL Listings is Yext-style; keep name, address, phone, hours identical everywhere and don't let it overwrite the Google profile. Don't ask customers for Yelp reviews.
 7. **Dog Oasis backlink:** Nate is asking Dog Oasis (dogoasis.com) to link to `https://www.thestellarroofing.com/nashville`. The site links to them from the Puppy Promise band.
@@ -28,12 +30,14 @@ Brandon starts **short, separate sessions per task**; say "wrap up" before closi
 12. **Google Ads housekeeping** (still worth doing even when paused): turn off Auto-apply recommendations and Automatically created assets.
 13. Small: delete the `test`-tagged GHL contacts; Instagram bio link with UTM (`https://www.thestellarroofing.com/?utm_source=instagram&utm_medium=social`); PostHog "Filter test accounts"; Owens Corning logo artwork; ask Nate for jobs per month (sets the review timeline).
 14. The metal-roof blog post (`metal-roof-vs-shingles-cost`) probably lists prices; Brandon said metal prices can't be listed. Review it.
-15. The hero headline "Nashville's Most Trusted Roofing Company" can't be verified; keep or reword?
+15. (Resolved 2026-10-21: the "most trusted" headline was replaced.) Watch `/nashville` rankings for a dip over the next 2-3 weeks after the URL move; tell Claude if impressions or clicks fall sharply.
+16. Look at the live site after the deploy: `/nashville` lands on `/goodlettsville`, phone hero shows offer bar, headline and form on the first screen, menu Home link and footer go to the new URL.
 
 ## What Claude does next
 
 - **Meta pixel and tracking** once Brandon sends the pixel ID: pixel + Conversions API on the funnel and main site, lead event on `/thank-you`, UTM format, read-only Meta reporting.
-- **Recheck indexing** of the Goodlettsville, storm-damage, and Franklin pages on 2026-10-23; then switch the profile link. Consider Bing IndexNow (Bing Webmaster is set up, 51 URLs, 0 errors).
+- **Recheck indexing** on 2026-10-23: `/goodlettsville` (new URL), storm-damage, Franklin, Brentwood.
+- **Trim titles** to about 60 characters and descriptions to 160 on money pages (28 titles, 23 descriptions flagged); link the storm-damage page from the homepage/footer; real job photos and a price range on the city pages with impressions and no clicks (Murfreesboro, Clarksville, Spring Hill, Hendersonville, Gallatin). Consider Bing IndexNow (Bing Webmaster is set up, 51 URLs, 0 errors).
 - **Rank tracker** (OpenSEO, about 20 terms) plus a monthly Maps grid: show the credit estimate first.
 - **PostHog funnel check** after a few days of Meta traffic: form starts per visitor after the mobile fix.
 - **Metal:** a dedicated metal page and ad group only if Meta/search data shows volume; needs Brandon's brand answer.
@@ -73,6 +77,7 @@ Brandon starts **short, separate sessions per task**; say "wrap up" before closi
 The Sep 29 website lead (Contact page) came from **Instagram**, not ads or search.
 
 ## Live on the site (all pushed)
+- 2026-10-21: `/goodlettsville` home page (hero "Goodlettsville's Local Choice for Roof Repair & Replacement", address and FAQs merged from the old city page); exit-intent popup on Nashville pages; gold offer bar on `/nashville/*` and `/goodlettsville`; two-step hero form (service, address, ZIP, then name, phone, email); 5-step process; offers section (gutters and Puppy Promise labeled retail-only).
 - 2026-10-14 to 17: YouTube unlisted promo video (click-to-play, `promo_video_play` event) on `/nashville` and funnels; "The Stellar Puppy Promise" band on `/nashville` and funnel copy matching Nate's video (retail replacements only, Dog Oasis, up to $75); metal roofing added to the roof-replacement funnel and service page (no price; the homepage metal price line was removed); lead form in the `/nashville` hero; A2P consent checkbox, SMS sections in Privacy and Terms, Terms and Privacy links in every form footer, full business address in both pages; funnel mobile top tightened.
 
 - Native 3-step lead form on the funnel and the main site; **street address required** since 2026-10-02.

@@ -2,7 +2,14 @@
 
 Newest first. A few lines per session: what was done and what was decided. Details live in git history and the docs each entry points to.
 
-## 2026-10-21
+## 2026-10-21 (SEO check, popup, Goodlettsville home page)
+
+- Full OpenSEO check (crawl, Search Console, indexing, Business Profile, Maps grid, Analytics). Crawl clean (only long titles/descriptions). Maps: found at 7 of 9 grid points (was 4), center #2. GBP 4 reviews, 11 photos, 1 category. GSC 28 days: `/nashville` 16 clicks, city pages 600-1,300 impressions and ~0 clicks. Storm-damage, Franklin, Goodlettsville, Brentwood still not indexed; Google has not recrawled the pages Brandon requested.
+- Built and pushed: exit-intent popup (`components/ExitIntentPopup.jsx`, Nashville pages only, once per visit, 7-day snooze), offer bar above the header, compact two-step hero form (`twoStep` prop on `FunnelForm`), 5-step process, offers section. Test lead went through (updated the existing `test` contact for 615-555-0142; sms-consent tag present).
+- Moved the Nashville market home page to `/goodlettsville` (`hubPath` in `lib/config.js`) with 301s from `/nashville` and the old Goodlettsville city page; hero rewritten Goodlettsville-led. Pushed (`9be096f`).
+- Local dev server hung twice (iCloud); fixed with `rm -rf node_modules .next && npm ci`. A stale `.git/index.lock` blocked one commit; removed it.
+
+## 2026-10-21 (Chamber badge)
 
 - Chamber activated Stellar's listing. Moved the badge from the `/nashville` hero to the Nashville footer (all `/nashville/*` pages), set `secure: true`, dark text on the card. Pushed. iCloud had offloaded files and duplicated git refs again; fixed.
 

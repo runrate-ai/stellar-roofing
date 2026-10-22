@@ -21,7 +21,7 @@ Reference files: [PPC-LAUNCH.md](PPC-LAUNCH.md) · [PPC-AUDIT.md](PPC-AUDIT.md) 
 | 5 | ✅ 2026-10-14 Promo video on /nashville and funnels (YouTube unlisted, click-to-play, plays tracked) + Stellar Puppy Promise copy | Done | | |
 | 6 | Google Ads: turn off Auto-apply recommendations and Automatically created assets | Brandon | This week | 5 min |
 | 7 | PostHog funnel report: do ad visitors start the form? | Claude | This week | 20 min |
-| 8 | Recheck indexing of the 8 URLs, then point the Business Profile link at `/nashville/service-areas/goodlettsville` | Claude, then Brandon | After Oct 15 | 10 min |
+| 8 | Point the Business Profile link at `/goodlettsville` and request indexing for it (home page moved there 2026-10-21); Claude rechecks storm-damage, Franklin, Brentwood on Oct 23 | Brandon, then Claude | Oct 23 | 10 min |
 | 9 | GHL calendar cleanup (rename, Central time, notifications, booking rules) | Brandon | Soon | 10 min |
 | 10 | ~~Local Services Ads~~ Decided NO 2026-10-16 | | | |
 | 11 | Delete the 3 `test`-tagged GHL contacts | Brandon | Low | 3 min |
@@ -96,7 +96,7 @@ Campaign `Search – Nashville Leads (Relaunch)` has been live since 2026-09-29.
 - [ ] **Google reviews:** ask every past customer; reply to every review. Goal: 20+ by late November. *(#1 Maps factor; Stellar has 4 as of 2026-10-14, rivals nearby 64–96.)*
 - [ ] **Business Profile photos:** 20+ real job photos (9 on 2026-10-14; rivals 25–92), then more after each job.
 - [ ] **Claim the core listings yourself** (free, you keep them): Bing Places, Apple Business Connect, Facebook, Yelp, BBB, Nextdoor. Use the exact details block in LINK-PROSPECTS.md.
-- [ ] **Decide on GHL Listings (Yext)** for the rest of the directory network. Check the price first. If yes: use (629) 277-4249, the Goodlettsville address, and the `/nashville` URL, **not** the GHL tracking number. Listings may drop off if you cancel.
+- [ ] **Decide on GHL Listings (Yext)** for the rest of the directory network. Check the price first. If yes: use (629) 277-4249, the Goodlettsville address, and the `/goodlettsville` URL, **not** the GHL tracking number. Listings may drop off if you cancel.
 - [ ] Check that Google approved the Business Profile category and service changes.
 - [ ] Join the Goodlettsville Chamber (and Hendersonville if the budget allows).
 - [ ] Email Habitat for Humanity of Sumner County (draft A); ask Goodlettsville Little League about sponsorship.
