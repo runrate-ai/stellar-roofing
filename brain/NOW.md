@@ -1,10 +1,14 @@
 # Where we left off
 
-**Last updated:** 2026-10-22 (CompanyCam to GHL connection is LIVE)
+**Last updated:** 2026-10-22 (end of session: CompanyCam bridge live; next up Meta ads optimization)
 
 ## The headline
 
-**Google PPC is paused** (Brandon, ~Oct 16): no leads or conversions. **Meta ads launch in a few days.** Business Manager and ad account exist; **no Meta pixel yet** (waiting on the pixel ID from Brandon). PostHog on the funnel (Oct 4–15): 59 visitors, 2 form starts, 0 leads, 0 call taps, half gone in 15 seconds. So the funnel page is the first problem to fix before paying for traffic: on 2026-10-17 Claude tightened the mobile top so all four form options show on the first screen (pushed). Results need a few days of traffic to judge.
+**Next session: get the Meta (Facebook) ads optimized.** Brandon says they are underperforming (2026-10-22). Claude has no Meta access yet. Plan agreed: (1) right away, Claude reads Ads Manager through Claude in Chrome (Brandon's logged-in Chrome) and reviews spend, CPL, CTR, frequency, creative and targeting; (2) for ongoing tracking, a **read-only Meta Marketing API token** (system user, `ads_read` only) in `.env.local` so Claude can pull daily numbers like the Google Ads sheet. Third-party connectors (Windsor.ai, Supermetrics, Adspirer) exist but cost money; Adspirer can also change ads, so avoid write access. Unknowns to settle first: which campaigns/ads are live, budget, objective (Traffic vs Leads), whether the **Meta Pixel** exists yet (still not in the site code), and real leads in GHL (tag `meta-lead`). Count real people, not Meta "results".
+
+**Google PPC is paused** (Brandon, ~Oct 16). PostHog on the funnel (Oct 4–15): 59 visitors, 2 form starts, 0 leads; the mobile top was tightened on 2026-10-17.
+
+**CompanyCam → GHL connection is live** (2026-10-22, details in 0b below). Bad Lead leads are left for a future long-term nurture campaign (find them by tag `cc-*-bad-lead` or Lost status).
 
 Local ranking: Stellar is #3 on the Goodlettsville map for "roofing company" with **4 reviews** vs 96 / 64 / 61 for National Roof Co / Cannons / WCM. The 12-month plan with dated milestones is in `TODO.md` ("Local ranking plan"). LSAs: decided no.
 
