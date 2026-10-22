@@ -67,11 +67,15 @@ export default function NashvilleHubPage() {
             <MapPin size={16} />
             <span className="text-sm font-semibold uppercase tracking-wider">Based in Goodlettsville, TN</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-3 md:mb-4 leading-tight">
-            Roofing Company Serving<br />Nashville &amp; Middle Tennessee
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-3 md:mb-5 leading-tight">
+            Goodlettsville&rsquo;s Local Choice for Roof Repair &amp; Replacement
           </h1>
-          <p className="text-base sm:text-xl md:text-2xl text-white/90 mb-5 md:mb-8 font-medium">
+          {/* Phones get the one-line version so the form stays on the first screen. */}
+          <p className="text-base sm:text-xl text-white/90 mb-5 font-medium md:hidden">
             Free Inspections&nbsp;&bull;&nbsp;Lifetime Warranty&nbsp;&bull;&nbsp;Licensed &amp; Insured
+          </p>
+          <p className="hidden md:block text-lg lg:text-xl leading-relaxed text-white/85 mb-8">
+            <strong className="text-white">Locally based in Goodlettsville since 2020</strong>, Stellar Roofing &amp; Restorations handles <strong className="text-white">residential and commercial roofing</strong> for Goodlettsville, Nashville, and all of Middle Tennessee. Every roof replacement comes with a <strong className="text-white">lifetime workmanship warranty</strong>. We&rsquo;re licensed and insured, and we answer the phone 24/7.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <a href={`tel:${loc.phoneRaw}`} className="flex items-center justify-center gap-2 border-2 border-white text-white hover:bg-white hover:text-primary font-semibold px-8 py-3 sm:py-4 rounded-lg transition-colors text-lg">
