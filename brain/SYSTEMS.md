@@ -30,6 +30,11 @@ No secrets in this file. Tokens live in `.env.local` (local) and Vercel (product
 - PostHog: US Cloud, project ID `645820`, initialized in `components/PostHogInit.jsx` (key in `lib/config.js`). The same events are forwarded from `components/funnel/tracking.js`. Claude can look at it through Brandon's Chrome (Claude in Chrome) at `us.posthog.com/project/645820`.
 - Search Console: Domain property `sc-domain:thestellarroofing.com`; connected to OpenSEO along with GA4.
 
+## CompanyCam
+
+- API token: Personal Access Token "Stellar Website", Read & Write, in `.env.local` as `COMPANYCAM_API_TOKEN` (and Vercel once the receiver is built). Expires ~2027-10-22. API base `https://api.companycam.com/v2`. Labels are `TN - …` / `ID - …`.
+- Load it with `grep '^COMPANYCAM_API_TOKEN=' .env.local | cut -d= -f2-`; sourcing the whole file in zsh returned an empty value once.
+
 ## GoHighLevel (GHL)
 
 | | |
