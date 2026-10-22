@@ -158,6 +158,7 @@ Campaign `Search – Nashville Leads (Relaunch)` has been live since 2026-09-29.
 - [ ] Confirm A2P approval so the follow-up texts deliver.
 - [ ] Brandon: delete the CompanyCam project "TEST Bridge - delete me" and the test contact's lost opportunity.
 - [ ] Send Nate the cold-call script (`sales-scripts/cold-call-script.md`) for the callers / Tommy.
+- [ ] **No-show handling (cold-call appointments):** Premura (Ryan) pushes appointments into our GHL as a contact + appointment on Nate's calendar (calendar QO7LCJ…, seen on test contact "ZZTEST RunRateTrigger" 2026-10-22: no tag, no source, no address). Dispositions (Showed / No-show / Cancelled) are set up on Premura's side. Ask Ryan to (1) sync dispositions to the appointment status in our GHL and (2) add tag `cold-call`. Then Claude builds: appointment status = No-show → tag `no-show`, Cold Call Appointments → No-Show, reschedule text; safety net: no disposition and no CompanyCam outcome tag by 9 AM next day = no-show. Waiting on Brandon's OK of the reschedule text and Ryan's answer.
 - [ ] Renew the CompanyCam API token before 2027-10-22.
 - [ ] Later: long-term nurture campaign (mostly email, occasional SMS) for Bad Lead / Lost leads. Find them by tag `cc-tn-bad-lead` / `cc-id-bad-lead` or opportunity status Lost. Bad Lead currently only stops the short follow-up.
 - [ ] Move the project off the iCloud-synced Desktop, for example to `~/Projects`, so builds stop hanging.
