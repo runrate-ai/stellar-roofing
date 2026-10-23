@@ -88,3 +88,4 @@ Newest first. A few lines per session: what was done and what was decided. Detai
 ## 2026-09-26 to 2026-09-27
 
 - SEO merge audit, keyword audit, OpenSEO setup, 8 blog posts and blog index, www canonical fix, Search Console verified, local SEO audit, Business Profile updates, link prospecting.
+- 2026-10-23: Recreated a reference ad (screen recording, "$6,299 + free gutters" script) with Nate's ElevenLabs clone (`Uiaj1fueaPg6XPe4Dsg7`, `eleven_v4`). Brandon chose $6,299 and every line verbatim (unconfirmed claims: $6,299 vs the confirmed $5,999, "own crews", "same materials"). Output `meta-ad-clips/stellar-recreate-6299-nate-916.mp4`; picture is the original recording (664x1154, other company's footage), audio replaced and fitted sentence by sentence (1.0-2.0x speed-up). Work files in `meta-ad-scripts/recreate-6299/`. ElevenLabs key + `NATE_VOICE_ID` now in `.env.local`.
