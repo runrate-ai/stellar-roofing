@@ -35,3 +35,5 @@ Newest first. Each one says what was decided and why.
 | 2026-09-28 | **Boise stays** on the homepage and indexed, with no address in its schema. | Boise customers search the brand and saw "only Nashville"; there's no Boise office or Business Profile yet. |
 | 2026-09-28 | Task tracking: `TODO.md` in the repo plus GHL tasks. Notion/Reminders dashboard deferred. | "As long as we have a to-do list and tasks in GHL, that's good for now." |
 | 2026-09-28 | Priority order: PPC funnel and ads → GHL number swap after A2P → local SEO (reviews, listings) → content. Main-site ranking and conversion was later moved up. | Brandon set it. |
+
+- 2026-10-24: **Meta: no Messenger ads.** Brandon: the Oct 19 Messenger campaigns were "terrible" (Meta counted 20 leads at $4.84-$8.81 each, none were good). Use Meta lead form (instant form) ads only. As of 2026-10-24 no good leads have come from Meta. Meta Ads connector is live; Ad Account 2 (`1608227207343251`) is the Stellar account to read. Ignore the other Stellar account (Advertizo campaigns) unless Brandon says otherwise.
