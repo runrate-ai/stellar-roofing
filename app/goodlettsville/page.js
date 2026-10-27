@@ -128,7 +128,7 @@ export default function NashvilleHubPage() {
             <footer className="text-text-muted text-sm font-normal mt-2">Nate, owner of Stellar Roofing &amp; Restorations</footer>
           </blockquote>
           <p className="text-text-muted text-xs leading-relaxed max-w-2xl mx-auto">
-            Applies to complete retail (non-insurance) roof replacements: one dog, one day at Dog Oasis, 812 Meadowlark Lane, Goodlettsville, TN, booked and paid for by Stellar Roofing &amp; Restorations (value up to $75). Baths are available Tuesday through Saturday. Subject to Dog Oasis availability and its vaccination and temperament requirements.
+            Applies to complete retail (non-insurance) roof replacements: one dog, one day at Dog Oasis, 812 Meadowlark Lane, Goodlettsville, TN, booked and paid for by Stellar Roofing &amp; Restorations (value up to $150). Baths are available Tuesday through Saturday. Subject to Dog Oasis availability and its vaccination and temperament requirements.
           </p>
         </div>
       </section>
@@ -191,8 +191,8 @@ export default function NashvilleHubPage() {
             {[
               { Icon: ClipboardCheck, title: 'Free Inspection & Estimate', body: 'A free roof inspection and a written estimate, with no obligation and no pressure.', note: 'Every job' },
               { Icon: Scale, title: 'Price Match Guarantee', body: "Bring a comparable written quote from a licensed, insured Tennessee roofer. We'll match it, apples to apples.", note: 'Every job' },
-              { Icon: Gift, title: 'Free Seamless Gutters', body: 'New 5" seamless aluminum gutters on the replaced roof sections with your full roof replacement.', note: 'Retail (non-insurance) replacements' },
-              { Icon: PawPrint, title: 'The Stellar Puppy Promise', body: 'On install day we take your dog to Dog Oasis in Goodlettsville for a spa day, on us (value up to $75).', note: 'Retail (non-insurance) replacements' },
+              { Icon: Gift, title: 'Free Seamless Gutters', body: 'New 6" seamless aluminum gutters on the replaced roof sections with your full roof replacement.', note: 'Retail (non-insurance) replacements' },
+              { Icon: PawPrint, title: 'The Stellar Puppy Promise', body: 'On install day we take your dog to Dog Oasis in Goodlettsville for a spa day, on us (value up to $150).', note: 'Retail (non-insurance) replacements' },
             ].map(({ Icon, title, body, note }) => (
               <div key={title} className="flex flex-col rounded-2xl bg-white p-7 shadow-sm ring-1 ring-black/5">
                 <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-star/10"><Icon size={24} className="text-star" /></div>
