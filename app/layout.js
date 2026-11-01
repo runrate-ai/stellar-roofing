@@ -26,6 +26,10 @@ export const metadata = {
     index: true,
     follow: true,
   },
+  // Meta (Facebook) Business Manager domain verification for www.thestellarroofing.com.
+  other: {
+    'facebook-domain-verification': '4j4qgni1mgltbqqbg5ajk7dnk6pey0',
+  },
 };
 
 export default function RootLayout({ children }) {
