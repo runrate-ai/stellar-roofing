@@ -19,6 +19,10 @@ Goal: catch every person who comes from Facebook (lead form or website), send Me
 | Lead (website or funnel form) | Form submitted | Website pixel + website server copy, same event ID (code live; needs `META_CAPI_TOKEN`). GHL's "Form Submitted" trigger doesn't see these forms, they arrive by webhook. |
 | FormStart (custom) | Started the website form | Website pixel (to add) |
 | VideoPlay (custom) | Played the promo video on the site | Website pixel (to add) |
+| FormStep2 (custom) | Finished step 1 of the form (reached name/phone/email) | Website pixel (live 2026-11-05) |
+| EngagedVisit (custom) | 60s on the site with the tab open, or scrolled 75% of a page; once per session | Website pixel (live 2026-11-05) |
+| RoofleOpen (custom) | Clicked the Roofle instant quote button; once per session | Website pixel (live 2026-11-05) |
+| ChatOpen (custom) | Clicked the website chat bubble; once per session | Website pixel (live 2026-11-05) |
 | Lead (Roofle) | Instant quote finished | Roofle webhook → new website endpoint → GHL contact tagged `roofle-lead` + server Lead (to add) |
 | Lead (Facebook lead form) | Form submitted on Facebook | Meta records it itself. Nothing to send. |
 | **Schedule** | Appointment booked on the GHL calendar | **GHL workflow → Meta Conversion API action** |
@@ -56,6 +60,7 @@ Website (pixel, live now):
 - Website leads (Lead): 180 days, for excluding
 - Top 25% by time on site: 30 days
 - Promo video players on the site (VideoPlay)
+- Reached form step 2, no lead (FormStep2 minus Lead); engaged visitors (EngagedVisit); opened Roofle (RoofleOpen); opened chat (ChatOpen). All created 2026-11-05.
 
 Meta engagement:
 - Viewed 50% / 75% of your video ads: 30 and 90 days
