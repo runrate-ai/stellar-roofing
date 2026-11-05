@@ -17,6 +17,8 @@ export function pushDataLayer(event, data = {}) {
   // Custom Meta events for audiences: started a form, played the promo video.
   if (event === 'funnel_form_start') metaTrack('FormStart', { content_name: data.funnel_slug || data.lead_source || 'form' }, undefined, 'trackCustom');
   if (event === 'promo_video_play') metaTrack('VideoPlay', { content_name: data.click_location || 'promo' }, undefined, 'trackCustom');
+  // Two-step forms: gave service + address (step 1) and reached the contact step.
+  if (event === 'funnel_form_step') metaTrack('FormStep2', { content_name: data.funnel_slug || data.lead_source || 'form' }, undefined, 'trackCustom');
 }
 
 // Sends a Meta Pixel event ('track' for standard events, 'trackCustom' for
