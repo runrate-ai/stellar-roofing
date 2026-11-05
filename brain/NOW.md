@@ -1,6 +1,6 @@
 # Where we left off
 
-**Last updated:** 2026-11-05 (Meta Pixel LIVE on the site and funnel since 2026-11-05 ~10:50 CT (merge `e6411a6`); Meta confirmed it fired. Waiting on Brandon: connect the dataset to Ad Account 2, turn on Automatic Advanced Matching, and say whether to build server-side CAPI (needs `META_CAPI_TOKEN` in Vercel). Nashville phone is now (629) 356-4290 everywhere; LIVE on the website and funnel since 2026-11-05 10:37 CT (`eb0b3cc`); Brandon to change the Google Business Profile and listings; 10 FB posts scheduled in GHL; new FB cover. AI video skipped; Nate AI photos + Dog Oasis screen grabs made; catch-up of Oct 27 to Nov 3 sessions added below. The Oct 24 Meta section further down is older.)
+**Last updated:** 2026-11-05 (Meta Pixel LIVE on the site and funnel since 2026-11-05 ~10:50 CT (merge `e6411a6`); Meta confirmed it fired. Waiting on Brandon: connect the dataset to Ad Account 2, turn on Automatic Advanced Matching, server-side CAPI built on branch `meta-capi` (waiting for go to push; needs `META_CAPI_TOKEN` in Vercel and the GHL Won-deal webhook workflow). Nashville phone is now (629) 356-4290 everywhere; LIVE on the website and funnel since 2026-11-05 10:37 CT (`eb0b3cc`); Brandon to change the Google Business Profile and listings; 10 FB posts scheduled in GHL; new FB cover. AI video skipped; Nate AI photos + Dog Oasis screen grabs made; catch-up of Oct 27 to Nov 3 sessions added below. The Oct 24 Meta section further down is older.)
 
 ## Since Oct 24 (read first)
 
