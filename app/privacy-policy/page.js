@@ -19,7 +19,7 @@ export default function PrivacyPolicyPage() {
       <section className="bg-primary py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4">Privacy Policy</h1>
-          <p className="text-white/80 text-xl">Last updated: October 2026</p>
+          <p className="text-white/80 text-xl">Last updated: November 2026</p>
         </div>
       </section>
 
@@ -49,6 +49,7 @@ export default function PrivacyPolicyPage() {
             <li><strong>Contact &amp; Quote Forms</strong> — When you submit a form on our website, your information is collected and processed through <strong>GoHighLevel (GHL)</strong>, our customer relationship management (CRM) platform.</li>
             <li><strong>Cookies</strong> — Our website uses cookies to track site usage and improve your experience. You may disable cookies in your browser settings, though some features may not function properly.</li>
             <li><strong>Analytics</strong> — We use third-party analytics tools (such as Google Analytics and PostHog) to understand how visitors use our site. This includes recordings of how visitors move through and click on our pages; anything typed into a form field is masked and is not captured in those recordings.</li>
+            <li><strong>Advertising (Meta Pixel)</strong> — We use the Meta Pixel, a tool from Meta Platforms (Facebook and Instagram), to measure how our ads perform and to show our ads to people who have visited our site. See &ldquo;Advertising &amp; Meta&rdquo; below.</li>
             <li><strong>Phone Calls</strong> — If you call us directly, we may keep records of the call for service and quality purposes.</li>
           </ul>
 
@@ -65,6 +66,17 @@ export default function PrivacyPolicyPage() {
           <h2 className="text-2xl font-bold text-primary mb-4">GoHighLevel (CRM) &amp; Third-Party Tools</h2>
           <p className="text-text-muted leading-relaxed mb-8">
             We use <strong>GoHighLevel</strong> as our CRM and marketing automation platform. When you submit a form or interact with our communications, your data may be stored and managed within GoHighLevel. GoHighLevel has its own privacy practices — please refer to their privacy policy at <strong>gohighlevel.com</strong> for details. We do not sell your personal information to third parties. We may share your information with service providers (such as our CRM) solely to provide services to you.
+          </p>
+
+          <h2 className="text-2xl font-bold text-primary mb-4">Advertising &amp; Meta</h2>
+          <p className="text-text-muted leading-relaxed mb-4">
+            Our website uses the Meta Pixel. When you visit, it may collect information such as your IP address, browser and device details, the pages you view, and whether you submitted a form or tapped to call us. Meta may connect this with your Facebook or Instagram account under its own data policy. We use it to measure our ads and to reach people who have visited our site.
+          </p>
+          <p className="text-text-muted leading-relaxed mb-4">
+            To measure which ads lead to real customers, we may also send Meta limited information about a request or a completed job, such as your email address, name, city, and ZIP code. This information is converted into a scrambled (hashed) form before it is sent, and Meta uses it only to match the event to its own users. <strong>We never send your phone number to Meta.</strong>
+          </p>
+          <p className="text-text-muted leading-relaxed mb-8">
+            You can control the ads you see on Facebook and Instagram in your Meta ad preferences at <strong>facebook.com/adpreferences</strong>, and you can block cookies in your browser settings.
           </p>
 
           <h2 className="text-2xl font-bold text-primary mb-4">Text Messaging (SMS)</h2>
