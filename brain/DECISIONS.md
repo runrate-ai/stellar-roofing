@@ -47,3 +47,5 @@ Newest first. Each one says what was decided and why.
 - 2026-11-05: **Stellar is bonded** (Brandon confirmed). "Licensed, insured & bonded" is now a confirmed claim and can go in copy alongside the list in CLAUDE.md. First used on the Facebook cover.
 
 - 2026-11-05: **Meta ad image sizes going forward: Square 1:1 (1080x1080), Vertical 9:16 (1080x1920), Horizontal 1.91:1 (1200x628)**, each laid out on its own. Brandon's screenshot of Meta's placement-crop screen showed our 4:5 designs letterboxed with a warning in the Square and Horizontal slots. Don't redo existing creatives; apply to new ones. Organic Page posts can stay 4:5 or 1:1.
+
+- 2026-11-05: **Facebook cover uses (629) 356-4290** (Brandon: "this is the phone number"). The 10 scheduled Page posts still carry (629) 277-4249 in captions and graphics until Brandon says to switch them. Website, Google Business Profile and listings stay (629) 277-4249 per CLAUDE.md unless Brandon changes that rule.
