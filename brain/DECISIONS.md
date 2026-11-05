@@ -43,3 +43,5 @@ Newest first. Each one says what was decided and why.
 - 2026-11-04: **No AI video for now.** Brandon skipped the 30-second Seedance winter video (about $11). AI still images of Nate are fine (with Nate's OK and Meta's AI disclosure). The plan stays in `Desktop/Stellar Meta Ads/30-Second Video Plan.md` if he changes his mind.
 
 - 2026-11-04: **Phone on Meta ad images is (629) 356-4290** (the GHL number), per Brandon. Fits the rule that the GHL number goes on ads and the funnel only; the website, Business Profile, listings and organic Page posts stay (629) 277-4249.
+
+- 2026-11-05: **Stellar is bonded** (Brandon confirmed). "Licensed, insured & bonded" is now a confirmed claim and can go in copy alongside the list in CLAUDE.md. First used on the Facebook cover.
