@@ -19,13 +19,14 @@ export function pushDataLayer(event, data = {}) {
 // (components/MetaPixel.jsx), and it can finish loading after a page's own
 // effects run, so this waits up to ~5 seconds for it. Boise pages are skipped:
 // the Meta ads and this pixel are for Nashville / Middle TN only.
-export function metaTrack(event, params = {}) {
+export function metaTrack(event, params = {}, options) {
   if (typeof window === 'undefined') return;
   if (window.location.pathname.startsWith('/boise')) return;
   let tries = 0;
   const send = () => {
     if (window.fbq) {
-      window.fbq('track', event, params);
+      if (options) window.fbq('track', event, params, options);
+      else window.fbq('track', event, params);
     } else if (++tries < 20) {
       setTimeout(send, 250);
     }
