@@ -111,3 +111,4 @@ Newest first. A few lines per session: what was done and what was decided. Detai
 - 2026-11-05 (later): Brandon set the Meta ad sizes for new creatives: 1:1, 9:16, 1.91:1 (saved in DECISIONS and Claude's memory). Existing creatives left as they are.
 
 - 2026-11-05 (later): Rebuilt the FB cover for the iPhone app (text either side of the centered profile picture) with phone/desktop preview; saved to all three places. Tried to schedule the 10 posts through GHL: the API token lacks Social Planner scope, so nothing was scheduled.
+- 2026-11-05 (later): Brandon added Social Planner scopes to the GHL token. Scheduled all 10 Facebook posts in GHL to the Nashville Page only (9:00 AM CT, Nov 6-30), images uploaded to GHL media, read back and verified each targets only Stellar Roofing Nashville.
