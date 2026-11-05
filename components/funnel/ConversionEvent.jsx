@@ -15,9 +15,16 @@ export default function ConversionEvent({ slug, adGroup }) {
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: 'generate_lead', ...data });
     // Meta "Lead" for Nashville leads (the Meta ads are Nashville only), once per page load.
+    // The form saved the lead's event id; the server sent the same id to Meta,
+    // so the two copies are deduplicated.
     if (slug !== 'website-boise' && window.__metaLeadFor !== window.location.href) {
       window.__metaLeadFor = window.location.href;
-      metaTrack('Lead', { content_name: slug, content_category: adGroup });
+      let eventID = null;
+      try {
+        eventID = window.sessionStorage.getItem('metaLeadEventId');
+        window.sessionStorage.removeItem('metaLeadEventId');
+      } catch {}
+      metaTrack('Lead', { content_name: slug, content_category: adGroup }, eventID ? { eventID } : undefined);
     }
     // PostHog starts in the root layout's effect, which runs after this one,
     // so wait for it before sending the lead event.

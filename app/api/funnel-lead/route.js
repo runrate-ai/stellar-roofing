@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getFunnel } from '../../../lib/funnels';
+import { buildUserData, fbcValue, sendMetaEvent } from '../../../lib/metaCapi';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -122,8 +123,15 @@ export async function POST(request) {
   const address = clean(body.address, 200);
   const zip = clean(body.zip, 10);
   const landingPage = clean(body.landingPage, 1000);
+  // Meta's click and browser IDs: kept on the contact so a later Won deal can
+  // be matched back to the ad (see /api/meta-conversion).
+  const fbc = clean(fbcValue({ cookie: request.cookies.get('_fbc')?.value, fbclid: clean(body.fbclid, 500) }), 600);
+  const fbp = clean(request.cookies.get('_fbp')?.value, 200);
+  const metaEventId = /^[A-Za-z0-9-]{8,64}$/.test(String(body.metaEventId || '')) ? body.metaEventId : '';
 
   const customFields = [
+    ...(fbc ? [{ key: 'meta_fbc', field_value: fbc }] : []),
+    ...(fbp ? [{ key: 'meta_fbp', field_value: fbp }] : []),
     { key: 'project_type', field_value: projectType },
     ...(message ? [{ key: 'your_message', field_value: message }] : []),
     ...(timeline ? [{ key: 'project_urgency', field_value: timeline }] : []),
@@ -190,6 +198,37 @@ export async function POST(request) {
   ].filter(Boolean).join('\n');
   const noted = await ghl(`/contacts/${contactId}/notes`, token, { body: note });
   if (!noted.ok) console.error('[funnel-lead] GHL note failed:', noted.status);
+
+  // Server copy of the Meta Lead (Nashville only; the Meta ads are Nashville
+  // only). Same event_id as the browser pixel's Lead, so Meta counts it once.
+  // No phone number. Skipped quietly when META_CAPI_TOKEN isn't set, and a
+  // Meta failure never affects the lead itself.
+  if (market === 'nashville') {
+    const { firstName, lastName } = splitName(name);
+    await sendMetaEvent({
+      event_name: 'Lead',
+      event_time: Math.floor(Date.now() / 1000),
+      event_id: metaEventId || `lead-${contactId}-${Date.now()}`,
+      action_source: 'website',
+      event_source_url: landingPage || `https://www.thestellarroofing.com${pagePath || '/'}`,
+      user_data: buildUserData({
+        email,
+        firstName,
+        lastName,
+        zip,
+        state: 'TN',
+        externalId: contactId,
+        fbc,
+        fbp,
+        ip: (request.headers.get('x-forwarded-for') || '').split(',')[0].trim(),
+        userAgent: request.headers.get('user-agent') || '',
+      }),
+      custom_data: {
+        content_name: isWebsite ? `website-${market}` : (funnel?.slug || 'funnel'),
+        content_category: isWebsite ? 'Website' : (funnel?.adGroup || 'Funnel'),
+      },
+    });
+  }
 
   return NextResponse.json({ ok: true, isNew: Boolean(upsert.data?.new) });
 }

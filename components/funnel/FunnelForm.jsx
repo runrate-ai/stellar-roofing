@@ -110,11 +110,17 @@ export default function FunnelForm({
     // On shared pages (contact, free inspection) an Idaho ZIP (83xxx) routes
     // the lead to the Boise branch.
     const leadMarket = leadSource === 'website' && fields.zip.startsWith('83') ? 'boise' : market;
+    // One id for this lead, shared by the server's Meta event and the browser
+    // pixel's Lead on the thank-you page, so Meta counts the lead once.
+    const metaEventId = window.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    try {
+      window.sessionStorage.setItem('metaLeadEventId', metaEventId);
+    } catch {}
     try {
       const res = await fetch('/api/funnel-lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...fields, ...attribution.current, funnelSlug, leadSource, market: leadMarket, pagePath: window.location.pathname }),
+        body: JSON.stringify({ ...fields, ...attribution.current, funnelSlug, leadSource, market: leadMarket, pagePath: window.location.pathname, metaEventId }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.ok) throw new Error('lead not accepted');
