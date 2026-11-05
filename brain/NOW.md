@@ -1,6 +1,6 @@
 # Where we left off
 
-**Last updated:** 2026-11-05 (Nashville phone moving to (629) 356-4290 everywhere, website change on branch `nashville-phone-356` waiting for Brandon's go to push; 10 FB posts scheduled in GHL; new FB cover. AI video skipped; Nate AI photos + Dog Oasis screen grabs made; catch-up of Oct 27 to Nov 3 sessions added below. The Oct 24 Meta section further down is older.)
+**Last updated:** 2026-11-05 (Nashville phone is now (629) 356-4290 everywhere; LIVE on the website and funnel since 2026-11-05 10:37 CT (`eb0b3cc`); Brandon to change the Google Business Profile and listings; 10 FB posts scheduled in GHL; new FB cover. AI video skipped; Nate AI photos + Dog Oasis screen grabs made; catch-up of Oct 27 to Nov 3 sessions added below. The Oct 24 Meta section further down is older.)
 
 ## Since Oct 24 (read first)
 
