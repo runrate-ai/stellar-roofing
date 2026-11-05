@@ -63,3 +63,9 @@ The project sits on the iCloud-synced Desktop, and macOS offloads its files. Sym
 - PostHog MCP exists (`mcp.posthog.com`); not connected yet. Until then Claude reads PostHog through Claude in Chrome (HogQL via `/api/environments/645820/query/`).
 - Meta: Business Manager and ad account exist; no pixel yet (2026-10-17).
 - Dog Oasis (partner for the Puppy Promise): dogoasis.com, 812 Meadowlark Lane, Goodlettsville.
+
+## Meta Pixel / dataset (2026-11-05)
+
+- Stellar's own dataset: **"Stellar Roofing || Owned", id `1621301542805399`**, business "Stellar Roofing and Restorations" (`1299918782222559`), created 2026-11-05 by Brandon. Not yet assigned to Ad Account 2 (`ads_get_datasets` by ad account returns nothing). The other dataset in that business, "Stellar Roofing - Nate" (`1635319534704745`), is not ours to use.
+- Site code: `components/MetaPixel.jsx` (live hosts only), events via `metaTrack()` in `components/funnel/tracking.js`: PageView, Lead (thank-you pages, Nashville only), Contact (call taps).
+- GHL's built-in "Facebook Conversion API" workflow action needs GHL-captured Facebook attribution (it skips with "no attribution data" otherwise) and sends phone numbers, which the privacy policy and A2P wording rule out. Plan instead: server-side CAPI from the site (Lead at submit with the same event id; Purchase via a GHL Won-opportunity webhook), token in Vercel as `META_CAPI_TOKEN`, no phone numbers.
