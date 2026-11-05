@@ -67,5 +67,6 @@ The project sits on the iCloud-synced Desktop, and macOS offloads its files. Sym
 ## Meta Pixel / dataset (2026-11-05)
 
 - Stellar's own dataset: **"Stellar Roofing || Owned", id `1621301542805399`**, business "Stellar Roofing and Restorations" (`1299918782222559`), created 2026-11-05 by Brandon. Not yet assigned to Ad Account 2 (`ads_get_datasets` by ad account returns nothing). The other dataset in that business, "Stellar Roofing - Nate" (`1635319534704745`), is not ours to use.
+- **Live since 2026-11-05** (merge `e6411a6`); verified PageView requests to id 1621301542805399 from www and get. subdomains, and Meta's `last_fired_time` updated. Automatic Advanced Matching was OFF at launch.
 - Site code: `components/MetaPixel.jsx` (live hosts only), events via `metaTrack()` in `components/funnel/tracking.js`: PageView, Lead (thank-you pages, Nashville only), Contact (call taps).
 - GHL's built-in "Facebook Conversion API" workflow action needs GHL-captured Facebook attribution (it skips with "no attribution data" otherwise) and sends phone numbers, which the privacy policy and A2P wording rule out. Plan instead: server-side CAPI from the site (Lead at submit with the same event id; Purchase via a GHL Won-opportunity webhook), token in Vercel as `META_CAPI_TOKEN`, no phone numbers.
