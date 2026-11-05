@@ -28,14 +28,14 @@ End-of-session routine: update `brain/NOW.md`, append to `brain/LOG.md`, tick `T
 
 **Honesty in copy**
 - Never invent reviews, testimonials, certifications, statistics, response times, or financing. No stock faces with testimonials.
-- Confirmed claims: free inspections and written estimates; lifetime workmanship warranty on replacements; licensed and insured; in business since 2020; based in Goodlettsville; photos of storm damage and can meet the adjuster on-site; answers the phone 24/7; installs Owens Corning and GAF shingles.
+- Confirmed claims: free inspections and written estimates; lifetime workmanship warranty on replacements; licensed, insured and bonded; in business since 2020; based in Goodlettsville; photos of storm damage and can meet the adjuster on-site; answers the phone 24/7; installs Owens Corning and GAF shingles.
 - Owens Corning: Stellar is **not** a credentialed/Preferred contractor. Use "Owens Corning®" on first mention with the independent-contractor disclaimer nearby. The OC logo must be used exactly as supplied (waiting on the artwork file).
 - The offer is price **match** (apples to apples), never "beat". Free gutters and the Dog Oasis dog day apply to retail (non-insurance) replacements; keep them out of storm/insurance ads and pages.
 
 **Money and accounts**
 - Google Ads and the funnel target **Nashville / Middle TN only**, never Boise.
 - Never tell Brandon to accept Google's "Apply all", add-keyword, broad match, AI Max, or Search Partner recommendations.
-- The GHL tracking number (when approved) goes on the funnel and the ads call asset only; never on the main site, the Business Profile, or listings. Those stay (629) 277-4249.
+- The Nashville / Goodlettsville phone is **(629) 356-4290** everywhere: website, funnel, ads, Facebook, Google Business Profile and listings (Brandon, 2026-11-05; it replaced (629) 277-4249). Keep the website, Google profile and listings on the same number. Boise stays (208) 370-8599.
 - A Google Ads "conversion" is not a lead and a lead is not a job. Report real people (each counted once) and say what is unknown.
 
 **Safety**

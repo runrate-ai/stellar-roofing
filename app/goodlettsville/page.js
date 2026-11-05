@@ -19,7 +19,7 @@ const loc = config.locations.nashville;
 
 export const metadata = {
   title: { absolute: "Roofing Company Goodlettsville & Nashville TN | Stellar Roofing" },
-  description: "Goodlettsville-based roofing company serving Nashville and Middle Tennessee. Roof replacement, repair, storm & hail damage, free inspections, lifetime workmanship warranty. (629) 277-4249.",
+  description: "Goodlettsville-based roofing company serving Nashville and Middle Tennessee. Roof replacement, repair, storm & hail damage, free inspections, lifetime workmanship warranty. (629) 356-4290.",
   alternates: { canonical: 'https://www.thestellarroofing.com/goodlettsville' },
   openGraph: {
     title: "Roofing Company Goodlettsville & Nashville TN | Stellar Roofing",

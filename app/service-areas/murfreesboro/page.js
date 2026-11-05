@@ -11,7 +11,7 @@ import config from '../../../lib/config';
 
 export const metadata = {
   title: "Roofing Company Murfreesboro TN | Stellar Roofing & Restorations",
-  description: "Roofing services in Murfreesboro, TN. Roof replacement, repair, storm damage, free inspections. Stellar Roofing & Restorations — call (629) 277-4249.",
+  description: "Roofing services in Murfreesboro, TN. Roof replacement, repair, storm damage, free inspections. Stellar Roofing & Restorations — call (629) 356-4290.",
   alternates: { canonical: 'https://www.thestellarroofing.com/service-areas/murfreesboro' },
 };
 

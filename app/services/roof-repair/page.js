@@ -11,7 +11,7 @@ import config from '../../../lib/config';
 
 export const metadata = {
   title: "Roof Repair Nashville TN | Fast & Reliable | Stellar Roofing",
-  description: "Fast, reliable roof repair in Nashville, TN. Leaks, missing shingles, storm damage, flashing issues. Free estimates. Call Stellar Roofing at (629) 277-4249.",
+  description: "Fast, reliable roof repair in Nashville, TN. Leaks, missing shingles, storm damage, flashing issues. Free estimates. Call Stellar Roofing at (629) 356-4290.",
   alternates: { canonical: 'https://www.thestellarroofing.com/services/roof-repair' },
 };
 

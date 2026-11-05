@@ -13,7 +13,7 @@ const loc = config.locations.nashville;
 
 export const metadata = {
   title: { absolute: "Commercial Roofers Nashville TN | Commercial Roofing Contractor | Stellar Roofing" },
-  description: "Commercial roofers in Nashville, TN. Flat roof repair and replacement, TPO, EPDM, and metal roofing for businesses and property managers. Scheduled around your hours. Free estimates. Call (629) 277-4249.",
+  description: "Commercial roofers in Nashville, TN. Flat roof repair and replacement, TPO, EPDM, and metal roofing for businesses and property managers. Scheduled around your hours. Free estimates. Call (629) 356-4290.",
   alternates: { canonical: 'https://www.thestellarroofing.com/nashville/services/commercial-roofing' },
 };
 

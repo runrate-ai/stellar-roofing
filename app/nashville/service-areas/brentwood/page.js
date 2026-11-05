@@ -13,7 +13,7 @@ const loc = config.locations.nashville;
 
 export const metadata = {
   title: { absolute: "Roofing Company Brentwood TN | Roofer for Williamson County | Stellar Roofing" },
-  description: "Brentwood, TN roofer for roof replacement, repair, and hail & storm damage. Free inspections, insurance claims help, lifetime workmanship warranty. Call (629) 277-4249.",
+  description: "Brentwood, TN roofer for roof replacement, repair, and hail & storm damage. Free inspections, insurance claims help, lifetime workmanship warranty. Call (629) 356-4290.",
   alternates: { canonical: 'https://www.thestellarroofing.com/nashville/service-areas/brentwood' },
 };
 

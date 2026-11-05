@@ -11,7 +11,7 @@ import config from '../../../lib/config';
 
 export const metadata = {
   title: "Emergency Roof Repair Nashville TN | Fast Response | Stellar Roofing",
-  description: "Emergency roof repair in Nashville, TN. Active leaks, storm damage, roof collapses — we respond fast. Call Stellar Roofing 24/7 at (629) 277-4249.",
+  description: "Emergency roof repair in Nashville, TN. Active leaks, storm damage, roof collapses — we respond fast. Call Stellar Roofing 24/7 at (629) 356-4290.",
   alternates: { canonical: 'https://www.thestellarroofing.com/services/emergency-roof-repair' },
 };
 
