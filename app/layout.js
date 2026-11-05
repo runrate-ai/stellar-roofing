@@ -4,6 +4,7 @@ import './globals.css';
 import { SiteHeader, SiteFooter, SiteMobileCTA, RoofleWidget, PhoneClickTracker } from '../components/SiteChrome';
 import AnimationProvider from '../components/AnimationProvider';
 import PostHogInit from '../components/PostHogInit';
+import MetaPixel from '../components/MetaPixel';
 import ExitIntentPopup from '../components/ExitIntentPopup';
 import config from '../lib/config';
 
@@ -56,6 +57,7 @@ export default function RootLayout({ children }) {
         <PhoneClickTracker />
         <ExitIntentPopup />
         <PostHogInit />
+        <MetaPixel />
       </body>
     </html>
   );
