@@ -5,6 +5,7 @@ import { SiteHeader, SiteFooter, SiteMobileCTA, RoofleWidget, PhoneClickTracker 
 import AnimationProvider from '../components/AnimationProvider';
 import PostHogInit from '../components/PostHogInit';
 import MetaPixel from '../components/MetaPixel';
+import MetaEngagement from '../components/MetaEngagement';
 import ExitIntentPopup from '../components/ExitIntentPopup';
 import config from '../lib/config';
 
@@ -58,6 +59,7 @@ export default function RootLayout({ children }) {
         <ExitIntentPopup />
         <PostHogInit />
         <MetaPixel />
+        <MetaEngagement />
       </body>
     </html>
   );
