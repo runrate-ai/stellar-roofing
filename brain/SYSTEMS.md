@@ -43,6 +43,7 @@ No secrets in this file. Tokens live in `.env.local` (local) and Vercel (product
 | Lead tags | Ad funnel: `ppc-lead` + `ppc-<slug>`. Main site: `website-lead` + `nashville` or `boise`. Tests: also `test`. |
 | Custom fields | `project_type`, `project_urgency`, `your_message`, `landing_page`, `google_click_id`, `wbraid`, `gbraid`, `utm_source/medium/campaign/term/content` |
 | Counting leads | `POST /contacts/search` with a `tags contains` filter; print only date, tags, and source. Exclude `test`. |
+| Social Planner | `GHL_API_TOKEN` has **no** Social Planner scope (401 on `/social-media-posting/{locationId}/accounts`, 2026-11-05). Needs socialplanner/account.readonly, socialplanner/post.readonly, socialplanner/post.write, plus medias.readonly/medias.write to upload images. |
 | Can't do by API | Create or edit workflows; read calendars (no scope). Those happen in the GHL UI. |
 | Booking calendar | `https://link.runratedigital.com/widget/booking/WDGkiiKCUeTkVOqhysfd` (website calendar since 2026-10-23; set in `lib/config.js` `bookingWidget`), embedded by `components/funnel/BookingEmbed.jsx` on `/thank-you` and the funnel thank-you pages. Old one: `QO7LCJe62qeDxjE1VuuP` (the Premura test appointment landed there) |
 | Brandon's tasks | On the contact "Stellar Game Plan (internal)" |

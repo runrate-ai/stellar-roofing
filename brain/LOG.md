@@ -109,3 +109,5 @@ Newest first. A few lines per session: what was done and what was decided. Detai
 - 2026-11-05 (later): Made 10 Facebook Page posts (images + captions, Mon/Wed/Fri schedule through Nov 30) and a new Facebook cover with logo and offers. Declined "we'll beat any written price" (match only) and left "bonded" off until Brandon confirms. Re-checked yesterday's 10 ad renders for a headless-Chrome cut-off bug: identical, fine. Nothing posted.
 - 2026-11-05 (later): Brandon confirmed Stellar is bonded. Cover now says "Licensed, insured & bonded"; re-rendered and saved to all three places.
 - 2026-11-05 (later): Brandon set the Meta ad sizes for new creatives: 1:1, 9:16, 1.91:1 (saved in DECISIONS and Claude's memory). Existing creatives left as they are.
+
+- 2026-11-05 (later): Rebuilt the FB cover for the iPhone app (text either side of the centered profile picture) with phone/desktop preview; saved to all three places. Tried to schedule the 10 posts through GHL: the API token lacks Social Planner scope, so nothing was scheduled.
