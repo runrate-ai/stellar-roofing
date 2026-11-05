@@ -114,3 +114,4 @@ Newest first. A few lines per session: what was done and what was decided. Detai
 - 2026-11-05 (later): Brandon added Social Planner scopes to the GHL token. Scheduled all 10 Facebook posts in GHL to the Nashville Page only (9:00 AM CT, Nov 6-30), images uploaded to GHL media, read back and verified each targets only Stellar Roofing Nashville.
 - 2026-11-05 (later): Brandon: a Page has one cover, make it mobile first. Rebuilt it with bigger text in the two blocks beside the phone's profile picture (v3); renamed the preview image to PREVIEW ONLY so it isn't mistaken for a second banner. Not uploaded.
 - 2026-11-05 (later): Cover phone switched to (629) 356-4290 per Brandon; re-rendered and saved to all three places. Scheduled posts not changed yet.
+- 2026-11-05 (later): Switched the 10 scheduled Facebook posts to (629) 356-4290: 8 captions and 6 graphics changed, edited in place in GHL (same ids and times), all verified Nashville-only with no old number.
