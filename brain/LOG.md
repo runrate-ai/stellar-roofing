@@ -112,3 +112,4 @@ Newest first. A few lines per session: what was done and what was decided. Detai
 
 - 2026-11-05 (later): Rebuilt the FB cover for the iPhone app (text either side of the centered profile picture) with phone/desktop preview; saved to all three places. Tried to schedule the 10 posts through GHL: the API token lacks Social Planner scope, so nothing was scheduled.
 - 2026-11-05 (later): Brandon added Social Planner scopes to the GHL token. Scheduled all 10 Facebook posts in GHL to the Nashville Page only (9:00 AM CT, Nov 6-30), images uploaded to GHL media, read back and verified each targets only Stellar Roofing Nashville.
+- 2026-11-05 (later): Brandon: a Page has one cover, make it mobile first. Rebuilt it with bigger text in the two blocks beside the phone's profile picture (v3); renamed the preview image to PREVIEW ONLY so it isn't mistaken for a second banner. Not uploaded.
