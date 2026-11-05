@@ -23,6 +23,9 @@ const TIMELINES = [
 // GHL custom field keys (contact.<key>) the funnel fills in.
 const ATTRIBUTION_FIELDS = {
   gclid: 'google_click_id',
+  // Raw Meta click ID. GHL's Meta Conversion API action maps it (Custom
+  // mapping → FBCLID) so Schedule / Purchase events match the ad click.
+  fbclid: 'facebook_click_id',
   wbraid: 'wbraid',
   gbraid: 'gbraid',
   utm_source: 'utm_source',
@@ -124,7 +127,7 @@ export async function POST(request) {
   const zip = clean(body.zip, 10);
   const landingPage = clean(body.landingPage, 1000);
   // Meta's click and browser IDs: kept on the contact so a later Won deal can
-  // be matched back to the ad (see /api/meta-conversion).
+  // be matched back to the ad (GHL's Meta Conversion API action uses facebook_click_id).
   const fbc = clean(fbcValue({ cookie: request.cookies.get('_fbc')?.value, fbclid: clean(body.fbclid, 500) }), 600);
   const fbp = clean(request.cookies.get('_fbp')?.value, 200);
   const metaEventId = /^[A-Za-z0-9-]{8,64}$/.test(String(body.metaEventId || '')) ? body.metaEventId : '';

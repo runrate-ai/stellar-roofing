@@ -73,7 +73,7 @@ export default function PrivacyPolicyPage() {
             Our website uses the Meta Pixel. When you visit, it may collect information such as your IP address, browser and device details, the pages you view, and whether you submitted a form or tapped to call us. Meta may connect this with your Facebook or Instagram account under its own data policy. We use it to measure our ads and to reach people who have visited our site.
           </p>
           <p className="text-text-muted leading-relaxed mb-4">
-            To measure which ads lead to real customers, we may also send Meta limited information about a request or a completed job, such as your email address, name, city, and ZIP code. This information is converted into a scrambled (hashed) form before it is sent, and Meta uses it only to match the event to its own users. <strong>We never send your phone number to Meta.</strong>
+            To measure which ads lead to real customers, we may also send Meta limited information when you request an estimate, book an inspection, or hire us, such as your name, email address, phone number, city, and ZIP code. This information is converted into a scrambled (hashed) form before it is sent, and Meta uses it to match the event to its own users and to measure and improve our ads. <strong>We never share your text-message opt-in or consent with Meta or anyone else.</strong>
           </p>
           <p className="text-text-muted leading-relaxed mb-8">
             You can control the ads you see on Facebook and Instagram in your Meta ad preferences at <strong>facebook.com/adpreferences</strong>, and you can block cookies in your browser settings.
