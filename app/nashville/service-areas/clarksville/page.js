@@ -13,7 +13,7 @@ const loc = config.locations.nashville;
 
 export const metadata = {
   title: { absolute: "Roofing Company Clarksville TN | Roofers & Roof Repair | Stellar Roofing" },
-  description: "Clarksville, TN roofing company for roof repair, roof replacement, and hail & storm damage across Montgomery County. Free inspections, insurance claims help. Call (629) 277-4249.",
+  description: "Clarksville, TN roofing company for roof repair, roof replacement, and hail & storm damage across Montgomery County. Free inspections, insurance claims help. Call (629) 356-4290.",
   alternates: { canonical: 'https://www.thestellarroofing.com/nashville/service-areas/clarksville' },
 };
 

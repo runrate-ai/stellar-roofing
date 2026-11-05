@@ -13,7 +13,7 @@ const loc = config.locations.nashville;
 
 export const metadata = {
   title: "Roofing Company Spring Hill TN | Williamson & Maury County | Stellar Roofing",
-  description: "Trusted roofing contractor in Spring Hill, TN. Roof replacement, repair, storm & hail damage. Serving Williamson and Maury County. Free estimates. Call (629) 277-4249.",
+  description: "Trusted roofing contractor in Spring Hill, TN. Roof replacement, repair, storm & hail damage. Serving Williamson and Maury County. Free estimates. Call (629) 356-4290.",
   alternates: { canonical: 'https://www.thestellarroofing.com/nashville/service-areas/spring-hill' },
 };
 

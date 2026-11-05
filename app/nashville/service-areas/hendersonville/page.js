@@ -13,7 +13,7 @@ const loc = config.locations.nashville;
 
 export const metadata = {
   title: { absolute: "Roofing Company Hendersonville TN | Roofers & Roof Repair | Stellar Roofing" },
-  description: "Hendersonville, TN roofers based next door in Goodlettsville. Roof repair, roof replacement, and hail & storm damage for Sumner County homes. Free inspections. Call (629) 277-4249.",
+  description: "Hendersonville, TN roofers based next door in Goodlettsville. Roof repair, roof replacement, and hail & storm damage for Sumner County homes. Free inspections. Call (629) 356-4290.",
   alternates: { canonical: 'https://www.thestellarroofing.com/nashville/service-areas/hendersonville' },
 };
 

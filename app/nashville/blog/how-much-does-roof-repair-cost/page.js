@@ -93,7 +93,7 @@ export default function RoofRepairCostGuide() {
       <p>Replacement generally makes more sense when more than 30% of the shingles are damaged, the damage is widespread, the decking is compromised, or leaks keep coming back. If it looks like a replacement, our <Link href={postPath('how-much-does-roof-replacement-cost-nashville')}>roof replacement cost in Nashville</Link> guide breaks down what drives the price, and <Link href={postPath('signs-you-need-a-new-roof')}>signs you need a new roof</Link> covers what to look for.</p>
 
       <h2>Get a real number for your roof</h2>
-      <p>Ranges help you plan, but only someone on your roof can tell you where your repair lands. We offer a <Link href="/free-inspection">free, no-pressure roof inspection</Link> with a written estimate. Call (629) 277-4249. For active leaks or storm damage, we answer 24 hours a day, 7 days a week.</p>
+      <p>Ranges help you plan, but only someone on your roof can tell you where your repair lands. We offer a <Link href="/free-inspection">free, no-pressure roof inspection</Link> with a written estimate. Call (629) 356-4290. For active leaks or storm damage, we answer 24 hours a day, 7 days a week.</p>
     </BlogPost>
   );
 }

@@ -13,7 +13,7 @@ const loc = config.locations.nashville;
 
 export const metadata = {
   title: { absolute: "Roofers Franklin TN | Roof Repair & Roof Replacement | Stellar Roofing" },
-  description: "Franklin, TN roofers for roof repair, roof replacement, and hail & storm damage across Williamson County. Free inspections, Owens Corning & GAF shingles, lifetime workmanship warranty. Call (629) 277-4249.",
+  description: "Franklin, TN roofers for roof repair, roof replacement, and hail & storm damage across Williamson County. Free inspections, Owens Corning & GAF shingles, lifetime workmanship warranty. Call (629) 356-4290.",
   alternates: { canonical: 'https://www.thestellarroofing.com/nashville/service-areas/franklin' },
 };
 

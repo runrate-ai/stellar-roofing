@@ -13,7 +13,7 @@ const loc = config.locations.nashville;
 
 export const metadata = {
   title: { absolute: "Roofing Company Murfreesboro TN | Roofers & Roof Repair | Stellar Roofing" },
-  description: "Murfreesboro, TN roofing company for roof repair, roof replacement, and hail & storm damage across Rutherford County. Free inspections, lifetime workmanship warranty. Call (629) 277-4249.",
+  description: "Murfreesboro, TN roofing company for roof repair, roof replacement, and hail & storm damage across Rutherford County. Free inspections, lifetime workmanship warranty. Call (629) 356-4290.",
   alternates: { canonical: 'https://www.thestellarroofing.com/nashville/service-areas/murfreesboro' },
 };
 

@@ -13,7 +13,7 @@ const loc = config.locations.nashville;
 
 export const metadata = {
   title: { absolute: "Roofing Company Gallatin TN | Roofers & Roof Repair | Stellar Roofing" },
-  description: "Gallatin, TN roofing company for roof repair, roof replacement, and hail & storm damage across Sumner County. Local to Goodlettsville. Free inspections, lifetime workmanship warranty. Call (629) 277-4249.",
+  description: "Gallatin, TN roofing company for roof repair, roof replacement, and hail & storm damage across Sumner County. Local to Goodlettsville. Free inspections, lifetime workmanship warranty. Call (629) 356-4290.",
   alternates: { canonical: 'https://www.thestellarroofing.com/nashville/service-areas/gallatin' },
 };
 

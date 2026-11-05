@@ -13,7 +13,7 @@ const loc = config.locations.nashville;
 
 export const metadata = {
   title: { absolute: "Roof Replacement Nashville TN | Lifetime Warranty | Stellar Roofing" },
-  description: "Roof replacement in Nashville, TN with a lifetime workmanship warranty, free estimates, and insurance claims help. Same-week scheduling. Call (629) 277-4249.",
+  description: "Roof replacement in Nashville, TN with a lifetime workmanship warranty, free estimates, and insurance claims help. Same-week scheduling. Call (629) 356-4290.",
   alternates: { canonical: 'https://www.thestellarroofing.com/nashville/services/roof-replacement' },
 };
 

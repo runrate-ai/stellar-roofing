@@ -11,7 +11,7 @@ import config from '../../../lib/config';
 
 export const metadata = {
   title: "Free Roof Inspection Nashville TN | No Obligation | Stellar Roofing",
-  description: "Free roof inspections in Nashville, TN. No obligation, honest assessment. We check shingles, flashing, gutters, ventilation. Call Stellar Roofing (629) 277-4249.",
+  description: "Free roof inspections in Nashville, TN. No obligation, honest assessment. We check shingles, flashing, gutters, ventilation. Call Stellar Roofing (629) 356-4290.",
   alternates: { canonical: 'https://www.thestellarroofing.com/services/roof-inspection' },
 };
 
