@@ -36,6 +36,9 @@ const SWIPE_MIN_DEPTH_PX = 800;
 
 // Pages that already are the form, a thank-you, or legal text.
 const SKIP_PREFIXES = ['/boise', '/lp', '/thank-you', '/free-inspection', '/contact', '/privacy-policy', '/terms-and-conditions'];
+// The brand homepage serves Nashville and Boise visitors, and the popup's copy
+// is for Goodlettsville. Exact match only: every other page stays eligible.
+const SKIP_EXACT = ['/'];
 
 function readStore(store, key) {
   try { return window[store].getItem(key); } catch { return null; }
@@ -58,6 +61,7 @@ export default function ExitIntentPopup() {
   const [showForm, setShowForm] = useState(false);
 
   const eligible =
+    !SKIP_EXACT.includes(pathname) &&
     !SKIP_PREFIXES.some(prefix => pathname === prefix || pathname.startsWith(`${prefix}/`)) &&
     !(typeof window !== 'undefined' && isFunnelHostname(window.location.hostname));
 
