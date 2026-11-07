@@ -8,15 +8,31 @@ import { isFunnelHostname } from '../lib/funnel-host';
 import { pushDataLayer } from './funnel/tracking';
 
 // "Wait, before you go" popup for the Nashville main site. Shows once per
-// visit when a visitor looks about to leave: the cursor leaves through the top
-// of the window (desktop), or a fast scroll back to the top (phones, which have
-// no cursor). It only offers what Stellar really offers: a free inspection, a
-// written estimate, and a price match. No countdowns, no "limited time".
+// visit when a visitor looks about to leave. Browsers never tell a page that
+// someone clicked close, back or home, so it watches for the moment before:
+//   - desktop: the cursor leaves through the top of the window, toward the
+//     tabs, address bar, back and close buttons;
+//   - phones: a fast swipe back up the page (to bring back the address bar);
+//   - any device: they switch to another tab or app (or press home) and come
+//     back. The popup is waiting when they return.
+// No popup for the rest of the visit once someone has called, texted, emailed,
+// opened the chat, or reached a thank-you page. It only offers what Stellar
+// really offers: a free inspection, a written estimate, and a price match.
+// No countdowns, no "limited time".
+//
+// To test: add ?exitpopup=test to a page's URL. That clears the "already
+// shown" and "closed it" memory on that device.
 const SEEN_KEY = 'stellar_exit_popup_seen';
 const DISMISSED_KEY = 'stellar_exit_popup_dismissed';
+const VISIT_START_KEY = 'stellar_visit_start';
 const DISMISS_DAYS = 7;
-const MIN_TIME_ON_PAGE_MS = 8000;
-const MIN_TIME_FOR_SCROLL_TRIGGER_MS = 20000;
+const MIN_VISIT_MS = 4000; // time on the site before any trigger counts
+const MIN_VISIT_FOR_SWIPE_MS = 10000;
+const MIN_AWAY_MS = 1500; // shorter trips away (a notification glance) don't count
+const TOP_EDGE_PX = 50; // fast mouse moves report the last spot inside the page
+const SWIPE_WINDOW_MS = 300;
+const SWIPE_DISTANCE_PX = 500; // 500px up within 300ms is a flick, not reading
+const SWIPE_MIN_DEPTH_PX = 800;
 
 // Pages that already are the form, a thank-you, or legal text.
 const SKIP_PREFIXES = ['/boise', '/lp', '/thank-you', '/free-inspection', '/contact', '/privacy-policy', '/terms-and-conditions'];
@@ -26,6 +42,9 @@ function readStore(store, key) {
 }
 function writeStore(store, key, value) {
   try { window[store].setItem(key, value); } catch { /* private mode: fine */ }
+}
+function removeStore(store, key) {
+  try { window[store].removeItem(key); } catch { /* private mode: fine */ }
 }
 
 function recentlyDismissed() {
@@ -48,48 +67,106 @@ export default function ExitIntentPopup() {
     pushDataLayer('exit_popup_dismiss', { reason, click_location: pathname });
   }, [pathname]);
 
+  // Reaching a thank-you page means they already sent a request.
   useEffect(() => {
-    if (!eligible || readStore('sessionStorage', SEEN_KEY) || recentlyDismissed()) return undefined;
+    if (pathname === '/thank-you' || pathname.startsWith('/thank-you/')) {
+      writeStore('sessionStorage', SEEN_KEY, '1');
+    }
+  }, [pathname]);
 
-    const loadedAt = Date.now();
-    let lastY = window.scrollY;
-    let lastT = loadedAt;
+  useEffect(() => {
+    if (!eligible) return undefined;
+    if (new URLSearchParams(window.location.search).get('exitpopup') === 'test') {
+      removeStore('sessionStorage', SEEN_KEY);
+      removeStore('localStorage', DISMISSED_KEY);
+    }
+    if (readStore('sessionStorage', SEEN_KEY) || recentlyDismissed()) return undefined;
+
+    // Time on the site counts from the first page of the visit, not this page.
+    let visitStart = Number(readStore('sessionStorage', VISIT_START_KEY));
+    if (!visitStart) {
+      visitStart = Date.now();
+      writeStore('sessionStorage', VISIT_START_KEY, String(visitStart));
+    }
+    const visitAge = () => Date.now() - visitStart;
+
     let fired = false;
+    let formStarted = false;
+    let hiddenAt = 0;
+    let lastSwipe = 0;
+    let samples = [];
 
     const show = trigger => {
-      if (fired) return;
+      if (fired || readStore('sessionStorage', SEEN_KEY)) return;
       fired = true;
       writeStore('sessionStorage', SEEN_KEY, '1');
       setOpen(true);
       pushDataLayer('exit_popup_shown', { trigger, click_location: pathname });
     };
 
-    // Desktop: the pointer leaves through the top edge (toward tabs, back, close).
+    // Desktop: the cursor leaves the page through the top.
     const onMouseOut = e => {
-      if (e.relatedTarget || e.clientY > 0) return;
-      if (Date.now() - loadedAt < MIN_TIME_ON_PAGE_MS) return;
+      if (e.relatedTarget || e.clientY > TOP_EDGE_PX) return;
+      if (visitAge() < MIN_VISIT_MS) return;
       show('mouse_leave');
     };
 
-    // Phones: a quick flick back up toward the top after reading for a while.
+    // Phones: a fast swipe back up the page. Only scrolls the visitor's finger
+    // made count, so a button that scrolls up to the form doesn't set it off.
+    const onTouchMove = () => { lastSwipe = Date.now(); };
     const onScroll = () => {
       const now = Date.now();
+      if (now - lastSwipe > 1000) { samples = []; return; }
       const y = window.scrollY;
-      const speed = (lastY - y) / Math.max(now - lastT, 1); // px per ms, up = positive
-      if (
-        now - loadedAt > MIN_TIME_FOR_SCROLL_TRIGGER_MS &&
-        lastY > 600 && speed > 1.2 && y < lastY - 250
-      ) {
-        show('scroll_up');
+      samples.push({ t: now, y });
+      samples = samples.filter(s => now - s.t <= SWIPE_WINDOW_MS);
+      const peak = Math.max(...samples.map(s => s.y));
+      if (peak > SWIPE_MIN_DEPTH_PX && peak - y > SWIPE_DISTANCE_PX && visitAge() > MIN_VISIT_FOR_SWIPE_MS) {
+        show('swipe_up');
       }
-      lastY = y;
-      lastT = now;
     };
 
+    // Any device: they went to another tab or app (or pressed home) and came
+    // back. Skipped if they had started typing in a form: they were likely
+    // looking something up to finish it.
+    const onVisibility = () => {
+      if (document.visibilityState === 'hidden') {
+        hiddenAt = visitAge() >= MIN_VISIT_MS && !formStarted ? Date.now() : 0;
+      } else {
+        if (hiddenAt && Date.now() - hiddenAt >= MIN_AWAY_MS) show('came_back');
+        hiddenAt = 0;
+      }
+    };
+
+    // Called, texted, emailed or opened the chat: no popup for this visit.
+    // Clicks inside the chat widget's shadow DOM reach the document with the
+    // <chat-widget> host as their target.
+    const onClick = e => {
+      if (!(e.target instanceof Element)) return;
+      if (e.target.closest('a[href^="tel:"], a[href^="sms:"], a[href^="mailto:"], chat-widget')) {
+        fired = true;
+        writeStore('sessionStorage', SEEN_KEY, '1');
+      }
+    };
+    const onFocusIn = e => {
+      if (e.target instanceof Element && e.target.matches('input, select, textarea')) formStarted = true;
+    };
+
+    const isPhone = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
     document.addEventListener('mouseout', onMouseOut);
-    window.addEventListener('scroll', onScroll, { passive: true });
+    document.addEventListener('visibilitychange', onVisibility);
+    document.addEventListener('click', onClick, true);
+    document.addEventListener('focusin', onFocusIn);
+    if (isPhone) {
+      window.addEventListener('touchmove', onTouchMove, { passive: true });
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
     return () => {
       document.removeEventListener('mouseout', onMouseOut);
+      document.removeEventListener('visibilitychange', onVisibility);
+      document.removeEventListener('click', onClick, true);
+      document.removeEventListener('focusin', onFocusIn);
+      window.removeEventListener('touchmove', onTouchMove);
       window.removeEventListener('scroll', onScroll);
     };
   }, [eligible, pathname]);
