@@ -27,8 +27,8 @@ End-of-session routine: update `brain/NOW.md`, append to `brain/LOG.md`, tick `T
 ## Rules (always)
 
 **Honesty in copy**
-- Never invent reviews, testimonials, certifications, statistics, response times, or financing. No stock faces with testimonials.
-- Confirmed claims: free inspections and written estimates; lifetime workmanship warranty on replacements; licensed, insured and bonded; in business since 2020; based in Goodlettsville; photos of storm damage and can meet the adjuster on-site; answers the phone 24/7; installs Owens Corning and GAF shingles.
+- Never invent reviews, testimonials, certifications, statistics, response times, or financing rates/terms. No stock faces with testimonials.
+- Confirmed claims: free inspections and written estimates; lifetime workmanship warranty on replacements; licensed, insured and bonded; in business since 2020; based in Goodlettsville; photos of storm damage and can meet the adjuster on-site; answers the phone 24/7; installs Owens Corning and GAF shingles; offers financing options (Brandon, 2026-11-10; never quote rates, terms, approval odds or a lender: the team reviews them with the written estimate).
 - Owens Corning: Stellar is **not** a credentialed/Preferred contractor. Use "Owens Corning®" on first mention with the independent-contractor disclaimer nearby. The OC logo must be used exactly as supplied (waiting on the artwork file).
 - The offer is price **match** (apples to apples), never "beat". Free gutters and the Dog Oasis dog day apply to retail (non-insurance) replacements; keep them out of storm/insurance ads and pages.
 
