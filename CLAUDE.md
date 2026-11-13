@@ -30,7 +30,7 @@ End-of-session routine: update `brain/NOW.md`, append to `brain/LOG.md`, tick `T
 - Never invent reviews, testimonials, certifications, statistics, response times, or financing rates/terms. No stock faces with testimonials.
 - Confirmed claims: free inspections and written estimates; lifetime workmanship warranty on replacements; licensed, insured and bonded; in business since 2020; based in Goodlettsville; photos of storm damage and can meet the adjuster on-site; answers the phone 24/7; installs Owens Corning and GAF shingles; offers financing options (Brandon, 2026-11-10; never quote rates, terms, approval odds or a lender: the team reviews them with the written estimate).
 - Owens Corning: Stellar is **not** a credentialed/Preferred contractor. Use "Owens Corning®" on first mention with the independent-contractor disclaimer nearby. The OC logo must be used exactly as supplied (waiting on the artwork file).
-- The offer is price **match** (apples to apples), never "beat". Free gutters and the Dog Oasis dog day apply to retail (non-insurance) replacements; keep them out of storm/insurance ads and pages.
+- The offer is price **match** on a true apples-to-apples written quote, **plus beat it by $250** (Brandon, 2026-11-12, from Nate's video IMG_1363; it replaced "match, never beat"). Always state the condition: same scope, same materials, written quote. Never promise to beat a quote that is not apples to apples, and never any other amount. Free gutters and the Dog Oasis dog day apply to retail (non-insurance) replacements; keep them out of storm/insurance ads and pages.
 
 **Money and accounts**
 - Google Ads and the funnel target **Nashville / Middle TN only**, never Boise.
