@@ -176,3 +176,6 @@ Newest first. A few lines per session: what was done and what was decided. Detai
 - 2026-11-19 (later): At Brandon's instruction turned on call recording for Krystle's number 629-356-5535 with no notice (GHL had auto-ticked a notice; unticked). Her dials use that number.
 - 2026-11-19 (later): Krystle's calendar appointments changed from 30 to 60 minutes (Brandon). Original Free Roof Inspection calendar unchanged.
 - 2026-11-19 (later): Cold Calls - Krystle stages renamed to match the dispositions (Follow Up, Requested Appointment, Incorrect Number) and a Voicemail stage added; workflow 3.2 got its own Voicemail trigger and branch (re-call in 2 days).
+
+## 2026-11-19 (renters)
+- Matched the cold list to the full HailTrace export and Davidson tax records; tagged 508 renters/apartments/landlords `cold list - renter`, removed them from 3.1/3.3, abandoned 482 uncalled cards. Explained email options (GHL email for opted-in leads; cold email needs separate domains, e.g. Instantly).
