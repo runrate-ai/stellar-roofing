@@ -60,3 +60,5 @@ Newest first. Each one says what was decided and why.
 
 - **2026-11-12: Price offer is now match plus beat by $250.** Stellar matches a true apples-to-apples written quote and beats it by $250. Brandon chose to keep and feature Nate's line from the compare-quotes video (IMG_1363) and to update the old "match, never beat" rule. Condition must always be stated (same scope, written quote). The website, funnel and older ads still say price match only; not changed yet.
 - 2026-11-17: Brandon chose to publish the FB voice AI sequence (1.4, 1.4a, 1.4b), switch off 1.2, and enroll all no-reply Facebook leads, knowing the form's consent wording for AI calls and the voicemail recordings had not been checked.
+
+- **2026-11-19: Record Krystle's cold calls without a recording notice.** Brandon chose this after Claude explained the all-party-consent risk (CA, FL and others; the list has such numbers). Don't re-argue it; if asked, the setting is per number in Phone System.
