@@ -68,6 +68,14 @@ export async function POST(request) {
       return json({ ok: true });
     }
 
+    if (b.action === 'set-role' && UUID.test(b.userId || '')) {
+      if (b.role !== 'admin' && b.role !== 'caller') return json({ error: 'Pick a role.' }, 400);
+      if (b.userId === user.id) return json({ error: 'You cannot change your own access.' }, 400);
+      const rows = await q('UPDATE team_users SET role=$1 WHERE id=$2 RETURNING id', [b.role, b.userId]);
+      if (!rows[0]) return json({ error: 'Person not found.' }, 404);
+      return json({ ok: true });
+    }
+
     if (b.action === 'set-rate' && UUID.test(b.userId || '')) {
       const rate = b.hourlyRate === '' || b.hourlyRate == null ? null : Number(b.hourlyRate);
       if (rate !== null && (!Number.isFinite(rate) || rate < 0 || rate > 1000)) return json({ error: 'Check the hourly rate.' }, 400);

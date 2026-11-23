@@ -253,7 +253,7 @@ function PersonWeek({ person, onEdit }) {
   );
 }
 
-function TeamSetup({ users, presets, reload }) {
+function TeamSetup({ me, users, presets, reload }) {
   const [f, setF] = useState({ preset: '', name: '', username: '', role: 'caller', hourlyRate: '' });
   const [credential, setCredential] = useState(null);
   const [error, setError] = useState('');
@@ -282,19 +282,21 @@ function TeamSetup({ users, presets, reload }) {
       <ul className="divide-y divide-slate-100">
         {users.map((u) => (
           <li key={u.id} className="flex flex-wrap items-center justify-between gap-2 py-2.5 text-sm">
-            <span><span className="font-semibold">{u.name}</span> <span className="text-text-muted">@{u.username}, {u.role === 'admin' ? 'owner/admin' : 'caller'}{u.active ? '' : ', off'}</span></span>
+            <span><span className="font-semibold">{u.name}</span> <span className="text-text-muted">@{u.username}, {u.role === 'admin' ? 'admin' : 'caller'}{u.active ? '' : ', off'}</span></span>
             <span className="flex flex-wrap items-center gap-2">
               <label className="flex items-center gap-1 text-text-muted">$/hr<input aria-label={`${u.name} hourly rate`} className="w-20 rounded border border-slate-300 px-2 py-1.5" type="number" min="0" step="0.01" defaultValue={u.hourly_rate ?? ''} onBlur={(e) => { if (e.target.value !== String(u.hourly_rate ?? '')) run({ action: 'set-rate', userId: u.id, hourlyRate: e.target.value }); }} /></label>
+              {u.id !== me.id && <button type="button" className={quietBtn} onClick={() => run({ action: 'set-role', userId: u.id, role: u.role === 'admin' ? 'caller' : 'admin' })}>{u.role === 'admin' ? 'Remove admin' : 'Make admin'}</button>}
               <button type="button" className={quietBtn} onClick={() => run({ action: 'reset-password', userId: u.id })}>Reset password</button>
-              <button type="button" className={quietBtn} onClick={() => run({ action: 'set-active', userId: u.id, active: !u.active })}>{u.active ? 'Turn off' : 'Turn on'}</button>
+              {u.id !== me.id && <button type="button" className={quietBtn} onClick={() => run({ action: 'set-active', userId: u.id, active: !u.active })}>{u.active ? 'Turn off' : 'Turn on'}</button>}
             </span>
           </li>
         ))}
       </ul>
-      <form onSubmit={add} className="mt-4 grid gap-3 border-t border-slate-200 pt-4 sm:grid-cols-5">
+      <form onSubmit={add} className="mt-4 grid gap-3 border-t border-slate-200 pt-4 sm:grid-cols-3 lg:grid-cols-6">
         <Field label="Add"><select className={input} value={f.preset} onChange={set('preset')}><option value="">Someone else</option>{available.map((p) => <option key={p.key} value={p.key}>{p.name}</option>)}</select></Field>
         {!f.preset && <Field label="Name"><input className={input} required onChange={set('name')} value={f.name} /></Field>}
         {!f.preset && <Field label="Username"><input className={input} required autoCapitalize="none" onChange={set('username')} value={f.username} /></Field>}
+        <Field label="Access"><select className={input} value={f.role} onChange={set('role')}><option value="caller">Caller</option><option value="admin">Admin</option></select></Field>
         <Field label="Hourly rate"><input className={input} type="number" min="0" step="0.01" onChange={set('hourlyRate')} value={f.hourlyRate} /></Field>
         <div className="flex items-end"><button type="submit" className={`${primaryBtn} w-full`}><Plus className="h-4 w-4" aria-hidden /> Add</button></div>
       </form>
@@ -336,7 +338,7 @@ function AdminView({ me, onLogout, week, onWeek }) {
         {data.report.people.map((p) => <PersonWeek key={p.id} person={p} onEdit={editShift} />)}
         {!data.report.people.length && <Card><p className="text-sm text-text-muted">Add your callers below to get started.</p></Card>}
         <p className="flex items-start gap-2 text-xs text-text-muted"><Phone className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden /> Calls come live from WAVV and the GHL dialer. For WAVV, Reached means a real person answered. For GHL, it can include voicemail pickups. On calls is connected time, including voicemails.</p>
-        <TeamSetup users={data.users} presets={data.presets} reload={load} />
+        <TeamSetup me={me} users={data.users} presets={data.presets} reload={load} />
       </>}
       {editor && data && <ShiftEditor editor={editor} people={data.users} onClose={() => setEditor(null)} onSaved={() => { setEditor(null); load(); }} />}
     </Shell>
