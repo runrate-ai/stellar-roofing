@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { DEFAULT_FUNNEL_SLUG } from './lib/funnels';
 import { FUNNEL_SUBDOMAIN } from './lib/funnel-host';
-import { isTeamHostname } from './lib/team/host';
+import { isTeamHostname, TEAM_URL } from './lib/team/host';
 
 // Maps the paid-traffic subdomain onto the funnel route tree, one path per
 // Google Ads ad group:
@@ -39,7 +39,15 @@ function teamResponse(request) {
 
 export function middleware(request) {
   const host = request.headers.get('host') || '';
-  if (isTeamHostname(host.split(':')[0])) return teamResponse(request);
+  const hostname = host.split(':')[0];
+  if (isTeamHostname(hostname)) return teamResponse(request);
+
+  // On the public domains the timesheet only exists at its own subdomain.
+  if (hostname === 'thestellarroofing.com' || hostname.endsWith('.thestellarroofing.com')) {
+    const path = request.nextUrl.pathname;
+    if (path === '/team' || path.startsWith('/team/')) return NextResponse.redirect(`${TEAM_URL}/`, 308);
+    if (path.startsWith('/api/team/')) return NextResponse.json({ error: 'Not found.' }, { status: 404 });
+  }
   if (!host.startsWith(FUNNEL_SUBDOMAIN)) return NextResponse.next();
 
   const { pathname } = request.nextUrl;
