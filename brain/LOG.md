@@ -179,3 +179,6 @@ Newest first. A few lines per session: what was done and what was decided. Detai
 
 ## 2026-11-19 (renters)
 - Matched the cold list to the full HailTrace export and Davidson tax records; tagged 508 renters/apartments/landlords `cold list - renter`, removed them from 3.1/3.3, abandoned 482 uncalled cards. Explained email options (GHL email for opted-in leads; cold email needs separate domains, e.g. Instantly).
+
+## 2026-11-23 (Juan Carlos, Nashville list, WAVV)
+Cleaned the Nashville HailTrace tab to 18,277 verified homeowners with phones and started the GHL upload (tag `cold list - nashville`, owner Juan Carlos). Created his GHL user, gave him the paid WAVV seat, built the Nashville - Cold smart list and WAVV Call Board, put all 5 WAVV numbers in rotation on 3 lines. He loaded the first batch as a WAVV campaign. Made Nate's dropped-call message; Brandon still has to upload it to WAVV. Decided: cold email tools compared only (ListKit not used, Instantly still on hold).
