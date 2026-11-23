@@ -1,6 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 import { metaTrack } from './funnel/tracking';
+import { isTeamPage } from '../lib/team/host';
 
 // Extra Meta Pixel events for retargeting audiences, each sent at most once
 // per browser session:
@@ -22,7 +23,7 @@ function oncePerSession(key, send) {
 
 export default function MetaEngagement() {
   useEffect(() => {
-    if (/^\/team(\/|$)/.test(window.location.pathname)) return undefined;
+    if (isTeamPage(window.location)) return undefined;
     const engaged = () => oncePerSession('metaEngagedVisit', () => metaTrack('EngagedVisit', {}, undefined, 'trackCustom'));
 
     // Time on site: count 5-second ticks only while the tab is visible.

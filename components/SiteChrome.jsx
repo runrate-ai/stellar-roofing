@@ -6,6 +6,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import MobileCTABar from './MobileCTABar';
 import { isFunnelHostname } from '../lib/funnel-host';
+import { isTeamHostname } from '../lib/team/host';
 import { pushDataLayer } from './funnel/tracking';
 
 // Paid-traffic funnel routes render without site chrome: no nav, no footer,
@@ -23,7 +24,7 @@ function useIsFunnel() {
   if (pathname?.startsWith(FUNNEL_PREFIX)) return true;
   // The private team timesheet also renders without site chrome.
   if (pathname === '/team' || pathname?.startsWith('/team/')) return true;
-  if (typeof window !== 'undefined' && isFunnelHostname(window.location.hostname)) return true;
+  if (typeof window !== 'undefined' && (isFunnelHostname(window.location.hostname) || isTeamHostname(window.location.hostname))) return true;
   return false;
 }
 

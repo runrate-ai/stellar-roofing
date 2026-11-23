@@ -277,7 +277,7 @@ function TeamSetup({ users, presets, reload }) {
       <ErrorText>{error}</ErrorText>
       {credential && <div role="status" className="mb-3 rounded-lg bg-emerald-50 p-3 text-sm text-emerald-900">
         <p className="font-semibold">Send this login privately. It only shows once.</p>
-        <p className="mt-1">Page: <code>/team</code></p><p>Username: <code>{credential.username}</code></p><p>Temporary password: <code className="select-all font-bold">{credential.temporaryPassword}</code></p>
+        <p className="mt-1">Page: <code>team.thestellarroofing.com</code></p><p>Username: <code>{credential.username}</code></p><p>Temporary password: <code className="select-all font-bold">{credential.temporaryPassword}</code></p>
       </div>}
       <ul className="divide-y divide-slate-100">
         {users.map((u) => (

@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { X, ShieldCheck, ClipboardCheck, Scale } from 'lucide-react';
 import SiteLeadForm from './SiteLeadForm';
 import { isFunnelHostname } from '../lib/funnel-host';
+import { isTeamHostname } from '../lib/team/host';
 import { pushDataLayer } from './funnel/tracking';
 
 // "Wait, before you go" popup for the Nashville main site. Shows once per
@@ -63,7 +64,7 @@ export default function ExitIntentPopup() {
   const eligible =
     !SKIP_EXACT.includes(pathname) &&
     !SKIP_PREFIXES.some(prefix => pathname === prefix || pathname.startsWith(`${prefix}/`)) &&
-    !(typeof window !== 'undefined' && isFunnelHostname(window.location.hostname));
+    !(typeof window !== 'undefined' && (isFunnelHostname(window.location.hostname) || isTeamHostname(window.location.hostname)));
 
   const close = useCallback((reason) => {
     setOpen(false);

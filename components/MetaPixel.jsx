@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Script from 'next/script';
 import config from '../lib/config';
+import { isTeamPage } from '../lib/team/host';
 
 // Meta Pixel for the "Stellar Roofing || Owned" dataset (Stellar's own, not the
 // agency's). It loads only on the live domains, so local development never
@@ -19,7 +20,7 @@ export default function MetaPixel() {
 
   useEffect(() => {
     // The private team timesheet is never tracked.
-    setLive(LIVE_HOSTS.includes(window.location.hostname) && !/^\/team(\/|$)/.test(window.location.pathname));
+    setLive(LIVE_HOSTS.includes(window.location.hostname) && !isTeamPage(window.location));
   }, []);
 
   useEffect(() => {

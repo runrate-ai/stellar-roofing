@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { DEFAULT_FUNNEL_SLUG } from './lib/funnels';
 import { FUNNEL_SUBDOMAIN } from './lib/funnel-host';
+import { isTeamHostname } from './lib/team/host';
 
 // Maps the paid-traffic subdomain onto the funnel route tree, one path per
 // Google Ads ad group:
@@ -16,8 +17,29 @@ import { FUNNEL_SUBDOMAIN } from './lib/funnel-host';
 // SiteChrome so the rewrite and the chrome-stripping can't drift apart.
 const FUNNEL_ROOT = '/lp';
 
+// team.thestellarroofing.com serves the private timesheet and nothing else.
+function teamResponse(request) {
+  const { pathname } = request.nextUrl;
+  let response;
+  if (pathname.startsWith('/api/team/')) {
+    response = NextResponse.next();
+  } else if (pathname.startsWith('/api')) {
+    response = NextResponse.json({ error: 'Not found.' }, { status: 404 });
+  } else if (pathname === '/') {
+    const url = request.nextUrl.clone();
+    url.pathname = '/team';
+    response = NextResponse.rewrite(url);
+  } else {
+    const proto = request.headers.get('x-forwarded-proto') || request.nextUrl.protocol.replace(':', '');
+    response = NextResponse.redirect(`${proto}://${request.headers.get('host')}/`);
+  }
+  response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+  return response;
+}
+
 export function middleware(request) {
   const host = request.headers.get('host') || '';
+  if (isTeamHostname(host.split(':')[0])) return teamResponse(request);
   if (!host.startsWith(FUNNEL_SUBDOMAIN)) return NextResponse.next();
 
   const { pathname } = request.nextUrl;

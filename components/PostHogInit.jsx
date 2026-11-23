@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import posthog from 'posthog-js';
 import config from '../lib/config';
+import { isTeamPage } from '../lib/team/host';
 
 // PostHog: page views, clicks, and session recordings for the funnel and the
 // main site. Everything typed into a field is masked in recordings, so names,
@@ -10,7 +11,7 @@ export default function PostHogInit() {
   useEffect(() => {
     const { key, host } = config.analytics.posthog;
     // Never record the private team timesheet.
-    if (/^\/team(\/|$)/.test(window.location.pathname)) return;
+    if (isTeamPage(window.location)) return;
     if (!key || posthog.__loaded) return;
     posthog.init(key, {
       api_host: host,
