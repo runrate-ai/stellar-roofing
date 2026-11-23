@@ -22,6 +22,7 @@ function oncePerSession(key, send) {
 
 export default function MetaEngagement() {
   useEffect(() => {
+    if (/^\/team(\/|$)/.test(window.location.pathname)) return undefined;
     const engaged = () => oncePerSession('metaEngagedVisit', () => metaTrack('EngagedVisit', {}, undefined, 'trackCustom'));
 
     // Time on site: count 5-second ticks only while the tab is visible.

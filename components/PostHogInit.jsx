@@ -9,6 +9,8 @@ import config from '../lib/config';
 export default function PostHogInit() {
   useEffect(() => {
     const { key, host } = config.analytics.posthog;
+    // Never record the private team timesheet.
+    if (/^\/team(\/|$)/.test(window.location.pathname)) return;
     if (!key || posthog.__loaded) return;
     posthog.init(key, {
       api_host: host,

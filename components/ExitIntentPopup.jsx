@@ -35,7 +35,7 @@ const SWIPE_DISTANCE_PX = 500; // 500px up within 300ms is a flick, not reading
 const SWIPE_MIN_DEPTH_PX = 800;
 
 // Pages that already are the form, a thank-you, or legal text.
-const SKIP_PREFIXES = ['/boise', '/lp', '/thank-you', '/free-inspection', '/contact', '/privacy-policy', '/terms-and-conditions'];
+const SKIP_PREFIXES = ['/team', '/boise', '/lp', '/thank-you', '/free-inspection', '/contact', '/privacy-policy', '/terms-and-conditions'];
 // The brand homepage serves Nashville and Boise visitors, and the popup's copy
 // is for Goodlettsville. Exact match only: every other page stays eligible.
 const SKIP_EXACT = ['/'];

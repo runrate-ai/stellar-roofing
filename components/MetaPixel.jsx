@@ -18,7 +18,8 @@ export default function MetaPixel() {
   const [live, setLive] = useState(false);
 
   useEffect(() => {
-    setLive(LIVE_HOSTS.includes(window.location.hostname));
+    // The private team timesheet is never tracked.
+    setLive(LIVE_HOSTS.includes(window.location.hostname) && !/^\/team(\/|$)/.test(window.location.pathname));
   }, []);
 
   useEffect(() => {
