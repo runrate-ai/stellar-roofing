@@ -64,3 +64,5 @@ Newest first. Each one says what was decided and why.
 - **2026-11-19: Record Krystle's cold calls without a recording notice.** Brandon chose this after Claude explained the all-party-consent risk (CA, FL and others; the list has such numbers). Don't re-argue it; if asked, the setting is per number in Phone System.
 
 - **2026-11-23: Juan Carlos dials only through WAVV.** His GHL phone calls show the main number (629) 356-4290, so callbacks miss him. Brandon chose WAVV only over buying him a GHL number.
+
+- **2026-11-23: Cold-call callbacks ring the caller Mon-Sat 9-6 Central; otherwise voicemail.** Brandon chose hours plus voicemail over forwarding to personal cell phones.

@@ -190,3 +190,7 @@ Nashville upload finished: 18,276 of 18,277 in GHL, owned by Juan Carlos (1 row 
 ## 2026-11-23 (cold call callbacks)
 
 Checked where callbacks go. Krystle's number rings Krystle. Juan Carlos's WAVV callbacks return to WAVV, but most end in voicemail. His 3 GHL phone calls used the main number, and one person called it back. Brandon chose WAVV only for Juan Carlos. No GHL or WAVV settings changed; no live callback tested.
+
+## 2026-11-23 (callback hours and voicemail)
+
+Recorded the callback greeting, added it in WAVV, and published GHL workflow 3.4 on Krystle's number for Mon-Sat 9-6 with voicemail. Main number unchanged. Live test calls still needed.
