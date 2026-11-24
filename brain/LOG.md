@@ -186,3 +186,7 @@ Cleaned the Nashville HailTrace tab to 18,277 verified homeowners with phones an
 ## 2026-11-23 (Nashville list, Juan Carlos, WAVV)
 
 Nashville upload finished: 18,276 of 18,277 in GHL, owned by Juan Carlos (1 row rejected). Live voicemail script written. Dialer still being sorted out; Brandon has a call with WAVV later today. Stopped at his request.
+
+## 2026-11-23 (cold call callbacks)
+
+Checked where callbacks go. Krystle's number rings Krystle. Juan Carlos's WAVV callbacks return to WAVV, but most end in voicemail. His 3 GHL phone calls used the main number, and one person called it back. Brandon chose WAVV only for Juan Carlos. No GHL or WAVV settings changed; no live callback tested.

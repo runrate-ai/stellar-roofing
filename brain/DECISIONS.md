@@ -62,3 +62,5 @@ Newest first. Each one says what was decided and why.
 - 2026-11-17: Brandon chose to publish the FB voice AI sequence (1.4, 1.4a, 1.4b), switch off 1.2, and enroll all no-reply Facebook leads, knowing the form's consent wording for AI calls and the voicemail recordings had not been checked.
 
 - **2026-11-19: Record Krystle's cold calls without a recording notice.** Brandon chose this after Claude explained the all-party-consent risk (CA, FL and others; the list has such numbers). Don't re-argue it; if asked, the setting is per number in Phone System.
+
+- **2026-11-23: Juan Carlos dials only through WAVV.** His GHL phone calls show the main number (629) 356-4290, so callbacks miss him. Brandon chose WAVV only over buying him a GHL number.
