@@ -93,4 +93,4 @@ The project sits on the iCloud-synced Desktop, and macOS offloads its files. Sym
 - URL: https://team.thestellarroofing.com (private, noindex, no site trackers). Code: `app/team`, `app/api/team`, `components/team`, `lib/team`, routing in `middleware.js`.
 - Database: Neon `stellar-team`, Free plan, via Vercel (`DATABASE_URL`).
 - Vercel production env names: `WAVV_API_KEY`, `TEAM_GHL_TOKEN`, `TEAM_SETUP_CODE`. WAVV API docs: https://docs.wavv.com/
-- WAVV MCP: `https://app.wavv.com/api/v3/mcp`, in this project local Claude config, needs sign-in.
+- WAVV MCP: `https://app.wavv.com/api/v3/mcp`, in this project local Claude config, signed in as Brandon (Owner) and checked 2026-11-23 with read-only calls. Keep it read-only unless Brandon asks. WAVV reports this login's time zone as America/New_York, so pass America/Chicago on reports.
