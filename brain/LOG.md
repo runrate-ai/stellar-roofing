@@ -231,3 +231,6 @@ Published the call accuracy update: late GHL calls rechecked, 30-second calls, l
 
 ## 2026-11-24 (timesheet entries)
 - Entered Krystle's Thu/Fri/Mon hours (Central, matched to her calls) and moved today's clock-ins (Krystle 10 AM, Juan Carlos 8 AM CT). Done button now instant; all times labelled Central (`cc8ab0e`, live).
+
+## 2026-11-24 (timesheet month view)
+- Start dates (Juan Nov 23, Krystle Nov 19), Week/Month switch with payroll summary by work week, overtime over 40, calendar, payroll CSV, Only days worked toggle (`d49d473`, live). Caller est. pay built but off in production (`TEAM_SHOW_CALLER_PAY`).
