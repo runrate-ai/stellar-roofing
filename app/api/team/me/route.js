@@ -21,6 +21,13 @@ export async function GET(request) {
     const asked = params.get('week');
     const week = validDay(asked) ? mondayOf(asked) : mondayOf(centralDay());
     const report = await weekReport(week, user.id, { refresh: params.get('refresh') === '1' });
+    // Pay stays hidden from callers until TEAM_SHOW_CALLER_PAY=on is set.
+    const showPay = process.env.TEAM_SHOW_CALLER_PAY === 'on';
+    me.showPay = showPay;
+    for (const p of report.people) {
+      if (!showPay) { p.hourlyRate = null; p.estimatedPay = null; p.weeks.forEach((w) => { w.estimatedPay = null; }); }
+      p.days.forEach((d) => { if (d.paidOverride) d.paidOverride = { set: true }; });
+    }
     const requests = await q(`SELECT id, work_day::text AS day, note, status FROM team_fix_requests WHERE user_id=$1 ORDER BY created_at DESC LIMIT 5`, [user.id]);
     return json({ user: me, status: await clockStatus(user.id), report, requests, serverNow: new Date().toISOString() });
   } catch (err) {

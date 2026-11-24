@@ -1,6 +1,6 @@
 import { currentUser, failure, json } from '../../../../lib/team/auth';
-import { weekReport } from '../../../../lib/team/store';
-import { centralDay, formatTime, mondayOf, validDay } from '../../../../lib/team/time';
+import { monthReport, weekReport } from '../../../../lib/team/store';
+import { addDays, centralDay, formatTime, mondayOf, validDay } from '../../../../lib/team/time';
 
 export const dynamic = 'force-dynamic';
 // GHL can be slow; give background call refreshes room to finish.
@@ -12,13 +12,40 @@ function cell(value) {
   return `"${text.replace(/"/g, '""')}"`;
 }
 const hours = (seconds) => (seconds / 3600).toFixed(2);
+const money = (n) => (n === null || n === undefined ? '' : n.toFixed(2));
+const send = (lines, name) => new Response(lines.map((row) => row.map(cell).join(',')).join('\r\n'), { headers: {
+  'Content-Type': 'text/csv; charset=utf-8', 'Content-Disposition': `attachment; filename="${name}"`,
+  'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow',
+} });
+
+// Payroll file for a month: one line per person per work week, then each day.
+async function payroll(month) {
+  const report = await monthReport(month, { refresh: false });
+  const lines = [[`Stellar Roofing payroll, work weeks ending in ${month} (Monday to Sunday, Central time). Overtime = paid hours over 40 in a week at 1.5x. Gross is an estimate before taxes.`], [],
+    ['Employee', 'Week start', 'Week end', 'Days worked', 'Regular hours', 'Overtime hours', 'Total paid hours', 'Hourly rate', 'Estimated gross']];
+  for (const p of report.people) {
+    for (const w of p.weeks) lines.push([p.name, w.monday, w.ending, w.daysWorked, hours(w.regularSeconds), hours(w.overtimeSeconds), hours(w.paidSeconds), money(p.hourlyRate), money(w.estimatedPay)]);
+    lines.push([`${p.name} total`, report.mondays[0], addDays(report.mondays[report.mondays.length - 1], 6), p.daysWorked, hours(p.regularSeconds), hours(p.overtimeSeconds), hours(p.totalSeconds), money(p.hourlyRate), money(p.estimatedPay)]);
+  }
+  lines.push([], ['Daily detail'], ['Employee', 'Date', 'Clock in (CT)', 'Clock out (CT)', 'Break hours', 'Clocked hours', 'Paid hours', 'Paid hours set by hand']);
+  for (const p of report.people) {
+    for (const d of p.days.filter((x) => x.workedSeconds > 0 || x.shifts.length)) {
+      lines.push([p.name, d.day, d.shifts.map((x) => formatTime(x.clockIn)).join(' / '), d.shifts.map((x) => (x.clockOut ? formatTime(x.clockOut) : 'still on clock')).join(' / '),
+        hours(d.shifts.reduce((n, x) => n + x.breakSeconds, 0)), hours(d.clockedSeconds), hours(d.workedSeconds), d.paidOverride ? `yes: ${d.paidOverride.reason}` : '']);
+    }
+  }
+  return send(lines, `stellar-payroll-${month}.csv`);
+}
 
 export async function GET(request) {
   try {
     const user = await currentUser();
     if (!user) return json({ error: 'Please log in.' }, 401);
     if (user.role !== 'admin' || user.must_change) return json({ error: 'Not allowed.' }, 403);
-    const asked = new URL(request.url).searchParams.get('week');
+    const params = new URL(request.url).searchParams;
+    const month = params.get('month');
+    if (/^\d{4}-(0[1-9]|1[0-2])$/.test(month || '')) return await payroll(month);
+    const asked = params.get('week');
     const week = validDay(asked) ? mondayOf(asked) : mondayOf(centralDay());
     const report = await weekReport(week);
     const lines = [['Person', 'Day', 'Clock in (CT)', 'Clock out (CT)', 'Break hours', 'Clocked hours', 'Edited', 'Paid hours that day', 'Paid hours set by hand', 'Working hours (from calls)', 'Dials that day', 'Reached that day', 'Calls 1 min+', 'Time on calls (hours)']];
