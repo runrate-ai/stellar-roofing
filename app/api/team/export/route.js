@@ -21,11 +21,11 @@ const send = (lines, name) => new Response(lines.map((row) => row.map(cell).join
 // Payroll file for a month: one line per person per work week, then each day.
 async function payroll(month) {
   const report = await monthReport(month, { refresh: false });
-  const lines = [[`Stellar Roofing payroll, work weeks ending in ${month} (Monday to Sunday, Central time). Overtime = paid hours over 40 in a week at 1.5x. Gross is an estimate before taxes.`], [],
-    ['Employee', 'Week start', 'Week end', 'Days worked', 'Regular hours', 'Overtime hours', 'Total paid hours', 'Hourly rate', 'Estimated gross']];
+  const lines = [[`Stellar Roofing payroll, work weeks ending in ${month} (Monday to Sunday, Central time). Pay = hourly rate x paid hours.`], [],
+    ['Employee', 'Week start', 'Week end', 'Days worked', 'Paid hours', 'Hourly rate', 'Pay']];
   for (const p of report.people) {
-    for (const w of p.weeks) lines.push([p.name, w.monday, w.ending, w.daysWorked, hours(w.regularSeconds), hours(w.overtimeSeconds), hours(w.paidSeconds), money(p.hourlyRate), money(w.estimatedPay)]);
-    lines.push([`${p.name} total`, report.mondays[0], addDays(report.mondays[report.mondays.length - 1], 6), p.daysWorked, hours(p.regularSeconds), hours(p.overtimeSeconds), hours(p.totalSeconds), money(p.hourlyRate), money(p.estimatedPay)]);
+    for (const w of p.weeks) lines.push([p.name, w.monday, w.ending, w.daysWorked, hours(w.paidSeconds), money(p.hourlyRate), money(w.estimatedPay)]);
+    lines.push([`${p.name} total`, report.mondays[0], addDays(report.mondays[report.mondays.length - 1], 6), p.daysWorked, hours(p.totalSeconds), money(p.hourlyRate), money(p.estimatedPay)]);
   }
   lines.push([], ['Daily detail'], ['Employee', 'Date', 'Clock in (CT)', 'Clock out (CT)', 'Break hours', 'Clocked hours', 'Paid hours', 'Paid hours set by hand']);
   for (const p of report.people) {

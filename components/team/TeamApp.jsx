@@ -186,7 +186,7 @@ function MonthView({ report, month, onOpenWeek }) {
   const dayOf = (p, day) => p.days.find((d) => d.day === day);
   const inMonth = (day) => day.slice(0, 7) === month;
   const sum = (field) => people.reduce((n, p) => n + (p[field] || 0), 0);
-  const gross = people.every((p) => p.estimatedPay === null) ? null : people.reduce((n, p) => n + (p.estimatedPay || 0), 0);
+  const total = people.every((p) => p.estimatedPay === null) ? null : people.reduce((n, p) => n + (p.estimatedPay || 0), 0);
   const end = addDays(report.mondays[report.mondays.length - 1], 6);
   return (
     <>
@@ -197,22 +197,20 @@ function MonthView({ report, month, onOpenWeek }) {
           {people.map((p) => (
             <li key={p.id} className="rounded-lg bg-bg-alt p-3 text-sm">
               <div className="flex items-baseline justify-between gap-2"><span className="font-semibold text-text-dark">{p.name.split(' ').slice(0, 2).join(' ')}</span><span className="text-lg font-bold tabular-nums text-primary">{hrs(p.totalSeconds)} hrs</span></div>
-              <p className="mt-1 text-text-muted">{p.daysWorked} days, {hrs(p.regularSeconds)} regular, <span className={p.overtimeSeconds ? 'text-red-700' : ''}>{hrs(p.overtimeSeconds)} overtime</span></p>
-              <p className="text-text-muted">Est. gross: <span className="font-semibold text-text-dark">{money(p.estimatedPay)}</span>{p.hourlyRate !== null && ` at $${p.hourlyRate.toFixed(2)}/hr`}</p>
+              <p className="mt-1 text-text-muted">{p.daysWorked} days worked</p>
+              <p className="text-text-muted">Pay: <span className="font-semibold text-text-dark">{money(p.estimatedPay)}</span>{p.hourlyRate !== null && ` at $${p.hourlyRate.toFixed(2)}/hr`}</p>
               {p.weeks.map((w) => <button key={w.monday} type="button" onClick={() => onOpenWeek(w.monday)} className="mt-1 flex w-full justify-between text-left text-xs text-text-muted"><span>Week of {formatDay(w.monday).replace(/^\w+, /, '')}</span><span className="tabular-nums">{hrs(w.paidSeconds)} hrs</span></button>)}
             </li>
           ))}
         </ul>}
         {people.length > 0 && <div className="hidden overflow-x-auto md:block">
           <table className="w-full min-w-[720px] text-left text-sm">
-            <thead className="text-xs text-text-muted"><tr><th className="py-2 pr-3 font-medium">Employee</th><th className="pr-3 text-right font-medium">Days worked</th><th className="pr-3 text-right font-medium">Regular hrs</th><th className="pr-3 text-right font-medium">Overtime hrs</th><th className="pr-3 text-right font-medium">Total paid hrs</th><th className="pr-3 text-right font-medium">Rate</th><th className="text-right font-medium">Est. gross</th></tr></thead>
+            <thead className="text-xs text-text-muted"><tr><th className="py-2 pr-3 font-medium">Employee</th><th className="pr-3 text-right font-medium">Days worked</th><th className="pr-3 text-right font-medium">Paid hours</th><th className="pr-3 text-right font-medium">Rate</th><th className="text-right font-medium">Pay</th></tr></thead>
             <tbody>
               {people.map((p) => [
                 <tr key={p.id} className="border-t border-slate-200 font-semibold text-text-dark">
                   <td className="py-2 pr-3">{p.name}{p.startDate && p.startDate > report.mondays[0] && <span className="ml-2 text-xs font-normal text-text-muted">started {formatDay(p.startDate)}</span>}</td>
                   <td className="pr-3 text-right tabular-nums">{p.daysWorked}</td>
-                  <td className="pr-3 text-right tabular-nums">{hrs(p.regularSeconds)}</td>
-                  <td className={`pr-3 text-right tabular-nums ${p.overtimeSeconds ? 'text-red-700' : ''}`}>{hrs(p.overtimeSeconds)}</td>
                   <td className="pr-3 text-right tabular-nums text-primary">{hrs(p.totalSeconds)}</td>
                   <td className="pr-3 text-right tabular-nums">{p.hourlyRate === null ? 'No rate' : `$${p.hourlyRate.toFixed(2)}`}</td>
                   <td className="text-right tabular-nums">{money(p.estimatedPay)}</td>
@@ -221,8 +219,6 @@ function MonthView({ report, month, onOpenWeek }) {
                   <tr key={`${p.id}-${w.monday}`} className="text-text-muted">
                     <td className="py-1.5 pl-4 pr-3"><button type="button" className="underline-offset-2 hover:text-primary hover:underline" onClick={() => onOpenWeek(w.monday)}>Week of {formatDay(w.monday).replace(/^\w+, /, '')} to {formatDay(w.ending).replace(/^\w+, /, '')}</button></td>
                     <td className="pr-3 text-right tabular-nums">{w.daysWorked}</td>
-                    <td className="pr-3 text-right tabular-nums">{hrs(w.regularSeconds)}</td>
-                    <td className={`pr-3 text-right tabular-nums ${w.overtimeSeconds ? 'text-red-700' : ''}`}>{hrs(w.overtimeSeconds)}</td>
                     <td className="pr-3 text-right tabular-nums">{hrs(w.paidSeconds)}</td>
                     <td />
                     <td className="text-right tabular-nums">{w.estimatedPay === null ? '' : `$${w.estimatedPay.toFixed(2)}`}</td>
@@ -230,10 +226,10 @@ function MonthView({ report, month, onOpenWeek }) {
                 )),
               ])}
             </tbody>
-            {people.length > 1 && <tfoot><tr className="border-t-2 border-slate-300 font-bold text-primary"><td className="py-2 pr-3">Total</td><td className="pr-3 text-right tabular-nums">{sum('daysWorked')}</td><td className="pr-3 text-right tabular-nums">{hrs(sum('regularSeconds'))}</td><td className="pr-3 text-right tabular-nums">{hrs(sum('overtimeSeconds'))}</td><td className="pr-3 text-right tabular-nums">{hrs(sum('totalSeconds'))}</td><td /><td className="text-right tabular-nums">{gross === null ? '' : `$${gross.toFixed(2)}`}</td></tr></tfoot>}
+            {people.length > 1 && <tfoot><tr className="border-t-2 border-slate-300 font-bold text-primary"><td className="py-2 pr-3">Total</td><td className="pr-3 text-right tabular-nums">{sum('daysWorked')}</td><td className="pr-3 text-right tabular-nums">{hrs(sum('totalSeconds'))}</td><td /><td className="text-right tabular-nums">{total === null ? '' : `$${total.toFixed(2)}`}</td></tr></tfoot>}
           </table>
         </div>}
-        <p className="mt-3 text-xs text-text-muted">Overtime is paid hours over 40 in one work week, at 1.5 times the rate. Est. gross is before taxes. Paid hours are the clocked hours, or the hours set by hand for a day.</p>
+        <p className="mt-3 text-xs text-text-muted">Pay = hourly rate × paid hours. Paid hours are the clocked hours, or the hours set by hand for a day.</p>
       </Card>
 
       <Card title="Calendar">
@@ -254,7 +250,7 @@ function MonthView({ report, month, onOpenWeek }) {
                 );
               }),
               <div key={`${monday}-total`} className="bg-white p-2">
-                {people.map((p) => { const w = p.weeks.find((x) => x.monday === monday); return w ? <span key={p.id} className="mt-1 flex justify-between gap-1 text-xs"><span className="truncate text-text-muted">{people.length > 1 ? first(p.name) : 'Paid'}</span><span className={`font-semibold tabular-nums ${w.overtimeSeconds ? 'text-red-700' : 'text-primary'}`}>{hrs(w.paidSeconds)}</span></span> : null; })}
+                {people.map((p) => { const w = p.weeks.find((x) => x.monday === monday); return w ? <span key={p.id} className="mt-1 flex justify-between gap-1 text-xs"><span className="truncate text-text-muted">{people.length > 1 ? first(p.name) : 'Paid'}</span><span className={`font-semibold tabular-nums text-primary`}>{hrs(w.paidSeconds)}</span></span> : null; })}
               </div>,
             ])}
           </div>
@@ -323,11 +319,11 @@ function CallerView({ data, reload, week, onWeek, onLogout, onBack }) {
       <Card title="My hours">
         <WeekNav week={week} onWeek={onWeek} />
         <dl className={`mt-3 grid gap-3 ${data.user.showPay ? 'grid-cols-3' : 'grid-cols-2'}`}>
-          {[['Paid hours', formatHours(person?.totalSeconds)], ['Days worked', person?.daysWorked ?? 0], ...(data.user.showPay ? [['Est. pay', person?.hourlyRate == null ? 'Not set' : money(person.estimatedPay)]] : [])].map(([k, v]) => (
+          {[['Paid hours', formatHours(person?.totalSeconds)], ['Days worked', person?.daysWorked ?? 0], ...(data.user.showPay ? [['Pay', person?.hourlyRate == null ? 'Not set' : money(person.estimatedPay)]] : [])].map(([k, v]) => (
             <div key={k} className="rounded-lg bg-bg-alt p-3"><dt className="text-xs text-text-muted">{k}</dt><dd className="text-lg font-bold tabular-nums text-primary">{v}</dd></div>
           ))}
         </dl>
-        {data.user.showPay && person?.hourlyRate != null && <p className="mt-2 text-xs text-text-muted">Estimate at ${person.hourlyRate.toFixed(2)}/hr before taxes{person.overtimeSeconds ? ', with overtime over 40 hours at 1.5x' : ''}. Final pay may differ.</p>}
+        {data.user.showPay && person?.hourlyRate != null && <p className="mt-2 text-xs text-text-muted">${person.hourlyRate.toFixed(2)}/hr × paid hours.</p>}
         <ul className="mt-3 divide-y divide-slate-100">
           {(person?.days || []).filter(worked).map((d) => (
             <li key={d.day} className="py-2.5 text-sm">
@@ -412,7 +408,7 @@ function PersonWeek({ person, onEdit, onAdd, onPaid, onlyWorked }) {
   return (
     <Card title={person.name} action={<span className="inline-flex items-center gap-2 text-sm text-text-muted"><span className={`h-2.5 w-2.5 rounded-full ${dot}`} />{label}</span>}>
       <dl className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">
-        {[['Paid hours', formatHours(person.totalSeconds)], ['Working hours', formatHours(person.activeSeconds)], ['Clocked hours', formatHours(person.clockedSeconds)], ['Est. pay', money(person.estimatedPay)], ['Dials', person.totals.dials], ['Reached', person.totals.answered], ['Calls 1 min+', person.totals.conversations], ['Calls off the clock', person.totals.offClock]].map(([k, v]) => (
+        {[['Paid hours', formatHours(person.totalSeconds)], ['Working hours', formatHours(person.activeSeconds)], ['Clocked hours', formatHours(person.clockedSeconds)], ['Pay', money(person.estimatedPay)], ['Dials', person.totals.dials], ['Reached', person.totals.answered], ['Calls 1 min+', person.totals.conversations], ['Calls off the clock', person.totals.offClock]].map(([k, v]) => (
           <div key={k} className="rounded-lg bg-bg-alt p-3"><dt className="text-xs text-text-muted">{k}</dt><dd className="text-lg font-bold tabular-nums text-primary">{v}</dd></div>
         ))}
       </dl>
@@ -446,7 +442,6 @@ function PersonWeek({ person, onEdit, onAdd, onPaid, onlyWorked }) {
         </table>
       </div>}
       {!active.length && <p className="mt-3 text-sm text-text-muted">{onlyWorked ? 'No days worked this week. Turn off "Only days worked" to add hours.' : 'No shifts or calls this week.'}</p>}
-      {person.overtimeSeconds > 0 && <p className="mt-2 text-sm font-medium text-red-700">Overtime this week: {formatHours(person.overtimeSeconds)} over 40 hours (pay estimate includes 1.5x).</p>}
       <p className="mt-2 text-xs text-text-muted">Pencil next to Clocked changes clock times; pencil next to Paid sets the hours paid for that day. Working = first call to last call, leaving out any 15+ minute stretch with no dialing. Paid = clocked hours, or the hours you set for that day.</p>
     </Card>
   );
