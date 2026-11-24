@@ -210,3 +210,7 @@ Published the private Cold Call Report with calls and appointments for Krystle a
 ## 2026-11-23 (timesheet speed)
 
 Published faster login and saved call data for the timesheet. Live checks passed without a real logged-in account. The embedded report can still wait on a refresh; fix proposed.
+
+## 2026-11-23 (embedded report speed)
+
+Published saved-first loading for the GHL Cold Call Report. Live speed and security checks passed. Brandon still needs to confirm how it feels inside GHL.
