@@ -43,10 +43,10 @@ function Stat({ label, value, note }) {
   );
 }
 
-function Person({ person, showDays, unavailable }) {
+function Person({ person, showDays, unavailable, appointmentsOk }) {
   if (unavailable) {
     return (
-      <section className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+      <section className="min-w-0 rounded-xl border border-slate-200 bg-slate-50 p-4">
         <h2 className="text-lg font-bold text-[#0B1547]">{person.name}</h2>
         <p className="mt-3 rounded-lg bg-white p-3 text-sm text-slate-600">Unavailable right now. Refresh in a minute.</p>
       </section>
@@ -55,7 +55,7 @@ function Person({ person, showDays, unavailable }) {
   const t = person.totals;
   const single = person.rows.length === 1 ? person.rows[0].calls : null;
   return (
-    <section className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+    <section className="min-w-0 rounded-xl border border-slate-200 bg-slate-50 p-4">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h2 className="text-lg font-bold text-[#0B1547]">{person.name}</h2>
         <span className="text-xs text-slate-500">
@@ -65,6 +65,9 @@ function Person({ person, showDays, unavailable }) {
       <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
         <Stat label="Dials" value={number(t.dials)} />
         <Stat label="People reached" value={number(t.reached)} note={`${percent(t.reached, t.dials)} of dials`} />
+        <Stat label="Appointments booked" value={appointmentsOk ? number(t.appointments) : 'n/a'} note={appointmentsOk ? null : 'Calendar unavailable'} />
+        <Stat label="Still upcoming" value={appointmentsOk ? number(t.upcoming) : 'n/a'} />
+        <Stat label="Dials per appointment" value={appointmentsOk && t.appointments ? number(Math.round(t.dials / t.appointments)) : 'n/a'} />
         <Stat label="Calls 1 min+" value={number(t.oneMinute)} />
         <Stat label="Time on calls" value={formatHours(t.talkSeconds)} />
         <Stat label="Hours clocked" value={person.onTimesheet ? formatHours(t.workedSeconds) : 'n/a'} note={person.onTimesheet ? null : 'Not on timesheet yet'} />
@@ -72,19 +75,20 @@ function Person({ person, showDays, unavailable }) {
       </div>
       {showDays ? (
         <div className="mt-3 overflow-x-auto rounded-lg border border-slate-200 bg-white">
-          <table className="w-full min-w-[400px] text-left text-sm">
+          <table className="w-full min-w-[400px] whitespace-nowrap text-left text-xs">
             <thead className="bg-slate-100 text-xs text-slate-600">
-              <tr><th className="px-2 py-2">Day</th><th className="px-2 py-2 text-right">Dials</th><th className="px-2 py-2 text-right">Reached</th><th className="px-2 py-2 text-right">1 min+</th><th className="px-2 py-2 text-right">On calls</th><th className="px-2 py-2 text-right">Clocked</th></tr>
+              <tr><th className="px-1.5 py-2">Day</th><th className="px-1.5 py-2 text-right">Dials</th><th className="px-1.5 py-2 text-right">Reached</th><th className="px-1.5 py-2 text-right">Appts</th><th className="px-1.5 py-2 text-right">1 min+</th><th className="px-1.5 py-2 text-right">On calls</th><th className="px-1.5 py-2 text-right">Clocked</th></tr>
             </thead>
             <tbody>
               {person.rows.map((r) => (
                 <tr key={r.day} className="border-t border-slate-100 tabular-nums">
-                  <td className="px-2 py-2 font-medium text-[#0B1547]">{formatDay(r.day)}</td>
-                  <td className="px-2 py-2 text-right">{number(r.calls?.dials)}</td>
-                  <td className="px-2 py-2 text-right">{number(r.calls?.answered)}</td>
-                  <td className="px-2 py-2 text-right">{number(r.calls?.conversations)}</td>
-                  <td className="px-2 py-2 text-right">{formatHours(r.calls?.talkSeconds)}</td>
-                  <td className="px-2 py-2 text-right">{person.onTimesheet ? formatHours(r.workedSeconds) : 'n/a'}</td>
+                  <td className="px-1.5 py-2 font-medium text-[#0B1547]">{formatDay(r.day)}</td>
+                  <td className="px-1.5 py-2 text-right">{number(r.calls?.dials)}</td>
+                  <td className="px-1.5 py-2 text-right">{number(r.calls?.answered)}</td>
+                  <td className="px-1.5 py-2 text-right">{appointmentsOk ? number(r.appointments) : 'n/a'}</td>
+                  <td className="px-1.5 py-2 text-right">{number(r.calls?.conversations)}</td>
+                  <td className="px-1.5 py-2 text-right">{formatHours(r.calls?.talkSeconds)}</td>
+                  <td className="px-1.5 py-2 text-right">{person.onTimesheet ? formatHours(r.workedSeconds) : 'n/a'}</td>
                 </tr>
               ))}
             </tbody>
@@ -140,12 +144,12 @@ export default async function CallReportPage({ params, searchParams }) {
           <div className="mt-4 grid gap-4 lg:grid-cols-2">
             {report.people.map((person) => (
               <Person key={person.key} person={person} showDays={report.days.length > 1}
-                unavailable={person.key === 'juan' ? !report.wavvOk : !report.ghlOk} />
+                unavailable={person.key === 'juan' ? !report.wavvOk : !report.ghlOk} appointmentsOk={report.appointmentsOk} />
             ))}
           </div>
         ) : null}
         <p className="mt-4 text-xs text-slate-500">
-          People reached is not an even comparison: WAVV counts calls it marked human, while GHL counts answered calls and can include voicemail. Time on calls can include voicemails. Updates every 2 minutes while open.
+          People reached is not an even comparison: WAVV counts calls it marked human, while GHL counts answered calls and can include voicemail. Time on calls can include voicemails. Appointments count on the day booked, leave out cancelled ones, and are credited by the caller&apos;s calendar, who booked it, or who owns the contact. Updates every 2 minutes while open.
         </p>
       </div>
     </main>
