@@ -223,8 +223,9 @@ function ShiftEditor({ editor, people, onClose, onSaved }) {
         <ErrorText>{error}</ErrorText>
         {!f.shiftId && <Field label="Person"><select className={input} required value={f.userId || ''} onChange={set('userId')}><option value="">Choose</option>{people.filter((u) => u.active).map((u) => <option key={u.id} value={u.id}>{u.name}</option>)}</select></Field>}
         <Field label="Clock in (Central)"><input className={input} type="datetime-local" required value={f.clockIn} onChange={set('clockIn')} /></Field>
-        <Field label="Clock out (Central)"><input className={input} type="datetime-local" required value={f.clockOut} onChange={set('clockOut')} /></Field>
-        <Field label="Total break minutes"><input className={input} type="number" min="0" step="1" required value={f.breakMinutes} onChange={set('breakMinutes')} /></Field>
+        <Field label="Clock out (Central)"><input className={input} type="datetime-local" required={!f.open} value={f.clockOut} onChange={set('clockOut')} /></Field>
+        {f.open && <p className="-mt-1 text-xs text-text-muted">They are still on the clock. Leave clock out empty to keep them clocked in.</p>}
+        {!(f.open && !f.clockOut) && <Field label="Total break minutes"><input className={input} type="number" min="0" step="1" required value={f.breakMinutes} onChange={set('breakMinutes')} /></Field>}
         <Field label="Reason for change"><input className={input} required maxLength={300} value={f.reason} onChange={set('reason')} /></Field>
         <p className="text-xs text-text-muted">The original times stay on record.</p>
         <div className="flex justify-end gap-2"><button type="button" onClick={onClose} className={quietBtn}>Cancel</button><button type="submit" className={primaryBtn}>Save</button></div>
@@ -233,8 +234,9 @@ function ShiftEditor({ editor, people, onClose, onSaved }) {
   );
 }
 
-function PersonWeek({ person, onEdit }) {
-  const active = person.days.filter((d) => d.shifts.length || d.calls);
+function PersonWeek({ person, onEdit, onAdd }) {
+  const today = centralDay();
+  const active = person.days.filter((d) => d.day <= today || d.shifts.length || d.calls);
   const label = { out: 'Off the clock', in: 'On the clock', break: 'On break' }[person.status.state];
   const dot = { out: 'bg-slate-400', in: 'bg-emerald-500', break: 'bg-amber-500' }[person.status.state];
   return (
@@ -260,7 +262,9 @@ function PersonWeek({ person, onEdit }) {
                 <td className="pr-3 tabular-nums">{i === 0 ? d.calls?.conversations ?? 0 : ''}</td>
                 <td className="whitespace-nowrap pr-3">{i === 0 ? talkText(d.calls) : ''}</td>
                 <td className="pr-3 tabular-nums">{i === 0 && d.calls?.longestGapSeconds ? `${Math.round(d.calls.longestGapSeconds / 60)}m` : ''}</td>
-                <td className="text-right">{s?.clockOut && <button type="button" aria-label={`Edit ${formatDay(d.day)} shift`} onClick={() => onEdit(s, person)} className="rounded p-2 text-text-muted hover:bg-slate-100"><Pencil className="h-4 w-4" /></button>}</td>
+                <td className="whitespace-nowrap text-right">{s
+                  ? <button type="button" aria-label={`Edit ${person.name} ${formatDay(d.day)} hours`} onClick={() => onEdit(s, person)} className="inline-flex items-center gap-1 rounded px-2 py-1.5 text-text-muted hover:bg-slate-100"><Pencil className="h-4 w-4" aria-hidden /> Edit</button>
+                  : <button type="button" aria-label={`Add ${person.name} hours for ${formatDay(d.day)}`} onClick={() => onAdd(d, person)} className="inline-flex items-center gap-1 rounded px-2 py-1.5 text-text-muted hover:bg-slate-100"><Plus className="h-4 w-4" aria-hidden /> Add hours</button>}</td>
               </tr>
             )))}
           </tbody>
@@ -346,7 +350,14 @@ function AdminView({ me, onLogout, week, onWeek, onActed }) {
   }, [week]);
   useEffect(() => { load(); const t = setInterval(load, 60000); return () => clearInterval(t); }, [load]);
   const closeRequest = async (id) => { try { await api('/api/team/admin', { action: 'close-request', requestId: id }); await load(); } catch (err) { setError(err.message); } };
-  const editShift = (s) => setEditor({ shiftId: s.id, clockIn: toCentralInput(s.clockIn), clockOut: toCentralInput(s.clockOut), breakMinutes: Math.round(s.breakSeconds / 60), reason: '' });
+  const editShift = (s) => setEditor({ shiftId: s.id, open: !s.clockOut, clockIn: toCentralInput(s.clockIn), clockOut: toCentralInput(s.clockOut), breakMinutes: Math.round(s.breakSeconds / 60), reason: '' });
+  // A day with no shift starts from their first and last call, else 9 to 5.
+  const addHours = (d, person) => setEditor({
+    shiftId: null, userId: person.id,
+    clockIn: d.calls?.firstCall ? toCentralInput(d.calls.firstCall) : `${d.day}T09:00`,
+    clockOut: d.calls?.lastCall ? toCentralInput(d.calls.lastCall) : `${d.day}T17:00`,
+    breakMinutes: 0, reason: '',
+  });
   return (
     <Shell user={me} onLogout={onLogout} wide>
       <div className="flex flex-wrap items-center justify-between gap-3">
@@ -369,7 +380,7 @@ function AdminView({ me, onLogout, week, onWeek, onActed }) {
         {data.requests.length > 0 && <Card title={`Fix requests (${data.requests.length})`}>
           <ul className="divide-y divide-slate-100">{data.requests.map((r) => <li key={r.id} className="flex flex-wrap items-center justify-between gap-2 py-2 text-sm"><span><b>{r.name}</b>, {formatDay(r.day)}: {r.note}</span><button type="button" className={quietBtn} onClick={() => closeRequest(r.id)}>Done</button></li>)}</ul>
         </Card>}
-        {data.report.people.map((p) => <PersonWeek key={p.id} person={p} onEdit={editShift} />)}
+        {data.report.people.map((p) => <PersonWeek key={p.id} person={p} onEdit={editShift} onAdd={addHours} />)}
         {!data.report.people.length && <Card><p className="text-sm text-text-muted">Add your callers below to get started.</p></Card>}
         <p className="flex items-start gap-2 text-xs text-text-muted"><Phone className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden /> Calls come live from WAVV and the GHL dialer. For WAVV, Reached means a real person answered. For GHL, it can include voicemail pickups. On calls is connected time, including voicemails.</p>
         <TeamSetup me={me} users={data.users} presets={data.presets} reload={load} onActed={onActed} />

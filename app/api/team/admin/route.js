@@ -98,7 +98,7 @@ export async function POST(request) {
       const clockIn = fromCentralInput(b.clockIn);
       const clockOut = fromCentralInput(b.clockOut);
       const reason = String(b.reason || '').trim().slice(0, 300);
-      if (!clockIn || !clockOut) return json({ error: 'Enter both times.' }, 400);
+      if (!clockIn || (!clockOut && !b.shiftId)) return json({ error: 'Enter both times.' }, 400);
       if (!reason) return json({ error: 'Say why this is being changed.' }, 400);
       if (b.shiftId && !UUID.test(b.shiftId)) return json({ error: 'Bad shift.' }, 400);
       if (!b.shiftId && !UUID.test(b.userId || '')) return json({ error: 'Pick a person.' }, 400);
