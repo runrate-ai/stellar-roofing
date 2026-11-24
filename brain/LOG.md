@@ -228,3 +228,6 @@ Published the call accuracy update: late GHL calls rechecked, 30-second calls, l
 
 ## 2026-11-24 (timesheet paid hours)
 - Timesheet shows Paid, Working (from calls, 15+ min idle left out) and Clocked hours; admins can set a day's paid hours with a reason without inventing clock times (`33a19b6`, live).
+
+## 2026-11-24 (timesheet entries)
+- Entered Krystle's Thu/Fri/Mon hours (Central, matched to her calls) and moved today's clock-ins (Krystle 10 AM, Juan Carlos 8 AM CT). Done button now instant; all times labelled Central (`cc8ab0e`, live).
