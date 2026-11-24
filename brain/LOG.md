@@ -194,3 +194,7 @@ Checked where callbacks go. Krystle's number rings Krystle. Juan Carlos's WAVV c
 ## 2026-11-23 (callback hours and voicemail)
 
 Recorded the callback greeting, added it in WAVV, and published GHL workflow 3.4 on Krystle's number for Mon-Sat 9-6 with voicemail. Main number unchanged. Live test calls still needed.
+
+## 2026-11-23 (WAVV greeting test)
+
+WAVV did not play the uploaded greeting on test calls to 8626, even after Main flow was switched to Team voicemail. Needs WAVV support. Krystle's GHL line still needs its live test.
