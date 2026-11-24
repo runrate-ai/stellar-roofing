@@ -202,3 +202,7 @@ WAVV did not play the uploaded greeting on test calls to 8626, even after Main f
 ## 2026-11-23 (Krystle callback test)
 
 Brandon called Krystle's number after hours and heard Nate's greeting. Open-hours ringing still needs a test during her shift.
+
+## 2026-11-23 (cold call report)
+
+Published the private Cold Call Report with calls and appointments for Krystle and Juan Carlos. Live access, framing and public-page checks passed. Brandon still needs to add it to a GHL dashboard with an Embed tile.
