@@ -222,3 +222,6 @@ Published the call accuracy update: late GHL calls rechecked, 30-second calls, l
 ## 2026-11-24 (Act as on the timesheet)
 
 - Brandon asked to log in as the callers and see what they see, with full control. Built "Act as" on team.thestellarroofing.com: admins open a caller's screen and act for them; every action logged under the admin (`team_admin_actions`, `team_edits`). 70 local checks passed; live since commit `d7ab857`. Gave GHL steps for Log in as user.
+
+## 2026-11-24 (timesheet edit hours)
+- Admin board: Edit or Add hours on every day so far, including running shifts and days with no clock-in (`e60d794`, live). Brandon asked how to adjust hours per day; the old pencil only appeared on finished shifts.
