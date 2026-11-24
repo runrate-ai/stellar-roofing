@@ -198,3 +198,7 @@ Recorded the callback greeting, added it in WAVV, and published GHL workflow 3.4
 ## 2026-11-23 (WAVV greeting test)
 
 WAVV did not play the uploaded greeting on test calls to 8626, even after Main flow was switched to Team voicemail. Needs WAVV support. Krystle's GHL line still needs its live test.
+
+## 2026-11-23 (Krystle callback test)
+
+Brandon called Krystle's number after hours and heard Nate's greeting. Open-hours ringing still needs a test during her shift.
