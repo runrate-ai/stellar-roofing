@@ -1,6 +1,6 @@
 import { q } from '../../../../lib/team/db';
 import { currentUser, endAllSessions, failure, hashPassword, json, logAdminAction, sameOrigin, startActing, temporaryPassword } from '../../../../lib/team/auth';
-import { saveShift, weekReport } from '../../../../lib/team/store';
+import { saveShift, setDayHours, weekReport } from '../../../../lib/team/store';
 import { centralDay, fromCentralInput, mondayOf, validDay } from '../../../../lib/team/time';
 import { CALLER_PRESETS } from '../../../../lib/team/callers';
 
@@ -104,6 +104,18 @@ export async function POST(request) {
       if (!b.shiftId && !UUID.test(b.userId || '')) return json({ error: 'Pick a person.' }, 400);
       const result = await saveShift({ shiftId: b.shiftId || null, userId: b.userId || null, clockIn, clockOut, breakMinutes: Number(b.breakMinutes || 0), reason, editorId: user.id });
       return json(result, result.error ? 400 : 200);
+    }
+
+    if (b.action === 'set-day-hours' && UUID.test(b.userId || '')) {
+      if (!validDay(b.day) || b.day > centralDay()) return json({ error: 'Pick a day up to today.' }, 400);
+      const reason = String(b.reason || '').trim().slice(0, 300);
+      if (!reason) return json({ error: 'Say why this is being changed.' }, 400);
+      const cleared = b.hours === '' || b.hours == null;
+      const hours = Number(b.hours);
+      if (!cleared && (!Number.isFinite(hours) || hours < 0 || hours > 24)) return json({ error: 'Enter hours between 0 and 24.' }, 400);
+      const target = await q('SELECT id FROM team_users WHERE id=$1', [b.userId]);
+      if (!target[0]) return json({ error: 'Person not found.' }, 404);
+      return json(await setDayHours({ userId: b.userId, day: b.day, seconds: cleared ? null : Math.round(hours * 3600), reason, editorId: user.id }));
     }
 
     if (b.action === 'close-request' && UUID.test(b.requestId || '')) {

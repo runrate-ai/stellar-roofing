@@ -234,43 +234,74 @@ function ShiftEditor({ editor, people, onClose, onSaved }) {
   );
 }
 
-function PersonWeek({ person, onEdit, onAdd }) {
+function PaidEditor({ editor, onClose, onSaved }) {
+  const [f, setF] = useState(editor);
+  const [error, setError] = useState('');
+  const send = async (hours) => {
+    setError('');
+    try { await api('/api/team/admin', { action: 'set-day-hours', userId: f.userId, day: f.day, hours, reason: f.reason }); onSaved(); } catch (err) { setError(err.message); }
+  };
+  return (
+    <div role="dialog" aria-modal="true" aria-label="Set paid hours" className="fixed inset-0 z-50 flex items-center justify-center bg-primary/50 p-4">
+      <form onSubmit={(e) => { e.preventDefault(); send(f.hours); }} className="max-h-full w-full max-w-md space-y-3 overflow-auto rounded-xl bg-white p-5">
+        <h2 className="text-lg font-bold text-primary">Paid hours: {f.name}, {formatDay(f.day)}</h2>
+        <p className="text-sm text-text-muted">Clocked: {formatHours(f.clockedSeconds)}. Working from calls: {formatHours(f.activeSeconds)}. The hours you enter are paid instead of the clocked hours. Clock times stay as they are.</p>
+        <ErrorText>{error}</ErrorText>
+        <Field label="Paid hours for the day"><input className={input} type="number" min="0" max="24" step="0.25" required autoFocus value={f.hours} onChange={(e) => setF((v) => ({ ...v, hours: e.target.value }))} /></Field>
+        <Field label="Reason"><input className={input} required maxLength={300} value={f.reason} onChange={(e) => setF((v) => ({ ...v, reason: e.target.value }))} /></Field>
+        <div className="flex flex-wrap justify-end gap-2">
+          {f.hasOverride && <button type="button" onClick={() => (f.reason.trim() ? send('') : setError('Say why this is being changed.'))} className={quietBtn}>Use clocked hours</button>}
+          <button type="button" onClick={onClose} className={quietBtn}>Cancel</button><button type="submit" className={primaryBtn}>Save</button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+function PersonWeek({ person, onEdit, onAdd, onPaid }) {
   const today = centralDay();
   const active = person.days.filter((d) => d.day <= today || d.shifts.length || d.calls);
   const label = { out: 'Off the clock', in: 'On the clock', break: 'On break' }[person.status.state];
   const dot = { out: 'bg-slate-400', in: 'bg-emerald-500', break: 'bg-amber-500' }[person.status.state];
+  const rowBtn = 'ml-1 inline-flex items-center gap-1 rounded px-1.5 py-1 align-middle text-xs font-medium text-star hover:bg-slate-100';
   return (
     <Card title={person.name} action={<span className="inline-flex items-center gap-2 text-sm text-text-muted"><span className={`h-2.5 w-2.5 rounded-full ${dot}`} />{label}</span>}>
-      <dl className="grid grid-cols-2 gap-3 sm:grid-cols-6">
-        {[['Paid hours', formatHours(person.totalSeconds)], ['Est. pay', person.estimatedPay === null ? 'No rate' : `$${person.estimatedPay.toFixed(2)}`], ['Dials', person.totals.dials], ['Reached', person.totals.answered], ['Calls 1 min+', person.totals.conversations], ['Calls off the clock', person.totals.offClock]].map(([k, v]) => (
+      <dl className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">
+        {[['Paid hours', formatHours(person.totalSeconds)], ['Working hours', formatHours(person.activeSeconds)], ['Clocked hours', formatHours(person.clockedSeconds)], ['Est. pay', person.estimatedPay === null ? 'No rate' : `$${person.estimatedPay.toFixed(2)}`], ['Dials', person.totals.dials], ['Reached', person.totals.answered], ['Calls 1 min+', person.totals.conversations], ['Calls off the clock', person.totals.offClock]].map(([k, v]) => (
           <div key={k} className="rounded-lg bg-bg-alt p-3"><dt className="text-xs text-text-muted">{k}</dt><dd className="text-lg font-bold tabular-nums text-primary">{v}</dd></div>
         ))}
       </dl>
       {active.length > 0 && <div className="mt-3 overflow-x-auto">
-        <table className="w-full min-w-[900px] text-left text-sm">
-          <thead className="text-xs text-text-muted"><tr><th className="py-2 pr-3 font-medium">Day</th><th className="pr-3 font-medium">Clocked</th><th className="pr-3 font-medium">Break</th><th className="pr-3 font-medium">Paid</th><th className="pr-3 font-medium">First to last call</th><th className="pr-3 font-medium">Dials</th><th className="pr-3 font-medium">Reached</th><th className="pr-3 font-medium">1 min+</th><th className="pr-3 font-medium">On calls</th><th className="pr-3 font-medium">Longest gap</th><th /></tr></thead>
+        <table className="w-full min-w-[1000px] text-left text-sm">
+          <thead className="text-xs text-text-muted"><tr><th className="py-2 pr-3 font-medium">Day</th><th className="pr-3 font-medium">Clocked</th><th className="pr-3 font-medium">Break</th><th className="pr-3 font-medium">Clocked hrs</th><th className="pr-3 font-medium">Working</th><th className="pr-3 font-medium">Paid</th><th className="pr-3 font-medium">First to last call</th><th className="pr-3 font-medium">Dials</th><th className="pr-3 font-medium">Reached</th><th className="pr-3 font-medium">1 min+</th><th className="pr-3 font-medium">On calls</th><th className="pr-3 font-medium">Longest gap</th></tr></thead>
           <tbody className="divide-y divide-slate-100">
             {active.flatMap((d) => (d.shifts.length ? d.shifts : [null]).map((s, i) => (
               <tr key={s?.id || d.day}>
                 <td className="whitespace-nowrap py-2 pr-3 font-medium">{i === 0 ? formatDay(d.day) : ''}</td>
-                <td className="whitespace-nowrap pr-3">{s ? `${formatTime(s.clockIn)} to ${s.clockOut ? formatTime(s.clockOut) : 'now'}${s.edited ? ' (edited)' : ''}` : <span className="font-medium text-amber-700">Not clocked in</span>}</td>
+                <td className="whitespace-nowrap pr-3">
+                  {s ? `${formatTime(s.clockIn)} to ${s.clockOut ? formatTime(s.clockOut) : 'now'}${s.edited ? ' (edited)' : ''}` : <span className="font-medium text-amber-700">Not clocked in</span>}
+                  {s
+                    ? <button type="button" aria-label={`Edit ${person.name} ${formatDay(d.day)} clock times`} title="Edit clock times" onClick={() => onEdit(s, person)} className={rowBtn}><Pencil className="h-3.5 w-3.5" aria-hidden /></button>
+                    : <button type="button" aria-label={`Add ${person.name} clock times for ${formatDay(d.day)}`} title="Add clock times" onClick={() => onAdd(d, person)} className={rowBtn}><Plus className="h-3.5 w-3.5" aria-hidden /> Add</button>}
+                </td>
                 <td className="pr-3 tabular-nums">{s ? `${Math.round(s.breakSeconds / 60)}m` : '-'}</td>
-                <td className="pr-3 tabular-nums">{s ? formatHours(s.workedSeconds) : '-'}</td>
+                <td className="whitespace-nowrap pr-3 tabular-nums">{s ? formatHours(s.workedSeconds) : '-'}</td>
+                <td className="whitespace-nowrap pr-3 tabular-nums">{i === 0 && d.activeSeconds ? formatHours(d.activeSeconds) : ''}</td>
+                <td className="whitespace-nowrap pr-3 font-semibold tabular-nums text-primary">{i === 0 ? <>{formatHours(d.workedSeconds)}{d.paidOverride && <span title={`Set by ${d.paidOverride.editor}: ${d.paidOverride.reason}`} className="ml-1 rounded bg-amber-100 px-1.5 py-0.5 text-xs font-medium text-amber-800">set</span>}
+                  <button type="button" aria-label={`Set ${person.name} paid hours for ${formatDay(d.day)}`} title="Set paid hours" onClick={() => onPaid(d, person)} className={rowBtn}><Pencil className="h-3.5 w-3.5" aria-hidden /></button></> : ''}</td>
                 <td className="whitespace-nowrap pr-3">{i === 0 && d.calls ? `${formatTime(d.calls.firstCall)} to ${formatTime(d.calls.lastCall)}` : ''}</td>
                 <td className="pr-3 tabular-nums">{i === 0 ? d.calls?.dials ?? 0 : ''}</td>
                 <td className="pr-3 tabular-nums">{i === 0 ? d.calls?.answered ?? 0 : ''}</td>
                 <td className="pr-3 tabular-nums">{i === 0 ? d.calls?.conversations ?? 0 : ''}</td>
                 <td className="whitespace-nowrap pr-3">{i === 0 ? talkText(d.calls) : ''}</td>
                 <td className="pr-3 tabular-nums">{i === 0 && d.calls?.longestGapSeconds ? `${Math.round(d.calls.longestGapSeconds / 60)}m` : ''}</td>
-                <td className="whitespace-nowrap text-right">{s
-                  ? <button type="button" aria-label={`Edit ${person.name} ${formatDay(d.day)} hours`} onClick={() => onEdit(s, person)} className="inline-flex items-center gap-1 rounded px-2 py-1.5 text-text-muted hover:bg-slate-100"><Pencil className="h-4 w-4" aria-hidden /> Edit</button>
-                  : <button type="button" aria-label={`Add ${person.name} hours for ${formatDay(d.day)}`} onClick={() => onAdd(d, person)} className="inline-flex items-center gap-1 rounded px-2 py-1.5 text-text-muted hover:bg-slate-100"><Plus className="h-4 w-4" aria-hidden /> Add hours</button>}</td>
               </tr>
             )))}
           </tbody>
         </table>
       </div>}
       {!active.length && <p className="mt-3 text-sm text-text-muted">No shifts or calls this week.</p>}
+      <p className="mt-2 text-xs text-text-muted">Pencil next to Clocked changes clock times; pencil next to Paid sets the hours paid for that day. Working = first call to last call, leaving out any 15+ minute stretch with no dialing. Paid = clocked hours, or the hours you set for that day.</p>
     </Card>
   );
 }
@@ -331,6 +362,7 @@ function AdminView({ me, onLogout, week, onWeek, onActed }) {
   const [data, setData] = useState(null);
   const [error, setError] = useState('');
   const [editor, setEditor] = useState(null);
+  const [paid, setPaid] = useState(null);
   const [updating, setUpdating] = useState(true);
   const latest = useRef(0);
   const load = useCallback(async () => {
@@ -351,6 +383,10 @@ function AdminView({ me, onLogout, week, onWeek, onActed }) {
   useEffect(() => { load(); const t = setInterval(load, 60000); return () => clearInterval(t); }, [load]);
   const closeRequest = async (id) => { try { await api('/api/team/admin', { action: 'close-request', requestId: id }); await load(); } catch (err) { setError(err.message); } };
   const editShift = (s) => setEditor({ shiftId: s.id, open: !s.clockOut, clockIn: toCentralInput(s.clockIn), clockOut: toCentralInput(s.clockOut), breakMinutes: Math.round(s.breakSeconds / 60), reason: '' });
+  const editPaid = (d, person) => setPaid({
+    userId: person.id, name: person.name.split(' ')[0], day: d.day, clockedSeconds: d.clockedSeconds, activeSeconds: d.activeSeconds,
+    hours: d.paidOverride ? String(+(d.paidOverride.seconds / 3600).toFixed(2)) : '', hasOverride: Boolean(d.paidOverride), reason: '',
+  });
   // A day with no shift starts from their first and last call, else 9 to 5.
   const addHours = (d, person) => setEditor({
     shiftId: null, userId: person.id,
@@ -380,11 +416,12 @@ function AdminView({ me, onLogout, week, onWeek, onActed }) {
         {data.requests.length > 0 && <Card title={`Fix requests (${data.requests.length})`}>
           <ul className="divide-y divide-slate-100">{data.requests.map((r) => <li key={r.id} className="flex flex-wrap items-center justify-between gap-2 py-2 text-sm"><span><b>{r.name}</b>, {formatDay(r.day)}: {r.note}</span><button type="button" className={quietBtn} onClick={() => closeRequest(r.id)}>Done</button></li>)}</ul>
         </Card>}
-        {data.report.people.map((p) => <PersonWeek key={p.id} person={p} onEdit={editShift} onAdd={addHours} />)}
+        {data.report.people.map((p) => <PersonWeek key={p.id} person={p} onEdit={editShift} onAdd={addHours} onPaid={editPaid} />)}
         {!data.report.people.length && <Card><p className="text-sm text-text-muted">Add your callers below to get started.</p></Card>}
         <p className="flex items-start gap-2 text-xs text-text-muted"><Phone className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden /> Calls come live from WAVV and the GHL dialer. For WAVV, Reached means a real person answered. For GHL, it can include voicemail pickups. On calls is connected time, including voicemails.</p>
         <TeamSetup me={me} users={data.users} presets={data.presets} reload={load} onActed={onActed} />
       </>}
+      {paid && <PaidEditor editor={paid} onClose={() => setPaid(null)} onSaved={() => { setPaid(null); load(); }} />}
       {editor && data && <ShiftEditor editor={editor} people={data.users} onClose={() => setEditor(null)} onSaved={() => { setEditor(null); load(); }} />}
     </Shell>
   );

@@ -21,17 +21,18 @@ export async function GET(request) {
     const asked = new URL(request.url).searchParams.get('week');
     const week = validDay(asked) ? mondayOf(asked) : mondayOf(centralDay());
     const report = await weekReport(week);
-    const lines = [['Person', 'Day', 'Clock in (CT)', 'Clock out (CT)', 'Break hours', 'Paid hours', 'Edited', 'Dials that day', 'Reached that day', 'Calls 1 min+', 'Time on calls (hours)']];
+    const lines = [['Person', 'Day', 'Clock in (CT)', 'Clock out (CT)', 'Break hours', 'Clocked hours', 'Edited', 'Paid hours that day', 'Paid hours set by hand', 'Working hours (from calls)', 'Dials that day', 'Reached that day', 'Calls 1 min+', 'Time on calls (hours)']];
     for (const person of report.people) {
       for (const day of person.days) {
-        const rows = day.shifts.length ? day.shifts : (day.calls ? [null] : []);
+        const rows = day.shifts.length ? day.shifts : (day.calls || day.paidOverride ? [null] : []);
         rows.forEach((s, i) => lines.push([
           person.name, day.day, s ? formatTime(s.clockIn) : 'not clocked in', s?.clockOut ? formatTime(s.clockOut) : (s ? 'still on clock' : ''),
           s ? hours(s.breakSeconds) : '', s ? hours(s.workedSeconds) : '0.00', s?.edited ? 'yes' : '',
+          i === 0 ? hours(day.workedSeconds) : '', i === 0 && day.paidOverride ? `yes: ${day.paidOverride.reason}` : '', i === 0 ? hours(day.activeSeconds) : '',
           i === 0 ? day.calls?.dials ?? 0 : '', i === 0 ? day.calls?.answered ?? 0 : '', i === 0 ? day.calls?.conversations ?? 0 : '', i === 0 ? hours(day.calls?.talkSeconds || 0) : '',
         ]));
       }
-      lines.push([`${person.name} total`, '', '', '', '', hours(person.totalSeconds), '', person.totals.dials, person.totals.answered, person.totals.conversations, hours(person.totals.talkSeconds)]);
+      lines.push([`${person.name} total`, '', '', '', '', hours(person.clockedSeconds), '', hours(person.totalSeconds), '', hours(person.activeSeconds), person.totals.dials, person.totals.answered, person.totals.conversations, hours(person.totals.talkSeconds)]);
     }
     const csv = lines.map((row) => row.map(cell).join(',')).join('\r\n');
     return new Response(csv, { headers: {
