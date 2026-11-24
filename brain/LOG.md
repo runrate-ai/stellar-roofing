@@ -225,3 +225,6 @@ Published the call accuracy update: late GHL calls rechecked, 30-second calls, l
 
 ## 2026-11-24 (timesheet edit hours)
 - Admin board: Edit or Add hours on every day so far, including running shifts and days with no clock-in (`e60d794`, live). Brandon asked how to adjust hours per day; the old pencil only appeared on finished shifts.
+
+## 2026-11-24 (timesheet paid hours)
+- Timesheet shows Paid, Working (from calls, 15+ min idle left out) and Clocked hours; admins can set a day's paid hours with a reason without inventing clock times (`33a19b6`, live).
