@@ -1,5 +1,5 @@
 'use client';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, Coffee, Download, LogOut, Pencil, Phone, Play, Plus, Square, Star } from 'lucide-react';
 import { addDays, centralDay, formatDay, formatHours, formatTime, mondayOf, toCentralInput } from '../../lib/team/time';
 
@@ -61,7 +61,8 @@ function AuthForm({ mode, onDone }) {
     setBusy(true); setError('');
     try {
       await api('/api/team/auth', { action: mode, ...f });
-      onDone();
+      // Stay on "One moment" until the next screen is ready.
+      await onDone();
     } catch (err) { setError(err.message); } finally { setBusy(false); }
   };
   const titles = { login: 'Log in', setup: 'Create the owner login', 'change-password': 'Choose your own password' };
@@ -308,8 +309,22 @@ function AdminView({ me, onLogout, week, onWeek }) {
   const [data, setData] = useState(null);
   const [error, setError] = useState('');
   const [editor, setEditor] = useState(null);
+  const [updating, setUpdating] = useState(true);
+  const latest = useRef(0);
   const load = useCallback(async () => {
-    try { setData(await api(`/api/team/admin?week=${week}`)); setError(''); } catch (err) { setError(err.message); }
+    const id = latest.current + 1;
+    latest.current = id;
+    // Hours and saved calls show right away; new calls fill in behind them.
+    try {
+      const fast = await api(`/api/team/admin?week=${week}`);
+      if (id !== latest.current) return;
+      setData(fast); setError('');
+    } catch (err) { if (id === latest.current) setError(err.message); return; }
+    setUpdating(true);
+    api(`/api/team/admin?week=${week}&refresh=1`)
+      .then((fresh) => { if (id === latest.current) setData(fresh); })
+      .catch(() => {})
+      .finally(() => { if (id === latest.current) setUpdating(false); });
   }, [week]);
   useEffect(() => { load(); const t = setInterval(load, 60000); return () => clearInterval(t); }, [load]);
   const closeRequest = async (id) => { try { await api('/api/team/admin', { action: 'close-request', requestId: id }); await load(); } catch (err) { setError(err.message); } };
@@ -326,12 +341,13 @@ function AdminView({ me, onLogout, week, onWeek }) {
         </WeekNav>
       </div>
       <ErrorText>{error}</ErrorText>
-      {!data && !error && <p className="text-sm text-text-muted">Loading the week and call records...</p>}
+      {!data && !error && <p className="text-sm text-text-muted">Loading the week...</p>}
       {data && <>
-        {!data.report.callsConnected && <ErrorText>Call records could not be loaded right now. Hours are still correct.</ErrorText>}
-        {data.report.callsConnected && !data.report.ghlConnected && <ErrorText>GHL call records could not be loaded, so GHL dialer calls may be missing. Hours are still correct.</ErrorText>}
-        {data.report.callsConnected && !data.report.wavvConnected && <ErrorText>WAVV is not connected right now, so WAVV call counts are incomplete. Hours are still correct.</ErrorText>}
-        {data.report.callsPartial && <ErrorText>Only part of this week&apos;s call records loaded.</ErrorText>}
+        <p role="status" className="text-xs text-text-muted">{updating ? 'Updating calls...' : data.report.callsUpdatedAt ? `Calls updated ${formatTime(data.report.callsUpdatedAt)} Central` : ''}</p>
+        {!updating && !data.report.callsConnected && <ErrorText>Call records could not be loaded right now. Hours are still correct.</ErrorText>}
+        {!updating && data.report.callsConnected && !data.report.ghlConnected && <ErrorText>GHL call records could not be loaded, so GHL dialer calls may be missing. Hours are still correct.</ErrorText>}
+        {!updating && data.report.callsConnected && !data.report.wavvConnected && <ErrorText>WAVV is not connected right now, so WAVV call counts are incomplete. Hours are still correct.</ErrorText>}
+        {!updating && data.report.callsPartial && <ErrorText>Only part of this week&apos;s call records loaded.</ErrorText>}
         {data.requests.length > 0 && <Card title={`Fix requests (${data.requests.length})`}>
           <ul className="divide-y divide-slate-100">{data.requests.map((r) => <li key={r.id} className="flex flex-wrap items-center justify-between gap-2 py-2 text-sm"><span><b>{r.name}</b>, {formatDay(r.day)}: {r.note}</span><button type="button" className={quietBtn} onClick={() => closeRequest(r.id)}>Done</button></li>)}</ul>
         </Card>}
@@ -349,8 +365,22 @@ export default function TeamApp() {
   const [data, setData] = useState(null);
   const [error, setError] = useState('');
   const [week, setWeek] = useState(() => mondayOf(centralDay()));
+  const latest = useRef(0);
   const load = useCallback(async () => {
-    try { setData(await api(`/api/team/me?week=${week}`)); setError(''); } catch (err) { setError(err.message); }
+    const id = latest.current + 1;
+    latest.current = id;
+    let fast;
+    try {
+      fast = await api(`/api/team/me?week=${week}`);
+      if (id !== latest.current) return;
+      setData(fast); setError('');
+    } catch (err) { if (id === latest.current) setError(err.message); return; }
+    // Callers see their clock at once; new call counts fill in afterward.
+    if (fast.user && fast.user.role !== 'admin' && !fast.user.mustChange) {
+      api(`/api/team/me?week=${week}&refresh=1`)
+        .then((fresh) => { if (id === latest.current) setData(fresh); })
+        .catch(() => {});
+    }
   }, [week]);
   useEffect(() => { load(); }, [load]);
   const logout = async () => { await api('/api/team/auth', { action: 'logout' }).catch(() => {}); setData(null); load(); };

@@ -18,9 +18,10 @@ export async function GET(request) {
   try {
     const { response } = await admin();
     if (response) return response;
-    const asked = new URL(request.url).searchParams.get('week');
+    const params = new URL(request.url).searchParams;
+    const asked = params.get('week');
     const week = validDay(asked) ? mondayOf(asked) : mondayOf(centralDay());
-    const report = await weekReport(week);
+    const report = await weekReport(week, null, { refresh: params.get('refresh') === '1' });
     const users = await q(`SELECT id, name, username, role, active, hourly_rate FROM team_users ORDER BY active DESC, role, name`);
     const requests = await q(`SELECT r.id, r.work_day::text AS day, r.note, u.name FROM team_fix_requests r JOIN team_users u ON u.id=r.user_id WHERE r.status='open' ORDER BY r.created_at`);
     return json({ report, users, requests, presets: CALLER_PRESETS.map(({ key, name, username }) => ({ key, name, username })) });
