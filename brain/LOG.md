@@ -234,3 +234,6 @@ Published the call accuracy update: late GHL calls rechecked, 30-second calls, l
 
 ## 2026-11-24 (timesheet month view)
 - Start dates (Juan Nov 23, Krystle Nov 19), Week/Month switch with payroll summary by work week, overtime over 40, calendar, payroll CSV, Only days worked toggle (`d49d473`, live). Caller est. pay built but off in production (`TEAM_SHOW_CALLER_PAY`).
+
+## 2026-11-24 (timesheet straight pay)
+- Pay = rate x hours, overtime/gross removed; week/month loads ~15x faster (`370f0eb`, live). Decision logged.

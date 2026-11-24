@@ -66,3 +66,6 @@ Newest first. Each one says what was decided and why.
 - **2026-11-23: Juan Carlos dials only through WAVV.** His GHL phone calls show the main number (629) 356-4290, so callbacks miss him. Brandon chose WAVV only over buying him a GHL number.
 
 - **2026-11-23: Cold-call callbacks ring the caller Mon-Sat 9-6 Central; otherwise voicemail.** Brandon chose hours plus voicemail over forwarding to personal cell phones.
+
+## 2026-11-24: Caller pay is straight hourly pay
+Callers are paid hourly rate x paid hours (currently $7/hr), no overtime, no gross/withholding wording on the timesheet. Brandon: "its just straight pay. 7 times whatever hours they worked." Don't add overtime back unless he asks.
