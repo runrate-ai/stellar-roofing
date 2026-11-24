@@ -189,7 +189,7 @@ function CallerView({ data, reload, week, onWeek, onLogout, onBack }) {
           {(person?.days || []).filter((d) => d.shifts.length || d.calls).map((d) => (
             <li key={d.day} className="py-2.5 text-sm">
               <div className="flex justify-between font-semibold text-text-dark"><span>{formatDay(d.day)}</span><span className="tabular-nums">{formatHours(d.workedSeconds)}</span></div>
-              {d.shifts.map((s) => <p key={s.id} className="text-text-muted">{formatTime(s.clockIn)} to {s.clockOut ? formatTime(s.clockOut) : 'now'}{s.breakSeconds ? `, ${Math.round(s.breakSeconds / 60)} min break` : ''}{s.edited ? ' (edited)' : ''}</p>)}
+              {d.shifts.map((s) => <p key={s.id} className="text-text-muted">{formatTime(s.clockIn)} to {s.clockOut ? formatTime(s.clockOut) : 'now'} CT{s.breakSeconds ? `, ${Math.round(s.breakSeconds / 60)} min break` : ''}{s.edited ? ' (edited)' : ''}</p>)}
               {d.calls && <p className="text-text-muted">{d.calls.dials} calls, {d.calls.answered} reached, {d.calls.conversations} over 1 min</p>}
             </li>
           ))}
@@ -199,7 +199,7 @@ function CallerView({ data, reload, week, onWeek, onLogout, onBack }) {
       <Card title="Forgot to clock in or out?">
         <form onSubmit={sendFix} className="space-y-3">
           <Field label="Which day"><input className={input} type="date" required max={centralDay()} value={fix.day} onChange={(e) => setFix((v) => ({ ...v, day: e.target.value }))} /></Field>
-          <Field label="What should it say?"><textarea className={input} required maxLength={500} rows={2} placeholder="I started at 9:00 and forgot to clock in" value={fix.note} onChange={(e) => { setSent(false); setFix((v) => ({ ...v, note: e.target.value })); }} /></Field>
+          <Field label="What should it say? (use Central time)"><textarea className={input} required maxLength={500} rows={2} placeholder="I started at 9:00 AM Central and forgot to clock in" value={fix.note} onChange={(e) => { setSent(false); setFix((v) => ({ ...v, note: e.target.value })); }} /></Field>
           <button type="submit" className={quietBtn}>Send request</button>
           {sent && <p role="status" className="text-sm text-emerald-700">{data.user.actingAs ? `Sent for ${data.user.name}. It shows under Fix requests on the admin board.` : 'Sent. Brandon or Nate will review it.'}</p>}
         </form>
@@ -381,7 +381,12 @@ function AdminView({ me, onLogout, week, onWeek, onActed }) {
       .finally(() => { if (id === latest.current) setUpdating(false); });
   }, [week]);
   useEffect(() => { load(); const t = setInterval(load, 60000); return () => clearInterval(t); }, [load]);
-  const closeRequest = async (id) => { try { await api('/api/team/admin', { action: 'close-request', requestId: id }); await load(); } catch (err) { setError(err.message); } };
+  // Take the request off the list right away; put it back if saving fails.
+  const closeRequest = async (id) => {
+    const before = data;
+    setData((v) => ({ ...v, requests: v.requests.filter((r) => r.id !== id) }));
+    try { await api('/api/team/admin', { action: 'close-request', requestId: id }); load(); } catch (err) { setData(before); setError(err.message); }
+  };
   const editShift = (s) => setEditor({ shiftId: s.id, open: !s.clockOut, clockIn: toCentralInput(s.clockIn), clockOut: toCentralInput(s.clockOut), breakMinutes: Math.round(s.breakSeconds / 60), reason: '' });
   const editPaid = (d, person) => setPaid({
     userId: person.id, name: person.name.split(' ')[0], day: d.day, clockedSeconds: d.clockedSeconds, activeSeconds: d.activeSeconds,
@@ -397,7 +402,7 @@ function AdminView({ me, onLogout, week, onWeek, onActed }) {
   return (
     <Shell user={me} onLogout={onLogout} wide>
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h1 className="text-xl font-bold text-primary">Timesheets</h1>
+        <div><h1 className="text-xl font-bold text-primary">Timesheets</h1><p className="text-xs text-text-muted">All times are Central (Nashville). Use the arrows to see other weeks.</p></div>
         <WeekNav week={week} onWeek={onWeek}>
           <span className="flex gap-2">
             <button type="button" className={quietBtn} onClick={() => setEditor({ shiftId: null, userId: '', clockIn: `${centralDay()}T09:00`, clockOut: `${centralDay()}T17:00`, breakMinutes: 0, reason: '' })}><Plus className="h-4 w-4" aria-hidden /> Add shift</button>
