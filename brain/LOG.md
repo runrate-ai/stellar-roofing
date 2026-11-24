@@ -214,3 +214,7 @@ Published faster login and saved call data for the timesheet. Live checks passed
 ## 2026-11-23 (embedded report speed)
 
 Published saved-first loading for the GHL Cold Call Report. Live speed and security checks passed. Brandon still needs to confirm how it feels inside GHL.
+
+## 2026-11-24 (call accuracy)
+
+Published the call accuracy update: late GHL calls rechecked, 30-second calls, logged results, and no-result counts. Live numbers match raw GHL and WAVV data for Nov 23.
