@@ -218,3 +218,7 @@ Published saved-first loading for the GHL Cold Call Report. Live speed and secur
 ## 2026-11-24 (call accuracy)
 
 Published the call accuracy update: late GHL calls rechecked, 30-second calls, logged results, and no-result counts. Live numbers match raw GHL and WAVV data for Nov 23.
+
+## 2026-11-24 (Act as on the timesheet)
+
+- Brandon asked to log in as the callers and see what they see, with full control. Built "Act as" on team.thestellarroofing.com: admins open a caller's screen and act for them; every action logged under the admin (`team_admin_actions`, `team_edits`). 70 local checks passed; live since commit `d7ab857`. Gave GHL steps for Log in as user.
