@@ -206,3 +206,7 @@ Brandon called Krystle's number after hours and heard Nate's greeting. Open-hour
 ## 2026-11-23 (cold call report)
 
 Published the private Cold Call Report with calls and appointments for Krystle and Juan Carlos. Live access, framing and public-page checks passed. Brandon still needs to add it to a GHL dashboard with an Embed tile.
+
+## 2026-11-23 (timesheet speed)
+
+Published faster login and saved call data for the timesheet. Live checks passed without a real logged-in account. The embedded report can still wait on a refresh; fix proposed.
