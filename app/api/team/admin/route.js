@@ -5,6 +5,8 @@ import { centralDay, fromCentralInput, mondayOf, validDay } from '../../../../li
 import { CALLER_PRESETS } from '../../../../lib/team/callers';
 
 export const dynamic = 'force-dynamic';
+// GHL can be slow; give background call refreshes room to finish.
+export const maxDuration = 300;
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 async function admin() {

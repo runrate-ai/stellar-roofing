@@ -4,6 +4,8 @@ import { clockStatus, weekReport } from '../../../../lib/team/store';
 import { centralDay, mondayOf, validDay } from '../../../../lib/team/time';
 
 export const dynamic = 'force-dynamic';
+// GHL can be slow; give background call refreshes room to finish.
+export const maxDuration = 300;
 
 export async function GET(request) {
   try {

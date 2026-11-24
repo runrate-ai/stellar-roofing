@@ -5,6 +5,8 @@ import { addDays, centralDay, formatDay, formatHours, formatTime, mondayOf, vali
 import Refresh from './Refresh';
 
 export const dynamic = 'force-dynamic';
+// GHL can be slow; give background call refreshes room to finish.
+export const maxDuration = 300;
 export const metadata = {
   title: 'Cold Call Report',
   referrer: 'no-referrer',
@@ -64,11 +66,15 @@ function Person({ person, showDays, unavailable, appointmentsOk }) {
       </div>
       <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
         <Stat label="Dials" value={number(t.dials)} />
-        <Stat label="People reached" value={number(t.reached)} note={`${percent(t.reached, t.dials)} of dials`} />
-        <Stat label="Appointments booked" value={appointmentsOk ? number(t.appointments) : 'n/a'} note={appointmentsOk ? null : 'Calendar unavailable'} />
-        <Stat label="Still upcoming" value={appointmentsOk ? number(t.upcoming) : 'n/a'} />
-        <Stat label="Dials per appointment" value={appointmentsOk && t.appointments ? number(Math.round(t.dials / t.appointments)) : 'n/a'} />
+        <Stat label="Calls 30 sec+" value={number(t.thirty)} note={`${percent(t.thirty, t.dials)} of dials`} />
         <Stat label="Calls 1 min+" value={number(t.oneMinute)} />
+        <Stat label="Results logged" value={person.resultsOk ? number(t.results) : 'n/a'}
+          note={person.resultsOk ? `${number(t.wrongNumber)} wrong number, ${number(t.dnc)} do not call` : 'Results unavailable'} />
+        <Stat label="Interested" value={person.resultsOk ? number(t.interested) : 'n/a'} note="Incl. follow up and appointment" />
+        <Stat label="Not interested" value={person.resultsOk ? number(t.notInterested) : 'n/a'} />
+        <Stat label="No result picked" value={t.noResult === null ? 'n/a' : number(t.noResult)} note={t.noResult === null ? 'GHL does not record this per call' : `${percent(t.noResult, t.dials)} of dials`} />
+        <Stat label="Appointments booked" value={appointmentsOk ? number(t.appointments) : 'n/a'} note={appointmentsOk ? `${number(t.upcoming)} still upcoming` : 'Calendar unavailable'} />
+        <Stat label="Dials per appointment" value={appointmentsOk && t.appointments ? number(Math.round(t.dials / t.appointments)) : 'n/a'} />
         <Stat label="Time on calls" value={formatHours(t.talkSeconds)} />
         <Stat label="Hours clocked" value={person.onTimesheet ? formatHours(t.workedSeconds) : 'n/a'} note={person.onTimesheet ? null : 'Not on timesheet yet'} />
         <Stat label="Dials per clocked hour" value={perHour(t.dials, t.workedSeconds)} note={person.onTimesheet && t.offClock ? `${number(t.offClock)} dials off the clock` : null} />
@@ -77,16 +83,16 @@ function Person({ person, showDays, unavailable, appointmentsOk }) {
         <div className="mt-3 overflow-x-auto rounded-lg border border-slate-200 bg-white">
           <table className="w-full min-w-[400px] whitespace-nowrap text-left text-xs">
             <thead className="bg-slate-100 text-xs text-slate-600">
-              <tr><th className="px-1.5 py-2">Day</th><th className="px-1.5 py-2 text-right">Dials</th><th className="px-1.5 py-2 text-right">Reached</th><th className="px-1.5 py-2 text-right">Appts</th><th className="px-1.5 py-2 text-right">1 min+</th><th className="px-1.5 py-2 text-right">On calls</th><th className="px-1.5 py-2 text-right">Clocked</th></tr>
+              <tr><th className="px-1.5 py-2">Day</th><th className="px-1.5 py-2 text-right">Dials</th><th className="px-1.5 py-2 text-right">30s+</th><th className="px-1.5 py-2 text-right">Results</th><th className="px-1.5 py-2 text-right">Appts</th><th className="px-1.5 py-2 text-right">On calls</th><th className="px-1.5 py-2 text-right">Clocked</th></tr>
             </thead>
             <tbody>
               {person.rows.map((r) => (
                 <tr key={r.day} className="border-t border-slate-100 tabular-nums">
                   <td className="px-1.5 py-2 font-medium text-[#0B1547]">{formatDay(r.day)}</td>
                   <td className="px-1.5 py-2 text-right">{number(r.calls?.dials)}</td>
-                  <td className="px-1.5 py-2 text-right">{number(r.calls?.answered)}</td>
+                  <td className="px-1.5 py-2 text-right">{number(r.calls?.thirty)}</td>
+                  <td className="px-1.5 py-2 text-right">{person.resultsOk ? number(r.results) : 'n/a'}</td>
                   <td className="px-1.5 py-2 text-right">{appointmentsOk ? number(r.appointments) : 'n/a'}</td>
-                  <td className="px-1.5 py-2 text-right">{number(r.calls?.conversations)}</td>
                   <td className="px-1.5 py-2 text-right">{formatHours(r.calls?.talkSeconds)}</td>
                   <td className="px-1.5 py-2 text-right">{person.onTimesheet ? formatHours(r.workedSeconds) : 'n/a'}</td>
                 </tr>
@@ -149,7 +155,7 @@ export default async function CallReportPage({ params, searchParams }) {
           </div>
         ) : null}
         <p className="mt-4 text-xs text-slate-500">
-          People reached is not an even comparison: WAVV counts calls it marked human, while GHL counts answered calls and can include voicemail. Time on calls can include voicemails. Appointments count on the day booked, leave out cancelled ones, and are credited by the caller&apos;s calendar, who booked it, or who owns the contact. Checks for new calls every 2 minutes while open.
+          Calls 30 sec+ uses the same rule for both callers, but GHL cannot tell a person from voicemail, so Krystle&apos;s count can include voicemails. Results logged counts results that mean a person was reached: Juan Carlos&apos;s come from what he picks in WAVV on each call, and Krystle&apos;s from where her pipeline cards moved, so a contact counts once, under the latest result. Time on calls can include voicemails. Appointments count on the day booked, leave out cancelled ones, and are credited by the caller&apos;s calendar, who booked it, or who owns the contact. Checks for new calls every 2 minutes while open.
         </p>
       </div>
     </main>
