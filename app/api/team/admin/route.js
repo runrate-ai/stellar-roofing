@@ -1,5 +1,5 @@
 import { q } from '../../../../lib/team/db';
-import { currentUser, endAllSessions, failure, hashPassword, json, sameOrigin, temporaryPassword } from '../../../../lib/team/auth';
+import { currentUser, endAllSessions, failure, hashPassword, json, logAdminAction, sameOrigin, startActing, temporaryPassword } from '../../../../lib/team/auth';
 import { saveShift, weekReport } from '../../../../lib/team/store';
 import { centralDay, fromCentralInput, mondayOf, validDay } from '../../../../lib/team/time';
 import { CALLER_PRESETS } from '../../../../lib/team/callers';
@@ -54,6 +54,14 @@ export async function POST(request) {
         [name, username, role, await hashPassword(password), preset?.ghlUserId || null, preset?.numbers || '', rate]);
       if (!rows[0]) return json({ error: 'That username is taken.' }, 409);
       return json({ ok: true, username, temporaryPassword: password });
+    }
+
+    if (b.action === 'act-as' && UUID.test(b.userId || '')) {
+      const target = await q(`SELECT id FROM team_users WHERE id=$1 AND active AND role='caller'`, [b.userId]);
+      if (!target[0]) return json({ error: 'You can act as active callers only.' }, 400);
+      if (!(await startActing(user.id, b.userId))) return json({ error: 'Please log in again.' }, 401);
+      await logAdminAction(user.id, b.userId, 'start-acting');
+      return json({ ok: true });
     }
 
     if (b.action === 'reset-password' && UUID.test(b.userId || '')) {

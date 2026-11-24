@@ -1,6 +1,6 @@
 'use client';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight, Coffee, Download, LogOut, Pencil, Phone, Play, Plus, Square, Star } from 'lucide-react';
+import { ArrowLeft, ChevronLeft, ChevronRight, Coffee, Download, LogOut, Pencil, Phone, Play, Plus, Square, Star } from 'lucide-react';
 import { addDays, centralDay, formatDay, formatHours, formatTime, mondayOf, toCentralInput } from '../../lib/team/time';
 
 async function api(path, body) {
@@ -28,13 +28,30 @@ function Brand() {
   return <div className="flex items-center gap-2 font-bold text-primary"><Star className="h-5 w-5 fill-star text-star" aria-hidden /> Stellar Team</div>;
 }
 
-function Shell({ user, onLogout, children, wide }) {
+function ActingBanner({ user, onBack }) {
+  const [busy, setBusy] = useState(false);
+  return (
+    <div role="status" className="bg-amber-400 text-primary">
+      <div className="mx-auto flex max-w-xl flex-wrap items-center justify-between gap-2 px-4 py-2.5 text-sm">
+        <span><b>You are acting as {user.name}.</b> Everything you do here is recorded under {user.actingAs.name}.</span>
+        <button type="button" disabled={busy} onClick={async () => { setBusy(true); await onBack(); setBusy(false); }}
+          className="inline-flex min-h-[40px] items-center gap-1 rounded-lg bg-primary px-3 py-2 font-semibold text-white hover:bg-primary-light disabled:opacity-50">
+          <ArrowLeft className="h-4 w-4" aria-hidden /> Back to admin
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function Shell({ user, onLogout, onBack, children, wide }) {
+  const acting = Boolean(user?.actingAs);
   return (
     <div className="min-h-screen bg-bg-alt">
+      {acting && <ActingBanner user={user} onBack={onBack} />}
       <header className="border-b border-slate-200 bg-white">
         <div className={`mx-auto flex items-center justify-between px-4 py-3 ${wide ? 'max-w-6xl' : 'max-w-xl'}`}>
           <Brand />
-          {user && <button type="button" onClick={onLogout} className={quietBtn}><LogOut className="h-4 w-4" aria-hidden /> Log out</button>}
+          {user && !acting && <button type="button" onClick={onLogout} className={quietBtn}><LogOut className="h-4 w-4" aria-hidden /> Log out</button>}
         </div>
       </header>
       <div className={`mx-auto space-y-4 px-4 py-5 ${wide ? 'max-w-6xl' : 'max-w-xl'}`}>{children}</div>
@@ -143,7 +160,7 @@ function WeekNav({ week, onWeek, children }) {
   );
 }
 
-function CallerView({ data, reload, week, onWeek, onLogout }) {
+function CallerView({ data, reload, week, onWeek, onLogout, onBack }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [fix, setFix] = useState({ day: centralDay(), note: '' });
@@ -162,7 +179,7 @@ function CallerView({ data, reload, week, onWeek, onLogout }) {
     } catch (err) { setError(err.message); }
   };
   return (
-    <Shell user={data.user} onLogout={onLogout}>
+    <Shell user={data.user} onLogout={onLogout} onBack={onBack}>
       <h1 className="text-xl font-bold text-primary">Hi, {data.user.name.split(' ')[0]}</h1>
       <ErrorText>{error}</ErrorText>
       <Clock status={data.status} onAction={act} busy={busy} />
@@ -184,7 +201,7 @@ function CallerView({ data, reload, week, onWeek, onLogout }) {
           <Field label="Which day"><input className={input} type="date" required max={centralDay()} value={fix.day} onChange={(e) => setFix((v) => ({ ...v, day: e.target.value }))} /></Field>
           <Field label="What should it say?"><textarea className={input} required maxLength={500} rows={2} placeholder="I started at 9:00 and forgot to clock in" value={fix.note} onChange={(e) => { setSent(false); setFix((v) => ({ ...v, note: e.target.value })); }} /></Field>
           <button type="submit" className={quietBtn}>Send request</button>
-          {sent && <p role="status" className="text-sm text-emerald-700">Sent. Brandon or Nate will review it.</p>}
+          {sent && <p role="status" className="text-sm text-emerald-700">{data.user.actingAs ? `Sent for ${data.user.name}. It shows under Fix requests on the admin board.` : 'Sent. Brandon or Nate will review it.'}</p>}
         </form>
       </Card>
     </Shell>
@@ -254,7 +271,7 @@ function PersonWeek({ person, onEdit }) {
   );
 }
 
-function TeamSetup({ me, users, presets, reload }) {
+function TeamSetup({ me, users, presets, reload, onActed }) {
   const [f, setF] = useState({ preset: '', name: '', username: '', role: 'caller', hourlyRate: '' });
   const [credential, setCredential] = useState(null);
   const [error, setError] = useState('');
@@ -286,6 +303,7 @@ function TeamSetup({ me, users, presets, reload }) {
             <span><span className="font-semibold">{u.name}</span> <span className="text-text-muted">@{u.username}, {u.role === 'admin' ? 'admin' : 'caller'}{u.active ? '' : ', off'}</span></span>
             <span className="flex flex-wrap items-center gap-2">
               <label className="flex items-center gap-1 text-text-muted">$/hr<input aria-label={`${u.name} hourly rate`} className="w-20 rounded border border-slate-300 px-2 py-1.5" type="number" min="0" step="0.01" defaultValue={u.hourly_rate ?? ''} onBlur={(e) => { if (e.target.value !== String(u.hourly_rate ?? '')) run({ action: 'set-rate', userId: u.id, hourlyRate: e.target.value }); }} /></label>
+              {u.role === 'caller' && u.active && <button type="button" className={quietBtn} onClick={async () => { setError(''); try { await api('/api/team/admin', { action: 'act-as', userId: u.id }); await onActed(); } catch (err) { setError(err.message); } }}>Act as {u.name.split(' ')[0]}</button>}
               {u.id !== me.id && <button type="button" className={quietBtn} onClick={() => run({ action: 'set-role', userId: u.id, role: u.role === 'admin' ? 'caller' : 'admin' })}>{u.role === 'admin' ? 'Remove admin' : 'Make admin'}</button>}
               <button type="button" className={quietBtn} onClick={() => run({ action: 'reset-password', userId: u.id })}>Reset password</button>
               {u.id !== me.id && <button type="button" className={quietBtn} onClick={() => run({ action: 'set-active', userId: u.id, active: !u.active })}>{u.active ? 'Turn off' : 'Turn on'}</button>}
@@ -305,7 +323,7 @@ function TeamSetup({ me, users, presets, reload }) {
   );
 }
 
-function AdminView({ me, onLogout, week, onWeek }) {
+function AdminView({ me, onLogout, week, onWeek, onActed }) {
   const [data, setData] = useState(null);
   const [error, setError] = useState('');
   const [editor, setEditor] = useState(null);
@@ -354,7 +372,7 @@ function AdminView({ me, onLogout, week, onWeek }) {
         {data.report.people.map((p) => <PersonWeek key={p.id} person={p} onEdit={editShift} />)}
         {!data.report.people.length && <Card><p className="text-sm text-text-muted">Add your callers below to get started.</p></Card>}
         <p className="flex items-start gap-2 text-xs text-text-muted"><Phone className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden /> Calls come live from WAVV and the GHL dialer. For WAVV, Reached means a real person answered. For GHL, it can include voicemail pickups. On calls is connected time, including voicemails.</p>
-        <TeamSetup me={me} users={data.users} presets={data.presets} reload={load} />
+        <TeamSetup me={me} users={data.users} presets={data.presets} reload={load} onActed={onActed} />
       </>}
       {editor && data && <ShiftEditor editor={editor} people={data.users} onClose={() => setEditor(null)} onSaved={() => { setEditor(null); load(); }} />}
     </Shell>
@@ -384,11 +402,14 @@ export default function TeamApp() {
   }, [week]);
   useEffect(() => { load(); }, [load]);
   const logout = async () => { await api('/api/team/auth', { action: 'logout' }).catch(() => {}); setData(null); load(); };
+  // Switching between the admin board and a caller's screen.
+  const switchView = async () => { setData(null); await load(); };
+  const stopActing = async () => { await api('/api/team/auth', { action: 'stop-acting' }).catch(() => {}); await switchView(); };
 
   if (error && !data) return <Shell><ErrorText>{error}</ErrorText></Shell>;
   if (!data) return <Shell><p className="text-sm text-text-muted">Loading...</p></Shell>;
   if (!data.user) return <AuthForm mode={data.setupNeeded ? 'setup' : 'login'} onDone={load} />;
   if (data.user.mustChange) return <AuthForm mode="change-password" onDone={load} />;
-  if (data.user.role === 'admin') return <AdminView me={data.user} onLogout={logout} week={week} onWeek={setWeek} />;
-  return <CallerView data={data} reload={load} week={week} onWeek={setWeek} onLogout={logout} />;
+  if (data.user.role === 'admin') return <AdminView me={data.user} onLogout={logout} week={week} onWeek={setWeek} onActed={switchView} />;
+  return <CallerView data={data} reload={load} week={week} onWeek={setWeek} onLogout={logout} onBack={stopActing} />;
 }

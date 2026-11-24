@@ -1,5 +1,5 @@
 import { q } from '../../../../lib/team/db';
-import { changePassword, currentUser, endSession, failure, hashPassword, json, login, safeEqual, sameOrigin, startSession } from '../../../../lib/team/auth';
+import { changePassword, currentUser, endSession, failure, hashPassword, json, logAdminAction, login, safeEqual, sameOrigin, startSession, stopActing } from '../../../../lib/team/auth';
 
 export const dynamic = 'force-dynamic';
 
@@ -15,9 +15,16 @@ export async function POST(request) {
       await endSession();
       return json({ ok: true });
     }
+    if (body.action === 'stop-acting') {
+      const user = await currentUser();
+      if (user?.actor) await logAdminAction(user.actor.id, user.id, 'stop-acting');
+      await stopActing();
+      return json({ ok: true });
+    }
     if (body.action === 'change-password') {
       const user = await currentUser();
       if (!user) return json({ error: 'Please log in.' }, 401);
+      if (user.actor) return json({ error: 'Go back to your own login to change a password.' }, 403);
       const result = await changePassword(user, body.current, body.next);
       return json(result, result.error ? 400 : 200);
     }
