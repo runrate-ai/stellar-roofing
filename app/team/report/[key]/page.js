@@ -48,7 +48,7 @@ function Person({ person, showDays, unavailable, appointmentsOk }) {
     return (
       <section className="min-w-0 rounded-xl border border-slate-200 bg-slate-50 p-4">
         <h2 className="text-lg font-bold text-[#0B1547]">{person.name}</h2>
-        <p className="mt-3 rounded-lg bg-white p-3 text-sm text-slate-600">Unavailable right now. Refresh in a minute.</p>
+        <p className="mt-3 rounded-lg bg-white p-3 text-sm text-slate-600">Calls for this date range are not loaded yet.</p>
       </section>
     );
   }
@@ -116,12 +116,12 @@ export default async function CallReportPage({ params, searchParams }) {
 
   return (
     <main className="min-h-screen bg-white p-4 text-slate-800">
-      <Refresh />
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h1 className="text-xl font-bold text-[#0B1547]">Cold Call Report</h1>
             <p className="text-sm text-slate-500">{label} (Central time)</p>
+            <Refresh reportKey={params.key} from={picked.from} to={picked.to} updatedAt={report?.updatedAt || null} complete={Boolean(report?.ghlOk && report?.wavvOk)} />
           </div>
           <nav className="flex flex-wrap gap-1" aria-label="Date range">
             {RANGES.map(([value, text]) => (
@@ -149,7 +149,7 @@ export default async function CallReportPage({ params, searchParams }) {
           </div>
         ) : null}
         <p className="mt-4 text-xs text-slate-500">
-          People reached is not an even comparison: WAVV counts calls it marked human, while GHL counts answered calls and can include voicemail. Time on calls can include voicemails. Appointments count on the day booked, leave out cancelled ones, and are credited by the caller&apos;s calendar, who booked it, or who owns the contact. Updates every 2 minutes while open.
+          People reached is not an even comparison: WAVV counts calls it marked human, while GHL counts answered calls and can include voicemail. Time on calls can include voicemails. Appointments count on the day booked, leave out cancelled ones, and are credited by the caller&apos;s calendar, who booked it, or who owns the contact. Checks for new calls every 2 minutes while open.
         </p>
       </div>
     </main>
