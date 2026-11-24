@@ -29,6 +29,14 @@ function teamResponse(request) {
     const url = request.nextUrl.clone();
     url.pathname = '/team';
     response = NextResponse.rewrite(url);
+  } else if (/^\/report\/[A-Za-z0-9_-]{32,}$/.test(pathname)) {
+    // The private call report may only be framed by the GHL app.
+    const url = request.nextUrl.clone();
+    url.pathname = `/team${pathname}`;
+    response = NextResponse.rewrite(url);
+    response.headers.set('Content-Security-Policy', 'frame-ancestors https://app.gohighlevel.com https://app.runratedigital.com');
+    response.headers.set('Referrer-Policy', 'no-referrer');
+    response.headers.set('Cache-Control', 'no-store');
   } else {
     const proto = request.headers.get('x-forwarded-proto') || request.nextUrl.protocol.replace(':', '');
     response = NextResponse.redirect(`${proto}://${request.headers.get('host')}/`);

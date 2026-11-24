@@ -23,7 +23,7 @@ function useIsFunnel() {
   // '/lp/...'. Without the hostname check the chrome reappears on the client.
   if (pathname?.startsWith(FUNNEL_PREFIX)) return true;
   // The private team timesheet also renders without site chrome.
-  if (pathname === '/team' || pathname?.startsWith('/team/')) return true;
+  if (pathname === '/team' || pathname?.startsWith('/team/') || pathname?.startsWith('/report/')) return true;
   if (typeof window !== 'undefined' && (isFunnelHostname(window.location.hostname) || isTeamHostname(window.location.hostname))) return true;
   return false;
 }
