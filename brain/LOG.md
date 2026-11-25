@@ -240,3 +240,6 @@ Published the call accuracy update: late GHL calls rechecked, 30-second calls, l
 
 ## 2026-11-24 (timesheet clock screen)
 - Callers: Clock in for the day / Take lunch / Take a break / Clock out for the day, live Worked today, lunch/break minutes and timeline; lunch and breaks unpaid (`e10d226`, live).
+
+## 2026-11-24 (midnight refresh, test login)
+- Caller page reloads at midnight Central and on tab return (`8fecbfc`, live). Test Caller login added for Brandon's testing; remove it when he's done.
