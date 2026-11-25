@@ -662,6 +662,17 @@ export default function TeamApp() {
     }
   }, [week]);
   useEffect(() => { load(); }, [load]);
+  // Callers' screens start a new day at midnight Central and catch up when
+  // they come back to the tab, even if the page was left open.
+  const shownDay = data?.today?.day;
+  useEffect(() => {
+    if (!shownDay) return undefined;
+    const check = () => { if (centralDay() !== shownDay) { setWeek(mondayOf(centralDay())); load(); } };
+    const back = () => { if (document.visibilityState === 'visible') load(); };
+    const t = setInterval(check, 30000);
+    document.addEventListener('visibilitychange', back);
+    return () => { clearInterval(t); document.removeEventListener('visibilitychange', back); };
+  }, [shownDay, load]);
   const logout = async () => { await api('/api/team/auth', { action: 'logout' }).catch(() => {}); setData(null); load(); };
   // Switching between the admin board and a caller's screen.
   const switchView = async () => { setData(null); await load(); };
