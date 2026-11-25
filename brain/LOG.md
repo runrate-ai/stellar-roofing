@@ -237,3 +237,6 @@ Published the call accuracy update: late GHL calls rechecked, 30-second calls, l
 
 ## 2026-11-24 (timesheet straight pay)
 - Pay = rate x hours, overtime/gross removed; week/month loads ~15x faster (`370f0eb`, live). Decision logged.
+
+## 2026-11-24 (timesheet clock screen)
+- Callers: Clock in for the day / Take lunch / Take a break / Clock out for the day, live Worked today, lunch/break minutes and timeline; lunch and breaks unpaid (`e10d226`, live).
