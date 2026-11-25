@@ -243,3 +243,6 @@ Published the call accuracy update: late GHL calls rechecked, 30-second calls, l
 
 ## 2026-11-24 (midnight refresh, test login)
 - Caller page reloads at midnight Central and on tab return (`8fecbfc`, live). Test Caller login added for Brandon's testing; remove it when he's done.
+
+## 2026-11-24 (Antioch list)
+- Antioch HailTrace list cleaned to 4,779 owner-occupied houses with phones; uploading to GHL for Krystle (`cold list - antioch`); her own WAVV board `Antioch - Cold (Krystle)` on Krystle's Group numbers. Corrected: Krystle has a WAVV seat.
