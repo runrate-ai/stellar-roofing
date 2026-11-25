@@ -1,10 +1,10 @@
 import { q } from '../../../../lib/team/db';
 import { currentUser, failure, json, logAdminAction, sameOrigin } from '../../../../lib/team/auth';
-import { clockAction, clockStatus } from '../../../../lib/team/store';
+import { clockAction, clockStatus, todaySummary } from '../../../../lib/team/store';
 import { centralDay, validDay } from '../../../../lib/team/time';
 
 export const dynamic = 'force-dynamic';
-const LABELS = { in: 'Clocked in', break: 'Started break', resume: 'Ended break', out: 'Clocked out' };
+const LABELS = { in: 'Clocked in', break: 'Started break', lunch: 'Started lunch', resume: 'Back from lunch or break', out: 'Clocked out for the day' };
 
 export async function POST(request) {
   if (!sameOrigin(request)) return json({ error: 'Not allowed.' }, 403);
@@ -30,7 +30,7 @@ export async function POST(request) {
       await q('INSERT INTO team_edits (shift_id, editor_id, reason, before_value, after_value) VALUES ($1,$2,$3,NULL,$4::jsonb)',
         [shiftId, user.actor.id, reason, JSON.stringify({ action: body.action, at: new Date().toISOString() })]);
     }
-    return json({ ok: true, status });
+    return json({ ok: true, status, today: await todaySummary(user.id), serverNow: new Date().toISOString() });
   } catch (err) {
     return failure(err);
   }

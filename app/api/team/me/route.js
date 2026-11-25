@@ -1,6 +1,6 @@
 import { q } from '../../../../lib/team/db';
 import { currentUser, failure, json } from '../../../../lib/team/auth';
-import { clockStatus, weekReport } from '../../../../lib/team/store';
+import { clockStatus, todaySummary, weekReport } from '../../../../lib/team/store';
 import { centralDay, mondayOf, validDay } from '../../../../lib/team/time';
 
 export const dynamic = 'force-dynamic';
@@ -29,7 +29,7 @@ export async function GET(request) {
       p.days.forEach((d) => { if (d.paidOverride) d.paidOverride = { set: true }; });
     }
     const requests = await q(`SELECT id, work_day::text AS day, note, status FROM team_fix_requests WHERE user_id=$1 ORDER BY created_at DESC LIMIT 5`, [user.id]);
-    return json({ user: me, status: await clockStatus(user.id), report, requests, serverNow: new Date().toISOString() });
+    return json({ user: me, status: await clockStatus(user.id), today: await todaySummary(user.id), report, requests, serverNow: new Date().toISOString() });
   } catch (err) {
     return failure(err);
   }

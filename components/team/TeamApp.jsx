@@ -1,6 +1,6 @@
 'use client';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { ArrowLeft, ChevronLeft, ChevronRight, Coffee, Download, LogOut, Pencil, Phone, Play, Plus, Square, Star } from 'lucide-react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { ArrowLeft, ChevronLeft, ChevronRight, Coffee, Download, LogOut, Pencil, Phone, Play, Plus, Square, Star, Utensils } from 'lucide-react';
 import { addDays, centralDay, formatDay, formatHours, formatTime, mondayOf, toCentralInput } from '../../lib/team/time';
 
 async function api(path, body) {
@@ -114,28 +114,67 @@ function useNow() {
   return now;
 }
 
-function Clock({ status, onAction, busy }) {
+function clockText(seconds) {
+  const t = Math.max(0, Math.floor(seconds));
+  return `${Math.floor(t / 3600)}:${String(Math.floor(t / 60) % 60).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`;
+}
+const minutes = (seconds) => `${Math.round((seconds || 0) / 60)} min`;
+
+function Clock({ status, today, loadedAt, onAction, busy }) {
   const now = useNow();
-  const since = status.state === 'break' ? status.breakStart : status.clockIn;
-  const seconds = since ? Math.max(0, Math.floor((now - new Date(since)) / 1000)) : 0;
-  const clock = `${Math.floor(seconds / 3600)}:${String(Math.floor(seconds / 60) % 60).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}`;
-  const label = { out: 'Off the clock', in: 'On the clock', break: 'On break' }[status.state];
+  const [confirmOut, setConfirmOut] = useState(false);
+  useEffect(() => { if (!confirmOut) return undefined; const t = setTimeout(() => setConfirmOut(false), 5000); return () => clearTimeout(t); }, [confirmOut]);
+  const t = today || { workedSeconds: 0, lunchSeconds: 0, breakSeconds: 0, events: [] };
+  // Counts keep running between page loads.
+  const elapsed = Math.max(0, (now - loadedAt) / 1000);
+  const away = status.state === 'break';
+  const onLunch = away && status.breakKind === 'lunch';
+  const worked = t.workedSeconds + (status.state === 'in' ? elapsed : 0);
+  const lunch = t.lunchSeconds + (onLunch ? elapsed : 0);
+  const rest = t.breakSeconds + (away && !onLunch ? elapsed : 0);
+  const awaySince = away ? Math.max(0, (now - new Date(status.breakStart)) / 1000) : 0;
+  const workedToday = t.events.length > 0;
+  const lastOut = [...t.events].reverse().find((e) => e.type === 'out');
+  const label = status.state === 'in' ? 'On the clock' : onLunch ? 'On lunch' : away ? 'On a break' : workedToday ? 'Clocked out' : 'Not clocked in yet';
   const dot = { out: 'bg-slate-400', in: 'bg-emerald-500', break: 'bg-amber-500' }[status.state];
+  const big = 'min-h-[60px] w-full text-lg';
   return (
-    <Card>
-      <div className="py-3 text-center">
-        <p className="inline-flex items-center gap-2 text-sm font-semibold text-text-muted"><span className={`h-2.5 w-2.5 rounded-full ${dot}`} /> {label}</p>
-        {status.state !== 'out' && <>
-          <p className="mt-2 text-5xl font-bold tabular-nums text-primary">{clock}</p>
-          <p className="mt-1 text-sm text-text-muted">{status.state === 'break' ? 'Break started' : 'Clocked in'} at {formatTime(since)} Central</p>
-        </>}
+    <Card title={`Today, ${formatDay(t.day || centralDay())}`} action={<span className="inline-flex items-center gap-2 text-sm font-semibold text-text-muted"><span className={`h-2.5 w-2.5 rounded-full ${dot}`} />{label}</span>}>
+      <div className="pb-4 pt-1 text-center">
+        <p className="text-xs font-semibold uppercase tracking-wide text-text-muted">Worked today</p>
+        <p className="mt-1 text-5xl font-bold tabular-nums text-primary">{clockText(worked)}</p>
+        <p className="mt-1 text-sm text-text-muted">
+          {status.state === 'in' && `On the clock since ${formatTime(status.clockIn)} CT`}
+          {away && `${onLunch ? 'Lunch' : 'Break'} started ${formatTime(status.breakStart)} CT (${clockText(awaySince)} so far)`}
+          {status.state === 'out' && (lastOut ? `Clocked out at ${formatTime(lastOut.at)} CT` : 'Tap below when you start work.')}
+        </p>
       </div>
-      {status.state === 'out' && <button type="button" disabled={busy} onClick={() => onAction('in')} className={`${primaryBtn} min-h-[60px] w-full text-lg`}><Play className="h-5 w-5" aria-hidden /> Clock In</button>}
-      {status.state === 'in' && <div className="grid grid-cols-2 gap-3">
-        <button type="button" disabled={busy} onClick={() => onAction('break')} className={`${quietBtn} min-h-[60px] text-base`}><Coffee className="h-5 w-5" aria-hidden /> Start Break</button>
-        <button type="button" disabled={busy} onClick={() => onAction('out')} className="inline-flex min-h-[60px] items-center justify-center gap-2 rounded-lg bg-primary px-4 font-semibold text-white hover:bg-primary-light disabled:opacity-50"><Square className="h-4 w-4" aria-hidden /> Clock Out</button>
+      {status.state === 'out' && <button type="button" disabled={busy} onClick={() => onAction('in')} className={`${primaryBtn} ${big}`}><Play className="h-5 w-5" aria-hidden /> {workedToday ? 'Clock back in' : 'Clock in for the day'}</button>}
+      {status.state === 'in' && <div className="space-y-3">
+        <div className="grid grid-cols-2 gap-3">
+          <button type="button" disabled={busy} onClick={() => onAction('lunch')} className={`${quietBtn} min-h-[60px] text-base`}><Utensils className="h-5 w-5" aria-hidden /> Take lunch</button>
+          <button type="button" disabled={busy} onClick={() => onAction('break')} className={`${quietBtn} min-h-[60px] text-base`}><Coffee className="h-5 w-5" aria-hidden /> Take a break</button>
+        </div>
+        <button type="button" disabled={busy} onClick={() => { if (confirmOut) { setConfirmOut(false); onAction('out'); } else setConfirmOut(true); }}
+          className={`inline-flex ${big} items-center justify-center gap-2 rounded-lg px-4 font-semibold text-white disabled:opacity-50 ${confirmOut ? 'bg-red-700 hover:bg-red-800' : 'bg-primary hover:bg-primary-light'}`}>
+          <Square className="h-4 w-4" aria-hidden /> {confirmOut ? 'Tap again to clock out for the day' : 'Clock out for the day'}
+        </button>
       </div>}
-      {status.state === 'break' && <button type="button" disabled={busy} onClick={() => onAction('resume')} className={`${primaryBtn} min-h-[60px] w-full text-lg`}><Play className="h-5 w-5" aria-hidden /> End Break</button>}
+      {away && <button type="button" disabled={busy} onClick={() => onAction('resume')} className={`${primaryBtn} ${big}`}><Play className="h-5 w-5" aria-hidden /> {onLunch ? 'End lunch, back to work' : 'End break, back to work'}</button>}
+      <dl className="mt-4 grid grid-cols-3 gap-2 text-center">
+        {[['Lunch', minutes(lunch)], ['Breaks', minutes(rest)], ['First in', t.firstIn ? formatTime(t.firstIn) : '-']].map(([k, v]) => (
+          <div key={k} className="rounded-lg bg-bg-alt p-2"><dt className="text-xs text-text-muted">{k}</dt><dd className="font-semibold tabular-nums text-primary">{v}</dd></div>
+        ))}
+      </dl>
+      {t.events.length > 0 && <ol className="mt-4 space-y-1.5 border-t border-slate-100 pt-3 text-sm">
+        {t.events.map((e) => (
+          <li key={`${e.type}-${e.at}`} className="flex justify-between gap-3">
+            <span className="text-text-dark">{{ in: 'Clocked in', out: 'Clocked out', lunch: 'Lunch', break: 'Break' }[e.type]}</span>
+            <span className="tabular-nums text-text-muted">{e.type === 'lunch' || e.type === 'break' ? `${formatTime(e.at)} to ${e.end ? formatTime(e.end) : 'now'} (${minutes(e.end ? e.seconds : e.seconds + elapsed)})` : formatTime(e.at)}</span>
+          </li>
+        ))}
+      </ol>}
+      <p className="mt-3 text-xs text-text-muted">Lunch and breaks are off the clock. All times are Central.</p>
     </Card>
   );
 }
@@ -299,6 +338,8 @@ function CallerView({ data, reload, week, onWeek, onLogout, onBack }) {
   const [fix, setFix] = useState({ day: centralDay(), note: '' });
   const [sent, setSent] = useState(false);
   const person = data.report.people[0];
+  // When this data arrived, so the clock can keep counting from it.
+  const loadedAt = useMemo(() => Date.now(), [data]);
   const act = async (action) => {
     setBusy(true); setError('');
     try { await api('/api/team/clock', { action }); } catch (err) { setError(err.message); }
@@ -315,7 +356,7 @@ function CallerView({ data, reload, week, onWeek, onLogout, onBack }) {
     <Shell user={data.user} onLogout={onLogout} onBack={onBack}>
       <h1 className="text-xl font-bold text-primary">Hi, {data.user.name.split(' ')[0]}</h1>
       <ErrorText>{error}</ErrorText>
-      <Clock status={data.status} onAction={act} busy={busy} />
+      <Clock status={data.status} today={data.today} loadedAt={loadedAt} onAction={act} busy={busy} />
       <Card title="My hours">
         <WeekNav week={week} onWeek={onWeek} />
         <dl className={`mt-3 grid gap-3 ${data.user.showPay ? 'grid-cols-3' : 'grid-cols-2'}`}>
@@ -402,7 +443,7 @@ function PaidEditor({ editor, onClose, onSaved }) {
 function PersonWeek({ person, onEdit, onAdd, onPaid, onlyWorked }) {
   const today = centralDay();
   const active = person.days.filter((d) => (onlyWorked ? worked(d) : d.day <= today || worked(d)));
-  const label = { out: 'Off the clock', in: 'On the clock', break: 'On break' }[person.status.state];
+  const label = { out: 'Off the clock', in: 'On the clock', break: person.status.breakKind === 'lunch' ? 'On lunch' : 'On break' }[person.status.state];
   const dot = { out: 'bg-slate-400', in: 'bg-emerald-500', break: 'bg-amber-500' }[person.status.state];
   const rowBtn = 'ml-1 inline-flex items-center gap-1 rounded px-1.5 py-1 align-middle text-xs font-medium text-star hover:bg-slate-100';
   return (
