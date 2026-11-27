@@ -254,3 +254,6 @@ Published the call accuracy update: late GHL calls rechecked, 30-second calls, l
 - Added Nate Sneed (`nate.sneed`, admin) to team.thestellarroofing.com; password left for Brandon to set via Reset password.
 - Then: Owner role built and published (`6e04d61`); Nate marked owner, other admins can't remove or turn him off.
 - Then: Forgot password link on the timesheet (`4fa4c53`, live): requests show in Password help on the admin board.
+
+## 2026-11-27 (Meta ads review)
+- Cost per lead rose from ~$52 (early Oct) to ~$100 (Thanksgiving week); bookings from FB leads down to ~1/week. Causes: constant new campaigns (learning resets), budget jump to $135/day on the one live ad set, holiday CPMs, spend on traffic/awareness. Advice given; nothing changed in Meta.
