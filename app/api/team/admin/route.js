@@ -33,7 +33,8 @@ export async function GET(request) {
       : await weekReport(validDay(asked) ? mondayOf(asked) : mondayOf(centralDay()), null, { refresh });
     const users = await q(`SELECT id, name, username, role, active, is_owner, hourly_rate, start_date::text AS start_date FROM team_users ORDER BY active DESC, is_owner DESC, role, name`);
     const requests = await q(`SELECT r.id, r.work_day::text AS day, r.note, u.name FROM team_fix_requests r JOIN team_users u ON u.id=r.user_id WHERE r.status='open' ORDER BY r.created_at`);
-    return json({ report, users, requests, presets: CALLER_PRESETS.map(({ key, name, username }) => ({ key, name, username })) });
+    const resetRequests = await q(`SELECT r.id, r.user_id, r.created_at, u.name FROM team_reset_requests r JOIN team_users u ON u.id=r.user_id WHERE r.status='open' ORDER BY r.created_at`);
+    return json({ report, users, requests, resetRequests, presets: CALLER_PRESETS.map(({ key, name, username }) => ({ key, name, username })) });
   } catch (err) {
     return failure(err);
   }
@@ -77,6 +78,7 @@ export async function POST(request) {
       const rows = await q('UPDATE team_users SET password_hash=$1, must_change=true, failed_logins=0, locked_until=NULL WHERE id=$2 RETURNING username', [await hashPassword(password), b.userId]);
       if (!rows[0]) return json({ error: 'Person not found.' }, 404);
       await endAllSessions(b.userId);
+      await q(`UPDATE team_reset_requests SET status='done' WHERE user_id=$1 AND status='open'`, [b.userId]);
       return json({ ok: true, username: rows[0].username, temporaryPassword: password });
     }
 
@@ -88,6 +90,11 @@ export async function POST(request) {
       if (!target[0]) return json({ error: 'The owner must be an active admin.' }, 400);
       await q('UPDATE team_users SET is_owner=(id=$1)', [b.userId]);
       await logAdminAction(user.id, b.userId, 'set-owner');
+      return json({ ok: true });
+    }
+
+    if (b.action === 'close-reset' && UUID.test(b.requestId || '')) {
+      await q(`UPDATE team_reset_requests SET status='done' WHERE id=$1`, [b.requestId]);
       return json({ ok: true });
     }
 

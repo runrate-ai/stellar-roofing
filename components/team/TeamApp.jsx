@@ -72,11 +72,18 @@ function AuthForm({ mode, onDone }) {
   const [f, setF] = useState({});
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
+  const [forgot, setForgot] = useState(false);
+  const [asked, setAsked] = useState(false);
   const set = (k) => (e) => setF((v) => ({ ...v, [k]: e.target.value }));
   const submit = async (e) => {
     e.preventDefault();
     setBusy(true); setError('');
     try {
+      if (forgot) {
+        await api('/api/team/auth', { action: 'forgot', username: f.username });
+        setAsked(true);
+        return;
+      }
       await api('/api/team/auth', { action: mode, ...f });
       // Stay on "One moment" until the next screen is ready.
       await onDone();
@@ -87,8 +94,11 @@ function AuthForm({ mode, onDone }) {
     <div className="flex min-h-screen items-center justify-center bg-bg-alt px-4">
       <form onSubmit={submit} className="w-full max-w-sm space-y-4 rounded-xl border border-slate-200 bg-white p-6">
         <Brand />
-        <h1 className="text-xl font-bold text-primary">{titles[mode]}</h1>
+        <h1 className="text-xl font-bold text-primary">{forgot ? 'Forgot your password?' : titles[mode]}</h1>
         <ErrorText>{error}</ErrorText>
+        {forgot && (asked
+          ? <p role="status" className="rounded-lg bg-emerald-50 px-3 py-2 text-sm text-emerald-900">Request sent. Brandon or Nate will send you a temporary password. Log in with it and you will pick a new one.</p>
+          : <p className="text-sm text-text-muted">Enter your username. Brandon or Nate will get your request and send you a temporary password.</p>)}
         {mode === 'setup' && <>
           <Field label="Setup code"><input className={input} type="password" required autoComplete="off" onChange={set('code')} /></Field>
           <Field label="Your name"><input className={input} required autoComplete="name" onChange={set('name')} /></Field>
@@ -98,8 +108,9 @@ function AuthForm({ mode, onDone }) {
           <Field label="Temporary password"><input className={input} type="password" required autoComplete="current-password" onChange={set('current')} /></Field>
           <Field label="New password (10+ characters)"><input className={input} type="password" required minLength={10} autoComplete="new-password" onChange={set('next')} /></Field>
         </>}
-        {mode !== 'change-password' && <Field label={mode === 'setup' ? 'Password (10+ characters)' : 'Password'}><input className={input} type="password" required autoComplete={mode === 'setup' ? 'new-password' : 'current-password'} onChange={set('password')} /></Field>}
-        <button type="submit" disabled={busy} className={`${primaryBtn} w-full`}>{busy ? 'One moment...' : 'Continue'}</button>
+        {mode !== 'change-password' && !forgot && <Field label={mode === 'setup' ? 'Password (10+ characters)' : 'Password'}><input className={input} type="password" required autoComplete={mode === 'setup' ? 'new-password' : 'current-password'} onChange={set('password')} /></Field>}
+        {!(forgot && asked) && <button type="submit" disabled={busy} className={`${primaryBtn} w-full`}>{busy ? 'One moment...' : forgot ? 'Send request' : 'Continue'}</button>}
+        {mode === 'login' && <button type="button" className="w-full text-center text-sm font-semibold text-primary underline-offset-2 hover:underline" onClick={() => { setForgot(!forgot); setAsked(false); setError(''); }}>{forgot ? 'Back to log in' : 'Forgot password?'}</button>}
       </form>
     </div>
   );
@@ -488,7 +499,7 @@ function PersonWeek({ person, onEdit, onAdd, onPaid, onlyWorked }) {
   );
 }
 
-function TeamSetup({ me, users, presets, reload, onActed }) {
+function TeamSetup({ me, users, presets, reload, onActed, resetRequests = [] }) {
   const blank = () => ({ preset: '', name: '', username: '', role: 'caller', hourlyRate: '', startDate: centralDay() });
   const [f, setF] = useState(blank);
   const [credential, setCredential] = useState(null);
@@ -514,6 +525,13 @@ function TeamSetup({ me, users, presets, reload, onActed }) {
       {credential && <div role="status" className="mb-3 rounded-lg bg-emerald-50 p-3 text-sm text-emerald-900">
         <p className="font-semibold">Send this login privately. It only shows once.</p>
         <p className="mt-1">Page: <code>team.thestellarroofing.com</code></p><p>Username: <code>{credential.username}</code></p><p>Temporary password: <code className="select-all font-bold">{credential.temporaryPassword}</code></p>
+      </div>}
+      {resetRequests.length > 0 && <div className="mb-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm">
+        <p className="font-semibold text-amber-900">Password help ({resetRequests.length})</p>
+        <ul className="mt-1 divide-y divide-amber-100">{resetRequests.map((r) => <li key={r.id} className="flex flex-wrap items-center justify-between gap-2 py-1.5">
+          <span><b>{r.name}</b> forgot their password ({formatDay(centralDay(new Date(r.created_at)))} {formatTime(r.created_at)}). Reset it, then send them the temporary password.</span>
+          <span className="flex gap-2"><button type="button" className={quietBtn} onClick={() => run({ action: 'reset-password', userId: r.user_id })}>Reset password</button><button type="button" className={quietBtn} onClick={() => run({ action: 'close-reset', requestId: r.id })}>Dismiss</button></span>
+        </li>)}</ul>
       </div>}
       <ul className="divide-y divide-slate-100">
         {users.map((u) => (
@@ -619,8 +637,9 @@ function AdminView({ me, onLogout, week, onWeek, onActed }) {
       <ErrorText>{error}</ErrorText>
       {!data && !error && <p className="text-sm text-text-muted">Loading the {view}...</p>}
       {data && view === 'month' && data.report.mondays && <MonthView report={data.report} month={month} onOpenWeek={openWeek} />}
+      {data && data.resetRequests?.length > 0 && <p role="status" className="rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-900">{data.resetRequests.map((r) => r.name.split(' ')[0]).join(', ')} asked for a new password. See Password help under People and logins.</p>}
       {data && view === 'month' && data.requests.length > 0 && <p className="text-sm text-amber-800">{data.requests.length} open fix request{data.requests.length > 1 ? 's' : ''}. Switch to Week to see {data.requests.length > 1 ? 'them' : 'it'}.</p>}
-      {data && view === 'month' && <TeamSetup me={me} users={data.users} presets={data.presets} reload={load} onActed={onActed} />}
+      {data && view === 'month' && <TeamSetup me={me} users={data.users} presets={data.presets} reload={load} onActed={onActed} resetRequests={data.resetRequests} />}
       {data && view === 'week' && !data.report.mondays && <>
         <p role="status" className="text-xs text-text-muted">{updating ? 'Updating calls...' : data.report.callsUpdatedAt ? `Calls updated ${formatTime(data.report.callsUpdatedAt)} Central` : ''}</p>
         {!updating && !data.report.callsConnected && <ErrorText>Call records could not be loaded right now. Hours are still correct.</ErrorText>}
@@ -633,7 +652,7 @@ function AdminView({ me, onLogout, week, onWeek, onActed }) {
         {data.report.people.map((p) => <PersonWeek key={p.id} person={p} onEdit={editShift} onAdd={addHours} onPaid={editPaid} onlyWorked={onlyWorked} />)}
         {!data.report.people.length && <Card><p className="text-sm text-text-muted">Nobody on the timesheet this week. People show from their start date.</p></Card>}
         <p className="flex items-start gap-2 text-xs text-text-muted"><Phone className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden /> Calls come live from WAVV and the GHL dialer. For WAVV, Reached means a real person answered. For GHL, it can include voicemail pickups. On calls is connected time, including voicemails.</p>
-        <TeamSetup me={me} users={data.users} presets={data.presets} reload={load} onActed={onActed} />
+        <TeamSetup me={me} users={data.users} presets={data.presets} reload={load} onActed={onActed} resetRequests={data.resetRequests} />
       </>}
       {paid && <PaidEditor editor={paid} onClose={() => setPaid(null)} onSaved={() => { setPaid(null); load(); }} />}
       {editor && data && <ShiftEditor editor={editor} people={data.users} onClose={() => setEditor(null)} onSaved={() => { setEditor(null); load(); }} />}

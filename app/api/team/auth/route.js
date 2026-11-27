@@ -21,6 +21,16 @@ export async function POST(request) {
       await stopActing();
       return json({ ok: true });
     }
+    if (body.action === 'forgot') {
+      // Same answer whether or not the username exists, so it can't be used to guess logins.
+      const username = String(body.username || '').trim().toLowerCase();
+      if (/^[a-z0-9._-]{3,30}$/.test(username)) {
+        await q(`INSERT INTO team_reset_requests (user_id)
+                 SELECT id FROM team_users WHERE username=$1 AND active
+                 ON CONFLICT (user_id) WHERE status='open' DO NOTHING`, [username]);
+      }
+      return json({ ok: true });
+    }
     if (body.action === 'change-password') {
       const user = await currentUser();
       if (!user) return json({ error: 'Please log in.' }, 401);
