@@ -257,3 +257,4 @@ Published the call accuracy update: late GHL calls rechecked, 30-second calls, l
 
 ## 2026-11-27 (Meta ads review)
 - Cost per lead rose from ~$52 (early Oct) to ~$100 (Thanksgiving week); bookings from FB leads down to ~1/week. Causes: constant new campaigns (learning resets), budget jump to $135/day on the one live ad set, holiday CPMs, spend on traffic/awareness. Advice given; nothing changed in Meta.
+- Same day: Custom Estimate budget to $90/day; new ad set Nate Videos Round 2 (4 videos, $60/day, starts Dec 1) published.
