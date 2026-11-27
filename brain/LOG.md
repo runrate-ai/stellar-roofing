@@ -249,3 +249,6 @@ Published the call accuracy update: late GHL calls rechecked, 30-second calls, l
 
 ## 2026-11-25 (Juan Carlos leads)
 - Juan finished the old 4,700 campaign, not his list; 563 dead contacts removed from his WAVV board; ~13,400 never-called remain. Guide image made for him.
+
+## 2026-11-27 (Nate on the timesheet)
+- Added Nate Sneed (`nate.sneed`, admin) to team.thestellarroofing.com; password left for Brandon to set via Reset password.
