@@ -253,3 +253,4 @@ Published the call accuracy update: late GHL calls rechecked, 30-second calls, l
 ## 2026-11-27 (Nate on the timesheet)
 - Added Nate Sneed (`nate.sneed`, admin) to team.thestellarroofing.com; password left for Brandon to set via Reset password.
 - Then: Owner role built and published (`6e04d61`); Nate marked owner, other admins can't remove or turn him off.
+- Then: Forgot password link on the timesheet (`4fa4c53`, live): requests show in Password help on the admin board.
