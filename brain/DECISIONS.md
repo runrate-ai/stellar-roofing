@@ -69,3 +69,6 @@ Newest first. Each one says what was decided and why.
 
 ## 2026-11-24: Caller pay is straight hourly pay
 Callers are paid hourly rate x paid hours (currently $7/hr), no overtime, no gross/withholding wording on the timesheet. Brandon: "its just straight pay. 7 times whatever hours they worked." Don't add overtime back unless he asks.
+
+## 2026-11-27: Nate owns the timesheet
+Nate Sneed is the timesheet Owner; Brandon is an admin with the same everyday access and manages it. Other admins cannot remove the owner's admin access or turn the owner off; only the owner hands ownership on.
