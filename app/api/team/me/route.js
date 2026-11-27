@@ -14,7 +14,7 @@ export async function GET(request) {
       const count = await q('SELECT count(*)::int AS n FROM team_users');
       return json({ user: null, setupNeeded: count[0].n === 0 });
     }
-    const me = { id: user.id, name: user.name, role: user.role, mustChange: user.must_change, actingAs: user.actor ? { name: user.actor.name } : null };
+    const me = { id: user.id, name: user.name, role: user.role, isOwner: Boolean(user.is_owner), mustChange: user.must_change, actingAs: user.actor ? { name: user.actor.name } : null };
     // Admins load their board separately, so login never waits on call data.
     if (user.must_change || user.role === 'admin') return json({ user: me });
     const params = new URL(request.url).searchParams;

@@ -518,14 +518,15 @@ function TeamSetup({ me, users, presets, reload, onActed }) {
       <ul className="divide-y divide-slate-100">
         {users.map((u) => (
           <li key={u.id} className="flex flex-wrap items-center justify-between gap-2 py-2.5 text-sm">
-            <span><span className="font-semibold">{u.name}</span> <span className="text-text-muted">@{u.username}, {u.role === 'admin' ? 'admin' : 'caller'}{u.active ? '' : ', off'}</span><span className="block text-xs text-text-muted">Days before the start date stay off their timesheet.</span></span>
+            <span><span className="font-semibold">{u.name}</span> <span className="text-text-muted">@{u.username}, {u.is_owner ? 'owner (admin)' : u.role === 'admin' ? 'admin' : 'caller'}{u.active ? '' : ', off'}</span>{u.is_owner && <span className="ml-1.5 rounded bg-amber-100 px-1.5 py-0.5 text-xs font-semibold text-amber-900">Owner</span>}<span className="block text-xs text-text-muted">Days before the start date stay off their timesheet.</span></span>
             <span className="flex flex-wrap items-center gap-2">
               <label className="flex items-center gap-1 text-text-muted">Start<input aria-label={`${u.name} start date`} className="rounded border border-slate-300 px-2 py-1" type="date" max={centralDay()} defaultValue={u.start_date || ''} onChange={(e) => { if (e.target.value !== (u.start_date || '')) run({ action: 'set-start', userId: u.id, startDate: e.target.value }); }} /></label>
               <label className="flex items-center gap-1 text-text-muted">$/hr<input aria-label={`${u.name} hourly rate`} className="w-20 rounded border border-slate-300 px-2 py-1.5" type="number" min="0" step="0.01" defaultValue={u.hourly_rate ?? ''} onBlur={(e) => { if (e.target.value !== String(u.hourly_rate ?? '')) run({ action: 'set-rate', userId: u.id, hourlyRate: e.target.value }); }} /></label>
               {u.role === 'caller' && u.active && <button type="button" className={quietBtn} onClick={async () => { setError(''); try { await api('/api/team/admin', { action: 'act-as', userId: u.id }); await onActed(); } catch (err) { setError(err.message); } }}>Act as {u.name.split(' ')[0]}</button>}
-              {u.id !== me.id && <button type="button" className={quietBtn} onClick={() => run({ action: 'set-role', userId: u.id, role: u.role === 'admin' ? 'caller' : 'admin' })}>{u.role === 'admin' ? 'Remove admin' : 'Make admin'}</button>}
+              {u.role === 'admin' && u.active && !u.is_owner && (me.isOwner || !users.some((x) => x.is_owner)) && <button type="button" className={quietBtn} onClick={() => { if (window.confirm(`Make ${u.name} the owner? Only the owner can change this afterward.`)) run({ action: 'set-owner', userId: u.id }); }}>Make owner</button>}
+              {u.id !== me.id && !u.is_owner && <button type="button" className={quietBtn} onClick={() => run({ action: 'set-role', userId: u.id, role: u.role === 'admin' ? 'caller' : 'admin' })}>{u.role === 'admin' ? 'Remove admin' : 'Make admin'}</button>}
               <button type="button" className={quietBtn} onClick={() => run({ action: 'reset-password', userId: u.id })}>Reset password</button>
-              {u.id !== me.id && <button type="button" className={quietBtn} onClick={() => run({ action: 'set-active', userId: u.id, active: !u.active })}>{u.active ? 'Turn off' : 'Turn on'}</button>}
+              {u.id !== me.id && !u.is_owner && <button type="button" className={quietBtn} onClick={() => run({ action: 'set-active', userId: u.id, active: !u.active })}>{u.active ? 'Turn off' : 'Turn on'}</button>}
             </span>
           </li>
         ))}

@@ -9,6 +9,10 @@ export const dynamic = 'force-dynamic';
 export const maxDuration = 300;
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
+async function isOwner(userId) {
+  return (await q('SELECT 1 FROM team_users WHERE id=$1 AND is_owner', [userId])).length > 0;
+}
+
 async function admin() {
   const user = await currentUser();
   if (!user) return { response: json({ error: 'Please log in.' }, 401) };
@@ -27,7 +31,7 @@ export async function GET(request) {
     const report = /^\d{4}-(0[1-9]|1[0-2])$/.test(month || '')
       ? await monthReport(month, { refresh })
       : await weekReport(validDay(asked) ? mondayOf(asked) : mondayOf(centralDay()), null, { refresh });
-    const users = await q(`SELECT id, name, username, role, active, hourly_rate, start_date::text AS start_date FROM team_users ORDER BY active DESC, role, name`);
+    const users = await q(`SELECT id, name, username, role, active, is_owner, hourly_rate, start_date::text AS start_date FROM team_users ORDER BY active DESC, is_owner DESC, role, name`);
     const requests = await q(`SELECT r.id, r.work_day::text AS day, r.note, u.name FROM team_fix_requests r JOIN team_users u ON u.id=r.user_id WHERE r.status='open' ORDER BY r.created_at`);
     return json({ report, users, requests, presets: CALLER_PRESETS.map(({ key, name, username }) => ({ key, name, username })) });
   } catch (err) {
@@ -76,8 +80,20 @@ export async function POST(request) {
       return json({ ok: true, username: rows[0].username, temporaryPassword: password });
     }
 
+    if (b.action === 'set-owner' && UUID.test(b.userId || '')) {
+      // The owner can hand it on; anyone can name the first owner while there is none.
+      const owners = await q('SELECT id FROM team_users WHERE is_owner');
+      if (owners.length && !user.is_owner) return json({ error: 'Only the owner can change who the owner is.' }, 403);
+      const target = await q(`SELECT id FROM team_users WHERE id=$1 AND active AND role='admin'`, [b.userId]);
+      if (!target[0]) return json({ error: 'The owner must be an active admin.' }, 400);
+      await q('UPDATE team_users SET is_owner=(id=$1)', [b.userId]);
+      await logAdminAction(user.id, b.userId, 'set-owner');
+      return json({ ok: true });
+    }
+
     if (b.action === 'set-active' && UUID.test(b.userId || '')) {
       if (b.userId === user.id) return json({ error: 'You cannot turn off your own login.' }, 400);
+      if (await isOwner(b.userId)) return json({ error: "The owner's login cannot be turned off." }, 403);
       await q('UPDATE team_users SET active=$1 WHERE id=$2', [Boolean(b.active), b.userId]);
       if (!b.active) await endAllSessions(b.userId);
       return json({ ok: true });
@@ -86,6 +102,7 @@ export async function POST(request) {
     if (b.action === 'set-role' && UUID.test(b.userId || '')) {
       if (b.role !== 'admin' && b.role !== 'caller') return json({ error: 'Pick a role.' }, 400);
       if (b.userId === user.id) return json({ error: 'You cannot change your own access.' }, 400);
+      if (await isOwner(b.userId)) return json({ error: "The owner's admin access cannot be removed." }, 403);
       const rows = await q('UPDATE team_users SET role=$1 WHERE id=$2 RETURNING id', [b.role, b.userId]);
       if (!rows[0]) return json({ error: 'Person not found.' }, 404);
       return json({ ok: true });
