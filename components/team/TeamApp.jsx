@@ -594,7 +594,15 @@ function AdminView({ me, onLogout, week, onWeek, onActed }) {
       .finally(() => { if (id === latest.current) setUpdating(false); });
   }, [week, month, view]);
   useEffect(() => { setData(null); }, [view]);
-  useEffect(() => { load(); const t = setInterval(load, 60000); return () => clearInterval(t); }, [load]);
+  // Refresh every minute only while the board is on screen, so a tab left
+  // open in the background does not keep the database awake all night.
+  useEffect(() => {
+    load();
+    const t = setInterval(() => { if (document.visibilityState === 'visible') load(); }, 60000);
+    const back = () => { if (document.visibilityState === 'visible') load(); };
+    document.addEventListener('visibilitychange', back);
+    return () => { clearInterval(t); document.removeEventListener('visibilitychange', back); };
+  }, [load]);
   // Take the request off the list right away; put it back if saving fails.
   const closeRequest = async (id) => {
     const before = data;
