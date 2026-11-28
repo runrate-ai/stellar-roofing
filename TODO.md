@@ -207,4 +207,6 @@ Campaign `Search – Nashville Leads (Relaunch)` has been live since 2026-09-29.
 - [ ] Brandon: tell the agency Wave 1 is paused, if they built it.
 - [ ] Brandon: Reset password on Nate's timesheet login (`nate.sneed`) and have Nate set his own.
 - [ ] Claude: remove Test Caller and its test hours when Brandon is done testing.
-
+- [x] 2026-11-27 Timesheet outage fixed: Neon to Launch (Brandon) + background-refresh fix live (`32393fb`).
+- [ ] Brandon: check the Vercel/Neon bill after a week; optionally cap Neon max compute at 0.25 CU (Neon console). outlier-finder-db is on Launch too.
+- [ ] Optional later: finish the Supabase move (stellar-team2 is linked; needs the DB password in `TEAM_DATABASE_URL`), or delete stellar-team2 and the paused Oregon stellar-team.

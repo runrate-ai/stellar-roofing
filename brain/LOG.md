@@ -262,3 +262,7 @@ Published the call accuracy update: late GHL calls rechecked, 30-second calls, l
 ## 2026-11-27 (Meta budget $4,000/mo)
 - Brandon: about $4,000/month. Custom Estimate $90 -> $80/day, Round 2 $60 -> $50/day (live). Round 2 ads approved. Wave 1 ($75/day budget, ~$11/day actual) and awareness (to Dec 31) still on; asked about pausing Wave 1.
 - Paused 'Stellar Launch 1 — Wave 1' (campaign 52558096740301) at Brandon's OK; live read-back PAUSED. Lead spend now $130/day plus the awareness campaign (~$8/day to Dec 31).
+
+## 2026-11-27 night (timesheet outage)
+- Timesheet down: Neon Free compute quota used up (HTTP 402). Brandon upgraded Neon to Launch; Claude pushed `32393fb` (admin board polls only while visible); live checked.
+- Supabase move parked: stellar-team2 created and linked to Vercel, but the DB password step was too complicated; Oregon stellar-team paused. Local db.js/pg prep left uncommitted.
