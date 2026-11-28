@@ -122,6 +122,7 @@ Brandon starts **short, separate sessions per task**; say "wrap up" before closi
 
 ## What Claude does next
 
+- **Meta check around Dec 5-8:** Round 2 (`52560516198901`, $50/day from Dec 1) and Custom Estimate ($80/day): leads in GHL, cost per lead, bookings; Wave 1 is paused. No edits through Cyber Monday.
 - **Meta pixel and tracking** once Brandon sends the pixel ID: pixel + Conversions API on the funnel and main site, lead event on `/thank-you`, UTM format, read-only Meta reporting.
 - **Recheck indexing** on 2026-10-23: `/goodlettsville` (new URL), storm-damage, Franklin, Brentwood.
 - **Trim titles** to about 60 characters and descriptions to 160 on money pages (28 titles, 23 descriptions flagged); link the storm-damage page from the homepage/footer; real job photos and a price range on the city pages with impressions and no clicks (Murfreesboro, Clarksville, Spring Hill, Hendersonville, Gallatin). Consider Bing IndexNow (Bing Webmaster is set up, 51 URLs, 0 errors).

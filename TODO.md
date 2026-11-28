@@ -199,3 +199,12 @@ Campaign `Search – Nashville Leads (Relaunch)` has been live since 2026-09-29.
 - Google Ads audit (PPC-AUDIT.md): $1,821.51 / 212 clicks / 0 leads. Causes: the mobile form, broad-match waste, and location/language settings.
 - GHL access set up (Token 1). Internal contact "Stellar Game Plan (internal)" created; 10 Priority 1/2 tasks added in GHL, assigned to Brandon.
 - GHL read access set up (Token 1). Confirmed no CRM contacts or form submissions from the funnel since the ads started; "Ai Studio Form Lead – Google PPC" workflow is still a draft; most GHL automations are drafts.
+
+## Open from 2026-11-27 (Meta + timesheet)
+
+- [x] 2026-11-27 Meta budget fit to ~$4,000/mo: Custom Estimate $80/day, Nate Videos Round 2 $50/day (starts Dec 1); Wave 1 campaign paused.
+- [ ] Claude: check Round 2 (ad set `52560516198901`) and Custom Estimate around Dec 5-8: leads in GHL (`fb lead`), cost per lead, bookings. No edits before then.
+- [ ] Brandon: tell the agency Wave 1 is paused, if they built it.
+- [ ] Brandon: Reset password on Nate's timesheet login (`nate.sneed`) and have Nate set his own.
+- [ ] Claude: remove Test Caller and its test hours when Brandon is done testing.
+
